@@ -40,6 +40,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pulsofirme.R
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 
 private val VerdeTitulo = Color(0xFF1B7A4B)
 private val GrisSubtitulo = Color(0xFF6B7280)
@@ -50,7 +53,9 @@ private val GrisFondoLista = Color(0xFFF3F5F4)
 @Composable
 fun TutorCreatePasswordScreen(
     onBack: () -> Unit,
-    onCrearCuenta: (String) -> Unit = {}
+    onCrearCuenta: (String) -> Unit = {},
+    // true mientras se crea la cuenta (bloquea el botón)
+    cargando: Boolean = false
 ) {
     var contrasenia by remember { mutableStateOf("") }
     var confirmarContrasenia by remember { mutableStateOf("") }
@@ -212,8 +217,8 @@ fun TutorCreatePasswordScreen(
         Spacer(modifier = Modifier.height(24.dp))
 
         Button(
-            onClick = { onCrearCuenta(contrasenia) },
-            enabled = puedeContinuar,
+            onClick = { if (!cargando) onCrearCuenta(contrasenia) },
+            enabled = puedeContinuar && !cargando,
             modifier = Modifier
                 .fillMaxWidth()
                 .height(56.dp),
@@ -223,7 +228,17 @@ fun TutorCreatePasswordScreen(
                 disabledContainerColor = Color(0xFFBEE0CC)
             )
         ) {
-            Text("Crear cuenta", fontSize = 17.sp, fontWeight = FontWeight.Bold, color = Color.White)
+            if (cargando) {
+                CircularProgressIndicator(
+                    color = Color.White,
+                    strokeWidth = 2.dp,
+                    modifier = Modifier
+                        .size(22.dp)
+                        .semantics { contentDescription = "Creando cuenta" }
+                )
+            } else {
+                Text("Crear cuenta", fontSize = 17.sp, fontWeight = FontWeight.Bold, color = Color.White)
+            }
         }
 
         Spacer(modifier = Modifier.height(14.dp))

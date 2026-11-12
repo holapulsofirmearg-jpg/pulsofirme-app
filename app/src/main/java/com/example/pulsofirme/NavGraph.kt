@@ -34,6 +34,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.example.pulsofirme.TextosLegales
+import com.example.pulsofirme.ErroresFirebase
 import com.example.pulsofirme.exportarMisDatos
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -343,7 +344,12 @@ fun AppNavGraph() {
 
             val context = LocalContext.current
 
+            // true mientras se espera a Firebase: bloquea el botón y evita el doble envío
+            var cargando by remember { mutableStateOf(false) }
+
             LoginScreen(
+
+                cargando = cargando,
 
                 onBackClick = {
                     navController.popBackStack()
@@ -351,8 +357,11 @@ fun AppNavGraph() {
 
                 onIngresar = { email, password ->
 
-                    if (email.isBlank() || password.isBlank()) {
+                    if (cargando) {
+                        // Ya se está verificando: ignoramos el segundo toque
+                    } else if (email.isBlank() || password.isBlank()) {
 
+                        cargando = false
                         Toast.makeText(
                             context,
                             "Completá el correo y la contraseña",
@@ -360,6 +369,8 @@ fun AppNavGraph() {
                         ).show()
 
                     } else {
+
+                        cargando = true
 
                         auth.signInWithEmailAndPassword(
                             email.trim(),
@@ -407,21 +418,24 @@ fun AppNavGraph() {
                                                 }
                                             }
                                         }
-                                        .addOnFailureListener {
+                                        .addOnFailureListener { error ->
 
+                                            auth.signOut()
+                                            cargando = false
                                             Toast.makeText(
                                                 context,
-                                                "Error al cargar los datos",
+                                                ErroresFirebase.datos(error, "No se pudieron cargar tus datos. Intentá de nuevo."),
                                                 Toast.LENGTH_SHORT
                                             ).show()
                                         }
                                 }
                             }
-                            .addOnFailureListener {
+                            .addOnFailureListener { error ->
 
+                                cargando = false
                                 Toast.makeText(
                                     context,
-                                    "Correo o contraseña incorrectos",
+                                    ErroresFirebase.login(error),
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
@@ -432,6 +446,7 @@ fun AppNavGraph() {
 
                     if (email.isBlank()) {
 
+                        cargando = false
                         Toast.makeText(
                             context,
                             "Ingresá tu correo electrónico primero",
@@ -446,17 +461,19 @@ fun AppNavGraph() {
                         auth.sendPasswordResetEmail(email.trim())
                             .addOnSuccessListener {
 
+                                cargando = false
                                 Toast.makeText(
                                     context,
                                     "Te enviamos un correo para restablecer tu contraseña",
                                     Toast.LENGTH_LONG
                                 ).show()
                             }
-                            .addOnFailureListener {
+                            .addOnFailureListener { error ->
 
+                                cargando = false
                                 Toast.makeText(
                                     context,
-                                    "No se pudo enviar el correo. Verificá la dirección ingresada.",
+                                    ErroresFirebase.recuperacion(error),
                                     Toast.LENGTH_LONG
                                 ).show()
                             }
@@ -655,7 +672,13 @@ fun AppNavGraph() {
 
             val context = LocalContext.current
 
+            // true mientras se espera a Firebase: bloquea el botón y evita el doble envío
+            var cargando by remember { mutableStateOf(false) }
+
             TutorLoginScreen(
+
+
+                cargando = cargando,
 
                 onBack = {
                     navController.popBackStack()
@@ -663,13 +686,18 @@ fun AppNavGraph() {
 
                 onIngresar = { email, password, codigo ->
 
-                    if (email.isBlank() || password.isBlank() || codigo.isBlank()) {
+                    if (cargando) {
+                        // Ya se está verificando: ignoramos el segundo toque
+                    } else if (email.isBlank() || password.isBlank() || codigo.isBlank()) {
+                        cargando = false
                         Toast.makeText(
                             context,
                             "Completá el correo, la contraseña y el código de vinculación",
                             Toast.LENGTH_SHORT
                         ).show()
                     } else {
+                        cargando = true
+
                         auth.signInWithEmailAndPassword(
                             email.trim(),
                             password
@@ -679,6 +707,7 @@ fun AppNavGraph() {
                                 val tutorUid = auth.currentUser?.uid
 
                                 if (tutorUid == null) {
+                                    cargando = false
                                     Toast.makeText(
                                         context,
                                         "No se encontró la sesión del tutor",
@@ -704,6 +733,7 @@ fun AppNavGraph() {
                                             when {
                                                 rol != "tutor" -> {
                                                     auth.signOut()
+                                                    cargando = false
                                                     Toast.makeText(
                                                         context,
                                                         "Esta cuenta no corresponde a un tutor",
@@ -713,6 +743,7 @@ fun AppNavGraph() {
 
                                                 pacienteUid.isBlank() -> {
                                                     auth.signOut()
+                                                    cargando = false
                                                     Toast.makeText(
                                                         context,
                                                         "Esta cuenta todavía no está vinculada a un paciente",
@@ -736,6 +767,7 @@ fun AppNavGraph() {
                                                                 codigo.trim()
                                                             ) {
                                                                 auth.signOut()
+                                                                cargando = false
                                                                 Toast.makeText(
                                                                     context,
                                                                     "El código no corresponde al paciente vinculado",
@@ -747,6 +779,7 @@ fun AppNavGraph() {
                                                                 rolCuidadorActual =
                                                                     "tutor"
 
+                                                                cargando = false
                                                                 Toast.makeText(
                                                                     context,
                                                                     "Sesión iniciada correctamente",
@@ -764,31 +797,34 @@ fun AppNavGraph() {
                                                                 }
                                                             }
                                                         }
-                                                        .addOnFailureListener {
+                                                        .addOnFailureListener { error ->
                                                             auth.signOut()
+                                                            cargando = false
                                                             Toast.makeText(
                                                                 context,
-                                                                "No se pudo verificar el paciente vinculado",
+                                                                ErroresFirebase.datos(error, "No se pudo verificar el paciente vinculado"),
                                                                 Toast.LENGTH_LONG
                                                             ).show()
                                                         }
                                                 }
                                             }
                                         }
-                                        .addOnFailureListener {
+                                        .addOnFailureListener { error ->
                                             auth.signOut()
+                                            cargando = false
                                             Toast.makeText(
                                                 context,
-                                                "No se pudieron cargar los datos del tutor",
+                                                ErroresFirebase.datos(error, "No se pudieron cargar los datos del tutor"),
                                                 Toast.LENGTH_SHORT
                                             ).show()
                                         }
                                 }
                             }
-                            .addOnFailureListener {
+                            .addOnFailureListener { error ->
+                                cargando = false
                                 Toast.makeText(
                                     context,
-                                    "Correo o contraseña incorrectos",
+                                    ErroresFirebase.login(error),
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
@@ -798,6 +834,7 @@ fun AppNavGraph() {
                 onOlvidasteContrasena = { email ->
 
                     if (email.isBlank()) {
+                        cargando = false
                         Toast.makeText(
                             context,
                             "Ingresá tu correo electrónico primero",
@@ -808,16 +845,18 @@ fun AppNavGraph() {
 
                         auth.sendPasswordResetEmail(email.trim())
                             .addOnSuccessListener {
+                                cargando = false
                                 Toast.makeText(
                                     context,
                                     "Te enviamos un correo para restablecer tu contraseña",
                                     Toast.LENGTH_LONG
                                 ).show()
                             }
-                            .addOnFailureListener {
+                            .addOnFailureListener { error ->
+                                cargando = false
                                 Toast.makeText(
                                     context,
-                                    "No se pudo enviar el correo. Verificá la dirección ingresada.",
+                                    ErroresFirebase.recuperacion(error),
                                     Toast.LENGTH_LONG
                                 ).show()
                             }
@@ -883,7 +922,12 @@ fun AppNavGraph() {
 
             val context = LocalContext.current
 
+            // true mientras se espera a Firebase: bloquea el botón y evita el doble envío
+            var cargando by remember { mutableStateOf(false) }
+
             TutorCreatePasswordScreen(
+
+                cargando = cargando,
 
                 onBack = {
                     navController.popBackStack()
@@ -891,18 +935,23 @@ fun AppNavGraph() {
 
                 onCrearCuenta = { contrasenia ->
 
-                    if (tutorNombre.isBlank() ||
+                    if (cargando) {
+                        // Ya se está creando la cuenta: ignoramos el segundo toque
+                    } else if (tutorNombre.isBlank() ||
                         tutorApellido.isBlank() ||
                         tutorCorreo.isBlank() ||
                         tutorCodigoVinculacion.isBlank() ||
                         contrasenia.isBlank()
                     ) {
+                        cargando = false
                         Toast.makeText(
                             context,
                             "Completá los datos obligatorios",
                             Toast.LENGTH_SHORT
                         ).show()
                     } else {
+
+                        cargando = true
 
                         // Buscamos al PACIENTE dueño del código en la colección "codigos".
                         db.collection("codigos")
@@ -911,6 +960,7 @@ fun AppNavGraph() {
                             .addOnSuccessListener { codigoDoc ->
 
                                 if (!codigoDoc.exists()) {
+                                    cargando = false
                                     Toast.makeText(
                                         context,
                                         "El código de vinculación no pertenece a ningún paciente",
@@ -930,6 +980,7 @@ fun AppNavGraph() {
                                             val tutorUid = resultado.user?.uid
 
                                             if (tutorUid == null) {
+                                                cargando = false
                                                 Toast.makeText(
                                                     context,
                                                     "No se pudo crear la cuenta",
@@ -989,6 +1040,7 @@ fun AppNavGraph() {
                                                         rolCuidadorActual =
                                                             "tutor"
 
+                                                        cargando = false
                                                         Toast.makeText(
                                                             context,
                                                             "Tutor vinculado correctamente con el paciente",
@@ -1018,30 +1070,33 @@ fun AppNavGraph() {
                                                                         .FirebaseFirestoreException.Code
                                                                         .PERMISSION_DENIED
 
+                                                        cargando = false
                                                         Toast.makeText(
                                                             context,
                                                             if (denegado) "No se pudo vincular: el paciente ya alcanzó " +
                                                                     "el máximo de tutores (${LimiteTutores.MAX_GRATIS} en el plan gratis, " +
                                                                     "${LimiteTutores.MAX_PREMIUM} con Premium) o el código no es válido."
-                                                            else "No se pudo completar la vinculación",
+                                                            else ErroresFirebase.datos(error, "No se pudo completar la vinculación"),
                                                             Toast.LENGTH_LONG
                                                         ).show()
                                                     }
                                             }
                                         }
-                                        .addOnFailureListener {
+                                        .addOnFailureListener { error ->
+                                            cargando = false
                                             Toast.makeText(
                                                 context,
-                                                "No se pudo crear la cuenta. Revisá el correo o la contraseña.",
+                                                ErroresFirebase.registro(error),
                                                 Toast.LENGTH_LONG
                                             ).show()
                                         }
                                 }
                             }
-                            .addOnFailureListener {
+                            .addOnFailureListener { error ->
+                                cargando = false
                                 Toast.makeText(
                                     context,
-                                    "No se pudo verificar el código del paciente",
+                                    ErroresFirebase.datos(error, "No se pudo verificar el código del paciente"),
                                     Toast.LENGTH_LONG
                                 ).show()
                             }
@@ -1097,18 +1152,27 @@ fun AppNavGraph() {
         composable("caregiver_login") {
             val context = LocalContext.current
 
+            // true mientras se espera a Firebase: bloquea el botón y evita el doble envío
+            var cargando by remember { mutableStateOf(false) }
+
             CaregiverLoginScreen(
+
+                cargando = cargando,
                 onBack = {
                     navController.popBackStack()
                 },
 
                 onIniciarSesion = { correo, contrasenia ->
+                    if (cargando) return@CaregiverLoginScreen
+                    cargando = true
+
                     auth.signInWithEmailAndPassword(correo.trim(), contrasenia)
                         .addOnSuccessListener { resultado ->
                             val uid = resultado.user?.uid
 
                             if (uid == null) {
                                 auth.signOut()
+                                cargando = false
                                 Toast.makeText(
                                     context,
                                     "No se pudo obtener la sesión del profesional",
@@ -1123,6 +1187,7 @@ fun AppNavGraph() {
 
                                         if (rol != "profesional") {
                                             auth.signOut()
+                                            cargando = false
                                             Toast.makeText(
                                                 context,
                                                 "Esta cuenta no corresponde a un profesional",
@@ -1148,20 +1213,22 @@ fun AppNavGraph() {
                                             }
                                         }
                                     }
-                                    .addOnFailureListener {
+                                    .addOnFailureListener { error ->
                                         auth.signOut()
+                                        cargando = false
                                         Toast.makeText(
                                             context,
-                                            "No se pudieron verificar los datos del profesional",
+                                            ErroresFirebase.datos(error, "No se pudieron verificar los datos del profesional"),
                                             Toast.LENGTH_LONG
                                         ).show()
                                     }
                             }
                         }
-                        .addOnFailureListener {
+                        .addOnFailureListener { error ->
+                            cargando = false
                             Toast.makeText(
                                 context,
-                                "Correo o contraseña incorrectos",
+                                ErroresFirebase.login(error),
                                 Toast.LENGTH_LONG
                             ).show()
                         }
@@ -1170,16 +1237,18 @@ fun AppNavGraph() {
                 onForgotPasswordClick = { correo ->
                     auth.sendPasswordResetEmail(correo.trim())
                         .addOnSuccessListener {
+                            cargando = false
                             Toast.makeText(
                                 context,
                                 "Te enviamos un correo para restablecer tu contraseña",
                                 Toast.LENGTH_LONG
                             ).show()
                         }
-                        .addOnFailureListener {
+                        .addOnFailureListener { error ->
+                            cargando = false
                             Toast.makeText(
                                 context,
-                                "No se pudo enviar el correo de recuperación",
+                                ErroresFirebase.recuperacion(error),
                                 Toast.LENGTH_LONG
                             ).show()
                         }
@@ -1199,17 +1268,26 @@ fun AppNavGraph() {
         composable("caregiver_register") {
             val context = LocalContext.current
 
+            // true mientras se espera a Firebase: bloquea el botón y evita el doble envío
+            var cargando by remember { mutableStateOf(false) }
+
             CaregiverRegisterScreen(
+
+                cargando = cargando,
                 onBack = {
                     navController.popBackStack()
                 },
 
                 onCreateAccount = { nombre, apellido, correo, contrasenia, profesion, matricula ->
+                    if (cargando) return@CaregiverRegisterScreen
+                    cargando = true
+
                     auth.createUserWithEmailAndPassword(correo.trim(), contrasenia)
                         .addOnSuccessListener { resultado ->
                             val uid = resultado.user?.uid
 
                             if (uid == null) {
+                                cargando = false
                                 Toast.makeText(
                                     context,
                                     "No se pudo crear la cuenta profesional",
@@ -1246,6 +1324,7 @@ fun AppNavGraph() {
                                         profesionalLugarTrabajo = ""
                                         profesionalEspecialidad = profesion.trim()
 
+                                        cargando = false
                                         Toast.makeText(
                                             context,
                                             "Cuenta profesional creada correctamente",
@@ -1258,20 +1337,22 @@ fun AppNavGraph() {
                                             }
                                         }
                                     }
-                                    .addOnFailureListener {
+                                    .addOnFailureListener { error ->
                                         resultado.user?.delete()
+                                        cargando = false
                                         Toast.makeText(
                                             context,
-                                            "No se pudieron guardar los datos del profesional",
+                                            ErroresFirebase.datos(error, "No se pudieron guardar los datos del profesional"),
                                             Toast.LENGTH_LONG
                                         ).show()
                                     }
                             }
                         }
-                        .addOnFailureListener {
+                        .addOnFailureListener { error ->
+                            cargando = false
                             Toast.makeText(
                                 context,
-                                "No se pudo crear la cuenta. Revisá el correo o la contraseña.",
+                                ErroresFirebase.registro(error),
                                 Toast.LENGTH_LONG
                             ).show()
                         }

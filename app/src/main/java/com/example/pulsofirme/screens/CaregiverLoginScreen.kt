@@ -43,6 +43,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pulsofirme.R
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 
 private val VerdeTitulo = Color(0xFF1B7A4B)
 private val GrisSubtitulo = Color(0xFF6B7280)
@@ -55,7 +58,9 @@ fun CaregiverLoginScreen(
     onBack: () -> Unit,
     onIniciarSesion: (String, String) -> Unit,
     onForgotPasswordClick: (String) -> Unit,
-    onCrearCuenta: () -> Unit
+    onCrearCuenta: () -> Unit,
+    // true mientras se verifica el inicio de sesión (bloquea el botón)
+    cargando: Boolean = false
 ) {
     var correo by remember { mutableStateOf("") }
     var contrasenia by remember { mutableStateOf("") }
@@ -215,17 +220,31 @@ fun CaregiverLoginScreen(
                     else -> ""
                 }
 
-                if (errorFormulario.isBlank()) {
+                if (errorFormulario.isBlank() && !cargando) {
                     onIniciarSesion(correoLimpio, contrasenia)
                 }
             },
+            enabled = !cargando,
             modifier = Modifier
                 .fillMaxWidth()
                 .heightIn(min = 56.dp),
             shape = RoundedCornerShape(28.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = VerdeTitulo)
+            colors = ButtonDefaults.buttonColors(
+                containerColor = VerdeTitulo,
+                disabledContainerColor = VerdeTitulo.copy(alpha = 0.6f)
+            )
         ) {
-            Text("Iniciar sesión", fontSize = 17.sp, fontWeight = FontWeight.Bold, color = Color.White)
+            if (cargando) {
+                CircularProgressIndicator(
+                    color = Color.White,
+                    strokeWidth = 2.dp,
+                    modifier = Modifier
+                        .size(22.dp)
+                        .semantics { contentDescription = "Iniciando sesión" }
+                )
+            } else {
+                Text("Iniciar sesión", fontSize = 17.sp, fontWeight = FontWeight.Bold, color = Color.White)
+            }
         }
 
         Spacer(modifier = Modifier.height(24.dp))

@@ -29,6 +29,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -55,7 +57,9 @@ fun LoginScreen(
     onCuidador: () -> Unit = {},
 
     onGoogleClick: () -> Unit = {},
-    onAppleClick: () -> Unit = {}
+    onAppleClick: () -> Unit = {},
+    // true mientras se verifica el inicio de sesión (bloquea el botón)
+    cargando: Boolean = false
 ) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -212,19 +216,33 @@ fun LoginScreen(
 
 
             Button(
-                onClick = { onIngresar(email, password) },
+                onClick = { if (!cargando) onIngresar(email, password) },
+                enabled = !cargando,
                 modifier = Modifier
                     .fillMaxWidth()
                     .heightIn(min = 56.dp),
                 shape = RoundedCornerShape(10.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = PrimaryBlue)
-            ) {
-                Text(
-                    text = "Iniciar sesión",
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = PrimaryBlue,
+                    disabledContainerColor = PrimaryBlue.copy(alpha = 0.6f)
                 )
+            ) {
+                if (cargando) {
+                    CircularProgressIndicator(
+                        color = Color.White,
+                        strokeWidth = 2.dp,
+                        modifier = Modifier
+                            .size(22.dp)
+                            .semantics { contentDescription = "Iniciando sesión" }
+                    )
+                } else {
+                    Text(
+                        text = "Iniciar sesión",
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.White
+                    )
+                }
             }
 
             Spacer(modifier = Modifier.height(16.dp))

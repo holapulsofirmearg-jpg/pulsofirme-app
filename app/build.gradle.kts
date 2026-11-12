@@ -33,6 +33,8 @@ android {
     }
     buildFeatures {
         compose = true
+        // Necesario para saber si es versión de prueba (debug) o final (release) en App Check
+        buildConfig = true
     }
 }
 
@@ -58,6 +60,10 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.8.1")
     implementation("com.google.firebase:firebase-ai")
+
+    // App Check: solo la app real de PulsoFirme puede usar Firebase y la IA de PulsiBot
+    implementation("com.google.firebase:firebase-appcheck-playintegrity")
+    implementation("com.google.firebase:firebase-appcheck-debug")
 
     testImplementation(libs.junit)
     androidTestImplementation(platform(libs.androidx.compose.bom))

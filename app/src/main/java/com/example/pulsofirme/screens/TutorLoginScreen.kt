@@ -38,6 +38,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pulsofirme.R
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 
 private val VerdeTutor = Color(0xFF237A68)
 private val VerdeTexto = Color(0xFF1B7A6E)
@@ -52,7 +54,9 @@ fun TutorLoginScreen(
     onCrearCuenta: () -> Unit = {},
     onGoogle: () -> Unit = {},
     onApple: () -> Unit = {},
-    onAccesibilidad: () -> Unit = {}
+    onAccesibilidad: () -> Unit = {},
+    // true mientras se verifica el inicio de sesión (bloquea el botón)
+    cargando: Boolean = false
 ) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -211,19 +215,33 @@ fun TutorLoginScreen(
 
             // Botón Ingresar
             Button(
-                onClick = { onIngresar(email, password, codigo) },
+                onClick = { if (!cargando) onIngresar(email, password, codigo) },
+                enabled = !cargando,
                 modifier = Modifier
                     .fillMaxWidth()
                     .heightIn(min = 56.dp),
                 shape = RoundedCornerShape(12.dp),
-                colors = ButtonDefaults.buttonColors(containerColor = VerdeTutor)
-            ) {
-                Text(
-                    text = "Ingresar",
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = VerdeTutor,
+                    disabledContainerColor = VerdeTutor.copy(alpha = 0.6f)
                 )
+            ) {
+                if (cargando) {
+                    CircularProgressIndicator(
+                        color = Color.White,
+                        strokeWidth = 2.dp,
+                        modifier = Modifier
+                            .size(22.dp)
+                            .semantics { contentDescription = "Iniciando sesión" }
+                    )
+                } else {
+                    Text(
+                        text = "Ingresar",
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.White
+                    )
+                }
             }
 
             Spacer(modifier = Modifier.height(20.dp))

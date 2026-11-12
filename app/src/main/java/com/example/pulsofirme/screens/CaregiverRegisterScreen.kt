@@ -50,6 +50,9 @@ import com.example.pulsofirme.DialogoLegal
 import com.example.pulsofirme.R
 import com.example.pulsofirme.TextosLegales
 import com.example.pulsofirme.areaTactil
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 
 private val VerdeTitulo = Color(0xFF1B7A4B)
 private val GrisSubtitulo = Color(0xFF6B7280)
@@ -63,7 +66,9 @@ private val profesiones = listOf("Médico/a", "Kinesiólogo/a", "Terapista ocupa
 fun CaregiverRegisterScreen(
     onBack: () -> Unit,
     onCreateAccount: (String, String, String, String, String, String) -> Unit,
-    onGoToLogin: () -> Unit
+    onGoToLogin: () -> Unit,
+    // true mientras se crea la cuenta (bloquea el botón)
+    cargando: Boolean = false
 ) {
     var nombre by remember { mutableStateOf("") }
     var apellido by remember { mutableStateOf("") }
@@ -380,7 +385,7 @@ fun CaregiverRegisterScreen(
                     else -> ""
                 }
 
-                if (errorFormulario.isBlank()) {
+                if (errorFormulario.isBlank() && !cargando) {
                     onCreateAccount(
                         nombreLimpio,
                         apellidoLimpio,
@@ -391,13 +396,27 @@ fun CaregiverRegisterScreen(
                     )
                 }
             },
+            enabled = !cargando,
             modifier = Modifier
                 .fillMaxWidth()
                 .heightIn(min = 56.dp),
             shape = RoundedCornerShape(28.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = VerdeTitulo)
+            colors = ButtonDefaults.buttonColors(
+                containerColor = VerdeTitulo,
+                disabledContainerColor = VerdeTitulo.copy(alpha = 0.6f)
+            )
         ) {
-            Text("Crear cuenta", fontSize = 17.sp, fontWeight = FontWeight.Bold, color = Color.White)
+            if (cargando) {
+                CircularProgressIndicator(
+                    color = Color.White,
+                    strokeWidth = 2.dp,
+                    modifier = Modifier
+                        .size(22.dp)
+                        .semantics { contentDescription = "Creando cuenta" }
+                )
+            } else {
+                Text("Crear cuenta", fontSize = 17.sp, fontWeight = FontWeight.Bold, color = Color.White)
+            }
         }
 
         Spacer(modifier = Modifier.height(20.dp))

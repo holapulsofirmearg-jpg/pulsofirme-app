@@ -21,6 +21,10 @@ import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.unit.Density
 import androidx.core.content.ContextCompat
 import com.example.pulsofirme.Accesibilidad
+import com.example.pulsofirme.BuildConfig
+import com.google.firebase.appcheck.FirebaseAppCheck
+import com.google.firebase.appcheck.debug.DebugAppCheckProviderFactory
+import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderFactory
 import com.example.pulsofirme.filtroAltoContraste
 import com.example.pulsofirme.ui.theme.PulsoFirmeTheme
 
@@ -31,6 +35,14 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // App Check: le demuestra a Firebase que las consultas vienen de la app real.
+        // - Versión de prueba (debug): usa un token que se registra a mano en la consola.
+        // - Versión final (release): usa Play Integrity de Google.
+        FirebaseAppCheck.getInstance().installAppCheckProviderFactory(
+            if (BuildConfig.DEBUG) DebugAppCheckProviderFactory.getInstance()
+            else PlayIntegrityAppCheckProviderFactory.getInstance()
+        )
 
         // Cargamos las preferencias de accesibilidad (por defecto: todo grande)
         Accesibilidad.init(applicationContext)
