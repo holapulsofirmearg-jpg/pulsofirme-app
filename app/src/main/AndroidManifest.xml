@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- BLUETOOTH (conexión con el guante) -->
+    <uses-permission
+        android:name="android.permission.BLUETOOTH"
+        android:maxSdkVersion="30" />
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_ADMIN"
+        android:maxSdkVersion="30" />
+    <uses-permission
+        android:name="android.permission.ACCESS_FINE_LOCATION"
+        android:maxSdkVersion="30" />
+    <uses-permission
+        android:name="android.permission.BLUETOOTH_SCAN"
+        android:usesPermissionFlags="neverForLocation"
+        tools:targetApi="s" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="false" />
+
+    <!-- NOTIFICACIONES -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- ALARMAS EXACTAS (Android 12 usa la primera, Android 13+ la segunda) -->
+    <uses-permission
+        android:name="android.permission.SCHEDULE_EXACT_ALARM"
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+
+    <!-- ALARMA A PANTALLA COMPLETA Y VIBRACIÓN -->
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- PARA VOLVER A PROGRAMAR DESPUÉS DE REINICIAR -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.PulsoFirme">
+
+        <activity
+            android:name="com.example.pulsofirme.screens.MainActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.PulsoFirme">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
+        <!-- PANTALLA DE ALARMA (SUENA Y VIBRA) -->
+        <activity
+            android:name="com.example.pulsofirme.alarmas.AlarmaActivity"
+            android:exported="false"
+            android:showWhenLocked="true"
+            android:turnScreenOn="true"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTop"
+            android:taskAffinity=""
+            android:theme="@style/Theme.PulsoFirme"
+            tools:targetApi="o_mr1" />
+
+        <!-- RECIBE LA ALARMA DE MEDICACIÓN -->
+        <receiver
+            android:name="com.example.pulsofirme.alarmas.AlarmaReceiver"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- REPROGRAMA ALARMAS AL REINICIAR -->
+        <receiver
+            android:name="com.example.pulsofirme.alarmas.ReinicioReceiver"
+            android:enabled="true"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+
+        </receiver>
+
+        <!-- RECORDATORIO DIARIO DE EJERCICIO PENDIENTE -->
+        <receiver
+            android:name="com.example.pulsofirme.alarmas.RecordatorioEjercicioReceiver"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- REPROGRAMA EL RECORDATORIO DE EJERCICIO AL REINICIAR -->
+        <receiver
+            android:name="com.example.pulsofirme.alarmas.RecordatorioEjercicioBootReceiver"
+            android:enabled="true"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+
+        </receiver>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+
+        </provider>
+
+    </application>
+
+</manifest>
