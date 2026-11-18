@@ -79,6 +79,8 @@ fun AjustesCaregiverScreen(
 ) {
     val contexto = LocalContext.current
     var accesibilidadExpandida by rememberSaveable { mutableStateOf(false) }
+    var mostrarDialogoIdioma by rememberSaveable { mutableStateOf(false) }
+    if (mostrarDialogoIdioma) DialogoIdioma(onCerrar = { mostrarDialogoIdioma = false })
     var mostrarTamanoTexto by rememberSaveable { mutableStateOf(false) }
 
     // Las opciones de accesibilidad son las mismas de toda la app (se guardan en el celular)
@@ -88,7 +90,7 @@ fun AjustesCaregiverScreen(
             containerColor = Color.White.enTema(),
             shape = RoundedCornerShape(20.dp),
             title = {
-                Text("Tamaño del texto", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = VerdeTitulo)
+                Text(tr("Tamaño del texto"), fontSize = 20.sp, fontWeight = FontWeight.Bold, color = VerdeTitulo)
             },
             text = {
                 Column {
@@ -111,14 +113,14 @@ fun AjustesCaregiverScreen(
                                 colors = RadioButtonDefaults.colors(selectedColor = VerdeTitulo)
                             )
                             Spacer(modifier = Modifier.width(8.dp))
-                            Text(nivel, fontSize = 16.sp, color = Color(0xFF1A1A1A).enTema())
+                            Text(tr(nivel), fontSize = 16.sp, color = Color(0xFF1A1A1A).enTema())
                         }
                     }
                 }
             },
             confirmButton = {
                 TextButton(onClick = { mostrarTamanoTexto = false }) {
-                    Text("Listo", color = VerdeTitulo, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                    Text(tr("Listo"), color = VerdeTitulo, fontWeight = FontWeight.Bold, fontSize = 16.sp)
                 }
             }
         )
@@ -137,13 +139,13 @@ fun AjustesCaregiverScreen(
             IconButton(onClick = onBack) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = "Volver",
+                    contentDescription = tr("Volver"),
                     tint = Color.Black
                 )
             }
             Spacer(modifier = Modifier.width(4.dp))
             Text(
-                text = "Ajustes",
+                text = tr("Ajustes"),
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 color = VerdeTitulo,
@@ -156,6 +158,10 @@ fun AjustesCaregiverScreen(
         Spacer(modifier = Modifier.height(24.dp))
 
         FilaAjuste(titulo = "Tema", valor = "Claro", onClick = { /* TODO */ })
+
+        Spacer(modifier = Modifier.height(12.dp))
+
+        FilaAjuste(titulo = "Idioma", valor = nombreIdiomaActual, onClick = { mostrarDialogoIdioma = true })
 
         Spacer(modifier = Modifier.height(12.dp))
 
@@ -197,11 +203,11 @@ fun AjustesCaregiverScreen(
                 Spacer(modifier = Modifier.width(12.dp))
 
                 Column(modifier = Modifier.weight(1f)) {
-                    Text("Accesibilidad", fontSize = 16.sp, fontWeight = FontWeight.Bold, color = AzulTexto)
+                    Text(tr("Accesibilidad"), fontSize = 16.sp, fontWeight = FontWeight.Bold, color = AzulTexto)
                     if (accesibilidadExpandida) {
                         Spacer(modifier = Modifier.height(2.dp))
                         Text(
-                            "Adaptá la aplicación para usarla de la forma más cómoda para vos.",
+                            tr("Adaptá la aplicación para usarla de la forma más cómoda para vos."),
                             fontSize = 12.sp,
                             color = GrisSubtitulo,
                             lineHeight = 16.sp
@@ -281,7 +287,7 @@ fun AjustesCaregiverScreen(
             shape = RoundedCornerShape(28.dp),
             colors = ButtonDefaults.buttonColors(containerColor = RojoBoton)
         ) {
-            Text("Eliminar cuenta", fontSize = 17.sp, fontWeight = FontWeight.Bold, color = Color.White)
+            Text(tr("Eliminar cuenta"), fontSize = 17.sp, fontWeight = FontWeight.Bold, color = Color.White)
         }
 
         Spacer(modifier = Modifier.height(40.dp))
@@ -303,14 +309,14 @@ private fun FilaAjuste(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            titulo,
+            tr(titulo),
             fontSize = 16.sp,
             color = Color(0xFF1A1A1A).enTema(),
             modifier = Modifier.weight(1f)
         )
         if (valor.isNotEmpty()) {
             Text(
-                valor,
+                tr(valor),
                 fontSize = 15.sp,
                 color = GrisSubtitulo
             )
@@ -351,9 +357,9 @@ private fun FilaAccesibilidad(
         Spacer(modifier = Modifier.width(12.dp))
 
         Column(modifier = Modifier.weight(1f)) {
-            Text(titulo, fontSize = 15.sp, fontWeight = FontWeight.Bold, color = AzulTexto)
+            Text(tr(titulo), fontSize = 15.sp, fontWeight = FontWeight.Bold, color = AzulTexto)
             Spacer(modifier = Modifier.height(2.dp))
-            Text(descripcion, fontSize = 12.sp, color = GrisSubtitulo, lineHeight = 16.sp)
+            Text(tr(descripcion), fontSize = 12.sp, color = GrisSubtitulo, lineHeight = 16.sp)
         }
 
         Spacer(modifier = Modifier.width(8.dp))
@@ -395,9 +401,9 @@ private fun FilaAccesibilidadAccion(
         Spacer(modifier = Modifier.width(12.dp))
 
         Column(modifier = Modifier.weight(1f)) {
-            Text(titulo, fontSize = 15.sp, fontWeight = FontWeight.Bold, color = AzulTexto)
+            Text(tr(titulo), fontSize = 15.sp, fontWeight = FontWeight.Bold, color = AzulTexto)
             Spacer(modifier = Modifier.height(2.dp))
-            Text(descripcion, fontSize = 12.sp, color = GrisSubtitulo, lineHeight = 16.sp)
+            Text(tr(descripcion), fontSize = 12.sp, color = GrisSubtitulo, lineHeight = 16.sp)
         }
 
         Icon(

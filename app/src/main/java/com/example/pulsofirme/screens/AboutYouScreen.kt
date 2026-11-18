@@ -99,14 +99,14 @@ fun AboutYouScreen(
             ) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = "Volver",
+                    contentDescription = tr("Volver"),
                     tint = Color.White,
                     modifier = Modifier.size(28.dp)
                 )
             }
 
             Text(
-                text = "Contanos un poco más",
+                text = tr("Contanos un poco más"),
                 fontSize = 22.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.White,
@@ -119,7 +119,7 @@ fun AboutYouScreen(
         Column(modifier = Modifier.padding(horizontal = 24.dp)) {
 
             Text(
-                text = "¿Qué te trae a PulsoFirme?",
+                text = tr("¿Qué te trae a PulsoFirme?"),
                 fontSize = 17.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color(0xFF1A1A1A).enTema()
@@ -128,7 +128,7 @@ fun AboutYouScreen(
             Spacer(modifier = Modifier.height(6.dp))
 
             Text(
-                text = "Podés elegir más de una opción.",
+                text = tr("Podés elegir más de una opción."),
                 fontSize = 14.sp,
                 color = Color(0xFF6B7280).enTema()
             )
@@ -156,7 +156,7 @@ fun AboutYouScreen(
             Spacer(modifier = Modifier.height(28.dp))
 
             Text(
-                text = "¿En qué mano usás el guante?",
+                text = tr("¿En qué mano usás el guante?"),
                 fontSize = 17.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color(0xFF1A1A1A).enTema()
@@ -165,7 +165,7 @@ fun AboutYouScreen(
             Spacer(modifier = Modifier.height(6.dp))
 
             Text(
-                text = "Así ajustamos los ejercicios a la mano que vas a monitorear.",
+                text = tr("Así ajustamos los ejercicios a la mano que vas a monitorear."),
                 fontSize = 14.sp,
                 color = Color(0xFF6B7280).enTema(),
                 lineHeight = 19.sp
@@ -191,7 +191,7 @@ fun AboutYouScreen(
                 )
                 Spacer(modifier = Modifier.width(6.dp))
                 Text(
-                    text = "Por ahora el guante solo está disponible para mano derecha.",
+                    text = tr("Por ahora el guante solo está disponible para mano derecha."),
                     fontSize = 12.sp,
                     color = Color(0xFF9AA0A6).enTema()
                 )
@@ -228,7 +228,7 @@ fun AboutYouScreen(
                 )
             ) {
                 Text(
-                    text = "Continuar",
+                    text = tr("Continuar"),
                     fontSize = 17.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.White
@@ -273,7 +273,7 @@ private fun OpcionTilde(
             Spacer(modifier = Modifier.width(10.dp))
         }
         Text(
-            text = texto,
+            text = tr(texto),
             fontSize = 16.sp,
             color = if (seleccionado) VerdeTexto else Color(0xFF3D3D3D).enTema()
         )
@@ -309,7 +309,7 @@ private fun OpcionMano(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         if (habilitada) {
-            Text(text = "🖐", fontSize = 20.sp)
+            Text(text = tr("🖐"), fontSize = 20.sp)
         } else {
             Icon(
                 imageVector = Icons.Default.Lock,
@@ -320,7 +320,7 @@ private fun OpcionMano(
         }
         Spacer(modifier = Modifier.height(4.dp))
         Text(
-            text = texto,
+            text = tr(texto),
             fontSize = 15.sp,
             color = when {
                 !habilitada -> Color(0xFFB0B0B0).enTema()
@@ -331,7 +331,7 @@ private fun OpcionMano(
         )
         if (!habilitada) {
             Text(
-                text = "Próximamente",
+                text = tr("Próximamente"),
                 fontSize = 11.sp,
                 color = Color(0xFFB0B0B0).enTema()
             )

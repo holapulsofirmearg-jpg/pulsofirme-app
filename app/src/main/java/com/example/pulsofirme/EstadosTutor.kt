@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -31,10 +33,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pulsofirme.EstadoPacienteTutor
 
-private val VerdeEstadoTutor = Color(0xFF1B7A4B)
-private val GrisEstadoTutor = Color(0xFF6B7280)
-private val FondoEstadoTutor = Color(0xFFF7F8F8)
-
+private val VerdeEstadoTutor: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val GrisEstadoTutor: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val FondoEstadoTutor: Color
+    @Composable get() = Color(0xFFF7F8F8).enTema()
 /**
  * Lo que ve el tutor mientras se cargan los datos del paciente, si no hay
  * paciente vinculado o si falló la carga (por ejemplo, sin internet).
@@ -56,10 +60,10 @@ fun MensajeEstadoTutor(
             ) {
                 CircularProgressIndicator(
                     color = VerdeEstadoTutor,
-                    modifier = Modifier.semantics { contentDescription = "Cargando datos del paciente" }
+                    modifier = Modifier.semantics { contentDescription = tr("Cargando datos del paciente") }
                 )
                 Spacer(modifier = Modifier.height(12.dp))
-                Text("Cargando datos del paciente…", fontSize = 14.sp, color = GrisEstadoTutor)
+                Text(tr("Cargando datos del paciente…"), fontSize = 14.sp, color = GrisEstadoTutor)
             }
         }
 
@@ -86,7 +90,7 @@ fun MensajeEstadoTutor(
                     shape = RoundedCornerShape(12.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = VerdeEstadoTutor)
                 ) {
-                    Text("Reintentar", color = Color.White, fontWeight = FontWeight.Bold)
+                    Text(tr("Reintentar"), color = Color.White, fontWeight = FontWeight.Bold)
                 }
             }
         }
@@ -115,7 +119,7 @@ fun TarjetaNoCompartido(
             modifier = Modifier.size(22.dp)
         )
         Spacer(modifier = Modifier.width(12.dp))
-        Text(texto, fontSize = 14.sp, color = GrisEstadoTutor, lineHeight = 19.sp)
+        Text(tr(texto), fontSize = 14.sp, color = GrisEstadoTutor, lineHeight = 19.sp)
     }
 }
 
@@ -134,15 +138,15 @@ private fun CajaMensajeTutor(
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            titulo,
+            tr(titulo),
             fontSize = 16.sp,
             fontWeight = FontWeight.Bold,
-            color = Color(0xFF1A1A1A),
+            color = Color(0xFF1A1A1A).enTema(),
             textAlign = TextAlign.Center
         )
         Spacer(modifier = Modifier.height(6.dp))
         Text(
-            texto,
+            tr(texto),
             fontSize = 14.sp,
             color = GrisEstadoTutor,
             textAlign = TextAlign.Center,

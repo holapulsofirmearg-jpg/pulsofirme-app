@@ -568,8 +568,8 @@ fun NavGraphBuilder.rutasCuidador(estado: EstadoNav) {
                                                                         .FirebaseFirestoreException.Code
                                                                         .PERMISSION_DENIED
                                                         Avisos.mostrar(if (denegado) "No se pudo vincular: ese paciente ya alcanzó " +
-                                                                "el máximo de tutores (${LimiteTutores.MAX_GRATIS} en el plan gratis, " +
-                                                                "${LimiteTutores.MAX_PREMIUM} con Premium)."
+                                                                trf("el máximo de tutores ({0} en el plan gratis, ", LimiteTutores.MAX_GRATIS) +
+                                                                trf("{0} con Premium).", LimiteTutores.MAX_PREMIUM)
                                                         else "No se pudo cambiar de paciente", largo = true)
                                                     }
                                             }
@@ -804,7 +804,7 @@ fun NavGraphBuilder.rutasCuidador(estado: EstadoNav) {
                     onDescargarDatos = {
                         scope.launch {
                             val archivo = exportarMisDatos(context)
-                            Avisos.mostrar(if (archivo != null) "Guardado en Descargas: $archivo"
+                            Avisos.mostrar(if (archivo != null) trf("Guardado en Descargas: {0}", archivo)
                             else "No se pudieron exportar tus datos", largo = true)
                         }
                     },

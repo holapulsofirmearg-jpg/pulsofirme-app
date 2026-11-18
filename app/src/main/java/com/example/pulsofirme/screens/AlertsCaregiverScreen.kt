@@ -58,7 +58,7 @@ private fun alertasDe(paciente: PacienteTutor): List<AlertaCalculada> {
         lista += AlertaCalculada(
             AlertaCuidador(
                 titulo = "No registró su medicación de hoy",
-                descripcion = "Pasó más de una hora y no marcó \"Ya la tomé\" en: $horarios.",
+                descripcion = trf("Pasó más de una hora y no marcó \"Ya la tomé\" en: {0}.", horarios),
                 icono = Icons.Filled.Medication,
                 color = RojoAlerta
             ),
@@ -69,7 +69,7 @@ private fun alertasDe(paciente: PacienteTutor): List<AlertaCalculada> {
     if (!paciente.comparteProgreso) {
         lista += AlertaCalculada(
             AlertaCuidador(
-                titulo = "$nombre no comparte su progreso",
+                titulo = trf("{0} no comparte su progreso", nombre),
                 descripcion = "Las alertas de ejercicios y evaluaciones aparecen si lo activa en Privacidad y datos.",
                 icono = Icons.Filled.Lock,
                 color = GrisAlerta
@@ -83,7 +83,7 @@ private fun alertasDe(paciente: PacienteTutor): List<AlertaCalculada> {
         lista += AlertaCalculada(
             AlertaCuidador(
                 titulo = "Registró dolor hoy",
-                descripcion = "Indicó \"${paciente.sensacionHoy}\". Si el dolor sigue o aumenta, conviene consultar a su profesional.",
+                descripcion = trf("Indicó \"{0}\". Si el dolor sigue o aumenta, conviene consultar a su profesional.", paciente.sensacionHoy),
                 icono = Icons.Filled.Healing,
                 color = AmbarAlerta
             ),
@@ -99,7 +99,7 @@ private fun alertasDe(paciente: PacienteTutor): List<AlertaCalculada> {
         diasSin == null -> lista += AlertaCalculada(
             AlertaCuidador(
                 titulo = "Todavía no registró ejercicios",
-                descripcion = "Cuando $nombre complete su primer ejercicio, lo vas a ver acá.",
+                descripcion = trf("Cuando {0} complete su primer ejercicio, lo vas a ver acá.", nombre),
                 icono = Icons.Filled.FitnessCenter,
                 color = AmbarAlerta
             ),
@@ -107,7 +107,7 @@ private fun alertasDe(paciente: PacienteTutor): List<AlertaCalculada> {
         )
         diasSin >= 3 -> lista += AlertaCalculada(
             AlertaCuidador(
-                titulo = "Lleva $diasSin días sin hacer ejercicio",
+                titulo = trf("Lleva {0} días sin hacer ejercicio", diasSin),
                 descripcion = "Puede ser un buen momento para acompañarlo/a en una rutina corta.",
                 icono = Icons.Filled.FitnessCenter,
                 color = AmbarAlerta
@@ -145,8 +145,8 @@ private fun alertasDe(paciente: PacienteTutor): List<AlertaCalculada> {
     if (hoy.isNotEmpty()) {
         lista += AlertaCalculada(
             AlertaCuidador(
-                titulo = if (hoy.size == 1) "Hizo 1 ejercicio hoy" else "Hizo ${hoy.size} ejercicios hoy",
-                descripcion = "Último: ${hoy.first().nombre}.",
+                titulo = if (hoy.size == 1) "Hizo 1 ejercicio hoy" else trf("Hizo {0} ejercicios hoy", hoy.size),
+                descripcion = trf("Último: {0}.", hoy.first().nombre),
                 icono = Icons.Filled.CheckCircle,
                 color = VerdeCuidador
             ),
@@ -218,12 +218,12 @@ fun AlertsCaregiverScreen(
                         icon = {
                             Icon(
                                 imageVector = item.second,
-                                contentDescription = item.first
+                                contentDescription = tr(item.first)
                             )
                         },
                         label = {
                             Text(
-                                text = item.first,
+                                text = tr(item.first),
                                 fontSize = 11.sp
                             )
                         },
@@ -254,7 +254,7 @@ fun AlertsCaregiverScreen(
 
             item {
                 Text(
-                    text = "Alertas",
+                    text = tr("Alertas"),
                     fontSize = 26.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color(0xFF1A1A1A).enTema()
@@ -263,7 +263,7 @@ fun AlertsCaregiverScreen(
                 Spacer(modifier = Modifier.height(4.dp))
 
                 Text(
-                    text = "Consultá las alertas del usuario asociado",
+                    text = tr("Consultá las alertas del usuario asociado"),
                     fontSize = 14.sp,
                     color = Color(0xFF6B7280).enTema()
                 )
@@ -308,7 +308,7 @@ fun AlertsCaregiverScreen(
 
                         Column {
                             Text(
-                                text = "Estado de alertas",
+                                text = tr("Estado de alertas"),
                                 fontSize = 16.sp,
                                 fontWeight = FontWeight.SemiBold,
                                 color = Color(0xFF1A1A1A).enTema()
@@ -317,13 +317,13 @@ fun AlertsCaregiverScreen(
                             Spacer(modifier = Modifier.height(3.dp))
 
                             Text(
-                                text = when {
+                                text = tr(when {
                                     estado !is EstadoPacienteTutor.Listo ->
                                         "Acá podés consultar si el usuario tiene alguna alerta."
                                     importantes == 0 -> "Todo en orden: no hay nada urgente para revisar."
                                     importantes == 1 -> "Hay 1 alerta para revisar."
-                                    else -> "Hay $importantes alertas para revisar."
-                                },
+                                    else -> trf("Hay {0} alertas para revisar.", importantes)
+                                }),
                                 fontSize = 13.sp,
                                 color = Color(0xFF5A6B60).enTema()
                             )
@@ -334,7 +334,7 @@ fun AlertsCaregiverScreen(
 
             item {
                 Text(
-                    text = "Alertas recientes",
+                    text = tr("Alertas recientes"),
                     fontSize = 17.sp,
                     fontWeight = FontWeight.SemiBold,
                     color = Color(0xFF1A1A1A).enTema()
@@ -382,7 +382,7 @@ fun AlertsCaregiverScreen(
                         modifier = Modifier.weight(1f)
                     ) {
                         Text(
-                            text = alerta.titulo,
+                            text = tr(alerta.titulo),
                             fontSize = 15.sp,
                             fontWeight = FontWeight.SemiBold,
                             color = Color(0xFF1A1A1A).enTema()
@@ -391,7 +391,7 @@ fun AlertsCaregiverScreen(
                         Spacer(modifier = Modifier.height(4.dp))
 
                         Text(
-                            text = alerta.descripcion,
+                            text = tr(alerta.descripcion),
                             fontSize = 13.sp,
                             color = Color(0xFF6B7280).enTema()
                         )
@@ -441,7 +441,7 @@ fun AlertsCaregiverScreen(
                             modifier = Modifier.weight(1f)
                         ) {
                             Text(
-                                text = "Configuración de alertas",
+                                text = tr("Configuración de alertas"),
                                 fontSize = 15.sp,
                                 fontWeight = FontWeight.Medium,
                                 color = Color(0xFF1A1A1A).enTema()
@@ -450,7 +450,7 @@ fun AlertsCaregiverScreen(
                             Spacer(modifier = Modifier.height(3.dp))
 
                             Text(
-                                text = "Configurá cómo recibir las alertas del usuario.",
+                                text = tr("Configurá cómo recibir las alertas del usuario."),
                                 fontSize = 13.sp,
                                 color = Color(0xFF6B7280).enTema()
                             )

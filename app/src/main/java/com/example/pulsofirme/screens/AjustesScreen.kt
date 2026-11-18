@@ -97,6 +97,8 @@ fun AjustesScreen(
     // Estado para controlar el diálogo de confirmación
     var mostrarDialogoEliminar by rememberSaveable { mutableStateOf(false) }
     var mostrarDialogoTema by rememberSaveable { mutableStateOf(false) }
+    var mostrarDialogoIdioma by rememberSaveable { mutableStateOf(false) }
+    if (mostrarDialogoIdioma) DialogoIdioma(onCerrar = { mostrarDialogoIdioma = false })
 
     // --- DIÁLOGO DE TEMA (claro / oscuro / automático) ---
     if (mostrarDialogoTema) {
@@ -105,7 +107,7 @@ fun AjustesScreen(
             containerColor = Color.White.enTema(),
             shape = RoundedCornerShape(20.dp),
             title = {
-                Text("Tema", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = VerdeOscuroPr)
+                Text(tr("Tema"), fontSize = 20.sp, fontWeight = FontWeight.Bold, color = VerdeOscuroPr)
             },
             text = {
                 Column {
@@ -129,9 +131,9 @@ fun AjustesScreen(
                             )
                             Spacer(Modifier.width(8.dp))
                             Column {
-                                Text(modo.etiqueta, fontSize = 16.sp, color = NegroPr)
+                                Text(tr(modo.etiqueta), fontSize = 16.sp, color = NegroPr)
                                 if (modo == ModoTema.AUTOMATICO) {
-                                    Text("Igual que el celular", fontSize = 13.sp, color = GrisPr)
+                                    Text(tr("Igual que el celular"), fontSize = 13.sp, color = GrisPr)
                                 }
                             }
                         }
@@ -140,7 +142,7 @@ fun AjustesScreen(
             },
             confirmButton = {
                 TextButton(onClick = { mostrarDialogoTema = false }) {
-                    Text("Listo", color = VerdePr, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                    Text(tr("Listo"), color = VerdePr, fontWeight = FontWeight.Bold, fontSize = 16.sp)
                 }
             }
         )
@@ -160,7 +162,7 @@ fun AjustesScreen(
             shape = RoundedCornerShape(20.dp),
             title = {
                 Text(
-                    text = "¿Eliminar cuenta?",
+                    text = tr("¿Eliminar cuenta?"),
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     color = NegroPr
@@ -168,7 +170,7 @@ fun AjustesScreen(
             },
             text = {
                 Text(
-                    text = "Esta acción borrará todos tus datos e historial de forma permanente. ¿Estás seguro de que querés continuar?",
+                    text = tr("Esta acción borrará todos tus datos e historial de forma permanente. ¿Estás seguro de que querés continuar?"),
                     fontSize = 16.sp,
                     color = GrisPr,
                     lineHeight = 22.sp
@@ -183,7 +185,7 @@ fun AjustesScreen(
                     }
                 ) {
                     Text(
-                        text = "Eliminar",
+                        text = tr("Eliminar"),
                         color = RojoEliminar,
                         fontWeight = FontWeight.Bold,
                         fontSize = 17.sp
@@ -192,7 +194,7 @@ fun AjustesScreen(
             },
             dismissButton = {
                 TextButton(onClick = { mostrarDialogoEliminar = false }) {
-                    Text("Cancelar", color = GrisPr, fontSize = 17.sp)
+                    Text(tr("Cancelar"), color = GrisPr, fontSize = 17.sp)
                 }
             }
         )
@@ -221,7 +223,7 @@ fun AjustesScreen(
             },
             title = {
                 Text(
-                    text = "Exportar mis datos",
+                    text = tr("Exportar mis datos"),
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     color = VerdeOscuroPr
@@ -229,7 +231,7 @@ fun AjustesScreen(
             },
             text = {
                 Text(
-                    text = "Vamos a generar un PDF con tu resumen semanal: ejercicios realizados, gráfico por día, evaluación QuickDASH, medicación y notas.",
+                    text = tr("Vamos a generar un PDF con tu resumen semanal: ejercicios realizados, gráfico por día, evaluación QuickDASH, medicación y notas."),
                     fontSize = 16.sp,
                     color = GrisPr,
                     lineHeight = 22.sp
@@ -243,7 +245,7 @@ fun AjustesScreen(
                     }
                 ) {
                     Text(
-                        text = "Generar PDF",
+                        text = tr("Generar PDF"),
                         color = VerdePr,
                         fontWeight = FontWeight.Bold,
                         fontSize = 17.sp
@@ -252,7 +254,7 @@ fun AjustesScreen(
             },
             dismissButton = {
                 TextButton(onClick = { mostrarDialogoExportar = false }) {
-                    Text("Cancelar", color = GrisPr, fontSize = 17.sp)
+                    Text(tr("Cancelar"), color = GrisPr, fontSize = 17.sp)
                 }
             }
         )
@@ -272,13 +274,13 @@ fun AjustesScreen(
             IconButton(onClick = onBack) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = "Volver",
+                    contentDescription = tr("Volver"),
                     tint = VerdeOscuroPr
                 )
             }
             Spacer(Modifier.width(4.dp))
             Text(
-                text = "Ajustes",
+                text = tr("Ajustes"),
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 color = VerdeOscuroPr
@@ -290,6 +292,7 @@ fun AjustesScreen(
         // SECCIÓN GENERAL
         TituloSeccion("General")
         FilaAjusteConValor(label = "Tema", valor = TemaApp.modo.etiqueta) { mostrarDialogoTema = true }
+        FilaAjusteConValor(label = "Idioma", valor = nombreIdiomaActual) { mostrarDialogoIdioma = true }
 
         Spacer(Modifier.height(20.dp))
 
@@ -380,7 +383,7 @@ fun AjustesScreen(
                 Spacer(Modifier.width(12.dp))
 
                 Text(
-                    "Accesibilidad",
+                    tr("Accesibilidad"),
                     fontSize = 16.sp,
                     color = NegroPr,
                     modifier = Modifier.weight(1f)
@@ -388,7 +391,7 @@ fun AjustesScreen(
 
                 Icon(
                     imageVector = if (accesibilidadExpandida) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore,
-                    contentDescription = if (accesibilidadExpandida) "Cerrar" else "Abrir",
+                    contentDescription = tr(if (accesibilidadExpandida) "Cerrar" else "Abrir"),
                     tint = GrisPr,
                     modifier = Modifier.size(24.dp)
                 )
@@ -473,7 +476,7 @@ fun AjustesScreen(
             colors = ButtonDefaults.buttonColors(containerColor = RojoEliminar)
         ) {
             Text(
-                text = "Eliminar cuenta",
+                text = tr("Eliminar cuenta"),
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.White
@@ -487,7 +490,7 @@ fun AjustesScreen(
 @Composable
 private fun TituloSeccion(texto: String) {
     Text(
-        text = texto,
+        text = tr(texto),
         fontSize = 15.sp,
         fontWeight = FontWeight.Medium,
         color = GrisPr,
@@ -507,14 +510,14 @@ private fun FilaAjusteConValor(label: String, valor: String, onClick: () -> Unit
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = label,
+            text = tr(label),
             fontSize = 16.sp,
             color = NegroPr,
             modifier = Modifier.weight(1f)
         )
         Row(verticalAlignment = Alignment.CenterVertically) {
             if (valor.isNotEmpty()) {
-                Text(text = valor, fontSize = 15.sp, color = GrisPr)
+                Text(text = tr(valor), fontSize = 15.sp, color = GrisPr)
                 Spacer(Modifier.width(4.dp))
             }
             Icon(
@@ -548,7 +551,7 @@ private fun FilaAjusteSwitch(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = label,
+            text = tr(label),
             fontSize = 16.sp,
             color = NegroPr,
             modifier = Modifier
@@ -600,9 +603,9 @@ private fun FilaAccesibilidadPr(
         Spacer(Modifier.width(12.dp))
 
         Column(modifier = Modifier.weight(1f)) {
-            Text(titulo, fontSize = 15.sp, fontWeight = FontWeight.Bold, color = NegroPr)
+            Text(tr(titulo), fontSize = 15.sp, fontWeight = FontWeight.Bold, color = NegroPr)
             Spacer(Modifier.height(2.dp))
-            Text(descripcion, fontSize = 13.sp, color = GrisPr, lineHeight = 17.sp)
+            Text(tr(descripcion), fontSize = 13.sp, color = GrisPr, lineHeight = 17.sp)
         }
 
         Spacer(Modifier.width(8.dp))
@@ -645,9 +648,9 @@ private fun FilaAccesibilidadAccion(
         Spacer(Modifier.width(12.dp))
 
         Column(modifier = Modifier.weight(1f)) {
-            Text(titulo, fontSize = 15.sp, fontWeight = FontWeight.Bold, color = NegroPr)
+            Text(tr(titulo), fontSize = 15.sp, fontWeight = FontWeight.Bold, color = NegroPr)
             Spacer(Modifier.height(2.dp))
-            Text(descripcion, fontSize = 13.sp, color = GrisPr, lineHeight = 17.sp)
+            Text(tr(descripcion), fontSize = 13.sp, color = GrisPr, lineHeight = 17.sp)
         }
 
         Icon(
@@ -677,7 +680,7 @@ private fun SelectorTamanoLetra(
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = "Aa",
+                    text = tr("Aa"),
                     color = VerdePr,
                     fontWeight = FontWeight.Bold,
                     fontSize = 13.sp
@@ -688,14 +691,14 @@ private fun SelectorTamanoLetra(
 
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = "Tamaño de letra",
+                    text = tr("Tamaño de letra"),
                     fontSize = 15.sp,
                     fontWeight = FontWeight.Bold,
                     color = NegroPr
                 )
                 Spacer(Modifier.height(2.dp))
                 Text(
-                    text = "Elegí cómo querés ver los textos.",
+                    text = tr("Elegí cómo querés ver los textos."),
                     fontSize = 13.sp,
                     color = GrisPr,
                     lineHeight = 17.sp
@@ -727,7 +730,7 @@ private fun SelectorTamanoLetra(
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = opcion,
+                        text = tr(opcion),
                         fontSize = 13.sp,
                         fontWeight = if (elegido) FontWeight.Bold else FontWeight.Medium,
                         color = if (elegido) Color.White.enTema() else VerdePr,

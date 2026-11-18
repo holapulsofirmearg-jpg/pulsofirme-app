@@ -169,26 +169,26 @@ internal fun BorrarCuentaConClave(
                         borrando = false
                         Toast.makeText(
                             context,
-                            "Tu cuenta y tus datos fueron eliminados",
+                            tr("Tu cuenta y tus datos fueron eliminados"),
                             Toast.LENGTH_LONG
                         ).show()
                         onBorrada()
                     }
                     is ResultadoBorrado.ContrasenaIncorrecta -> {
                         borrando = false
-                        Toast.makeText(context, "La contraseña no es correcta", Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, tr("La contraseña no es correcta"), Toast.LENGTH_LONG).show()
                     }
                     is ResultadoBorrado.SinConexion -> {
                         borrando = false
                         Toast.makeText(
                             context,
-                            "No hay conexión a internet. Probá de nuevo con WiFi o datos.",
+                            tr("No hay conexión a internet. Probá de nuevo con WiFi o datos."),
                             Toast.LENGTH_LONG
                         ).show()
                     }
                     is ResultadoBorrado.Fallo -> {
                         borrando = false
-                        Toast.makeText(context, r.detalle, Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, tr(r.detalle), Toast.LENGTH_LONG).show()
                     }
                 }
             }
@@ -209,13 +209,13 @@ internal fun DialogoClaveParaBorrar(
         onDismissRequest = onCancelar,
         containerColor = Color.White,
         title = {
-            Text("Eliminar mi cuenta", fontWeight = FontWeight.Bold, color = Color(0xFF1A1A1A))
+            Text(tr("Eliminar mi cuenta"), fontWeight = FontWeight.Bold, color = Color(0xFF1A1A1A))
         },
         text = {
             Column {
                 Text(
-                    "Se borran tus datos y tu cuenta de forma definitiva. " +
-                            "Para confirmar, escribí tu contraseña.",
+                    tr("Se borran tus datos y tu cuenta de forma definitiva. " +
+                            "Para confirmar, escribí tu contraseña."),
                     fontSize = 14.sp,
                     color = Color(0xFF374151)
                 )
@@ -223,7 +223,7 @@ internal fun DialogoClaveParaBorrar(
                 OutlinedTextField(
                     value = clave,
                     onValueChange = { clave = it },
-                    label = { Text("Contraseña") },
+                    label = { Text(tr("Contraseña")) },
                     singleLine = true,
                     enabled = !borrando,
                     visualTransformation = PasswordVisualTransformation(),
@@ -239,7 +239,7 @@ internal fun DialogoClaveParaBorrar(
                 modifier = Modifier.heightIn(min = 56.dp)
             ) {
                 Text(
-                    if (borrando) "Eliminando…" else "Eliminar definitivamente",
+                    tr(if (borrando) "Eliminando…" else "Eliminar definitivamente"),
                     color = Color(0xFFC0392B),
                     fontWeight = FontWeight.Bold
                 )
@@ -252,7 +252,7 @@ internal fun DialogoClaveParaBorrar(
                 onClick = onCancelar,
                 enabled = !borrando,
                 modifier = Modifier.heightIn(min = 56.dp)
-            ) { Text("Cancelar", color = Color(0xFF6B7280)) }
+            ) { Text(tr("Cancelar"), color = Color(0xFF6B7280)) }
         }
     )
 }

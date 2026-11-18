@@ -66,11 +66,11 @@ private fun iniciales(nombre: String): String {
 // Fecha de hoy: "10 de agosto de 2026"
 // Mensaje listo para mandar por WhatsApp, mail o SMS
 private fun mensajeInvitacion(nombre: String, codigo: String): String =
-    "¡Hola! Soy $nombre y uso PulsoFirme para mi rehabilitación. " +
+    trf("¡Hola! Soy {0} y uso PulsoFirme para mi rehabilitación. ", nombre) +
             "Te invito a acompañarme desde la app 💚\n\n" +
             "1. Abrí PulsoFirme y tocá «Acceder como cuidador».\n" +
             "2. Elegí Tutor (familiar o amigo) o Profesional (médico o kinesiólogo).\n" +
-            "3. Cuando te pida el código, escribí: $codigo\n\n" +
+            trf("3. Cuando te pida el código, escribí: {0}\n\n", codigo) +
             "Este código es solo para vos, no lo compartas."
 
 private fun fechaDeHoy(): String {
@@ -120,8 +120,8 @@ fun AccountScreen(
                     NavigationBarItem(
                         selected = rutaActual == item.ruta,
                         onClick = { onNavigate(item.ruta) },
-                        icon = { Icon(item.icono, contentDescription = item.label) },
-                        label = { Text(item.label, fontSize = 11.sp) },
+                        icon = { Icon(item.icono, contentDescription = tr(item.label)) },
+                        label = { Text(tr(item.label), fontSize = 11.sp) },
                         colors = NavigationBarItemDefaults.colors(
                             selectedIconColor = VerdeAc,
                             selectedTextColor = VerdeAc,
@@ -143,7 +143,7 @@ fun AccountScreen(
         ) {
             Spacer(Modifier.height(24.dp))
 
-            Text("Cuenta", fontSize = 15.sp, color = GrisAc)
+            Text(tr("Cuenta"), fontSize = 15.sp, color = GrisAc)
 
             Spacer(Modifier.height(16.dp))
 
@@ -157,7 +157,7 @@ fun AccountScreen(
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = iniciales(nombre),
+                        text = tr(iniciales(nombre)),
                         color = Color.White,
                         fontSize = 24.sp,
                         fontWeight = FontWeight.Bold
@@ -166,13 +166,13 @@ fun AccountScreen(
                 Spacer(Modifier.width(16.dp))
                 Column {
                     Text(
-                        text = nombre,
+                        text = tr(nombre),
                         fontSize = 24.sp,
                         fontWeight = FontWeight.Bold,
                         color = VerdeOscuroAc
                     )
                     Text(
-                        text = "Paciente, desde el ${fechaDeHoy()}",
+                        text = trf("Paciente, desde el {0}", fechaDeHoy()),
                         fontSize = 14.sp,
                         color = GrisAc
                     )
@@ -190,7 +190,7 @@ fun AccountScreen(
             Spacer(Modifier.height(26.dp))
 
             // ---------- Perfil ----------
-            Text("Perfil", fontSize = 14.sp, color = GrisAc)
+            Text(tr("Perfil"), fontSize = 14.sp, color = GrisAc)
             Spacer(Modifier.height(6.dp))
 
             FilaOpcion("Editar datos personales", onEditarDatos)
@@ -199,7 +199,7 @@ fun AccountScreen(
             Spacer(Modifier.height(24.dp))
 
             // ---------- Cuidadores ----------
-            Text("Cuidadores", fontSize = 14.sp, color = GrisAc)
+            Text(tr("Cuidadores"), fontSize = 14.sp, color = GrisAc)
             Spacer(Modifier.height(10.dp))
 
             Column(
@@ -230,15 +230,15 @@ fun AccountScreen(
                     Spacer(Modifier.width(14.dp))
                     Column(modifier = Modifier.weight(1f)) {
                         Text(
-                            text = if (cantidadTutoresVinculados > 0) {
+                            text = tr(if (cantidadTutoresVinculados > 0) {
                                 if (cantidadTutoresVinculados == 1) {
                                     "1 tutor vinculado con vos"
                                 } else {
-                                    "$cantidadTutoresVinculados tutores vinculados con vos"
+                                    trf("{0} tutores vinculados con vos", cantidadTutoresVinculados)
                                 }
                             } else {
                                 "Nadie se vinculó con vos todavía"
-                            },
+                            }),
                             fontSize = 15.sp,
                             color = Color(0xFF374151).enTema()
                         )
@@ -246,26 +246,26 @@ fun AccountScreen(
                         if (codigoVinculacion.isNotBlank()) {
                             Spacer(Modifier.height(10.dp))
                             Text(
-                                text = "Código de vinculación",
+                                text = tr("Código de vinculación"),
                                 fontSize = 12.sp,
                                 color = GrisAc
                             )
                             Text(
-                                text = codigoVinculacion,
+                                text = tr(codigoVinculacion),
                                 fontSize = 24.sp,
                                 fontWeight = FontWeight.Bold,
                                 color = VerdeOscuroAc,
                                 letterSpacing = 3.sp
                             )
                             Text(
-                                text = "Compartilo solo con tu tutor o profesional.",
+                                text = tr("Compartilo solo con tu tutor o profesional."),
                                 fontSize = 12.sp,
                                 color = GrisAc
                             )
                         } else {
                             Spacer(Modifier.height(8.dp))
                             Text(
-                                text = "Generando código de vinculación…",
+                                text = tr("Generando código de vinculación…"),
                                 fontSize = 13.sp,
                                 color = GrisAc
                             )
@@ -287,7 +287,7 @@ fun AccountScreen(
                         ) {
                             Icon(Icons.Filled.Share, contentDescription = null, modifier = Modifier.size(18.dp))
                             Spacer(Modifier.width(8.dp))
-                            Text("Invitar a alguien", fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
+                            Text(tr("Invitar a alguien"), fontSize = 15.sp, fontWeight = FontWeight.SemiBold)
                         }
                         Spacer(Modifier.width(10.dp))
                         OutlinedButton(
@@ -298,12 +298,12 @@ fun AccountScreen(
                         ) {
                             Icon(
                                 Icons.Filled.ContentCopy,
-                                contentDescription = "Copiar código",
+                                contentDescription = tr("Copiar código"),
                                 tint = VerdeAc,
                                 modifier = Modifier.size(18.dp)
                             )
                             Spacer(Modifier.width(6.dp))
-                            Text("Copiar", fontSize = 15.sp, color = VerdeAc, fontWeight = FontWeight.SemiBold)
+                            Text(tr("Copiar"), fontSize = 15.sp, color = VerdeAc, fontWeight = FontWeight.SemiBold)
                         }
                     }
                 }
@@ -312,7 +312,7 @@ fun AccountScreen(
             Spacer(Modifier.height(24.dp))
 
             // ---------- Preferencias ----------
-            Text("Preferencias", fontSize = 14.sp, color = GrisAc)
+            Text(tr("Preferencias"), fontSize = 14.sp, color = GrisAc)
             Spacer(Modifier.height(6.dp))
 
             FilaOpcion("Privacidad y datos", onPrivacidad)
@@ -322,7 +322,7 @@ fun AccountScreen(
 
             // ---------- Enlaces centrados ----------
             Text(
-                text = "Ajustes",
+                text = tr("Ajustes"),
                 fontSize = 17.sp,
                 fontWeight = FontWeight.SemiBold,
                 color = NegroAc,
@@ -334,7 +334,7 @@ fun AccountScreen(
             )
 
             Text(
-                text = "Dudas frecuentes",
+                text = tr("Dudas frecuentes"),
                 fontSize = 17.sp,
                 fontWeight = FontWeight.SemiBold,
                 color = NegroAc,
@@ -346,7 +346,7 @@ fun AccountScreen(
             )
 
             Text(
-                text = "Cerrar sesión",
+                text = tr("Cerrar sesión"),
                 fontSize = 17.sp,
                 fontWeight = FontWeight.Bold,
                 color = RojoAc,
@@ -398,14 +398,14 @@ private fun TarjetaPremium(esPremium: Boolean, onClick: () -> Unit) {
             Spacer(Modifier.width(14.dp))
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = "Premium Guiada",
+                    text = tr("Premium Guiada"),
                     fontSize = 17.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.White
                 )
                 Spacer(Modifier.height(2.dp))
                 Text(
-                    text = "Tu plan está activo",
+                    text = tr("Tu plan está activo"),
                     fontSize = 13.sp,
                     color = Color.White.copy(alpha = 0.85f)
                 )
@@ -445,14 +445,14 @@ private fun TarjetaPremium(esPremium: Boolean, onClick: () -> Unit) {
                 Spacer(Modifier.width(14.dp))
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
-                        text = "Premium Guiada",
+                        text = tr("Premium Guiada"),
                         fontSize = 17.sp,
                         fontWeight = FontWeight.Bold,
                         color = Color(0xFF6B4E0B).enTema()
                     )
                     Spacer(Modifier.height(2.dp))
                     Text(
-                        text = "Estás usando la versión gratuita",
+                        text = tr("Estás usando la versión gratuita"),
                         fontSize = 13.sp,
                         color = Color(0xFF8C7434).enTema()
                     )
@@ -482,7 +482,7 @@ private fun TarjetaPremium(esPremium: Boolean, onClick: () -> Unit) {
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = "Conocer el plan",
+                    text = tr("Conocer el plan"),
                     fontSize = 15.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.White
@@ -503,7 +503,7 @@ private fun BeneficioPremium(texto: String) {
         )
         Spacer(Modifier.width(9.dp))
         Text(
-            text = texto,
+            text = tr(texto),
             fontSize = 13.sp,
             color = Color(0xFF6B5A2E).enTema(),
             lineHeight = 18.sp
@@ -522,7 +522,7 @@ private fun FilaOpcion(texto: String, onClick: () -> Unit) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = texto,
+            text = tr(texto),
             fontSize = 17.sp,
             color = NegroAc,
             modifier = Modifier.weight(1f)

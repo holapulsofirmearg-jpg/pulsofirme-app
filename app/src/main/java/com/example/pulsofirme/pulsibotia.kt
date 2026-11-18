@@ -1,5 +1,7 @@
 package com.example.pulsofirme
 
+import com.example.pulsofirme.screens.IdiomaApp
+
 import com.google.firebase.Firebase
 import com.google.firebase.Timestamp
 import com.google.firebase.ai.Chat
@@ -26,6 +28,14 @@ class PulsiBotIA {
     companion object {
         // Modelo recomendado por Firebase (nov. 2026). Si Google lo retira, cambialo acá.
         const val MODELO = "gemini-3.8-flash"
+
+        // Se suma a las instrucciones cuando la app está en inglés
+        private const val IDIOMA_INGLES = """
+
+LANGUAGE (MOST IMPORTANT RULE)
+The app is set to English. Always answer in simple, warm English,
+even if the user writes in Spanish. Use the English names of the app sections
+(Home, Exercises, Progress, Device, Alerts, Account, Settings)."""
     }
 
     private var chat: Chat? = null
@@ -36,7 +46,9 @@ class PulsiBotIA {
         val modelo = Firebase.ai(backend = GenerativeBackend.googleAI())
             .generativeModel(
                 modelName = MODELO,
-                systemInstruction = content { text(instrucciones(rol, contexto)) },
+                systemInstruction = content {
+                    text(instrucciones(rol, contexto) + if (IdiomaApp.esIngles) IDIOMA_INGLES else "")
+                },
                 generationConfig = generationConfig {
                     temperature = 0.5f
                     maxOutputTokens = 500

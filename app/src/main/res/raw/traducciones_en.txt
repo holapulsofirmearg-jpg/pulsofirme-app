@@ -1,0 +1,1950 @@
+# PulsoFirme: español<TAB>inglés. Los saltos de línea van como \n y los datos como {0}, {1}.
+Hoy	Today
+Mes	Month
+Año	Year
+Lun	Mon
+Mar	Tue
+Mié	Wed
+Jue	Thu
+Vie	Fri
+Sáb	Sat
+Dom	Sun
+Mal	Bad
+Ayer	Yesterday
+País	Country
+Otro	Other
+Mano	Hand
+Perú	Peru
+Tema	Theme
+Nada	None
+Leve	Mild
+Días	Days
+Baja	Low
+Alta	High
+Bien	Good
+Mujer	Woman
+Dedos	Fingers
+Manos	Hands
+Ritmo	Pace
+Todas	All
+Listo	Done
+Tutor	Guardian
+Abrir	Open
+Datos	Data
+Claro	Light
+Todos	All
+0 min	0 min
+Racha	Streak
+Chino	Chinese
+Anual	Yearly
+Media	Medium
+Mucho	A lot
+Eje X	X axis
+Eje Y	Y axis
+Semana	Week
+Volver	Back
+Género	Gender
+Nombre	Name
+Pulgar	Thumb
+Fuerza	Strength
+Muñeca	Wrist
+Hombro	Shoulder
+Activo	Active
+Inicio	Home
+Cuenta	Account
+Brasil	Brazil
+España	Spain
+México	Mexico
+Hombre	Man
+¡Hola!	Hi!
+Cerrar	Close
+Pausar	Pause
+Severo	Severe
+Perfil	Profile
+Idioma	Language
+sábado	Saturday
+Actual	Current
+Inglés	English
+Recién	Just now
+Normal	Normal
+Fuerte	Strong
+Copiar	Copy
+Enviar	Send
+Modelo	Model
+Hombros	Shoulders
+Piernas	Legs
+Alertas	Alerts
+Uruguay	Uruguay
+Aceptar	OK
+Vínculo	Link
+CONSEJO	TIP
+Ajustes	Settings
+General	General
+Derecha	Right
+Estable	Stable
+Un poco	A little
+Ninguno	None
+Elegida	Selected
+Español	Spanish
+Métrico	Metric
+Sonidos	Sounds
+Mediano	Medium
+Amigo/a	Friend
+Guardar	Save
+Francés	French
+Mensual	Monthly
+por mes	per month
+Ninguna	None
+Regular	Fair
+Usuario	User
+Resumen	Summary
+Apagado	Off
+EN VIVO	LIVE
+Progreso	Progress
+Duración	Duration
+Médico/a	Doctor
+Apellido	Last name
+Amplitud	Range
+Artritis	Arthritis
+Paciente	Patient
+Comenzar	Start
+Ingresar	Sign in
+Cancelar	Cancel
+Paraguay	Paraguay
+Opcional	Optional
+{0} días	{0} days
+Familiar	Family member
+Escuchar	Listen
+En pausa	Paused
+Reanudar	Resume
+Eliminar	Delete
+Bastante	Quite a bit
+Moderado	Moderate
+Contacto	Contact
+Recursos	Resources
+Cuidador	Caregiver
+Contraer	Collapse
+Expandir	Expand
+Mano {0}	Hand {0}
+Teléfono	Phone
+Todo tu 	All your
+Ahora no	Not now
+Horarios	Times
+Anterior	Previous
+Hoy, {0}	Today, {0}
+Hoy: {0}	Today: {0}
+Muy bien	Very good
+Lecturas	Readings
+Ejercicio	Exercise
+Cargando…	Loading…
+Ubicación	Location
+Profesión	Profession
+Funcional	Functional
+Escritura	Writing
+Movilidad	Mobility
+Actividad	Activity
+Sin fecha	No date
+Un número	A number
+Pacientes	Patients
+6 dígitos	6 digits
+Entendido	Got it
+Hola, {0}	Hi, {0}
+Vinculado	Linked
+Siguiente	Next
+Silenciar	Mute
+Finalizar	Finish
+Consejo: 	Tip:
+Sin datos	No data
+En mejora	Improving
+Muchísimo	Extremely
+hoy mismo	today
+Compartir	Share
+Mis datos	My data
+Izquierda	Left
+Continuar	Continue
+miércoles	Wednesday
+Abrir PDF	Open PDF
+Portugués	Portuguese
+Ayer, {0}	Yesterday, {0}
+Novedades	Updates
+Hoy: {0}\n	Today: {0}\n
+Sin dolor	No pain
+Para nada	Not at all
+Cansado/a	Tired
+Micrófono	Microphone
+¡Empezar!	Let's go!
+Pagar {0}	Pay {0}
+Encendido	On
+Dirección	Address
+Autorizado	Authorized
+Contraseña	Password
+No binario	Non-binary
+Bienvenida	Welcome
+Repetición	Repetition
+Muy severo	Very severe
+Ejercicios	Exercises
+¡Adelante!	Go ahead!
+Medicación	Medication
+Cuidador/a	Caregiver
+Paso único	Single step
+Guardando…	Saving…
+Bienvenido	Welcome
+Dolor leve	Mild pain
+DD/MM/AAAA	DD/MM/YYYY
+Anteriores	Earlier
+Hace {0} h	{0} h ago
+Sugerencia	Suggestion
+Tomó todas	Took them all
+Cuidadores	Caregivers
+Muy pronto	Coming soon
+Máx. eje X	Max X axis
+Máx. eje Y	Max Y axis
+Reintentar	Retry
+Esta semana	This week
+Profesional	Professional
+Enfermero/a	Nurse
+Doble tarea	Dual task
+Desvincular	Unlink
+Sosteniendo	Holding
+Generar PDF	Generate PDF
+Plan Básico	Basic plan
+Diagnóstico	Diagnosis
+Eliminando…	Deleting…
+1 ejercicio	1 exercise
+APRETÁ AQUÍ	TAP HERE
+Ambas manos	Both hands
+Sin cambios	No changes
+Quitar foto	Remove photo
+En progreso	In progress
+Dispositivo	Device
+¡Bienvenido	Welcome
+Registrarse	Sign up
+Nueva racha	New streak
+Plan actual	Current plan
+Todo el día	All day
+Sin energía	No energy
+Conectando…	Connecting…
+Más tutores	More guardians
+{0} por mes	{0} per month
+Qué incluye	What's included
+Tu paciente	Your patient
+Tu evolución	Your progress
+Repeticiones	Repetitions
+Crear cuenta	Create account
+Coordinación	Coordination
+Mano y dedos	Hand and fingers
+Fuerza suave	Gentle strength
+Estiramiento	Stretching
+Ver paciente	View patient
+Volver atrás	Go back
+Tiempo total	Total time
+Racha actual	Current streak
+Seleccionado	Selected
+Mano abierta	Open hand
+Dedos juntos	Fingers together
+Girá la mano	Turn your hand
+Cuándo parar	When to stop
+Cómo se hace	How to do it
+Importante: 	Important:
+Editar datos	Edit details
+Último: {0}.	Last: {0}.
+Muy limitado	Very limited
+mano derecha	right hand
+Generando...	Generating...
+Ver permisos	View permissions
+Cambiar foto	Change photo
+Preferencias	Preferences
+Próximamente	Coming soon
+Mano derecha	Right hand
+Por paciente	Per patient
++{0}% Mejora	+{0}% improvement
+Agregar foto	Add photo
+Cerrar aviso	Close notice
+Rigidez baja	Low stiffness
+En uso ahora	In use now
+Cuestionario	Questionnaire
+No informado	Not provided
+Especialidad	Specialty
+Ir a ajustes	Go to settings
+Hace {0} min	{0} min ago
+No informada	Not provided
+Al despertar	When waking up
+Por la tarde	In the afternoon
+Por la noche	At night
+Ver términos	View terms
+Ver política	View policy
+Invitar con…	Invite with…
+Ver progreso	View progress
+Se incluirá:	It will include:
+Sin conexión	No connection
+Desconectado	Disconnected
+Hace {0} días	{0} days ago
+No autorizado	Not authorized
+{0} h {1} min	{0} h {1} min
+Kinesiólogo/a	Physiotherapist
+Leer términos	Read terms
+Leer política	Read policy
+Destreza fina	Fine dexterity
+Calentamiento	Warm-up
+Mano y muñeca	Hand and wrist
+Marcar leídas	Mark as read
+Accesibilidad	Accessibility
+Vinculando...	Linking...
+No compartido	Not shared
+Ver evolución	View progress
+Ir a mi panel	Go to my dashboard
+Volvé a girar	Turn it again
+Cerrá la mano	Close your hand
+Volvé a abrir	Open it again
+Apoyá la mano	Rest your hand
+En movimiento	Moving
+Paso anterior	Previous step
+Moderadamente	Moderately
+Nada limitado	Not limited
+hace {0} días	{0} days ago
+Ver resultado	View result
+TRATAMIENTO 1	TREATMENT 1
+TRATAMIENTO 2	TREATMENT 2
+TRATAMIENTO 3	TREATMENT 3
+TRATAMIENTO 4	TREATMENT 4
+TRATAMIENTO 5	TREATMENT 5
+Pulgar arriba	Thumbs up
+con molestias	with discomfort
+Tu contraseña	Your password
+Eliminando...	Deleting...
+Sin respuesta	No answer
+Cerrar sesión	Log out
+Ver pacientes	View patients
+Zona afectada	Affected area
+Datos médicos	Medical data
+Sin completar	Not completed
+Recordatorios	Reminders
+Hoy, 09:30 AM	Today, 09:30 AM
+Copiar código	Copy code
+Compartir PDF	Share PDF
+Ver ejercicio	View exercise
+Configuración	Settings
+Elegí tu plan	Choose your plan
+Muy cansado/a	Very tired
+Con molestias	With discomfort
+Mucha energía	Lots of energy
+Iniciá sesión	Log in
+Pagar Premium	Pay for Premium
+Vence (MM/AA)	Expires (MM/YY)
+Conectando...	Connecting...
+Arriba / bajo	Up / down
+1 día de racha	1-day streak
+Autoevaluación	Self-assessment
+Iniciar sesión	Log in
+Creando cuenta	Creating account
+Notificaciones	Notifications
+Alto contraste	High contrast
+Abrir PulsiBot	Open PulsiBot
+Resumen de hoy	Today's summary
+Tocá cada dedo	Touch each finger
+Tomá la pelota	Hold the ball
+Rodá la pelota	Roll the ball
+Bajá los puños	Lower your fists
+Relajá la mano	Relax your hand
+Tocá los dedos	Touch your fingers
+Mové el pulgar	Move your thumb
+Mové los puños	Move your fists
+Para qué sirve	What it's for
+Paso siguiente	Next step
+No pude dormir	I couldn't sleep
+Foto de perfil	Profile photo
+Matrícula: {0}	License: {0}
+Últimos 7 días	Last 7 days
+Sin evaluación	No assessment
+Mano izquierda	Left hand
+Muñeca derecha	Right wrist
+Hombro derecho	Right shoulder
+Ver evaluación	View assessment
+Nuevo cuidador	New caregiver
+Premium Guiada	Guided Premium
+Hinchazón leve	Mild swelling
+Ver ejercicios	View exercises
+Uso del guante	Glove use
+Bienvenidos a 	Welcome to
+Quitar horario	Remove time
+Sin dificultad	No difficulty
+2 meses gratis	2 months free
+Nada hinchadas	Not swollen at all
+Código copiado	Code copied
+Método de pago	Payment method
+Red del guante	Glove network
+No pudo dormir	Couldn't sleep
+dificultad leve	mild difficulty
+Abrir un frasco	Open a jar
+Tobillos y pies	Ankles and feet
+Buscar paciente	Search patient
+Paciente actual	Current patient
+Cerrá los puños	Close your fists
+Relajá el brazo	Relax your arm
+Movés la muñeca	You move your wrist
+Cuánto y cuándo	How much and when
+Paso {0} de {1}	Step {0} of {1}
+Eliminar cuenta	Delete account
+Tamaño de letra	Font size
+Mano del guante	Glove hand
+Dificultad leve	Mild difficulty
+No pude hacerlo	I couldn't do it
+Toques de dedos	Finger taps
+te sentiste {0}	you felt {0}
+Reportes en PDF	PDF reports
+Profesional {0}	Professional {0}
+Ayuda y soporte	Help and support
+Guardar cambios	Save changes
+Sin diagnóstico	No diagnosis
+Nombre completo	Full name
+Progreso de {0}	{0}'s progress
+Antes de seguir	Before continuing
+Accesos rápidos	Quick access
+Agregar horario	Add time
+Empezá tu racha	Start your streak
+¡Bienvenida{0}!	Welcome{0}!
+¡Bienvenido{0}!	Welcome{0}!
+Registro diario	Daily log
+Conocer el plan	See the plan
+Ver mi progreso	View my progress
+¡Pago aprobado!	Payment approved!
+Activar Premium	Activate Premium
+{0} min {1} seg	{0} min {1} sec
+Conectar guante	Connect glove
+No pudo hacerlo	Couldn't do it
+Cambiar paciente	Change patient
+Volver al inicio	Back to home
+Iniciando sesión	Signing in
+Elegir profesión	Choose profession
+Piano en la mesa	Piano on the table
+Escritura grande	Large writing
+Mesa de nudillos	Knuckle table
+Actividad diaria	Daily activity
+Dudas frecuentes	FAQ
+Crear contraseña	Create password
+Ver paciente {0}	View patient {0}
+Sensación de hoy	Today's feeling
+Posición inicial	Starting position
+Separá los dedos	Spread your fingers
+Relajá las manos	Relax your hands
+Relajá la muñeca	Relax your wrist
+Tamaño del texto	Text size
+Objetivo semanal	Weekly goal
+Un poco limitado	A little limited
+Puño y extensión	Fist and extension
+¡Ya estás listo!	You're all set!
+¡Felicitaciones!	Congratulations!
+Mejora QuickDASH	QuickDASH improvement
+Unidad de medida	Unit of measure
+Nueva contraseña	New password
+Versión gratuita	Free version
+Temblor moderado	Moderate tremor
+Panel de usuario	User dashboard
+Control y acceso	Control and access
+Último ejercicio	Last exercise
+No reportó dolor	No pain reported
+Datos personales	Personal data
+Lugar de trabajo	Workplace
+Apertura de mano	Hand opening
+Mayor limitación	Greater limitation
+Ejercicio de hoy	Today's exercise
+ ({0} de 7 días)	 ({0} of 7 days)
+Último QuickDASH	Last QuickDASH
+Horarios: {0} hs	Times: {0}
+Procesando pago…	Processing payment…
+Ya tenés Premium	You already have Premium
+Guante conectado	Glove connected
+Sin racha todavía	No streak yet
+{0} días de racha	{0}-day streak
+Repetir ejercicio	Repeat exercise
+Ingresá tu correo	Enter your email
+Ingresá tu nombre	Enter your name
+Dar vuelta cartas	Flip cards
+Amasar plastilina	Knead modeling clay
+Porotos al frasco	Beans into a jar
+Separar los dedos	Spread your fingers
+Péndulo de hombro	Shoulder pendulum
+Cambiá de pierna.	Switch legs.
+Vincular paciente	Link patient
+Prefiero no decir	I'd rather not say
+Panel de cuidador	Caregiver dashboard
+Sin registrar hoy	Not logged today
+Gestionar vínculo	Manage link
+Extendé los dedos	Extend your fingers
+Pulgar con índice	Thumb to index finger
+Palma hacia abajo	Palm down
+Alterná los dedos	Alternate your fingers
+Volvé a juntarlos	Bring them together again
+Deslizá los dedos	Slide your fingers
+Cómo hacerlo bien	How to do it right
+Movimiento actual	Current movement
+¿Eliminar cuenta?	Delete account?
+Necesita atención	Needs attention
+Ejercicios de hoy	Today's exercises
+Dificultad severa	Severe difficulty
+Puntaje sobre 100	Score out of 100
+Volver a Progreso	Back to Progress
+Movete a tu ritmo	Move at your own pace
+¿Necesitás ayuda?	Need help?
+Versión de prueba	Trial version
+Volver al resumen	Back to summary
+Pacientes activos	Active patients
+Último: {0} · {1}	Last: {0} · {1}
+Última evaluación	Last assessment
+Contraseña actual	Current password
+Objetivo cumplido	Goal achieved
+Muy buen progreso	Great progress
+Alertas generales	General alerts
+Empezar ejercicio	Start exercise
+Me puse el guante	I put on the glove
+Estado de alertas	Alert status
+Alertas recientes	Recent alerts
+Flexión de muñeca	Wrist flexion
+Racha de {0} días	{0}-day streak
+Guante emparejado	Glove paired
+Con mucha energía	Full of energy
+Un poco cansado/a	A bit tired
+Ver recomendación	View recommendation
+Código PulsoFirme	PulsoFirme code
+Invitar a alguien	Invite someone
+Preguntas rápidas	Quick questions
+No cierres la app	Don't close the app
+Número de tarjeta	Card number
+{0} con Premium).	{0} with Premium).
+No lo puede hacer	Can't do it
+Ejercicios por mes	Exercises per month
+Ejercicios por día	Exercises per day
+Historial reciente	Recent history
+Paciente vinculado	Linked patient
+Extensión de dedos	Finger extension
+Correo electrónico	Email
+Ingresá tu nombre.	Enter your name.
+Arrugar una toalla	Scrunch a towel
+Acceder como tutor	Access as guardian
+¿No tenés cuenta? 	Don't have an account?
+Tamaño de la letra	Font size
+Logo de PulsoFirme	PulsoFirme logo
+Completá tu perfil	Complete your profile
+Dirección de hogar	Home address
+Tus notificaciones	Your notifications
+Privacidad y datos	Privacy and data
+Datos de tu cuenta	Your account details
+Eliminar mis datos	Delete my data
+Palma hacia arriba	Palm up
+Golpeá con un dedo	Tap with one finger
+Hacé el movimiento	Do the movement
+Trabaja: {0} · {1}	Works: {0} · {1}
+Qué mide el guante	What the glove measures
+Exportar mis datos	Export my data
+Eliminar mi cuenta	Delete my account
+Permisos de acceso	Access permissions
+Ninguna dificultad	No difficulty
+Lavarte la espalda	Washing your back
+Movilidad de dedos	Finger mobility
+Número de teléfono	Phone number
+Cambiar contraseña	Change password
+Ver notificaciones	View notifications
+Completá tus datos	Complete your details
+Ocultar contraseña	Hide password
+Mostrar contraseña	Show password
+{0} / 5 ejercicios	{0} / 5 exercises
+Uso del guante hoy	Glove use today
+Cómo te sentís hoy	How you feel today
+Me saqué el guante	I took off the glove
+, en un solo lugar	, in one place
+Adherencia semanal	Weekly adherence
+Registró dolor hoy	Reported pain today
+Sin alertas nuevas	No new alerts
+El paciente mejoró	The patient improved
+Primera evaluación	First assessment
+{0}: {1} preguntas	{0}: {1} questions
+Tocá para comenzar	Tap to start
+Tenés {0} sin leer	You have {0} unread
+¿Ya tenés cuenta? 	Already have an account?
+Solicitar descarga	Request download
+Izquierda/ derecha	Left / right
+Lavarse la espalda	Washing your back
+dificultad moderada	moderate difficulty
+Nombre del paciente	Patient's name
+Fecha de nacimiento	Date of birth
+Datos que podés ver	Data you can see
+Tiempo de actividad	Activity time
+Ingresá tu apellido	Enter your last name
+Creá una contraseña	Create a password
+Movimientos grandes	Large movements
+Movilidad de muñeca	Wrist mobility
+Mantené 3 segundos.	Hold for 3 seconds.
+Círculos de tobillo	Ankle circles
+Una letra mayúscula	One uppercase letter
+Una letra minúscula	One lowercase letter
+Código del paciente	Patient code
+Guardar y continuar	Save and continue
+Completar más tarde	Complete later
+Progresos recientes	Recent progress
+Descargar mis datos	Download my data
+12 de marzo de 2025	March 12, 2025
+Mantené la posición	Hold the position
+Cambiá de dirección	Change direction
+Botones más grandes	Larger buttons
+Reducir animaciones	Reduce animations
+Lectura de pantalla	Screen reader
+Sonidos y vibración	Sounds and vibration
+Discapacidad motora	Motor disability
+5 ejercicios = 100%	5 exercises = 100%
+{0} de 5 ejercicios	{0} of 5 exercises
+Dificultad moderada	Moderate difficulty
+Actividades diarias	Daily activities
+Pregunta {0} de {1}	Question {0} of {1}
+Movilidad articular	Joint mobility
+Versión suave (off)	Gentle version (off)
+Versión normal (on)	Normal version (on)
+Logo de Pulso Firme	Pulso Firme logo
+Nombre del cuidador	Caregiver's name
+Profesional a cargo	Professional in charge
+Premium Profesional	Professional Premium
+Vinculado desde {0}	Linked since {0}
+Aceptar y continuar	Accept and continue
+Pacientes en mejora	Improving patients
+Ejercicio pendiente	Pending exercise
+Prefiero no decirlo	I'd rather not say
+Probar avisos ahora	Test notifications now
+Datos profesionales	Professional details
+Formación adicional	Additional training
+Movimiento de dedos	Finger movement
+Se mantiene estable	Remains stable
+Limitación moderada	Moderate limitation
+Hospital San Martín	San Martín Hospital
+Últimos 7 días: {0}	Last 7 days: {0}
+Durante todo el día	Throughout the day
+Tu plan está activo	Your plan is active
+Evaluación QuickDASH	QuickDASH assessment
+Resumen de la sesión	Session summary
+Confirmar contraseña	Confirm password
+Repetí tu contraseña	Repeat your password
+Ingresá tu apellido.	Enter your last name.
+Calentamiento guiado	Guided warm-up
+Ejercicio completado	Exercise completed
+Contraseña del tutor	Guardian password
+Desvincular paciente	Unlink patient
+Teléfono de contacto	Contact phone
+Fecha de vinculación	Link date
+¿Eliminar mis datos?	Delete my data?
+Hacé círculos suaves	Make gentle circles
+Pulgar con cada dedo	Thumb to each finger
+Abrí y cerrá la mano	Open and close your hand
+Golpeá con los dedos	Tap with your fingers
+Paso {0} de {1}. {2}	Step {0} of {1}. {2}
+Sobre este ejercicio	About this exercise
+{0} · Nivel {1} de 5	{0} · Level {1} of 5
+Momento de descansar	Time to rest
+Igual que el celular	Same as the phone
+Pacientes vinculados	Linked patients
+Resumen de evolución	Progress summary
+No lo puedo ejecutar	I can't do it
+Nivel {0} de 5 · {1}	Level {0} of 5 · {1}
+Coordinación y ritmo	Coordination and rhythm
+Movilidad de muñecas	Wrist mobility
+Oposición del pulgar	Thumb opposition
+¡Felicitaciones {0}!	Congratulations {0}!
+Está haciendo efecto	It's taking effect
+Profesional de salud	Healthcare professional
+Reportar un problema	Report a problem
+Contanos un poco más	Tell us a bit more
+Parkinson y artritis	Parkinson's and arthritis
+Resultados QuickDASH	QuickDASH results
+Historial y progreso	History and progress
+Tus datos personales	Your personal data
+Requiere seguimiento	Requires follow-up
+ compartido de datos	 shared data
+Cuánto usó el guante	How much the glove was used
+Hizo 1 ejercicio hoy	Did 1 exercise today
+Recordatorio apagado	Reminder off
+Rutina de ejercicios	Exercise routine
+Ilustración Cuidador	Caregiver illustration
+Al día con tu rutina	Up to date with your routine
+Detalle del paciente	Patient details
+Empezar el ejercicio	Start the exercise
+Ver otros ejercicios	View other exercises
+Ejercicios por semana	Exercises per week
+dificultad importante	significant difficulty
+Alertas de medicación	Medication alerts
+Ingresá tu contraseña	Enter your password
+Terapista ocupacional	Occupational therapist
+Matrícula profesional	Professional license
+Coordinación bimanual	Bimanual coordination
+Al menos 8 caracteres	At least 8 characters
+Paciente desvinculado	Patient unlinked
+13 de octubre de 2026	October 13, 2026
+Ejercicios realizados	Exercises done
+Progreso y ejercicios	Progress and exercises
+Prepará el movimiento	Get ready to move
+Despacio y sin forzar	Slowly and without forcing
+Hacé {0} repeticiones	Do {0} repetitions
+Repetición {0} de {1}	Repetition {0} of {1}
+profesional de salud.	healthcare professional.
+Mi cuenta de cuidador	My caregiver account
+Código de vinculación	Linking code
+Dificultad importante	Significant difficulty
+Evaluación completada	Assessment completed
+Vinculado a tu cuenta	Linked to your account
+Tu resumen está listo	Your summary is ready
+Consulta desde la app	Consultation from the app
+Apellido del cuidador	Caregiver's last name
+Diagnóstico principal	Main diagnosis
+Reportes de evolución	Progress reports
+Selecciona una opción	Select an option
+Elegir foto de perfil	Choose profile photo
+Cambiar contraseña  ›	Change password  ›
+Cumplimiento promedio	Average adherence
+Ejercicio recomendado	Recommended exercise
+Hoy: {0} de {1} tomas	Today: {0} of {1} doses
+Hoy no tenés tomas · 	No doses today ·
+Crear cuenta de tutor	Create guardian account
+Ver progreso completo	View full progress
+Recordatorio activado	Reminder on
+Eliminar recordatorio	Delete reminder
+Resumen de respuestas	Answer summary
+Pequeñas limitaciones	Small limitations
+Acceder como\ncuidador	Access as\ncaregiver
+Vas por el primer día	You're on day one
+%.1f puntos sobre 100	%.1f points out of 100
+Dificultad adaptativa	Adaptive difficulty
+Tu guante inteligente	Your smart glove
+Vinculado desde el {0}	Linked since {0}
+Ingresá tu contraseña.	Enter your password.
+¿No tenés una cuenta? 	Don't have an account?
+Términos y condiciones	Terms and conditions
+Política de privacidad	Privacy policy
+¿Ya tenés una cuenta? 	Already have an account?
+{0} · {1} repeticiones	{0} · {1} repetitions
+Evolución del paciente	Patient progress
+Podrás ver nuevamente:	You'll be able to see again:
+¿Desvincular paciente?	Unlink patient?
+Repetí de 5 a 10 veces	Repeat 5 to 10 times
+Progreso del ejercicio	Exercise progress
+Permisos profesionales	Professional permissions
+Moderadamente limitado	Moderately limited
+Movilidad de los dedos	Finger mobility
+Pronación y supinación	Pronation and supination
+Control del movimiento	Movement control
+Abrir y cerrar la mano	Open and close the hand
+Amplitud de movimiento	Range of motion
+Deslizamiento de dedos	Finger gliding
+DISPONIBLE CON PREMIUM	AVAILABLE WITH PREMIUM
+Versión Premium Guiada	Guided Premium version
+Ejercicios exclusivos.	Exclusive exercises.
+Resumen semanal en PDF	Weekly summary in PDF
+Colocátelo sin apretar	Put it on without squeezing
+Guía de uso del guante	Glove user guide
+Cuidador, desde el {0}	Caregiver since {0}
+Otro / sin diagnóstico	Other / no diagnosis
+Notas para tu cuidador	Notes for your caregiver
+Seguridad de tu cuenta	Your account security
+Evolución de pacientes	Patient progress
+Indicador de evolución	Progress indicator
+Tus datos se guardaron	Your data was saved
+Ingresar como cuidador	Sign in as caregiver
+Ejercicios completados	Exercises completed
+Ejercicios del usuario	User's exercises
+Resultado del paciente	Patient result
+No tenés avisos nuevos	You have no new notices
+todavía no lo registró	hasn't logged it yet
+¿Cómo dormiste anoche?	How did you sleep last night?
+Términos y Condiciones	Terms and Conditions
+Paciente, desde el {0}	Patient since {0}
+Pagar con Mercado Pago	Pay with Mercado Pago
+¡Ejercicio completado!	Exercise completed!
+Conectate a la red {0}	Connect to the {0} network
+Inclinación de la mano	Hand tilt
+Velocidad de vibración	Vibration speed
+¡Muy bien, lo lograste!	Great job, you did it!
+Seleccioná tu profesión	Select your profession
+Puntaje registrado: {0}	Recorded score: {0}
+Vincular nuevo paciente	Link new patient
+({0}, nivel {1} de 5). 	({0}, level {1} of 5).
+Alertas del dispositivo	Device alerts
+Destreza y control fino	Dexterity and fine control
+Movilidad del antebrazo	Forearm mobility
+Rodar una pelota blanda	Roll a soft ball
+Cargalo antes de usarlo	Charge it before using it
+Vinculalo por Bluetooth	Pair it via Bluetooth
+Editar datos personales	Edit personal details
+Probar como profesional	Try as professional
+Matrícula sin completar	License not completed
+Con actividad en 7 días	With activity in 7 days
+Enfermedad de Parkinson	Parkinson's disease
+Completados esta semana	Completed this week
+Evaluación de las manos	Hand assessment
+Datos de tu tratamiento	Your treatment details
+Sin horario configurado	No time set
+Hizo {0} ejercicios hoy	Did {0} exercises today
+Información profesional	Professional information
+Configurá tu medicación	Set up your medication
+Profesional de la salud	Healthcare professional
+Exportá reportes en PDF	Export reports to PDF
+Escribile a PulsiBot...	Write to PulsiBot...
+Cancelás cuando quieras	Cancel anytime
+Ej. Hospital San Martín	E.g. San Martín Hospital
+Desvincular dispositivo	Unlink device
+21 de septiembre de 2026	September 21, 2026
+Información del paciente	Patient information
+Progreso del tratamiento	Treatment progress
+Tiempo total esta semana	Total time this week
+Acceder como\nprofesional	Access as\nprofessional
+Crear cuenta profesional	Create professional account
+Crear cuenta\nprofesional	Create\nprofessional account
+Seleccioná tu profesión.	Select your profession.
+Marcha sentado con ritmo	Seated marching to a beat
+Tu historial de sesiones	Your session history
+Pausa entre repeticiones	Pause between repetitions
+Alterná un dedo a la vez	Alternate one finger at a time
+Beneficios del ejercicio	Benefits of the exercise
+Eliminar definitivamente	Delete permanently
+Evolución y coordinación	Progress and coordination
+Detalle de la evaluación	Assessment details
+Cómo gestionar pacientes	How to manage patients
+No acepto, cerrar sesión	I don't accept, log out
+Configuración de alertas	Alert settings
+No se encontró la sesión	Session not found
+Registrar uso del guante	Log glove use
+Tu código de vinculación	Your linking code
+Recordatorio desactivado	Reminder turned off
+🟢 Lo tiene puesto ahora\n	🟢 Wearing it now\n
+¿Cómo conecto el guante?	How do I connect the glove?
+12 ejercicios exclusivos	12 exclusive exercises
+Información de la cuenta	Account information
+¿Olvidaste tu contraseña?	Forgot your password?
+Pasar objetos entre manos	Pass objects between hands
+Deslizamiento de tendones	Tendon gliding
+La contraseña debe tener:	The password must have:
+Sin diagnóstico informado	No diagnosis provided
+No hay sesión profesional	No professional session
+Código del nuevo paciente	New patient's code
+Seguí los pasos de arriba	Follow the steps above
+Separá y juntá suavemente	Spread and close gently
+Información del ejercicio	Exercise information
+No se pudo generar el PDF	The PDF couldn't be generated
+Bajó de {0} a {1} puntos 	Went down from {0} to {1} points
+Pasó de {0} a {1} puntos 	Went from {0} to {1} points
+Sin dificultad o muy leve	No difficulty or very mild
+Todavía no tenés cuidador	You don't have a caregiver yet
+Dificultad de tus rutinas	Difficulty of your routines
+Compartir con mi cuidador	Share with my caregiver
+Coordinación de los dedos	Finger coordination
+Fortalecimiento de agarre	Grip strengthening
+sin dificultad o muy leve	no difficulty or very mild
+Se está pasando el efecto	It's wearing off
+{0} · comparte {1} de {2}	{0} · shares {1} of {2}
+Tus datos siendo cuidador	Your data as caregiver
+Plan gratuito: 1 paciente	Free plan: 1 patient
+Comparando 2 evaluaciones	Comparing 2 assessments
+desde Privacidad y datos.	from Privacy and data.
+Tocá para elegir una foto	Tap to choose a photo
+Tocá para cambiar la foto	Tap to change the photo
+Tu bienestar en tus manos	Your wellbeing in your hands
+Cumplimiento de pacientes	Patient adherence
+★ Premium · {0} · {1} min	★ Premium · {0} · {1} min
+Uso del guante registrado	Glove use logged
+¿Cuánto usaste el guante?	How long did you use the glove?
+Estás viendo los datos de	You're viewing the data of
+Obtuvo {0} de 100 ({1}). 	Scored {0} out of 100 ({1}).
+Profesional · 5 pacientes	Professional · 5 patients
+¡Gracias por completarlo!	Thanks for completing it!
+1 tutor vinculado con vos	1 guardian linked with you
+Tu paciente tiene Premium	Your patient has Premium
+Nueva evaluación QuickDASH	New QuickDASH assessment
+Tu progreso y estadísticas	Your progress and statistics
+¿Eres profesional o Tutor?	Are you a professional or a guardian?
+Tomá la pelota suavemente.	Hold the ball gently.
+Cerrá suavemente los puños	Gently close your fists
+Bajá los puños sin forzar.	Lower your fists without forcing.
+Palma arriba y palma abajo	Palm up and palm down
+Tocá cada dedo uno por uno	Touch each finger one by one
+Recordatorios de ejercicio	Exercise reminders
+PDF generado correctamente	PDF generated successfully
+Subió de {0} a {1} puntos 	Went up from {0} to {1} points
+¿Eliminar todos tus datos?	Delete all your data?
+Qué compartís con tu tutor	What you share with your guardian
+Especialidad sin completar	Specialty not completed
+¿Qué te trae a PulsoFirme?	What brings you to PulsoFirme?
+Pacientes vinculados ({0})	Linked patients ({0})
+Confirmar nueva contraseña	Confirm new password
+Tus datos como profesional	Your data as professional
+¡Hiciste todos los de hoy!	You did all of today's!
+Sin ejercicios completados	No exercises completed
+Hay 1 alerta para revisar.	There's 1 alert to review.
+Vinculá más de un paciente	Link more than one patient
+Ahora no, volver al inicio	Not now, back to home
+Modo básico (sin conexión)	Basic mode (offline)
+PulsiBot está escribiendo…	PulsiBot is typing…
+Sobre el calor terapéutico	About therapeutic heat
+No se pudo crear la cuenta	The account couldn't be created
+Guardado en Descargas: {0}	Saved in Downloads: {0}
+Seguí así para llegar a {0}	Keep it up to reach {0}
+¡Muy bien {0}, lo lograste!	Great job {0}, you did it!
+Círculos amplios de hombros	Wide shoulder circles
+Volvé a juntarlos despacio.	Bring them together slowly.
+Estirala otra vez y repetí.	Stretch it again and repeat.
+Nueva evaluación registrada	New assessment recorded
+Rodá la pelota en la palma.	Roll the ball in your palm.
+Cerrá los puños suavemente.	Close your fists gently.
+Recordatorios de medicación	Medication reminders
+Golpeteo alternado de dedos	Alternating finger tapping
+Movilidad de palma y muñeca	Palm and wrist mobility
+Movilidad de pulgar y dedos	Thumb and finger mobility
+Diagnóstico y datos médicos	Diagnosis and medical data
+Recursos para profesionales	Resources for professionals
+Sin evaluaciones realizadas	No assessments done
+Ingresá tu nueva contraseña	Enter your new password
+Todavía no usaste el guante	You haven't used the glove yet
+{0} no comparte su progreso	{0} doesn't share their progress
+la notificación con sonido.	the notification with sound.
+Neurología – Rehabilitación	Neurology – Rehabilitation
+¡Te damos la bienvenida{0}!	Welcome{0}!
+Activar Premium Profesional	Activate Professional Premium
+Medicación (últimos 7 días)	Medication (last 7 days)
+Ingresá tu nombre completo.	Enter your full name.
+¿Qué ejercicio me toca hoy?	Which exercise is next today?
+Rutinas según la medicación	Routines based on medication
+Tu plan Premium está activo	Your Premium plan is active
+Tarjeta de crédito o débito	Credit or debit card
+Información del tratamiento	Treatment information
+Ejes X e Y · en tiempo real	X and Y axes · real time
+Información del dispositivo	Device information
+Cargando datos del paciente	Loading patient data
+No pudimos cargar los datos	We couldn't load the data
+No hay una sesión iniciada.	There's no active session.
+Cómo te sentiste esta semana	How you felt this week
+Hacelo despacio, sin forzar.	Do it slowly, without forcing.
+Extensión con banda elástica	Extension with an elastic band
+Correo electrónico del tutor	Guardian's email
+{0}/{1} pacientes vinculados	{0}/{1} linked patients
+Movimiento suave en la palma	Gentle movement in the palm
+Ejercicios para el Parkinson	Exercises for Parkinson's
+de distintas articulaciones.	of different joints.
+La contraseña no es correcta	The password is not correct
+Coordinación de mano y dedos	Hand and finger coordination
+Coordinación fina de la mano	Fine hand coordination
+Movilidad suave de los dedos	Gentle finger mobility
+Apertura y cierre de la mano	Opening and closing the hand
+¿En qué mano usás el guante?	Which hand do you wear the glove on?
+Cómo interpretar el progreso	How to read the progress
+No se pudo guardar el cambio	The change couldn't be saved
+Ingresá tu contraseña actual	Enter your current password
+Inicia sesión para continuar	Log in to continue
+Enviando un aviso de prueba…	Sending a test notice…
+Actividades que realiza bien	Activities they do well
+Ver detalle de la evaluación	View assessment details
+Todavía no tenés un cuidador	You don't have a caregiver yet
+Precios en pesos argentinos.	Prices in Argentine pesos.
+¡Ya sos Premium Profesional!	You're now Professional Premium!
+Rutinas según tu diagnóstico	Routines based on your diagnosis
+Informes para tu profesional	Reports for your professional
+No hay un paciente vinculado	There's no linked patient
+Cargando datos del paciente…	Loading patient data…
+Las contraseñas no coinciden.	The passwords don't match.
+Actividades diarias simuladas	Simulated daily activities
+Cambiá de dirección y repetí.	Change direction and repeat.
+Movimiento lento y controlado	Slow, controlled movement
+No se pudo guardar el permiso	The permission couldn't be saved
+Cortar la comida con cuchillo	Cutting food with a knife
+La contraseña no es correcta.	The password is not correct.
+Entendé los datos y reportes.	Understand the data and reports.
+Dirección de hogar (opcional)	Home address (optional)
+Podés repetir uno o descansar	You can repeat one or rest
+Todavía no hizo ejercicio hoy	Hasn't exercised today yet
+Hay {0} alertas para revisar.	There are {0} alerts to review.
+Tomas registradas: {0} de {1}	Doses logged: {0} of {1}
+Datos personales del cuidador	Caregiver's personal details
+Datos guardados correctamente	Data saved successfully
+Sesión iniciada correctamente	Signed in successfully
+No se pudo reservar el código	The code couldn't be reserved
+Evaluación QuickDASH guardada	QuickDASH assessment saved
+Ingresá tu número de matrícula	Enter your license number
+Volvé a ingresar tu contraseña	Enter your password again
+Ese paciente ya está vinculado	That patient is already linked
+No se pudo verificar el código	The code couldn't be verified
+¡Qué alegría verte\nnuevamente!	So glad to see\nyou again!
+Gestionar pacientes vinculados	Manage linked patients
+Apertura controlada de la mano	Controlled hand opening
+¿Querés cambiar tu contraseña?	Do you want to change your password?
+Lugar de trabajo sin completar	Workplace not completed
+Tus datos médicos se guardaron	Your medical data was saved
+Ingresá el código de 6 dígitos	Enter the 6-digit code
+Datos de la cuenta profesional	Professional account details
+Todavía no registró ejercicios	Hasn't logged exercises yet
+(más bajo = menos dificultad).	(lower = less difficulty).
+Tiene más dificultad que antes	Has more difficulty than before
+De las {0} preguntas del test:	Out of the {0} questions in the test:
+Hoy no tenés tomas programadas	You have no doses scheduled today
+Ingresá tu correo electrónico.	Enter your email.
+{0} tutores vinculados con vos	{0} guardians linked with you
+Conectado · conoce tu progreso	Connected · knows your progress
+Comprobante {0} · demostración	Receipt {0} · demo
+Tu paciente usa el plan gratis	Your patient uses the free plan
+Formación adicional (opcional)	Additional training (optional)
+El guante dejó de enviar datos	The glove stopped sending data
+No se pudo cambiar de paciente	The patient couldn't be changed
+Golpeteo de dedos con metrónomo	Finger tapping with a metronome
+Sin banda, o con una muy suave.	No band, or a very soft one.
+Abrí y cerrá los dedos del pie.	Open and close your toes.
+No se pudo vincular el paciente	The patient couldn't be linked
+Alta Gracia, Córdoba, Argentina	Alta Gracia, Córdoba, Argentina
+Primera evaluación: {0} / 100. 	First assessment: {0} / 100.
+Desafíos, logros y recompensas.	Challenges, achievements and rewards.
+Todavía no hiciste el QuickDASH	You haven't done the QuickDASH yet
+¿Cómo está tu medicación ahora?	How is your medication right now?
+Plan Premium: hasta 5 pacientes	Premium plan: up to 5 patients
+Podés elegir más de una opción.	You can choose more than one option.
+Información que podés consultar	Information you can view
+Historial, gráficos y QuickDASH	History, charts and QuickDASH
+Su evaluación QuickDASH empeoró	Their QuickDASH assessment got worse
+Vas a recibir este recordatorio	You'll receive this reminder
+Movimientos suaves de la muñeca	Gentle wrist movements
+Evaluación {0}: {1} de 100, {2}	Assessment {0}: {1} out of 100, {2}
+Hiciste 1 ejercicio hoy. ¡Bien!	You did 1 exercise today. Nice!
+Cómo se sintió (últimos 7 días)	How they felt (last 7 days)
+¿Cómo te sentís en general hoy?	How do you feel overall today?
+Completar con tarjeta de prueba	Fill in with test card
+Ej. Neurología – Rehabilitación	E.g. Neurology – Rehabilitation
+Vibraciones y calor terapéutico	Vibrations and therapeutic heat
+Buscando el guante en la red...	Looking for the glove on the network...
+Completá los datos obligatorios	Complete the required fields
+No se pudieron cargar tus datos	We couldn't load your data
+Todavía no hiciste la evaluación	You haven't done the assessment yet
+Abducción y oposición del pulgar	Thumb abduction and opposition
+Gestión de personas a tu cuidado	Managing the people in your care
+Paciente vinculado correctamente	Patient linked successfully
+Ingresá el código de vinculación	Enter the linking code
+Favorece la movilidad del pulgar	Helps thumb mobility
+Favorece la movilidad de la mano	Helps hand mobility
+Mejora la movilidad de los dedos	Improves finger mobility
+Dolor en el brazo, hombro o mano	Pain in the arm, shoulder or hand
+Reporte de un problema en la app	Report a problem in the app
+Ej: Dr. Roberto Díaz, Neurología	E.g.: Dr. Roberto Díaz, Neurology
+Evolución registrada esta semana	Progress recorded this week
+Dolor asociado a Parkinson — hoy	Parkinson's-related pain — today
+No registró su medicación de hoy	Didn't log today's medication
+Completó su evaluación QuickDASH	Completed their QuickDASH assessment
+Todavía no tenés notificaciones.	You don't have notifications yet.
+solo ocurre si vos los vinculás.	only happens if you link them.
+Nadie se vinculó con vos todavía	Nobody has linked with you yet
+Generando código de vinculación…	Generating linking code…
+Estás usando la versión gratuita	You're using the free version
+Entrená con una guía a tu medida	Train with a guide made for you
+Nombre como figura en la tarjeta	Name as it appears on the card
+No se pudieron guardar los datos	The data couldn't be saved
+No se pudo guardar la evaluación	The assessment couldn't be saved
+Datos actualizados correctamente	Data updated successfully
+Ingresá tu matrícula profesional.	Enter your professional license.
+Dala vuelta y dejala boca arriba.	Turn it over face up.
+Estiramiento de muñeca en la mesa	Wrist stretch on the table
+Mejora la movilidad del antebrazo	Improves forearm mobility
+Elegí cómo querés ver los textos.	Choose how you want to see the text.
+Configurá los permisos de acceso.	Set up access permissions.
+Movimiento alternado de los dedos	Alternating finger movement
+Tu último QuickDASH fue {0} ({1})	Your last QuickDASH was {0} ({1})
+Precisión y control de movimiento	Movement precision and control
+Elegí qué alertas querés recibir.	Choose which alerts you want to receive.
+Preferencias de alertas guardadas	Alert preferences saved
+Mismo puntaje que la vez anterior	Same score as last time
+Todavía no hiciste ejercicios hoy	You haven't exercised today yet
+Panel comparativo entre pacientes	Patient comparison dashboard
+por mes · cancelás cuando quieras	per month · cancel anytime
+Sin tomas programadas esta semana	No doses scheduled this week
+¿Con cuánta energía te encontrás?	How much energy do you have?
+Desactivar Premium (demostración)	Turn off Premium (demo)
+No se pudieron exportar tus datos	Your data couldn't be exported
+Hacé un ejercicio hoy para empezar	Do an exercise today to start
+Subí los hombros hacia las orejas.	Raise your shoulders toward your ears.
+Código de vinculación del paciente	Patient's linking code
+No se pudo desvincular el paciente	The patient couldn't be unlinked
+Favorece la movilidad de los dedos	Helps finger mobility
+Reduce la rigidez y la inflamación	Reduces stiffness and inflammation
+Generá una copia PDF de tus datos.	Generate a PDF copy of your data.
+Síntomas (dolor, hormigueo, sueño)	Symptoms (pain, tingling, sleep)
+Control del dolor y la inflamación	Pain and inflammation control
+Respondemos las dudas más comunes.	We answer the most common questions.
+Relación con la persona que cuidás	Relationship with the person you care for
+Registraste {0} de uso del guante.	You logged {0} of glove use.
+Lleva {0} días sin hacer ejercicio	{0} days without exercising
+{0} puntos más que la vez anterior	{0} points more than last time
+Hiciste {0} ejercicios hoy. ¡Bien!	You did {0} exercises today. Nice!
+¿Tuviste dolor en manos o muñecas?	Did you have pain in your hands or wrists?
+¿Sentiste las manos hinchadas hoy?	Did your hands feel swollen today?
+Entrá en Cuenta → Ayuda y soporte.	Go to Account → Help and support.
+Visa, Mastercard, American Express	Visa, Mastercard, American Express
+Sobre las vibraciones terapéuticas	About the therapeutic vibrations
+PulsoFirme Glove, recibiendo datos	PulsoFirme Glove, receiving data
+Completá el correo y la contraseña	Enter your email and password
+No se encontró la sesión del tutor	Guardian session not found
+No se pudieron guardar los cambios	The changes couldn't be saved
+No se pudo desvincular al paciente	The patient couldn't be unlinked
+Ejercicios completados (último año)	Exercises completed (last year)
+Tomá una pelota blanda con la mano.	Hold a soft ball in your hand.
+Ritmo lento y sin mover los brazos.	Slow pace, without moving your arms.
+Volvé a estirar los dedos despacio.	Stretch your fingers again slowly.
+Hacé círculos suaves con cada dedo.	Make gentle circles with each finger.
+Separación corta y solo 2 segundos.	Short spread, only 2 seconds.
+Aflojá y descansá antes de repetir.	Loosen up and rest before repeating.
+No se pudieron cargar los pacientes	The patients couldn't be loaded
+¿Estás seguro que querés continuar?	Are you sure you want to continue?
+Mantené la extensión unos segundos.	Hold the extension for a few seconds.
+Mejora la coordinación de los dedos	Improves finger coordination
+Lo que trabajás con este movimiento	What you work on with this movement
+Progreso semanal de tus 5 pacientes	Weekly progress of your 5 patients
+Seguimiento de movilidad de la mano	Hand mobility tracking
+Todavía no registró ejercicios hoy.	Hasn't logged exercises today yet.
+Qué compartís con tus profesionales	What you share with your professionals
+Seguimiento de pacientes vinculados	Linked patient tracking
+Requiere autorización del paciente.	Requires the patient's authorization.
+No hay nada para revisar por ahora.	Nothing to review for now.
+Abrir y cerrar los dedos de la mano	Opening and closing the fingers
+Abrir la mano lentamente y mantener	Open the hand slowly and hold
+Comparación con evaluación anterior	Comparison with previous assessment
+Hacé un ejercicio hoy para arrancar	Do an exercise today to get started
+Para definir el nivel de la sesión.	To set the session level.
+El correo electrónico no es válido.	The email is not valid.
+No se pudo completar la vinculación	The link couldn't be completed
+Paciente desvinculado correctamente	Patient unlinked successfully
+Actividad semanal de tus 5 pacientes	Weekly activity of your 5 patients
+Apoyá la mano abierta sobre la mesa.	Rest your open hand on the table.
+Levantá la rodilla derecha y bajala.	Raise your right knee and lower it.
+¿Mis datos médicos están protegidos?	Is my medical data protected?
+No existe un paciente con ese código	There's no patient with that code
+Todavía no hay pacientes vinculados.	There are no linked patients yet.
+Conocé cómo cuidamos tu información.	Learn how we protect your information.
+Ayuda a reducir la rigidez articular	Helps reduce joint stiffness
+La artritis no solo afecta las manos	Arthritis doesn't only affect the hands
+Ejercicios para Parkinson y artritis	Exercises for Parkinson's and arthritis
+Abrir un frasco nuevo o muy apretado	Opening a new or tight jar
+No hay pacientes vinculados todavía.	There are no linked patients yet.
+Volvé a ingresar tu nueva contraseña	Enter your new password again
+Documento generado desde PulsoFirme.	Document generated by PulsoFirme.
+Todavía no agregaste ningún horario.	You haven't added any times yet.
+Movilización individual de los dedos	Individual finger mobilization
+{0} puntos menos que la vez anterior	{0} points less than last time
+Todavía no configuraste tus horarios	You haven't set your times yet
+Llevá tu práctica\nal siguiente nivel	Take your practice\nto the next level
+¿Por qué elegir Premium Profesional?	Why choose Professional Premium?
+Todavía no hay un resultado guardado	There's no saved result yet
+El paciente no lo compartió con vos.	The patient didn't share it with you.
+¿Cuánta rigidez sentís en las manos?	How much stiffness do you feel in your hands?
+¿Con cuánta energía te sentís ahora?	How much energy do you feel right now?
+Datos de vinculación con el paciente	Patient link details
+Se aplica a los dos motores a la vez	Applies to both motors at once
+No se encontró la sesión del usuario	User session not found
+Todavía no hay un paciente vinculado	There's no linked patient yet
+Ingresá un correo electrónico válido.	Enter a valid email.
+Apretala y soltala a un ritmo parejo.	Squeeze and release it at an even pace.
+Volvé despacio a la posición inicial.	Slowly return to the starting position.
+Cambiá de sentido y después de brazo.	Change direction, then switch arms.
+Alcanzaste el máximo de {0} pacientes	You reached the maximum of {0} patients
+Recordatorios de medicamentos y citas	Medication and appointment reminders
+Hacé círculos suaves con las muñecas.	Make gentle circles with your wrists.
+Cargar una bolsa del super o un bolso	Carrying a shopping bag or a briefcase
+Contenido actualizado periódicamente.	Regularly updated content.
+¿Necesito el guante para usar la app?	Do I need the glove to use the app?
+Todavía no hay ejercicios registrados	There are no exercises logged yet
+Activá la alarma en pantalla completa	Turn on the full-screen alarm
+Herramientas avanzadas de seguimiento	Advanced tracking tools
+Para ajustar la duración recomendada.	To adjust the recommended duration.
+Te invito a acompañarme en PulsoFirme	I invite you to join me on PulsoFirme
+Preferencias y permisos de privacidad	Privacy preferences and permissions
+Ingresá tu correo electrónico primero	Enter your email first
+Esta cuenta no corresponde a un tutor	This account isn't a guardian account
+Si te perdés, frená y empezá de nuevo.	If you lose track, stop and start again.
+Mantené el ritmo parejo, sin apurarte.	Keep an even pace, without rushing.
+Bajá los puños lentamente, sin forzar.	Lower your fists slowly, without forcing.
+{0} decidió no compartir su progreso. 	{0} chose not to share their progress.
+Vincular, ver y administrar pacientes.	Link, view and manage patients.
+Todavía no tenés pacientes vinculados.	You don't have linked patients yet.
+Ejercicios disponibles para el usuario	Exercises available to the user
+Plan mensual · cancelás cuando quieras	Monthly plan · cancel anytime
+Pagá con tu cuenta o dinero disponible	Pay with your account or available balance
+No se pudo crear la cuenta profesional	The professional account couldn't be created
+Reporte de problema - PulsoFirme Tutor	Problem report - PulsoFirme Guardian
+Para confirmar, escribí tu contraseña.	To confirm, type your password.
+Empezá con la mano recta, dedos juntos.	Start with your hand straight, fingers together.
+Doblá apenas y mantené solo 2 segundos.	Bend just a little and hold only 2 seconds.
+Extendé una toalla chica sobre la mesa.	Spread a small towel on the table.
+¿Puedo vincular a mi médico o cuidador?	Can I link my doctor or caregiver?
+Ayuda a mantener la destreza de la mano	Helps maintain hand dexterity
+Tu cuenta y tus datos fueron eliminados	Your account and your data were deleted
+Plan gratuito: rutinas en nivel normal.	Free plan: routines at normal level.
+Preguntas frecuentes para profesionales	FAQ for professionals
+Días consecutivos realizando ejercicios	Consecutive days doing exercises
+Promedio de tus 5 pacientes esta semana	Average of your 5 patients this week
+Tiempo registrado por vos desde la app.	Time you logged from the app.
+Tecnología que acompaña cada movimiento	Technology that supports every movement
+Completa tus datos para crear tu cuenta	Complete your details to create your account
+Cuenta profesional creada correctamente	Professional account created successfully
+No se pudieron guardar las preferencias	The preferences couldn't be saved
+No se pudieron cargar los datos médicos	The medical data couldn't be loaded
+Completá tus datos para crear tu cuenta.	Complete your details to create your account.
+Abrí otra vez, exagerando el movimiento.	Open again, exaggerating the movement.
+Repetí cada gesto con calma y sin apuro.	Repeat each gesture calmly, without rushing.
+Poné 10 cartas boca abajo sobre la mesa.	Place 10 cards face down on the table.
+Cerrá suavemente los puños, sin apretar.	Gently close your fists, without squeezing.
+Consultá cómo se utiliza la información.	See how the information is used.
+Comienza hoy con la versión gratuita de 	Start today with the free version of
+Planes personalizados según tu progreso.	Personalized plans based on your progress.
+Hoy vas a entrenar con la versión suave.	Today you'll train with the gentle version.
+Avisos sobre tus horarios\nde medicación.	Notices about your\nmedication times.
+ Conviene comentarlo con su profesional.	 It's worth mentioning it to their professional.
+Te falta registrar la toma de las {0} hs	You still need to log the {0} dose
+¿En qué momento del día fue más notoria?	At what time of day was it most noticeable?
+Evaluación rápida para tu rutina diaria.	Quick assessment for your daily routine.
+Te invito a acompañarme desde la app 💚\n\n	I invite you to join me from the app 💚\n\n
+Datos médicos actualizados correctamente	Medical data updated successfully
+No se pudieron guardar los datos médicos	The medical data couldn't be saved
+No se encontró la sesión del profesional	Professional session not found
+Cuando termines, hacelo con la otra mano.	When you finish, do it with the other hand.
+Apoyá la mano encima, con la palma plana.	Rest your hand on top, palm flat.
+Dejá colgar el otro brazo, bien relajado.	Let the other arm hang, fully relaxed.
+Círculos chicos, de a un sentido por vez.	Small circles, one direction at a time.
+Practica movimientos suaves y controlados	Practice gentle, controlled movements
+Con la próxima vas a poder ver si mejora.	With the next one you'll see if it improves.
+en el QuickDASH: sin cambios importantes.	on the QuickDASH: no significant changes.
+, así que tus rutinas están en nivel {0}.	, so your routines are at level {0}.
+Hoy vas a entrenar con la versión normal.	Today you'll train with the normal version.
+¿Para qué sirve el código de vinculación?	What is the linking code for?
+Consultá el progreso del usuario asociado	See the linked user's progress
+Registrá cuándo te lo ponés y te lo sacás	Log when you put it on and take it off
+Últimos 7 días: {0} · usado {1} de 7 días	Last 7 days: {0} · used {1} of 7 days
+Consultá las alertas del usuario asociado	See the linked user's alerts
+Desde acá podés consultar sus ejercicios.	From here you can see their exercises.
+No se pudieron cargar los datos del tutor	The guardian's data couldn't be loaded
+Sentate derecho y llevá el brazo adelante.	Sit up straight and bring your arm forward.
+Tomá cada carta con el pulgar y el índice.	Pick up each card with your thumb and index finger.
+Abrí y cerrá las manos despacio, 10 veces.	Open and close your hands slowly, 10 times.
+Terminá sacudiendo las manos con suavidad.	Finish by gently shaking your hands.
+Llevalo hasta el frasco y soltalo adentro.	Bring it to the jar and drop it inside.
+Usá una tela más liviana, como un pañuelo.	Use a lighter cloth, like a handkerchief.
+Mantené 15 segundos, respirando tranquilo.	Hold for 15 seconds, breathing calmly.
+¿Qué hago si se desconecta el dispositivo?	What do I do if the device disconnects?
+¿Cómo exporto el informe para mi consulta?	How do I export the report for my appointment?
+Cerrá lentamente la mano formando un puño.	Slowly close your hand into a fist.
+Mejora la movilidad de los dedos y la mano	Improves finger and hand mobility
+Favorece movimientos rápidos y controlados	Helps fast, controlled movements
+Mejora el rango de movimiento de la muñeca	Improves wrist range of motion
+Alivia el dolor en las actividades diarias	Relieves pain in daily activities
+Sin conexión. Probá de nuevo con internet.	No connection. Try again with internet.
+Nuestro equipo responde en menos de 24 hs.	Our team replies in less than 24 hours.
+Podés ver su ubicación cuando la comparte.	You can see their location when they share it.
+Se conectó correctamente a tu mano derecha	It connected correctly to your right hand
+Ese correo ya tiene una cuenta registrada.	That email already has an account.
+Informes para compartir con tu profesional	Reports to share with your professional
+No se pudo desactivar. Revisá tu conexión.	It couldn't be turned off. Check your connection.
+No se pudo verificar el paciente vinculado	The linked patient couldn't be verified
+{0} con Premium) o el código no es válido.	{0} with Premium) or the code is not valid.
+Datos del tutor actualizados correctamente	Guardian details updated successfully
+Todavía no hiciste ejercicios. ¡Empezá hoy!	You haven't done any exercises yet. Start today!
+Abrir la mano contra una resistencia suave.	Open the hand against gentle resistance.
+Ingresá el código de 6 dígitos del paciente	Enter the patient's 6-digit code
+Favorece la apertura y el cierre controlado	Helps controlled opening and closing
+Ayuda a mantener la coordinación de la mano	Helps maintain hand coordination
+Acceso al progreso de pacientes vinculados.	Access to linked patients' progress.
+Recibe un aviso si no registraste una toma.	Get a notice if you didn't log a dose.
+¿Los ejercicios reemplazan la kinesiología?	Do the exercises replace physical therapy?
+Avisos sobre tu racha\nde días consecutivos.	Notices about your streak\nof consecutive days.
+No se pudieron guardar. Revisá tu conexión.	They couldn't be saved. Check your connection.
+Suave, porque hoy registraste dolor · 2 min	Gentle, because you logged pain today · 2 min
+Llevás {0} días seguidos haciendo ejercicio	You've exercised {0} days in a row
+Uso del guante (registrado por el paciente)	Glove use (logged by the patient)
+3. Cuando te pida el código, escribí: {0}\n\n	3. When it asks for the code, type: {0}\n\n
+Compartilo solo con tu tutor o profesional.	Share it only with your guardian or professional.
+Rutinas personalizadas según tu diagnóstico	Personalized routines based on your diagnosis
+Entrá en Cuenta y seleccioná Cerrar sesión.	Go to Account and select Log out.
+Ej. Posgrado, certificaciones, cursos, etc.	E.g. Postgraduate, certifications, courses, etc.
+No se pudo verificar el código del paciente	The patient's code couldn't be verified
+Esta cuenta no corresponde a un profesional	This account isn't a professional account
+No se pudo generar el código de vinculación	The linking code couldn't be generated
+No se pudo guardar el código de vinculación	The linking code couldn't be saved
+No se pudieron cargar los datos del vínculo	The link data couldn't be loaded
+No se pudieron cargar los datos para el PDF	The data for the PDF couldn't be loaded
+Datos profesionales guardados correctamente	Professional details saved successfully
+El correo o la contraseña no son correctos.	The email or password is not correct.
+Abotoná y desabotoná una prenda con botones.	Button and unbutton a piece of clothing.
+Hacé la mitad de las vueltas hacia adelante.	Do half of the turns forward.
+Cerrá el puño completo y mantené 3 segundos.	Close your fist fully and hold 3 seconds.
+Mantené la posición 3 segundos, sin apretar.	Hold the position 3 seconds, without squeezing.
+Apertura corta y sin llegar al dedo meñique.	Short opening, without reaching the little finger.
+¿Cómo funciona el seguimiento de ejercicios?	How does exercise tracking work?
+Tocá la punta del pulgar con el dedo índice.	Touch the tip of your thumb with your index finger.
+Favorece la movilidad de las manos y muñecas	Helps hand and wrist mobility
+Reduce la rigidez y la inflamación articular	Reduces joint stiffness and inflammation
+Sin cambios respecto a tu evaluación de {0}.	No changes from your {0} assessment.
+El paciente puede hacerla desde su Progreso.	The patient can do it from their Progress.
+¿Te olvidaste de registrarlo? Cargalo a mano	Forgot to log it? Add it manually
+No se pudieron cargar los datos de la sesión	The session data couldn't be loaded
+No se pudo vincular: el paciente ya alcanzó 	Couldn't link: the patient already reached
+No se pudo obtener la sesión del profesional	The professional session couldn't be retrieved
+No se pudieron cargar los datos de la cuenta	The account data couldn't be loaded
+Consulta / problema - PulsoFirme Profesional	Question / problem - PulsoFirme Professional
+Tenés que aceptar los términos y condiciones.	You have to accept the terms and conditions.
+Ritmo más lento y pausas cortas entre series.	Slower pace and short breaks between sets.
+Pasala a la otra mano por delante del cuerpo.	Pass it to the other hand in front of your body.
+Acompañá con los brazos, como cuando caminás.	Swing your arms, like when you walk.
+Solo balanceo adelante y atrás, sin círculos.	Only swing forward and back, no circles.
+Favorece el control de la rotación de la mano	Helps control hand rotation
+Ayuda a trabajar la coordinación de los dedos	Helps work on finger coordination
+{0} repeticiones · unos {1} segundos en total	{0} repetitions · about {1} seconds in total
+Todavía no hizo ninguna evaluación QuickDASH.	Hasn't done any QuickDASH assessment yet.
+Conocé los beneficios de la versión completa.	Learn the benefits of the full version.
+Avisame cuando complete ejercicios en el día.	Notify me when they complete exercises during the day.
+Próxima toma: {0} hs ({1} de {2} registradas)	Next dose: {0} ({1} of {2} logged)
+No tiene recordatorios de medicación activos.	No active medication reminders.
+No se pudo crear la cuenta. Intentá de nuevo.	The account couldn't be created. Try again.
+Tutor vinculado correctamente con el paciente	Guardian linked successfully with the patient
+el máximo de tutores ({0} en el plan gratis, 	the maximum number of guardians ({0} on the free plan,
+No se pudo verificar el código de vinculación	The linking code couldn't be verified
+No se pudo vincular: ese paciente ya alcanzó 	Couldn't link: that patient already reached
+No se pudieron cargar los datos profesionales	The professional details couldn't be loaded
+Cerrá el puño con fuerza y mantené 2 segundos.	Close your fist firmly and hold 2 seconds.
+Subí la velocidad solo si mantenés el control.	Speed up only if you stay in control.
+Mantené la mano abierta y los dedos estirados.	Keep your hand open and your fingers stretched.
+Llevá el pulgar despacio hacia el dedo índice.	Slowly bring your thumb toward your index finger.
+Favorece la movilidad y la destreza de la mano	Helps hand mobility and dexterity
+Alivia el dolor y mejora la función de la mano	Relieves pain and improves hand function
+Cada repetición incluye una pausa de descanso.	Each repetition includes a rest pause.
+Tus rutinas de hoy: nivel {0} de 5 ({1}) · {2}	Your routines today: level {0} of 5 ({1}) · {2}
+Este código es solo para vos, no lo compartas.	This code is just for you, don't share it.
+El código no corresponde al paciente vinculado	The code doesn't belong to the linked patient
+No se pudieron guardar los datos profesionales	The professional details couldn't be saved
+Ingresá tu correo para recuperar la contraseña.	Enter your email to recover your password.
+La contraseña debe tener al menos 6 caracteres.	The password must have at least 6 characters.
+Círculos más chicos y una pausa cada 3 vueltas.	Smaller circles and a pause every 3 turns.
+Abrí la mano y extendé completamente los dedos.	Open your hand and fully extend your fingers.
+Versión normal: hacelo a tu ritmo y sin forzar.	Normal version: do it at your own pace, without forcing.
+No se pudieron cargar los permisos del paciente	The patient's permissions couldn't be loaded
+Iniciá sesión para registrar el uso del guante.	Log in to record glove use.
+Configurá cómo recibir las alertas del usuario.	Set up how to receive the user's alerts.
+Registraste todas las tomas de hoy ({0} de {1})	You logged all of today's doses ({0} of {1})
+El descanso influye directamente en la rigidez.	Rest directly affects stiffness.
+El dolor suele influir en la calidad del sueño.	Pain often affects sleep quality.
+¿Presentás sensación de calor o enrojecimiento?	Do you feel warmth or redness?
+No se pudieron cargar los datos del profesional	The professional's data couldn't be loaded
+Volvé del meñique al índice sin cortar el ritmo.	Go back from the little finger to the index without breaking the rhythm.
+Apoyá la palma en la mesa, con los dedos juntos.	Rest your palm on the table, fingers together.
+Este paciente ya llegó al máximo de {0} tutores.	This patient already reached the maximum of {0} guardians.
+Cerrá la mano manteniendo los dedos flexionados.	Close your hand keeping your fingers bent.
+Mantené la mano abierta con los dedos estirados.	Keep your hand open with your fingers stretched.
+Estimula la coordinación de los dedos y la palma	Stimulates finger and palm coordination
+Borra tu cuenta y tus datos de forma definitiva.	Permanently deletes your account and your data.
+Compartí dónde estás solo en caso de emergencia.	Share where you are only in an emergency.
+¿Cómo puedo contactar al soporte de Pulso Firme?	How can I contact Pulso Firme support?
+Podés ver y descargar sus reportes de evolución.	You can view and download their progress reports.
+Avisame cuando complete su evaluación QuickDASH.	Notify me when they complete their QuickDASH assessment.
+Todo en orden: no hay nada urgente para revisar.	All good: nothing urgent to review.
+Obtené una copia de la información de tu cuenta.	Get a copy of your account information.
+No se pudieron guardar los datos del profesional	The professional's data couldn't be saved
+Datos del profesional actualizados correctamente	Professional's details updated successfully
+Contá hacia atrás desde 10 y apretá más despacio.	Count back from 10 and squeeze more slowly.
+Tomá una moneda de la mesa y dejala en un frasco.	Pick up a coin from the table and put it in a jar.
+Abrí la mano estirando los dedos contra la banda.	Open your hand stretching your fingers against the band.
+Rango corto y sin forzar el final del movimiento.	Short range, without forcing the end of the movement.
+Ver o administrar la vinculación\ncon el paciente.	View or manage the link\nwith the patient.
+Ayuda a practicar movimientos finos y controlados	Helps practice fine, controlled movements
+Ayuda a trabajar movimientos suaves y controlados	Helps work on gentle, controlled movements
+ni la rehabilitación indicada por un profesional.	nor the rehabilitation prescribed by a professional.
+Tiempo total de ejercicios en los últimos 7 días 	Total exercise time in the last 7 days
+Subió {0} puntos respecto a tu evaluación de {1}.	Went up {0} points from your {1} assessment.
+No se pudo guardar el cambio. Revisá tu conexión.	The change couldn't be saved. Check your connection.
+Tocá una opción para completar tu registro diario	Tap an option to complete your daily log
+{0} todavía no hizo ninguna evaluación QuickDASH.	{0} hasn't done any QuickDASH assessment yet.
+¿En qué momento del día notaste más la hinchazón?	At what time of day did you notice the swelling the most?
+Vibrando en {0}. El cambio se aplica al instante.	Vibrating at {0}. The change applies instantly.
+No se pudieron cargar las preferencias de alertas	The alert preferences couldn't be loaded
+No se encontró una aplicación de correo instalada	No email app found
+Podés ver el progreso y estadísticas\ndel paciente.	You can see the patient's\nprogress and statistics.
+Solo secuencias simples, de a un dedo y sin apuro.	Only simple sequences, one finger at a time, no rush.
+Solo ondas y rulos grandes, sin escribir palabras.	Only big waves and loops, without writing words.
+Versión corta de 3 minutos, a ritmo muy tranquilo.	Short 3-minute version, at a very calm pace.
+Volvé a cerrarla y repetí. Después cambiá de mano.	Close it again and repeat. Then switch hands.
+Podés solicitar una copia de tus datos\npersonales.	You can request a copy of your\npersonal data.
+Hoy: {0} repeticiones, unos {1} segundos en total 	Today: {0} repetitions, about {1} seconds in total
+Primero cargá tus horarios en Cuenta > Medicación.	First add your times in Account > Medication.
+Una vibración corta al tocar\nconfirma cada acción.	A short vibration when tapping\nconfirms each action.
+Puede activarlo desde Cuenta → Privacidad y datos.	They can turn it on from Account → Privacy and data.
+en el QuickDASH: tiene menos dificultad que antes.	on the QuickDASH: has less difficulty than before.
+Mejoró {0} puntos respecto a tu evaluación de {1}.	Improved {0} points from your {1} assessment.
+¿Qué pasa si un día no puedo hacer los ejercicios?	What if one day I can't do the exercises?
+Podés ver sus resultados y evolución en QuickDASH.	You can see their QuickDASH results and progress.
+Podés ver sus tomas registradas y recibir alertas.	You can see their logged doses and receive alerts.
+Si pasa 1 hora de su toma y no marcó "Ya la tomé".	If 1 hour passes after their dose and they didn't tap "I took it".
+Agregá al menos un horario y un día para activarlo	Add at least one time and one day to turn it on
+Conectá el guante para poder cambiar la velocidad.	Connect the glove to change the speed.
+No se pudieron cargar tus datos. Intentá de nuevo.	We couldn't load your data. Try again.
+No se pudieron verificar los datos del profesional	The professional's data couldn't be verified
+Abrí la mano estirando los dedos lo más que puedas.	Open your hand stretching your fingers as far as you can.
+Tomá un poroto con la punta del pulgar y el índice.	Pick up a bean with the tip of your thumb and index finger.
+Creá una contraseña segura para tu\ncuenta de tutor.	Create a secure password for your\nguardian account.
+Practica movimientos finos y controlados de la mano	Practice fine, controlled hand movements
+El paciente no ha autorizado compartir su progreso.	The patient hasn't authorized sharing their progress.
+La sensación de que cuesta abrir o mover los dedos.	The feeling that it's hard to open or move your fingers.
+1. Abrí PulsoFirme y tocá «Acceder como cuidador».\n	1. Open PulsoFirme and tap «Access as caregiver».\n
+Esta cuenta todavía no está vinculada a un paciente	This account isn't linked to a patient yet
+Tenés que aceptar el compromiso de confidencialidad.	You have to accept the confidentiality commitment.
+Apoyá el antebrazo en la mesa, con la mano relajada.	Rest your forearm on the table, hand relaxed.
+Empezá lento y subí el ritmo solo si te sale parejo.	Start slowly and speed up only if it comes out even.
+Levantá la izquierda, siguiendo el ritmo del sonido.	Raise the left one, following the beat of the sound.
+Practica movimientos suaves y controlados de la mano	Practice gentle, controlled hand movements
+El paciente no ha autorizado compartir su ubicación.	The patient hasn't authorized sharing their location.
+El paciente no ha autorizado compartir sus reportes.	The patient hasn't authorized sharing their reports.
+(Ley 25.326 de Protección de los Datos Personales). 	(Law 25,326 on Personal Data Protection).
+No se pudo guardar tu sensación. Revisá tu conexión.	Your feeling couldn't be saved. Check your connection.
+Con la próxima evaluación vas a poder ver si mejora.	With the next assessment you'll see if it improves.
+¿El dolor te impide sostener objetos con normalidad?	Does the pain stop you from holding objects normally?
+Te enviamos un correo para restablecer tu contraseña	We sent you an email to reset your password
+Solo podés verla si el paciente\nautorizó compartirla.	You can only see it if the patient\nauthorized sharing it.
+Al mismo tiempo, contá hacia atrás desde 20 de a uno.	At the same time, count back from 20 one by one.
+Dibujá ondas y rulos grandes que crucen toda la hoja.	Draw big waves and loops across the whole page.
+Manos cerca y un objeto más grande, fácil de agarrar.	Hands close together and a bigger object, easy to grab.
+Poné una banda elástica suave alrededor de los dedos.	Put a soft elastic band around your fingers.
+Flexión, extensión y desviación lateral de la muñeca.	Wrist flexion, extension and side-to-side movement.
+Subí y bajá la muñeca despacio (flexión y extensión).	Raise and lower your wrist slowly (flexion and extension).
+Apoyala en la mesa y aplastala despacio con la palma.	Put it on the table and slowly flatten it with your palm.
+Mantené la mano abierta con los dedos bien estirados.	Keep your hand open with your fingers well stretched.
+Permite consultar avisos relacionados con medicación.	Lets you see notices related to medication.
+El paciente no ha autorizado compartir su medicación.	The patient hasn't authorized sharing their medication.
+Algunos permisos requieren autorización del paciente.	Some permissions require the patient's authorization.
+Pasó más de una hora y no marcó "Ya la tomé" en: {0}.	More than an hour passed and they didn't tap "I took it" at: {0}.
+Evaluamos si requerís un movimiento asistido o suave.	We check whether you need an assisted or gentle movement.
+Entrá en Cuenta → Datos profesionales → Especialidad.	Go to Account → Professional details → Specialty.
+Se borran tus datos y tu cuenta de forma definitiva. 	Your data and your account are permanently deleted.
+Recibís avisos relacionados\ncon las tomas registradas.	You get notices related\nto logged doses.
+Ingresá con tu cuenta para continuar\nen la plataforma.	Sign in with your account to continue\non the platform.
+Después probá secuencias salteadas (1-3-2-4, 5-2-4-1).	Then try skipping sequences (1-3-2-4, 5-2-4-1).
+Escribí tu nombre bien grande, pensando en cada letra.	Write your name very large, thinking about each letter.
+Hacelo sentado, con una sola mano y menos inclinación.	Do it seated, with only one hand and less tilt.
+Información que podés consultar\ndel paciente vinculado	Information you can view\nabout the linked patient
+Ayuda a mantener movimientos más fluidos y coordinados	Helps keep movements smoother and more coordinated
+Solo cuando el paciente la comparte y está autorizada.	Only when the patient shares it and it's authorized.
+Sin conexión. Verificá tu internet e intentá de nuevo.	No connection. Check your internet and try again.
+El paciente no ha autorizado compartir sus resultados.	The patient hasn't authorized sharing their results.
+Elegí qué alertas querés recibir del usuario asociado.	Choose which alerts you want to receive from the linked user.
+Acá podés consultar si el usuario tiene alguna alerta.	Here you can check whether the user has any alerts.
+La contraseña es muy débil. Usá al menos 6 caracteres.	The password is too weak. Use at least 6 characters.
+Cada vez, alejá un poco más las manos antes de pasarla.	Each time, move your hands a bit further apart before passing it.
+Movela hacia el lado del pulgar y hacia el del meñique.	Move it toward the thumb side and toward the little finger side.
+Todavía no hay actividad de tus pacientes para mostrar.	There's no activity from your patients to show yet.
+La información de quienes cuidas\nestá siempre protegida	The information of those you care for\nis always protected
+¡Completa estos datos para tener una mejor experiencia!	Complete these details for a better experience!
+la flexibilidad, además de ayudar a reducir la rigidez.	flexibility, while also helping reduce stiffness.
+Aumenta el tamaño de los botones\npara facilitar su uso.	Makes buttons larger\nso they're easier to use.
+Hacer tareas pesadas de la casa (lavar paredes o pisos)	Doing heavy household chores (washing walls or floors)
+Podés ver su diagnóstico, notas médicas y zona tratada.	You can see their diagnosis, medical notes and treated area.
+Necesitamos tu aceptación para que sigas usando la app.	We need your acceptance so you can keep using the app.
+Próximamente: avisos si el guante presenta un problema.	Coming soon: notices if the glove has a problem.
+y a reducir la sensación de temblor mientras lo usás.\n\n	and to reduce the feeling of tremor while you wear it.\n\n
+El código de vinculación no pertenece a ningún paciente	The linking code doesn't belong to any patient
+Doblá los dedos formando un gancho y mantené 3 segundos.	Bend your fingers into a hook and hold 3 seconds.
+Movimientos suaves de apertura y de toque con el pulgar.	Gentle opening and thumb-touch movements.
+Movelo en círculos chicos usando el balanceo del cuerpo.	Move it in small circles using your body's swing.
+Textos más oscuros y fondos\nmás limpios para leer mejor.	Darker text and cleaner\nbackgrounds for easier reading.
+No hay respuestas guardadas de una evaluación QuickDASH.	There are no saved answers from a QuickDASH assessment.
+¿Cómo sé si el paciente completó sus ejercicios del día?	How do I know if the patient completed today's exercises?
+¿Puedo recibir notificaciones importantes como cuidador?	Can I receive important notifications as a caregiver?
+¡Hola! Soy {0} y uso PulsoFirme para mi rehabilitación. 	Hi! I'm {0} and I use PulsoFirme for my rehabilitation.
+Sentate derecho, con los brazos relajados a los costados.	Sit up straight, with your arms relaxed at your sides.
+Separá los dedos todo lo que sea cómodo, como un abanico.	Spread your fingers as far as is comfortable, like a fan.
+Dibujá círculos con el pie hacia un lado y hacia el otro.	Draw circles with your foot in one direction and then the other.
+Podés consultar el progreso\ny los ejercicios registrados.	You can see the progress\nand logged exercises.
+Abre los ajustes de TalkBack\ndel teléfono para activarlo.	Opens the phone's TalkBack\nsettings to turn it on.
+Así elegimos la versión de tus rutinas para este momento.	This is how we choose the version of your routines for now.
+El paciente no ha autorizado compartir sus datos médicos.	The patient hasn't authorized sharing their medical data.
+Elegí una contraseña segura para proteger tu información.	Choose a secure password to protect your information.
+Contá también las molestias al mover o presionar la zona.	Also count discomfort when moving or pressing the area.
+Te enviaremos un archivo con tus datos cuando esté listo.	We'll send you a file with your data when it's ready.
+Usá botones grandes y tomate todo el tiempo que necesites.	Use large buttons and take all the time you need.
+Hacé un puño con los dedos rectos y volvé a la mano recta.	Make a fist with straight fingers and return to a straight hand.
+Movimientos más cortos, sin llegar al límite de comodidad.	Shorter movements, without reaching your comfort limit.
+Plan gratuito: 1 paciente. Con Premium vinculás hasta {0}.	Free plan: 1 patient. With Premium you can link up to {0}.
+Hacé círculos suaves con las muñecas en ambas direcciones.	Make gentle circles with your wrists in both directions.
+Ayuda a trabajar la separación y aproximación de los dedos	Helps work on spreading and bringing the fingers together
+Disminuye los movimientos\ny transiciones de la aplicación.	Reduces the app's movements\nand transitions.
+Hormigueo o sensación de agujas en el brazo, hombro o mano	Tingling or pins and needles in the arm, shoulder or hand
+¿Dónde puedo ver el historial de actividades del paciente?	Where can I see the patient's activity history?
+Cuando {0} complete su primer ejercicio, lo vas a ver acá.	When {0} completes their first exercise, you'll see it here.
+No pudimos iniciar sesión. Intentá de nuevo en un momento.	We couldn't sign you in. Try again in a moment.
+Girá una llave en una cerradura o en una tabla de práctica.	Turn a key in a lock or on a practice board.
+Sentate frente a una hoja grande y tomá un marcador grueso.	Sit in front of a large sheet of paper and hold a thick marker.
+Volvé y tocá con la punta del pulgar la punta de cada dedo.	Go back and touch the tip of each finger with the tip of your thumb.
+Apoyá el antebrazo en la mesa, con la mano fuera del borde.	Rest your forearm on the table, with your hand off the edge.
+Volvé a abrir la mano completamente y repetí el movimiento.	Open your hand fully again and repeat the movement.
+Apoyá la mano sobre una superficie con los dedos relajados.	Rest your hand on a surface with your fingers relaxed.
+Deslizá lentamente los dedos hacia los lados, separándolos.	Slowly slide your fingers sideways, spreading them apart.
+Volvé a juntar los dedos suavemente y repetí el movimiento.	Gently bring your fingers together again and repeat the movement.
+, diseñada para ofrecerte una experiencia más completa con:	, designed to give you a more complete experience with:
+Por ahora el guante solo está disponible para mano derecha.	For now the glove is only available for the right hand.
+Configurá qué información podés consultar de cada paciente.	Set what information you can see for each patient.
+Avisos para vincular un familiar\no profesional a tu cuenta.	Notices to link a family member\nor professional to your account.
+Ya podés empezar. Acá vas a ver tus avisos y recordatorios.	You can start now. Here you'll see your notices and reminders.
+Para ajustar la recomendación de horario de tus ejercicios.	To adjust the recommended time for your exercises.
+Tenés que aceptar los términos y la política de privacidad.	You have to accept the terms and the privacy policy.
+No se pudo crear la cuenta. Intentá de nuevo en un momento.	The account couldn't be created. Try again in a moment.
+Girá las muñecas en círculos, hacia un lado y hacia el otro.	Turn your wrists in circles, one way and then the other.
+Enrollala con los dedos estirados hasta formar un "chorizo".	Roll it with straight fingers until it forms a "snake".
+Así ajustamos los ejercicios a la mano que vas a monitorear.	This way we adjust the exercises to the hand you'll monitor.
+Por ejemplo, si te costó sacarte un anillo o cerrar el puño.	For example, if it was hard to take off a ring or make a fist.
+que los síntomas empeoran, hablá con el profesional a cargo.	that your symptoms get worse, talk to the professional in charge.
+Completá el correo, la contraseña y el código de vinculación	Enter the email, the password and the linking code
+No hay conexión a internet. Probá de nuevo con WiFi o datos.	There's no internet connection. Try again with WiFi or mobile data.
+Sentate en una silla firme, con los pies apoyados en el piso.	Sit on a sturdy chair, with your feet flat on the floor.
+Repetí cambiando de dedo: pulgar con mayor, anular y meñique.	Repeat with another finger: thumb with middle, ring and little finger.
+Sentate y estirá una pierna, con el talón apoyado en el piso.	Sit and stretch one leg out, with your heel on the floor.
+Acepto los Términos y Condiciones y la Política de Privacidad	I accept the Terms and Conditions and the Privacy Policy
+Girá lentamente la mano hasta que la palma quede hacia abajo.	Slowly turn your hand until the palm faces down.
+Tocá con el pulgar cada dedo, uno por uno, y volvé a empezar.	Touch each finger with your thumb, one by one, and start again.
+Aumenta el contraste de colores\npara una mejor visualización.	Increases color contrast\nfor better visibility.
+Puede ver tu racha, tus ejercicios y cómo te sentís cada día.	They can see your streak, your exercises and how you feel each day.
+Podés ver su progreso, ejercicios completados y estadísticas.	You can see their progress, completed exercises and statistics.
+Te recordamos cuando todavía\nno hiciste ejercicios en el día.	We remind you when you\nhaven't exercised yet during the day.
+Vinculá a un familiar o profesional para que siga tu progreso	Link a family member or professional so they can follow your progress
+Indica si la zona requiere un enfoque de movilidad más lento.	Indicates whether the area needs a slower mobility approach.
+servidores de Google, que pueden estar fuera de la Argentina.	Google servers, which may be outside Argentina.
+Pago protegido. PulsoFirme no guarda los datos de tu tarjeta.	Secure payment. PulsoFirme doesn't store your card details.
+No se pudo crear la cuenta. Revisá el correo y la contraseña.	The account couldn't be created. Check the email and password.
+No se pudo enviar el correo. Verificá la dirección ingresada.	The email couldn't be sent. Check the address you entered.
+Completaste el ejercicio. Cada repetición suma a tu movilidad.	You completed the exercise. Every repetition adds to your mobility.
+Acepto los términos y condiciones y la política de privacidad.	I accept the terms and conditions and the privacy policy.
+Dificultad para dormir por el dolor en el brazo, hombro o mano	Difficulty sleeping because of pain in the arm, shoulder or hand
+Android puede demorar un poco el aviso para cuidar la batería.	Android may delay the notice a little to save battery.
+Cargá los horarios de tus tomas para que te avisemos a tiempo.	Add your dose times so we can notify you on time.
+Reportes claros de tu evolución para compartir en la consulta.	Clear reports of your progress to share at your appointment.
+¡Buen trabajo! Cada repetición suma para mejorar tu movilidad.	Great work! Every repetition helps improve your mobility.
+Levantar los dedos de a uno, en secuencias cada vez más largas.	Lift your fingers one at a time, in longer and longer sequences.
+Usá una masa bien blanda (o tibia) y hacé solo los pasos 1 y 2.	Use a very soft (or warm) dough and do only steps 1 and 2.
+Con las puntas de los dedos, arrastrá la toalla hacia la palma.	With your fingertips, pull the towel toward your palm.
+Colocá el brazo al frente con la palma de la mano hacia arriba.	Put your arm in front of you with your palm facing up.
+No pudimos generar el archivo. Probá de nuevo en unos segundos.	We couldn't generate the file. Try again in a few seconds.
+Compara el valor inicial con el estado actual de cada paciente.	Compares the starting value with each patient's current status.
+No hubo cambios importantes respecto de la evaluación anterior.	There were no significant changes from the previous assessment.
+No se pudieron cargar los datos del paciente. Intentá de nuevo.	The patient's data couldn't be loaded. Try again.
+Inclinate apenas hacia atrás hasta sentir un estiramiento suave.	Lean back slightly until you feel a gentle stretch.
+Gestioná la información y los permisos de tu cuenta profesional.	Manage the information and permissions of your professional account.
+En el QuickDASH, un puntaje más bajo significa menos dificultad.	On the QuickDASH, a lower score means less difficulty.
+Verde: tomó todas · Rojo: le faltó alguna · Gris: no tenía tomas	Green: took them all · Red: missed one · Gray: no doses scheduled
+Movimientos amplios pero sin forzar. Descansá entre repeticiones.	Wide movements but without forcing. Rest between repetitions.
+Si la letra se achica, frená, respirá y empezá la línea de nuevo.	If the letters get smaller, stop, breathe and start the line again.
+Llevalos hacia atrás y bajalos, dibujando un círculo bien grande.	Bring them back and down, drawing a big circle.
+Tomá un frasco con la tapa apenas enroscada y apoyalo en la mesa.	Take a jar with the lid barely screwed on and put it on the table.
+Usá objetos más grandes, como botones o fichas, y andá sin apuro.	Use bigger objects, like buttons or chips, and take your time.
+Elegí cómo vas a usar PulsoFirme para personalizar tu experiencia	Choose how you'll use PulsoFirme to personalize your experience
+Aquí podés ver los datos del paciente\ncon el que estás vinculado.	Here you can see the details of the patient\nyou're linked with.
+Levantá y bajá un dedo dando pequeños golpes sobre la superficie.	Lift and lower one finger, tapping lightly on the surface.
+Alterná el golpeteo entre los diferentes dedos de forma continua.	Keep alternating the tapping between different fingers.
+Adaptá la aplicación para usarla de la forma más cómoda para vos.	Adapt the app to use it in the way that's most comfortable for you.
+Es tu primera evaluación. Repetila en unas semanas para comparar.	This is your first assessment. Repeat it in a few weeks to compare.
+Puede ser un buen momento para acompañarlo/a en una rutina corta.	It might be a good time to join them in a short routine.
+Analizamos tu nivel de {0} para definir la actividad recomendada.	We analyze your {0} level to set the recommended activity.
+También contale ahora a alguien de confianza que esté cerca tuyo.	Also tell someone you trust who's close to you right now.
+articulaciones de la mano, y a que te muevas con más comodidad.\n\n	hand joints, and to help you move more comfortably.\n\n
+Sostené el frasco firme con una mano y agarrá la tapa con la otra.	Hold the jar firmly with one hand and grab the lid with the other.
+Poné un puñado de porotos en un plato y un frasco abierto al lado.	Put a handful of beans on a plate and an open jar next to it.
+reducir la rigidez y favorecer la coordinación de los movimientos.	reduce stiffness and support movement coordination.
+Incluidos en tu plan. Se ajustan a tu nivel y a si estás on u off.	Included in your plan. They adapt to your level and to whether you're on or off.
+Ya registraste cómo te sentís hoy. Podés cambiarlo cuando quieras.	You already logged how you feel today. You can change it anytime.
+desde Privacidad y datos. Compartir con un cuidador o profesional 	from Privacy and data. Sharing with a caregiver or professional
+No se pudo activar Premium. Revisá tu conexión e intentá de nuevo.	Premium couldn't be activated. Check your connection and try again.
+Hiciste demasiados intentos. Esperá unos minutos y volvé a probar.	Too many attempts. Wait a few minutes and try again.
+Levantá un dedo por vez, del pulgar al meñique, y volvé a apoyarlo.	Lift one finger at a time, from thumb to little finger, and put it back down.
+Tomá una bola de plastilina blanda y hacela rodar entre las palmas.	Take a ball of soft modeling clay and roll it between your palms.
+Acá podés ver el progreso de tu paciente y acompañarlo en su camino	Here you can see your patient's progress and support them along the way
+Ejercicio para mejorar la coordinación y la movilidad de los dedos.	Exercise to improve finger coordination and mobility.
+Tu celular no tiene la voz instalada. Revisá Ajustes → Texto a voz.	Your phone doesn't have the voice installed. Check Settings → Text-to-speech.
+Realizá los movimientos suavemente y sin forzar. Si sentís dolor o 	Do the movements gently and without forcing. If you feel pain or
+Cuando estés listo para dar el siguiente paso, podrás acceder a la 	When you're ready to take the next step, you'll be able to access the
+tus vínculos con cuidadores y profesionales y tu cuenta de acceso. 	your links with caregivers and professionals, and your login account.
+Consulta el historial de actividades y el progreso de quien cuidas.	See the activity history and progress of the person you care for.
+6 para Parkinson y 6 para artritis: manos, hombros, piernas y pies.	6 for Parkinson's and 6 for arthritis: hands, shoulders, legs and feet.
+Usá 6 cartas y deslizalas hasta el borde de la mesa para agarrarlas.	Use 6 cards and slide them to the edge of the table to pick them up.
+Parate frente a una mesa y apoyá las palmas con los dedos hacia vos.	Stand in front of a table and rest your palms with your fingers toward you.
+Apoyá una mano en una mesa firme e inclinate un poco hacia adelante.	Rest one hand on a sturdy table and lean forward a little.
+Este paciente ya tiene {0} tutor. Con Premium puede sumar hasta {1}.	This patient already has {0} guardian. With Premium they can add up to {1}.
+Crea recordatorios de medicamentos, citas y actividades importantes.	Create reminders for medication, appointments and important activities.
+Apoyá la mano sobre una superficie con los dedos juntos y estirados.	Rest your hand on a surface with your fingers together and stretched.
+Todo lo que se toca mide 56 dp o más\npara acertar mejor con temblor.	Everything you tap is 56 dp or larger\nso it's easier to hit with tremor.
+Actualizamos los términos y la política de privacidad de PulsoFirme 	We updated PulsoFirme's terms and privacy policy
+Leí y acepto los Términos y Condiciones y la Política de Privacidad.	I have read and accept the Terms and Conditions and the Privacy Policy.
+Tocá Progreso en la barra de navegación correspondiente a tu cuenta.	Tap Progress in your account's navigation bar.
+No encontré una respuesta específica para esa forma de preguntarlo. 	I didn't find a specific answer for that way of asking.
+Llevás 3 de 4 ejercicios de hoy. ¡Te queda uno para completar el día!	You've done 3 of 4 exercises today. One more to complete the day!
+Juntar una toalla hacia la palma usando solo las puntas de los dedos.	Gather a towel toward your palm using only your fingertips.
+Ingresá el código de vinculación de 6 dígitos que te dio el paciente.	Enter the 6-digit linking code the patient gave you.
+Esta acción es irreversible. Se eliminarán\ntodos tus datos de la app.	This action can't be undone. All your\ndata in the app will be deleted.
+Este ejercicio trabaja movimientos suaves de las manos y las muñecas.	This exercise works on gentle hand and wrist movements.
+(diagnóstico, medicación, ejercicios y evaluaciones) y los guarde en 	(diagnosis, medication, exercises and assessments) and store them on
+Podés retirar este consentimiento y borrar tus datos cuando quieras, 	You can withdraw this consent and delete your data whenever you want,
+Un mensajito para recordárselo puede ayudar a mantener la constancia.	A quick message to remind them can help keep them consistent.
+No pudimos cargar a este paciente. Puede que haya quitado el vínculo.	We couldn't load this patient. They may have removed the link.
+Podés consultar la cantidad de ejercicios registrados desde Progreso.	You can see the number of logged exercises in Progress.
+Cuánto lo limitó en su trabajo o en sus actividades de todos los días	How much it limited your work or daily activities
+Pellizcá pedacitos con el pulgar y cada dedo, y volvé a armar la bola.	Pinch off little pieces with your thumb and each finger, then rebuild the ball.
+Seguí tocando el pulgar con cada dedo, uno por uno, y volvé a empezar.	Keep touching your thumb to each finger, one by one, and start again.
+Frená si sentís dolor o una molestia importante durante el movimiento.	Stop if you feel pain or significant discomfort during the movement.
+Ejercicio para mejorar la movilidad y reducir la rigidez en las manos.	Exercise to improve mobility and reduce stiffness in the hands.
+tus evaluaciones, tus tomas de medicación, cómo te sentiste cada día, 	your assessments, your medication doses, how you felt each day,
+servidores de Google Firebase, que pueden estar fuera de la Argentina.	Google Firebase servers, which may be outside Argentina.
+Incentivá la constancia con rutinas personalizadas para cada paciente.	Encourage consistency with personalized routines for each patient.
+Ya estás lista para empezar. Acá vas a ver tus avisos y recordatorios.	You're all set to start. Here you'll see your notices and reminders.
+Ya estás listo para empezar. Acá vas a ver tus avisos y recordatorios.	You're all set to start. Here you'll see your notices and reminders.
+Entrá en Cuenta → Cambiar contraseña y seguí los pasos de la pantalla.	Go to Account → Change password and follow the steps on screen.
+Todavía no registraste cómo te sentís esta semana. Hacelo desde Inicio.	You haven't logged how you feel this week. Do it from Home.
+Sentate con los brazos apoyados y una pelotita o un corcho en una mano.	Sit with your arms supported and a small ball or a cork in one hand.
+Volvé a girar la mano con la palma hacia arriba y repetí el movimiento.	Turn your hand palm up again and repeat the movement.
+Ejercicio para practicar la apertura y el cierre controlado de la mano.	Exercise to practice controlled opening and closing of the hand.
+Frená si aparece dolor o una molestia importante durante el movimiento.	Stop if pain or significant discomfort appears during the movement.
+¿Cuánto te limitó en tu trabajo o en tus actividades de todos los días?	How much did it limit your work or daily activities?
+el tratamiento médico ni la rehabilitación indicada por un profesional.	medical treatment or the rehabilitation prescribed by a professional.
+Accedé a funciones exclusivas diseñadas para profesionales de la salud.	Access exclusive features designed for healthcare professionals.
+Sumá más familiares o cuidadores para que acompañen y vean tu progreso.	Add more family members or caregivers to support you and see your progress.
+Cuando te vincules con el código del paciente, vas a ver acá sus datos.	When you link with the patient's code, you'll see their data here.
+Se eliminará el vínculo con el paciente\ny dejarás de ver su información.	The link with the patient will be removed\nand you'll stop seeing their information.
+No se pudo guardar tu aceptación. Revisá tu conexión e intentá de nuevo.	Your acceptance couldn't be saved. Check your connection and try again.
+El diagnóstico y la mano se cambian desde "Diagnóstico y datos médicos".	The diagnosis and hand are changed in "Diagnosis and medical data".
+2. Elegí Tutor (familiar o amigo) o Profesional (médico o kinesiólogo).\n	2. Choose Guardian (family or friend) or Professional (doctor or physical therapist).\n
+Entrá en Cuenta y seleccioná la opción para editar tus datos personales.	Go to Account and select the option to edit your personal details.
+Completá tu información profesional\npara que tu perfil esté actualizado.	Complete your professional information\nto keep your profile up to date.
+Tocá con el pulgar cada dedo, del índice al meñique, al ritmo del sonido.	Touch each finger with your thumb, from index to little finger, to the beat.
+Una serie de posiciones de la mano que mueve los tendones de forma suave.	A series of hand positions that gently move the tendons.
+Girá la tapa despacio para abrirla, usando la muñeca y no solo los dedos.	Slowly turn the lid to open it, using your wrist and not just your fingers.
+Al cambiar de paciente dejarás de ver la información del paciente actual.	When you change patient you'll stop seeing the current patient's information.
+Realizá los ejercicios de forma lenta, segura y sin forzar el cuerpo. Si 	Do the exercises slowly, safely and without straining your body. If
+¡Mejora tus resultados con una experiencia de entrenamiento más completa!	Improve your results with a more complete training experience!
+Esta acción no se puede deshacer.\n\nPara confirmar, ingresá tu contraseña.	This action can't be undone.\n\nTo confirm, enter your password.
+Elegí cuánto tiempo usaste el guante, por si te olvidaste de registrarlo.	Choose how long you used the glove, in case you forgot to log it.
+Tiene menos dificultad para usar sus manos que en la evaluación anterior.	Has less difficulty using their hands than in the previous assessment.
+Tus datos personales se gestionan desde Cuenta → Editar datos personales.	Your personal details are managed in Account → Edit personal details.
+Esta cuenta está deshabilitada. Escribinos a holapulsofirmearg@gmail.com.	This account is disabled. Write to us at holapulsofirmearg@gmail.com.
+Acá podés gestionar la información que compartís\ny los permisos de la app.	Here you can manage the information you share\nand the app's permissions.
+Ejercicio para trabajar suavemente la movilidad y separación de los dedos.	Exercise to gently work on finger mobility and spreading.
+inflamación, suspendé el ejercicio y consultá con un profesional de salud.	swelling, stop the exercise and consult a healthcare professional.
+Ejercicios exclusivos de Premium Guiada. Tocá uno para ver cómo activarlo.	Exclusive Guided Premium exercises. Tap one to see how to activate it.
+Como tutor, accedés a los mismos beneficios que tenga activos tu paciente.	As a guardian, you get the same benefits your patient has active.
+Doblá solo los nudillos grandes, con los dedos rectos, formando una "mesa".	Bend only the big knuckles, with straight fingers, forming a "table".
+Rutina de movilidad suave para después de la ducha tibia o antes de dormir.	Gentle mobility routine for after a warm shower or before bed.
+Ejercicio para trabajar suavemente la movilidad de las manos y las muñecas.	Exercise to gently work on hand and wrist mobility.
+Estos ejercicios son complementarios y no reemplazan el tratamiento médico 	These exercises are complementary and don't replace medical treatment
+Doy mi consentimiento expreso para que PulsoFirme trate mis datos de salud 	I give my express consent for PulsoFirme to process my health data
+Ejercicios elegidos para tu condición y la mano que más necesitás trabajar.	Exercises chosen for your condition and the hand you most need to work on.
+Apoyá el antebrazo en la mesa, con la mano de costado y los dedos estirados.	Rest your forearm on the table, with your hand sideways and fingers stretched.
+Tocá para ver cómo evolucionan los ejercicios y el QuickDASH de tu paciente.	Tap to see how your patient's exercises and QuickDASH are progressing.
+Para vincularte con otro paciente, primero se reemplazará el vínculo actual.	To link with another patient, the current link will be replaced first.
+El Parkinson puede afectar la movilidad, el equilibrio y la coordinación de 	Parkinson's can affect mobility, balance and coordination of
+rodillas, tobillos y pies. Por eso, en Pulso Firme incluimos ejercicios que 	knees, ankles and feet. That's why Pulso Firme includes exercises that
+Visualizá y compará el progreso de todos tus pacientes en una sola pantalla.	View and compare all your patients' progress on one screen.
+La navegación del tutor/cuidador incluye Inicio, Progreso, Alertas y Cuenta.	The guardian/caregiver navigation includes Home, Progress, Alerts and Account.
+ni sustituye la medicación ni las indicaciones de tu médico o kinesiólogo.\n\n	nor does it replace medication or the instructions of your doctor or physical therapist.\n\n
+dolor, mareos o pérdida de equilibrio, detené la actividad y consultá con un 	pain, dizziness or loss of balance, stop the activity and consult a
+La artritis también puede afectar otras partes del cuerpo, como las muñecas, 	Arthritis can also affect other parts of the body, like the wrists,
+ayudan a mantener la movilidad, reducir la rigidez y mejorar la flexibilidad 	help maintain mobility, reduce stiffness and improve flexibility
+Acá podés ver la información de tu cuenta\nde cuidador y los datos vinculados.	Here you can see your caregiver\naccount details and linked data.
+Se borran de forma permanente tu perfil, tus datos de salud, tus ejercicios, 	Your profile, your health data and your exercises are permanently deleted,
+{0} decidió no compartir su progreso, que incluye las evaluaciones QuickDASH.	{0} chose not to share their progress, which includes the QuickDASH assessments.
+Entiendo que voy a ver datos de salud del paciente, que son datos sensibles. 	I understand that I'll see the patient's health data, which is sensitive data.
+El ingreso por voz todavía no está activado. Por ahora escribime tu consulta.	Voice input isn't enabled yet. For now, type your question.
+En Progreso podés consultar el tiempo de actividad registrado por PulsoFirme.	In Progress you can see the activity time recorded by PulsoFirme.
+Gracias por contármelo. Lo que sentís importa y no tenés que pasarlo solo/a. 	Thanks for telling me. What you feel matters and you don't have to go through it alone.
+El calor terapéutico del guante ayuda a aliviar la rigidez y el dolor en las 	The glove's therapeutic heat helps relieve stiffness and pain in the
+En Progreso podés consultar tu actividad y evolución registrada en PulsoFirme.	In Progress you can see your activity and progress recorded in PulsoFirme.
+Cuánto interfirió el problema en sus actividades con familia, amigos o vecinos	How much the problem interfered with activities with family, friends or neighbors
+No hay conexión a internet. Revisá tu WiFi o datos móviles e intentá de nuevo.	There's no internet connection. Check your WiFi or mobile data and try again.
+Hacelo sentado, con la espalda apoyada. Frená si te sentís mareado o con dolor.	Do it seated, with your back supported. Stop if you feel dizzy or in pain.
+Ejercicio con pelota blanda para trabajar la movilidad y el control de la mano.	Soft ball exercise to work on hand mobility and control.
+Realizá los ejercicios de manera suave, respetando tus límites y sin forzar el 	Do the exercises gently, respecting your limits and without straining your
+un profesional de salud.\n\nEstos ejercicios son complementarios y no reemplazan 	a healthcare professional.\n\nThese exercises are complementary and don't replace
+Necesitamos algunos datos para conocerte\ny mantener tu información actualizada.	We need some details to get to know you\nand keep your information up to date.
+Me comprometo a usarlos solo para acompañarlo y a no compartirlos con terceros.	I commit to using them only to support them and not to share them with third parties.
+El paciente te proporcionará este código\npara vincular sus datos con tu cuenta.	The patient will give you this code\nto link their data with your account.
+Indicó "{0}". Si el dolor sigue o aumenta, conviene consultar a su profesional.	They reported "{0}". If the pain continues or increases, it's best to consult their professional.
+Practicar gestos de todos los días: abotonar, girar una llave, tomar una moneda.	Practice everyday gestures: buttoning, turning a key, picking up a coin.
+Estirar la parte de adentro de la muñeca y la palma apoyando la mano en la mesa.	Stretch the inside of the wrist and the palm by resting your hand on the table.
+ejercicios para manos, brazos, piernas y pies, que buscan mejorar la movilidad, 	exercises for hands, arms, legs and feet, aimed at improving mobility,
+Realizá los ejercicios de forma lenta, segura y sin forzar el cuerpo. Si sentís 	Do the exercises slowly, safely and without straining your body. If you feel
+El Parkinson y la artritis pueden afectar la movilidad de diferentes partes del 	Parkinson's and arthritis can affect the mobility of different parts of the
+Completá tus datos para crear una cuenta de tutor\ny poder acompañar al paciente.	Complete your details to create a guardian account\nand support the patient.
+No. Que un paciente tenga Premium no activa automáticamente Premium Profesional.	No. A patient having Premium doesn't automatically activate Professional Premium.
+Podés consultar la evolución desde Progreso y desde el detalle de cada paciente.	You can see progress in Progress and in each patient's details.
+Abrir los dedos en abanico sobre la mesa para mantener el movimiento entre ellos.	Fan your fingers out on the table to keep the movement between them.
+Frená si sentís dolor, calambres o una molestia importante durante el movimiento.	Stop if you feel pain, cramps or significant discomfort during the movement.
+Ver, vincular o desvincular pacientes (1 en el plan gratis, hasta 5 con Premium).	View, link or unlink patients (1 on the free plan, up to 5 with Premium).
+sentís dolor, mareos o pérdida de equilibrio, detené la actividad y consultá con 	you feel pain, dizziness or loss of balance, stop the activity and consult
+Si a las 18 h no hizo ejercicio, si lleva 3 días sin hacerlo o si registró dolor.	If they haven't exercised by 6 p.m., go 3 days without exercising, or log pain.
+La navegación profesional principal incluye Inicio, Pacientes, Progreso y Cuenta.	The main professional navigation includes Home, Patients, Progress and Account.
+No se encontró una aplicación de correo. Escribinos a holapulsofirmearg@gmail.com	No email app found. Write to us at holapulsofirmearg@gmail.com
+Se eliminará el vínculo con el paciente\ny dejarás de ver su información en la app.	The link with the patient will be removed\nand you'll stop seeing their information in the app.
+Para crear tu cuenta necesitamos tu consentimiento para tratar tus datos de salud.	To create your account we need your consent to process your health data.
+Sube o baja según el último QuickDASH y cómo se sintió el paciente en la encuesta.	Goes up or down based on the last QuickDASH and how the patient felt in the survey.
+Modo demostración: no se realizan cobros. Usá datos de prueba, no tu tarjeta real.	Demo mode: no charges are made. Use test data, not your real card.
+Las vibraciones terapéuticas ayudan a que la mano se sienta más estable frente al 	The therapeutic vibrations help the hand feel more stable against
+Entiendo que voy a acceder a datos de salud de pacientes, que son datos sensibles. 	I understand that I'll access patients' health data, which is sensitive data.
+Pasar un objeto chico de una mano a la otra para que las dos manos trabajen juntas.	Pass a small object from one hand to the other so both hands work together.
+Movimientos grandes de hombros para soltar la rigidez del cuello y la espalda alta.	Big shoulder movements to release stiffness in the neck and upper back.
+Con la mano apoyada de costado, separá el pulgar de la palma lo más que sea cómodo.	With your hand resting sideways, move your thumb away from your palm as far as is comfortable.
+Encontrá respuestas rápidas a las consultas más comunes sobre el uso de PulsoFirme.	Find quick answers to the most common questions about using PulsoFirme.
+El guante puede registrar el movimiento de los dedos durante el golpeteo alternado.	The glove can record finger movement during alternating tapping.
+Ejercicio para trabajar la movilidad y coordinación del pulgar con los demás dedos.	Exercise to work on mobility and coordination of the thumb with the other fingers.
+diferentes partes del cuerpo, no solo las manos. Por eso, en Pulso Firme incluimos 	different parts of the body, not just the hands. That's why Pulso Firme includes
+cuerpo. Si sentís dolor, mareos o molestias, detené la actividad y consultá con un 	body. If you feel pain, dizziness or discomfort, stop the activity and consult a
+Las vibraciones terapéuticas del guante ayudan a que la mano se sienta más estable 	The glove's therapeutic vibrations help the hand feel more stable
+el equipo de PulsoFirme (proyecto de la Escuela Experimental PROA, sede Alta Gracia)	the PulsoFirme team (a project of Escuela Experimental PROA, Alta Gracia campus)
+El guante puede registrar el movimiento de la mano y los dedos durante el ejercicio.	The glove can record hand and finger movement during the exercise.
+El guante puede registrar el movimiento de la mano y la muñeca durante el ejercicio.	The glove can record hand and wrist movement during the exercise.
+cuerpo, no solo las manos. Por eso, en Pulso Firme incluimos ejercicios para manos, 	body, not just the hands. That's why Pulso Firme includes exercises for hands,
+muñecas, brazos, piernas y pies, que buscan mejorar la movilidad, la coordinación y 	wrists, arms, legs and feet, aimed at improving mobility, coordination and
+Hacer actividades recreativas que exigen fuerza o impacto en el brazo, hombro o mano	Doing recreational activities that require strength or impact on the arm, shoulder or hand
+Sin permiso de notificaciones no te podemos avisar. Activalo en Ajustes del celular.	Without notification permission we can't notify you. Turn it on in your phone's Settings.
+Los datos se cargan desde la cuenta del paciente y respetan los permisos que te dio.	The data is loaded from the patient's account and respects the permissions they gave you.
+En Cuenta podés gestionar tu perfil, privacidad y datos, ayuda, contraseña y sesión.	In Account you can manage your profile, privacy and data, help, password and session.
+Podés solicitar una copia de los datos personales asociados a tu cuenta de cuidador.	You can request a copy of the personal data linked to your caregiver account.
+El guante puede registrar el movimiento de la mano y los dedos durante el ejercicio. 	The glove can record hand and finger movement during the exercise.
+Trabaja la apertura y el cierre de la mano mediante movimientos lentos y controlados.	Works on opening and closing the hand through slow, controlled movements.
+Ej: rigidez matutina más marcada. Evitar ejercicios intensos después de las 20:00 hs.	E.g.: stronger morning stiffness. Avoid intense exercise after 8 p.m.
+Las alertas de ejercicios y evaluaciones aparecen si lo activa en Privacidad y datos.	Exercise and assessment alerts appear if they turn it on in Privacy and data.
+No dejes ni cambies ningún tratamiento por tu cuenta. Ante cualquier duda o si notás 	Don't stop or change any treatment on your own. If you have any doubts or notice
+temblor, y el calor terapéutico alivia la rigidez y el dolor en las articulaciones.\n\n	tremor, and the therapeutic heat relieves stiffness and pain in the joints.\n\n
+Realizá el movimiento lentamente y completá las repeticiones indicadas en la pantalla.	Do the movement slowly and complete the repetitions shown on screen.
+El guante puede registrar el movimiento y la rotación de la mano durante el ejercicio.	The glove can record hand movement and rotation during the exercise.
+Este resultado es orientativo y no reemplaza la evaluación de tu profesional de salud.	This result is a guide and doesn't replace your healthcare professional's assessment.
+Para que la alarma aparezca grande en la pantalla (aunque el celular esté bloqueado), 	For the alarm to appear large on screen (even when the phone is locked),
+activá el permiso de PulsoFirme en los ajustes. Si no lo activás, igual vas a recibir 	turn on PulsoFirme's permission in settings. If you don't, you'll still receive
+Entrá en Cuenta → Datos profesionales → Matrícula profesional para modificar ese dato.	Go to Account → Professional details → Professional license to change it.
+Una versión para cuando el paciente está "on" y otra más suave para cuando está "off".	One version for when the patient is "on" and a gentler one for when they're "off".
+Levantar las rodillas de forma alternada siguiendo un ritmo, como si caminaras sentado.	Raise your knees alternately following a beat, as if walking while seated.
+Mover los tobillos en círculos y los dedos del pie para reducir la rigidez de los pies.	Move your ankles in circles and your toes to reduce foot stiffness.
+El guante puede registrar el movimiento del pulgar y de los dedos durante el ejercicio.	The glove can record thumb and finger movement during the exercise.
+Conectalo hasta que la luz quede fija. Una carga completa alcanza para varias sesiones.	Plug it in until the light stays solid. A full charge lasts several sessions.
+Esta información solo la puede ver tu cuidador si activaste el permiso correspondiente.	Your caregiver can only see this information if you turned on the matching permission.
+En Progreso podés consultar la evolución y actividad disponible del paciente vinculado.	In Progress you can see the available progress and activity of the linked patient.
+Dejar colgar el brazo y moverlo como un péndulo para aflojar el hombro sin hacer fuerza.	Let your arm hang and move it like a pendulum to loosen the shoulder without effort.
+Esta información es orientativa y no reemplaza la indicación de tu profesional de salud.	This information is a guide and doesn't replace your healthcare professional's instructions.
+El plan profesional base mostrado actualmente en PulsoFirme contempla hasta 5 pacientes.	The basic professional plan currently shown in PulsoFirme includes up to 5 patients.
+Entrá en Pacientes, seleccioná al paciente y revisá la sección Ejercicios de su detalle.	Go to Patients, select the patient and check the Exercises section in their details.
+Es un acompañamiento del tratamiento, no un reemplazo. PulsoFirme no cura la enfermedad 	It supports treatment, it doesn't replace it. PulsoFirme doesn't cure the disease
+Levantar y dar vuelta naipes de a uno para entrenar la pinza entre el pulgar y el índice.	Pick up and flip playing cards one by one to train the pinch between thumb and index finger.
+Puedes gestionar personas a tu cuidado, acompañarlas y brindarles el apoyo que necesitan.	You can manage the people in your care, support them and give them the help they need.
+El plan gratuito permite vincular {0} paciente. Pasate a Premium para vincular hasta {1}.	The free plan lets you link {0} patient. Upgrade to Premium to link up to {1}.
+en el QuickDASH: tiene más dificultad que antes. Conviene consultarlo con su profesional.	on the QuickDASH: has more difficulty than before. It's best to consult their professional.
+Podés hacerlo desde la sección Cuenta, donde vas a encontrar el botón de ayuda o soporte.	You can do it from the Account section, where you'll find the help or support button.
+Accedé a estadísticas detalladas, filtros y análisis para mejorar el seguimiento clínico.	Access detailed statistics, filters and analysis to improve clinical follow-up.
+Entrá en Cuenta → Ayuda y soporte. Allí encontrás las opciones de contacto de PulsoFirme.	Go to Account → Help and support. There you'll find PulsoFirme's contact options.
+Si estás en peligro ahora, llamá al 911. Podés hablar gratis y en confianza con la línea 	If you're in danger right now, call 911. You can talk for free and in confidence with the
+Me comprometo a usarlos solo con fines de seguimiento y a respetar el secreto profesional.	I commit to using them only for follow-up purposes and to respect professional confidentiality.
+El guante puede registrar el movimiento de los dedos durante la realización del ejercicio.	The glove can record finger movement while doing the exercise.
+El guante puede registrar el movimiento y la separación de los dedos durante el ejercicio.	The glove can record finger movement and spreading during the exercise.
+Esta recomendación es orientativa y no reemplaza la indicación de tu profesional de salud.	This recommendation is a guide and doesn't replace your healthcare professional's instructions.
+La app revisa los datos del paciente más o menos cada 1 hora, aunque no la tengas abierta. 	The app checks the patient's data about once an hour, even when it's not open.
+Tiene más dificultad que en la evaluación anterior. Conviene comentarlo con su profesional.	Has more difficulty than in the previous assessment. It's worth mentioning it to their professional.
+Abrir la mano exagerando el recorrido y cerrarla fuerte. Trabaja la amplitud del movimiento.	Open your hand exaggerating the range and close it firmly. Works on range of motion.
+Usá la opción Inicio de la barra de navegación para volver al panel principal de PulsoFirme.	Use Home in the navigation bar to go back to PulsoFirme's main dashboard.
+Entrá en Progreso para consultar la evolución y actividad disponible del paciente vinculado.	Go to Progress to see the available progress and activity of the linked patient.
+Entrá en el detalle del paciente y abrí QuickDASH para consultar los resultados disponibles.	Go to the patient's details and open QuickDASH to see the available results.
+Tus rutinas se adaptan a cómo estás hoy: a tu medicación, a tu evolución y a cómo te sentís.	Your routines adapt to how you are today: your medication, your progress and how you feel.
+Escribir con letra y trazos grandes para combatir la letra que se va achicando (micrografía).	Write with large letters and strokes to fight handwriting that keeps getting smaller (micrographia).
+Ampliá tu plan y gestioná todos tus pacientes en un solo lugar, de forma simple y organizada.	Expand your plan and manage all your patients in one place, simply and in an organized way.
+¡Hola, {0}! Soy PulsiBot. Puedo ayudarte con PulsoFirme y con el acompañamiento del paciente.	Hi, {0}! I'm PulsiBot. I can help you with PulsoFirme and with supporting the patient.
+No puedo ayudarte con contenido peligroso, sexual explícito, ilegal o que pueda causar daño. 	I can't help with dangerous, sexually explicit, illegal or harmful content.
+Apretar una pelota blanda mientras contás hacia atrás, para entrenar hacer dos cosas a la vez.	Squeeze a soft ball while counting backwards, to train doing two things at once.
+Si tenés un brote con dolor o inflamación, no hagas este ejercicio y consultá a tu profesional.	If you have a flare-up with pain or swelling, don't do this exercise and consult your professional.
+Entrá a la sección Dispositivo y esperá a que aparezca. Solo hace falta hacerlo la primera vez.	Go to the Device section and wait for it to appear. You only need to do this the first time.
+No. La suscripción Premium Profesional es independiente de la suscripción Premium del paciente.	No. The Professional Premium subscription is independent from the patient's Premium subscription.
+de prevención del suicidio: 135 (CABA y GBA) o 0800 345 1435 desde todo el país, las 24 horas. 	suicide prevention line: 135 (CABA and GBA) or 0800 345 1435 nationwide, 24 hours a day.
+¿Querés desvincular a {0}? El paciente no se elimina: solamente se quita el vínculo profesional.	Do you want to unlink {0}? The patient isn't deleted: only the professional link is removed.
+El guante puede registrar el movimiento de los dedos durante la apertura y el cierre de la mano.	The glove can record finger movement while opening and closing the hand.
+Ejercicio para trabajar la coordinación y el control de los dedos mediante golpeteos alternados.	Exercise to work on finger coordination and control through alternating taps.
+Generá informes completos de cada paciente con su progreso, sesiones y evolución para compartir.	Generate complete reports for each patient with their progress, sessions and evolution to share.
+Desde las opciones de Cuenta podés consultar el plan Premium disponible para tu tipo de usuario.	From the Account options you can see the Premium plan available for your type of user.
+Ejercicio de pronación y supinación para trabajar la rotación controlada del antebrazo y la mano.	Pronation and supination exercise to work on controlled rotation of the forearm and hand.
+Cerrá los puños suavemente. Bajalos sin forzar y después realizá círculos suaves con las muñecas.	Close your fists gently. Lower them without forcing and then make gentle circles with your wrists.
+No pasa nada. La racha se corta pero podés retomar cuando quieras. Es mejor descansar que forzar.	It's okay. The streak breaks, but you can pick it up whenever you want. Resting is better than forcing.
+Para reducir la rigidez que indicaste, abrí y cerrá la mano de manera pausada con este ejercicio.	To reduce the stiffness you reported, slowly open and close your hand with this exercise.
+Ivan Correa, Gustavo Carrasco, Ana Cabagna y Morena Martinez son los 4 integrantes de PulsoFirme.	Ivan Correa, Gustavo Carrasco, Ana Cabagna and Morena Martinez are the 4 members of PulsoFirme.
+Tocá Pacientes en la barra inferior profesional. Allí aparece el listado de pacientes vinculados.	Tap Patients in the professional bottom bar. The list of linked patients appears there.
+Entrá en Cuenta → Datos profesionales → Lugar de trabajo para cargar o modificar esa información.	Go to Account → Professional details → Workplace to add or change that information.
+Esta es una versión de demostración desarrollada por estudiantes de la Escuela EXPERIMENTAL PROA. 	This is a demo version developed by students of Escuela EXPERIMENTAL PROA.
+Encontrá respuestas rápidas a las consultas más comunes sobre el uso de Pulso Firme como cuidador.	Find quick answers to the most common questions about using Pulso Firme as a caregiver.
+Realizá el movimiento lentamente al principio y completá las repeticiones indicadas en la pantalla.	Do the movement slowly at first and complete the repetitions shown on screen.
+Este ejercicio utiliza una pelota blanda para trabajar movimientos suaves y controlados de la mano.	This exercise uses a soft ball to work on gentle, controlled hand movements.
+De 5 a 10 repeticiones, una o dos veces por día. Es mejor poco y todos los días que mucho de golpe.	5 to 10 repetitions, once or twice a day. A little every day is better than a lot all at once.
+La exportación de reportes en PDF forma parte de las funciones planteadas para Premium Profesional.	Exporting reports to PDF is part of the features planned for Professional Premium.
+Sí. La comparación entre pacientes está contemplada dentro de las funciones de Premium Profesional.	Yes. Comparing patients is included among the Professional Premium features.
+PulsoFirme no reemplaza tu tratamiento. Consultá a tu profesional antes de empezar una rutina nueva.	PulsoFirme doesn't replace your treatment. Consult your professional before starting a new routine.
+Trabaja la coordinación entre el pulgar y los demás dedos mediante movimientos lentos y controlados.	Works on coordination between the thumb and the other fingers through slow, controlled movements.
+Si algún permiso aparece desactivado y bloqueado, significa que el paciente no lo ha autorizado aún.	If a permission appears turned off and locked, it means the patient hasn't authorized it yet.
+Tu nivel actual permite realizar una sesión estándar para mantener la movilidad activa de tus manos.	Your current level allows a standard session to keep your hands actively mobile.
+Tocá Pacientes en la barra de navegación profesional. Allí podés acceder a los pacientes vinculados.	Tap Patients in the professional navigation bar. There you can access the linked patients.
+Entrá en Cuenta → Plan para consultar y activar la opción Premium disponible para tu tipo de cuenta.	Go to Account → Plan to see and activate the Premium option available for your account type.
+Todavía no tenés profesionales vinculados. Cuando un profesional ingrese tu código, va a aparecer acá.	You don't have linked professionals yet. When a professional enters your code, they'll appear here.
+Se activó tu plan Premium Profesional. Ya podés acceder a todas las funciones avanzadas de PulsoFirme.	Your Professional Premium plan is active. You can now access all of PulsoFirme's advanced features.
+Desde Cuenta → Plan podés consultar Premium Profesional, sus beneficios y las opciones de suscripción.	From Account → Plan you can see Professional Premium, its benefits and subscription options.
+Pasaron más de 4 horas desde que marcaste que te lo pusiste. Elegí cuánto tiempo lo usaste en realidad.	More than 4 hours have passed since you said you put it on. Choose how long you actually used it.
+PulsoFirme está integrado por 4 personas: Ivan Correa, Gustavo Carrasco, Ana Cabagna y Morena Martinez.	PulsoFirme is made up of 4 people: Ivan Correa, Gustavo Carrasco, Ana Cabagna and Morena Martinez.
+“Objetivo semanal cumplido” indica que se alcanzó el objetivo de actividad establecido para esa semana.	"Weekly goal achieved" means the activity goal set for that week was reached.
+Usá un frasco de tapa ancha y dejala bien floja. Podés poner una gomita en la tapa para agarrarla mejor.	Use a wide-lid jar and leave it very loose. You can put a rubber band on the lid to grip it better.
+En Progreso podés consultar actividad, ejercicios realizados, cumplimiento y evolución de tus pacientes.	In Progress you can see your patients' activity, completed exercises, adherence and progress.
+En Cuenta podés gestionar tu perfil, privacidad y datos, ayuda y soporte, contraseña y cierre de sesión.	In Account you can manage your profile, privacy and data, help and support, password and log out.
+Este ejercicio trabaja la movilidad de los dedos mediante movimientos suaves de separación y aproximación.	This exercise works on finger mobility through gentle spreading and closing movements.
+No. El guante debe quedar firme, pero cómodo. No debería causar dolor, adormecimiento ni presión excesiva.	No. The glove should be snug but comfortable. It shouldn't cause pain, numbness or too much pressure.
+Esta acción borrará todos tus datos e historial de forma permanente. ¿Estás seguro de que querés continuar?	This action will permanently delete all your data and history. Are you sure you want to continue?
+¿Cuánto interfirió el problema de tu brazo, hombro o mano en tus actividades con familia, amigos o vecinos?	How much did your arm, shoulder or hand problem interfere with activities with family, friends or neighbors?
+Los sensores tienen que quedar apoyados sobre los dedos, pero el guante no debe marcar la piel ni molestar.	The sensors must rest on your fingers, but the glove shouldn't mark your skin or bother you.
+Tocá Cuenta en la barra inferior. Ahí están las opciones de perfil, privacidad, ayuda, contraseña y sesión.	Tap Account in the bottom bar. There are the profile, privacy, help, password and session options.
+El pago de Premium todavía no está disponible dentro de la app. Lo vamos a habilitar en la próxima versión.	Premium payment isn't available in the app yet. We'll enable it in the next version.
+Trabaja la coordinación y el control independiente de los dedos mediante movimientos repetidos y alternados.	Works on coordination and independent finger control through repeated, alternating movements.
+Con Premium Guiada, tus rutinas suben o bajan solas según este resultado y cómo te sentiste en cada encuesta.	With Guided Premium, your routines go up or down automatically based on this result and how you felt in each survey.
+La cantidad de ejercicios depende de la rutina disponible para tu cuenta. Podés verla entrando en Ejercicios.	The number of exercises depends on the routine available for your account. You can see it in Exercises.
+Entrá en Progreso desde la navegación de PulsoFirme. Ahí podés consultar la actividad y evolución registrada.	Go to Progress from PulsoFirme's navigation. There you can see the recorded activity and progress.
+Entrá en Cuenta → Editar datos personales. Desde allí podés modificar la información disponible de tu perfil.	Go to Account → Edit personal details. From there you can change the information in your profile.
+Activaste Premium Guiada. Tus rutinas ahora se adaptan a vos y ya podés usar todos los ejercicios exclusivos.	You activated Guided Premium. Your routines now adapt to you and you can use all the exclusive exercises.
+Sí, toda tu información está cifrada y almacenada de forma segura cumpliendo con las normativas de privacidad.	Yes, all your information is encrypted and stored securely in compliance with privacy regulations.
+Es el número que le compartís a un cuidador o médico para que pueda seguir tu progreso desde su propia cuenta.	It's the number you share with a caregiver or doctor so they can follow your progress from their own account.
+Estás acá para hacer la diferencia. Como cuidador podés acompañar, ayudar y cuidar a quienes más lo necesitan.	You're here to make a difference. As a caregiver you can support, help and care for those who need it most.
+Con la hinchazón que presentás hoy, se recomienda evitar la sobrecarga y realizar movimientos de bajo impacto.	With the swelling you have today, it's best to avoid overload and do low-impact movements.
+“Ejercicio pendiente” indica que una actividad programada todavía no figura como completada en el seguimiento.	"Pending exercise" means a scheduled activity doesn't show as completed in the tracking yet.
+En Cuenta podés gestionar datos personales, datos profesionales, plan, privacidad, ayuda, contraseña y sesión.	In Account you can manage personal details, professional details, plan, privacy, help, password and session.
+Sí, desde la pantalla de Cuenta podés vincular a tu cuidador para que reciba tus alertas e informes de progreso.	Yes, from the Account screen you can link your caregiver so they receive your alerts and progress reports.
+Trabaja la oposición del pulgar y la coordinación con los demás dedos mediante movimientos suaves y controlados.	Works on thumb opposition and coordination with the other fingers through gentle, controlled movements.
+Los ejercicios de Parkinson son orientativos. Consultá a tu neurólogo o kinesiólogo antes de empezar una rutina.	The Parkinson's exercises are a guide. Consult your neurologist or physical therapist before starting a routine.
+Sí, podés compartir el acceso a la cuenta con otros profesionales de salud o familiares desde la sección Cuenta.	Yes, you can share access to the account with other healthcare professionals or family from the Account section.
+Como marcaste un dolor moderado o alto, lo ideal es trabajar primero un movimiento suave y controlled de muñeca.	Since you reported moderate or high pain, it's best to start with a gentle, controlled wrist movement.
+Sí. Premium Profesional contempla un panel comparativo para analizar información de seguimiento entre pacientes.	Yes. Professional Premium includes a comparison dashboard to analyze follow-up information across patients.
+Los ejercicios de artritis son orientativos. Consultá a tu reumatólogo o kinesiólogo antes de empezar una rutina.	The arthritis exercises are a guide. Consult your rheumatologist or physical therapist before starting a routine.
+PulsoFirme es una herramienta de apoyo y no reemplaza el criterio ni la indicación de un profesional de la salud.	PulsoFirme is a support tool and doesn't replace the judgment or instructions of a healthcare professional.
+Al tocar Pagar, en la versión real se abriría Mercado Pago para confirmar. En la demostración se aprueba directo.	When you tap Pay, the real version would open Mercado Pago to confirm. In the demo it's approved right away.
+Tomá la pelota suavemente. Rodala en la palma de la mano y después cambiá de dirección para repetir el movimiento.	Hold the ball gently. Roll it in your palm and then change direction to repeat the movement.
+Realizá cada movimiento lentamente y sin forzar. Si sentís dolor, detenete y consultá con tu profesional de salud.	Do each movement slowly and without forcing. If you feel pain, stop and consult your healthcare professional.
+Entrá en la sección Ejercicios de PulsoFirme. Ahí podés consultar las actividades disponibles para tu seguimiento.	Go to the Exercises section of PulsoFirme. There you can see the activities available for your follow-up.
+Podés revisar la actividad registrada desde Progreso. Allí se refleja el seguimiento disponible de tus ejercicios.	You can check the recorded activity in Progress. It shows the available tracking of your exercises.
+En Cuenta podés gestionar tu perfil, privacidad, ayuda, contraseña, sesión y opciones relacionadas con el vínculo.	In Account you can manage your profile, privacy, help, password, session and options related to the link.
+No. Son un complemento para sostener la rutina entre sesiones. La indicación siempre la da tu profesional de salud.	No. They're a complement to keep up your routine between sessions. Your healthcare professional always gives the instructions.
+La cuenta profesional de PulsoFirme permite gestionar pacientes, consultar su progreso y acompañar su seguimiento. 	PulsoFirme's professional account lets you manage patients, see their progress and support their follow-up.
+Utilizá la flecha de volver que aparece en la parte superior de la pantalla o el botón de retroceso del dispositivo.	Use the back arrow at the top of the screen or your device's back button.
+Asegurate de tener el Bluetooth activado en tu teléfono. Podés reintentar la conexión desde la pestaña 'Dispositivo'.	Make sure Bluetooth is turned on on your phone. You can retry the connection from the 'Device' tab.
+El guante mide cuánto llegás a abrir los dedos en cada repetición, así podés ver si la apertura mejora con el tiempo.	The glove measures how far you open your fingers in each repetition, so you can see if the opening improves over time.
+Entrá en Alertas desde la navegación del tutor/cuidador para consultar los avisos disponibles del paciente vinculado.	Go to Alerts from the guardian/caregiver navigation to see the available notices for the linked patient.
+Mantené la mano abierta con los dedos estirados. Después tocá con el pulgar cada dedo, uno por uno, y volvé a empezar.	Keep your hand open with your fingers stretched. Then touch each finger with your thumb, one by one, and start again.
+Desde la sección de Ajustes o Datos podés generar un reporte con la información relevante para tu profesional de salud.	From the Settings or Data section you can generate a report with the relevant information for your healthcare professional.
+Utilizá la opción Gestionar/Cambiar paciente dentro de las funciones del vínculo cuando esté disponible para tu cuenta.	Use the Manage/Change patient option within the link features when it's available for your account.
+Esta acción es irreversible. Se eliminarán todos tus datos de la app, incluyendo tu cuenta, configuraciones y registros.	This action can't be undone. All your data in the app will be deleted, including your account, settings and records.
+No. Podés hacer los ejercicios y llevar tu progreso sin el guante. El guante suma el registro automático del movimiento.	No. You can do the exercises and track your progress without the glove. The glove adds automatic movement recording.
+El pulgar toca cada dedo siguiendo un ritmo que va subiendo. El ritmo externo ayuda a que el movimiento salga más fluido.	The thumb touches each finger following a beat that gets faster. The external beat helps the movement come out smoother.
+Sí, vas a recibir avisos sobre la actividad del paciente, recordatorios y resultados relevantes en el ícono de la campana.	Yes, you'll receive notices about the patient's activity, reminders and relevant results in the bell icon.
+Sí puedo ayudarte con PulsoFirme, el guante, ejercicios, progreso, alertas, QuickDASH, navegación y funciones de la cuenta.	I can help you with PulsoFirme, the glove, exercises, progress, alerts, QuickDASH, navigation and account features.
+Buscá la sección QuickDASH dentro de las opciones de seguimiento de PulsoFirme. Desde allí podés completar el cuestionario.	Look for the QuickDASH section in PulsoFirme's tracking options. From there you can complete the questionnaire.
+Dejaron de llegar datos. Puede que hayas apagado el guante o que te alejaste demasiado. Se reanuda solo al volver la señal.	Data stopped arriving. You may have turned off the glove or moved too far away. It resumes on its own when the signal returns.
+Podés borrar toda tu información en cualquier momento desde el botón "Eliminar mis datos". Esta acción no se puede deshacer.	You can delete all your information at any time with the "Delete my data" button. This action can't be undone.
+Evaluá tu capacidad para hacer estas actividades durante la última semana. Elegí la opción que más se ajuste a tu situación.	Rate your ability to do these activities during the last week. Choose the option that best fits your situation.
+En la sección Progreso vas a encontrar un resumen completo de las rutinas, la duración y la evolución a lo largo del tiempo.	In the Progress section you'll find a complete summary of your routines, duration and progress over time.
+En la pantalla de inicio de sesión utilizá la opción de recuperación de contraseña e ingresá el correo asociado a tu cuenta.	On the sign-in screen use the password recovery option and enter the email linked to your account.
+Vamos a armar un PDF con tus últimos 7 días: ejercicios, cómo te sentiste, tomas de medicación y tu autoevaluación QuickDASH.	We'll put together a PDF with your last 7 days: exercises, how you felt, medication doses and your QuickDASH self-assessment.
+¡Hola, {0}! Soy PulsiBot. Puedo ayudarte con PulsoFirme, el seguimiento de pacientes y el uso de las funciones profesionales.	Hi, {0}! I'm PulsiBot. I can help you with PulsoFirme, patient follow-up and using the professional features.
+La campana abre las notificaciones de PulsoFirme. Allí aparecen avisos relevantes relacionados con tu actividad o seguimiento.	The bell opens PulsoFirme's notifications. Relevant notices about your activity or follow-up appear there.
+Entrá en la sección Dispositivo desde los accesos disponibles en PulsoFirme. Esa pantalla se utiliza para gestionar el guante.	Go to the Device section from the shortcuts in PulsoFirme. That screen is used to manage the glove.
+El resultado QuickDASH del paciente puede consultarse desde su seguimiento cuando tu rol y los permisos de acceso lo permiten.	The patient's QuickDASH result can be viewed from their follow-up when your role and access permissions allow it.
+Realizá los ejercicios lentamente y sin forzar el movimiento. Si sentís dolor, detenete y consultá con tu profesional de salud.	Do the exercises slowly and without forcing the movement. If you feel pain, stop and consult your healthcare professional.
+Si se interrumpe la continuidad de actividad registrada, la racha puede cambiar. Podés revisar tu estado actual desde Progreso.	If the continuity of recorded activity is interrupted, the streak may change. You can check your current status in Progress.
+Entrá en Cuenta → Privacidad y datos. Allí podés revisar las opciones de información, permisos y datos disponibles para tu rol.	Go to Account → Privacy and data. There you can review the information, permissions and data options available for your role.
+Tomar porotos de a uno con la punta de los dedos y pasarlos a un frasco. Trabaja la pinza fina y la precisión, sin hacer fuerza.	Pick up beans one by one with your fingertips and put them in a jar. Works on fine pinch and precision, without effort.
+Vamos a generar un PDF con tu resumen semanal: ejercicios realizados, gráfico por día, evaluación QuickDASH, medicación y notas.	We'll generate a PDF with your weekly summary: exercises done, daily chart, QuickDASH assessment, medication and notes.
+La suscripción Premium Profesional te brinda herramientas avanzadas para acompañar mejor a tus pacientes y optimizar tu trabajo.	The Professional Premium subscription gives you advanced tools to better support your patients and optimize your work.
+El tutor o cuidador puede consultar el progreso disponible del paciente vinculado según los permisos establecidos en PulsoFirme.	The guardian or caregiver can see the linked patient's available progress according to the permissions set in PulsoFirme.
+Las alertas y notificaciones muestran avisos importantes relacionados con PulsoFirme y el seguimiento disponible para tu cuenta.	Alerts and notifications show important notices related to PulsoFirme and the follow-up available for your account.
+Frená si sentís dolor, calambres o si la mano queda temblando más que antes de empezar. El cansancio leve es normal; el dolor no.	Stop if you feel pain, cramps or if your hand is shaking more than before you started. Mild tiredness is normal; pain is not.
+¡Hola, {0}! Soy PulsiBot. Puedo ayudarte con tus ejercicios, el guante, tu progreso y el uso de PulsoFirme. ¿En qué te ayudo hoy?	Hi, {0}! I'm PulsiBot. I can help you with your exercises, the glove, your progress and using PulsoFirme. How can I help you today?
+PulsiBot usa inteligencia artificial y puede equivocarse. Brinda orientación general y no reemplaza a un profesional de la salud.	PulsiBot uses artificial intelligence and may make mistakes. It gives general guidance and doesn't replace a healthcare professional.
+Trabaja la pronación y la supinación, es decir, la capacidad de girar el antebrazo para colocar la palma hacia arriba y hacia abajo.	Works on pronation and supination, that is, the ability to turn the forearm to place the palm up and down.
+Respondé cada pregunta de QuickDASH según tu propia experiencia y dificultad real. No elijas una opción porque parezca mejor o peor.	Answer each QuickDASH question based on your own experience and real difficulty. Don't pick an option because it seems better or worse.
+Entrá en Progreso o en Pacientes, seleccioná al paciente correspondiente y abrí su detalle para consultar el seguimiento disponible.	Go to Progress or Patients, select the patient and open their details to see the available follow-up.
+No. QuickDASH debe reflejar tu propia experiencia. PulsiBot puede explicarte las preguntas, pero no debe elegir las respuestas por vos.	No. QuickDASH must reflect your own experience. PulsiBot can explain the questions, but it shouldn't choose the answers for you.
+De 5 a 10 repeticiones, una o dos veces por día. Si podés, hacelo en el momento del día en que la medicación está haciendo mejor efecto.	5 to 10 repetitions, once or twice a day. If you can, do it at the time of day when your medication is working best.
+Entrá en Cuenta → Datos profesionales. Allí podés gestionar lugar de trabajo, especialidad, matrícula profesional y formación adicional.	Go to Account → Professional details. There you can manage workplace, specialty, professional license and additional training.
+La racha representa la continuidad de actividad registrada durante días consecutivos. Sirve como referencia para acompañar la constancia.	The streak shows how many consecutive days you've logged activity. It's a reference to support consistency.
+Mover lentamente la muñeca hacia arriba, abajo y en círculos, sin generar dolor. Hacer movimientos suaves y descansar si aparece molestia.	Slowly move the wrist up, down and in circles, without causing pain. Make gentle movements and rest if discomfort appears.
+Incluye tus ejercicios, cómo te sentiste cada día, tus tomas de medicación y tu autoevaluación. Podés abrirlo o compartirlo con tu médico.	It includes your exercises, how you felt each day, your medication doses and your self-assessment. You can open it or share it with your doctor.
+Podés cancelar en cualquier momento desde Ajustes.\nLa suscripción Premium Profesional es independiente de la suscripción de los pacientes.	You can cancel anytime from Settings.\nThe Professional Premium subscription is independent from the patients' subscription.
+La duración depende del ejercicio asignado. Revisá la tarjeta o el detalle del ejercicio dentro de PulsoFirme para ver el tiempo indicado.	The duration depends on the assigned exercise. Check the card or the exercise details in PulsoFirme to see the indicated time.
+El profesional puede consultar los resultados QuickDASH disponibles de sus pacientes vinculados según los permisos de acceso de PulsoFirme.	The professional can see the available QuickDASH results of their linked patients according to PulsoFirme's access permissions.
+Las notificaciones aparecen cuando PulsoFirme tiene un aviso relevante para mostrarte, por ejemplo sobre actividad, progreso o seguimiento.	Notifications appear when PulsoFirme has a relevant notice for you, for example about activity, progress or follow-up.
+Entrá en Cuenta → Privacidad y datos → Descargar mis datos. La función permite generar una copia de la información disponible de tu cuenta.	Go to Account → Privacy and data → Download my data. This lets you generate a copy of the information available in your account.
+Entrá en Cuenta → Ayuda y soporte → Reportar un problema. Desde esa opción podés preparar un correo para contactar al equipo de PulsoFirme.	Go to Account → Help and support → Report a problem. From there you can prepare an email to contact the PulsoFirme team.
+Doblar solo los nudillos grandes, con los dedos rectos, como formando una mesa. Mantiene móviles las articulaciones de la base de los dedos.	Bend only the big knuckles, with straight fingers, as if forming a table. It keeps the joints at the base of the fingers mobile.
+Se borran tus datos y tu cuenta de forma definitiva, y se te quita de todos tus pacientes vinculados. Para confirmar, escribí tu contraseña.	Your data and your account are permanently deleted, and you're removed from all your linked patients. To confirm, type your password.
+Repetí un ejercicio solamente si la rutina o tu profesional lo indican. PulsiBot no debe aumentar por su cuenta la cantidad de repeticiones.	Repeat an exercise only if the routine or your professional says so. PulsiBot shouldn't increase the number of repetitions on its own.
+Esta es una versión de demostración desarrollada como proyecto escolar. Ante cualquier duda, podés escribirnos a holapulsofirmearg@gmail.com.	This is a demo version developed as a school project. If you have any questions, you can write to us at holapulsofirmearg@gmail.com.
+PulsoFirme utiliza alertas y notificaciones para acompañar el seguimiento. Las opciones disponibles dependen de la configuración de tu cuenta.	PulsoFirme uses alerts and notifications to support follow-up. The available options depend on your account settings.
+Entrá en Ejercicios para consultar la rutina disponible para hoy. PulsiBot no cambia por su cuenta los ejercicios indicados por un profesional.	Go to Exercises to see today's available routine. PulsiBot doesn't change exercises prescribed by a professional on its own.
+Podés cambiar estos permisos cuando quieras. Si desactivás uno, tu tutor o profesional deja de ver esa información la próxima vez que abra la app.	You can change these permissions whenever you want. If you turn one off, your guardian or professional stops seeing that information the next time they open the app.
+Revisá la sección Progreso para comparar la evolución registrada. La interpretación clínica de una mejora debe realizarla un profesional de salud.	Check the Progress section to compare the recorded progress. The clinical interpretation of an improvement must be done by a healthcare professional.
+La incorporación de pacientes se gestiona desde las funciones de pacientes vinculados. El plan y los permisos determinan las opciones disponibles.	Adding patients is managed from the linked patients features. The plan and permissions determine the available options.
+El guante registra el ángulo de flexión de la muñeca y la amplitud de cada círculo, para que veas si tu rango de movimiento mejora con las semanas.	The glove records the wrist flexion angle and the size of each circle, so you can see if your range of motion improves over the weeks.
+Estos datos son solo para organizar tu seguimiento dentro de la app. No reemplazan tu historia clínica ni la indicación de tu profesional de salud.	This data is only to organize your follow-up within the app. It doesn't replace your medical record or your healthcare professional's instructions.
+En Cuenta podés gestionar tus datos, privacidad, ayuda y soporte, contraseña, sesión y opciones disponibles relacionadas con el paciente vinculado.	In Account you can manage your details, privacy, help and support, password, session and available options related to the linked patient.
+Podés consultar los ejercicios del paciente desde las opciones de seguimiento disponibles para tu rol, siempre según los permisos correspondientes.	You can see the patient's exercises from the follow-up options available for your role, always according to the corresponding permissions.
+La app utiliza los sensores del dispositivo para medir la precisión y rango de movimiento durante cada rutina, guardando tu progreso automáticamente.	The app uses the device's sensors to measure precision and range of motion during each routine, saving your progress automatically.
+Desde la navegación y los accesos del Inicio podés llegar a las principales funciones de PulsoFirme, como ejercicios, progreso, dispositivo y cuenta.	From the navigation and the Home shortcuts you can reach PulsoFirme's main features, like exercises, progress, device and account.
+PulsoFirme contempla funciones Premium según el tipo de cuenta. Premium busca ampliar las herramientas disponibles más allá de las funciones básicas.	PulsoFirme offers Premium features depending on the account type. Premium aims to expand the available tools beyond the basic features.
+QuickDASH es una evaluación de seguimiento del miembro superior. Si querés, preguntame cómo completarla, para qué sirve o qué ocurre con el resultado.	QuickDASH is a follow-up assessment for the upper limb. If you want, ask me how to complete it, what it's for or what happens with the result.
+Las notificaciones profesionales pueden mostrar avisos como ejercicios pendientes, objetivos cumplidos, mejoras, baja actividad o rutinas completadas.	Professional notifications can show notices like pending exercises, goals achieved, improvements, low activity or completed routines.
+En la pestaña Progreso podés ver el registro en tiempo real de las rutinas realizadas, la duración y los indicadores detectados por la app o el guante.	In the Progress tab you can see the real-time log of completed routines, their duration and the indicators detected by the app or the glove.
+El precio depende del plan Premium correspondiente a tu tipo de cuenta. Consultá la pantalla Premium de la app para ver la opción mostrada actualmente.	The price depends on the Premium plan for your account type. Check the app's Premium screen to see the option currently shown.
+Entrá en Ejercicios, elegí la actividad disponible y utilizá el botón para comenzar. Antes de iniciar, revisá las indicaciones que aparecen en pantalla.	Go to Exercises, choose the available activity and use the button to start. Before starting, check the instructions on screen.
+Si sentís dolor importante durante un ejercicio, detenelo. No continúes forzando la mano y consultá a tu profesional si el dolor continúa o te preocupa.	If you feel significant pain during an exercise, stop it. Don't keep forcing your hand, and consult your professional if the pain continues or worries you.
+Podés consultar las alertas desde la sección Alertas cuando esté disponible para tu rol y también revisar las notificaciones desde el ícono de la campana.	You can see the alerts in the Alerts section when it's available for your role, and also check notifications from the bell icon.
+Para compartir tus resultados, primero alguien tiene que vincularse con tu código desde su propia cuenta. Lo encontrás en Cuenta, en la sección Cuidadores.	To share your results, someone first has to link with your code from their own account. You'll find it in Account, in the Caregivers section.
+El profesional puede consultar la información de seguimiento disponible de sus pacientes vinculados, de acuerdo con los permisos y funciones de PulsoFirme.	The professional can see the available follow-up information of their linked patients, according to PulsoFirme's permissions and features.
+Entrá en la pantalla de notificaciones. Cuando la opción esté disponible, podés utilizar “Marcar todas como leídas” para actualizar el estado de los avisos.	Go to the notifications screen. When the option is available, you can use "Mark all as read" to update the status of the notices.
+Para conectar el guante, entrá a los ajustes de WiFi del celular y elegí la red {0}. Si Android avisa que la red no tiene internet, aceptá seguir conectado.	To connect the glove, go to your phone's WiFi settings and choose the {0} network. If Android warns that the network has no internet, choose to stay connected.
+Puedo ayudarte con el guante PulsoFirme: cómo colocarlo, cómo conectarlo desde Dispositivo, qué hacer si queda incómodo y cómo actuar si presenta un problema.	I can help you with the PulsoFirme glove: how to put it on, how to connect it from Device, what to do if it's uncomfortable and what to do if it has a problem.
+No puedo realizar diagnósticos médicos. Puedo ayudarte a usar PulsoFirme y entender sus funciones, pero un diagnóstico debe hacerlo un profesional de la salud.	I can't make medical diagnoses. I can help you use PulsoFirme and understand its features, but a diagnosis must be made by a healthcare professional.
+Pulso Firme protege tu información personal como cuidador, y la utiliza únicamente para brindarte un mejor servicio y permitirte acompañar al paciente vinculado.	Pulso Firme protects your personal information as a caregiver, and uses it only to give you a better service and let you support the linked patient.
+Sí. Una de las funciones planteadas para Premium Profesional es permitir vincular más de un paciente y ampliar las capacidades de gestión respecto del plan base.	Yes. One of the features planned for Professional Premium is linking more than one patient and expanding management capabilities compared to the basic plan.
+Moldear una bola de plastilina o masa terapéutica: aplastar, enrollar y pellizcar. Calienta las articulaciones y trabaja toda la mano de forma suave y entretenida.	Shape a ball of modeling clay or therapy putty: flatten, roll and pinch. It warms up the joints and works the whole hand in a gentle, fun way.
+Mantené la mano abierta con los dedos bien estirados. Cerrala lentamente formando un puño y después volvé a abrirla completamente. Repetí el movimiento sin forzar.	Keep your hand open with your fingers well stretched. Slowly close it into a fist and then open it fully again. Repeat the movement without forcing.
+En Cuenta podés editar datos personales, consultar datos profesionales, gestionar el plan, privacidad y datos, ayuda y soporte, cambiar contraseña y cerrar sesión.	In Account you can edit personal details, see professional details, manage the plan, privacy and data, help and support, change password and log out.
+Practicar abrir y cerrar la tapa de un frasco, uno de los gestos que más cuestan con artritis. Entrena la fuerza de agarre y el giro de la muñeca en una tarea real.	Practice opening and closing a jar lid, one of the hardest gestures with arthritis. It trains grip strength and wrist rotation in a real task.
+Mantené la mano abierta. Tocá primero la punta del índice con el pulgar y continuá con los demás dedos, uno por uno, hasta llegar al meñique. Luego volvé a empezar.	Keep your hand open. First touch the tip of your index finger with your thumb and continue with the other fingers, one by one, until the little finger. Then start again.
+La información visible depende del rol y de los permisos otorgados. Puede incluir progreso, ejercicios, QuickDASH, alertas, datos médicos y otras áreas autorizadas.	The visible information depends on the role and the permissions granted. It may include progress, exercises, QuickDASH, alerts, medical data and other authorized areas.
+PulsoFirme puede registrar evaluaciones QuickDASH para el seguimiento. Realizalo cuando corresponda según el uso previsto de la app o la indicación de tu profesional.	PulsoFirme can record QuickDASH assessments for follow-up. Do it when appropriate according to the app's intended use or your professional's instructions.
+Desde Editar datos personales podés tocar la imagen de perfil para seleccionar una foto desde tu dispositivo cuando esa función esté disponible para tu tipo de cuenta.	From Edit personal details you can tap the profile picture to choose a photo from your device when that feature is available for your account type.
+No puedo indicar medicamentos, dosis ni cambios de tratamiento. Para eso consultá a tu profesional de salud. Sí puedo ayudarte con las funciones y alertas de PulsoFirme.	I can't recommend medications, doses or treatment changes. For that, consult your healthcare professional. I can help you with PulsoFirme's features and alerts.
+QuickDASH es un cuestionario utilizado en PulsoFirme para registrar dificultades relacionadas con el miembro superior. Ayuda a incorporar esa información al seguimiento.	QuickDASH is a questionnaire used in PulsoFirme to record difficulties related to the upper limb. It helps add that information to the follow-up.
+El plan profesional base que muestra actualmente PulsoFirme contempla hasta 5 pacientes. Las funciones Premium están pensadas para ampliar las capacidades profesionales.	The basic professional plan PulsoFirme currently shows includes up to 5 patients. Premium features are designed to expand professional capabilities.
+Colocá el brazo al frente con la palma hacia arriba. Girá lentamente la mano hasta dejar la palma hacia abajo. Después volvé a girarla hacia arriba y repetí el movimiento.	Put your arm in front of you with the palm up. Slowly turn your hand until the palm faces down. Then turn it back up and repeat the movement.
+La exportación de reportes PDF está planteada como una función de Premium Profesional. Cuando esté habilitada, se accederá desde las herramientas avanzadas de seguimiento.	Exporting PDF reports is planned as a Professional Premium feature. When enabled, it will be accessed from the advanced tracking tools.
+La vinculación se realiza desde las opciones de paciente disponibles para la cuenta del tutor o profesional, utilizando el mecanismo de vinculación definido por PulsoFirme.	Linking is done from the patient options available for the guardian or professional account, using the linking mechanism defined by PulsoFirme.
+No. PulsoFirme es una herramienta de apoyo para rehabilitación y seguimiento. No reemplaza la consulta, evaluación, diagnóstico ni indicaciones de un profesional de la salud.	No. PulsoFirme is a support tool for rehabilitation and follow-up. It doesn't replace the consultation, assessment, diagnosis or instructions of a healthcare professional.
+Frená si aparece dolor, si la articulación se hincha o se pone caliente, o si la molestia sigue más de dos horas después. En un brote de artritis, consultá antes de continuar.	Stop if pain appears, if the joint swells or gets warm, or if the discomfort lasts more than two hours afterwards. During an arthritis flare-up, consult before continuing.
+Trabaja la apertura completa de la mano, que en Parkinson tiende a perderse por la rigidez. Ayuda a mantener la destreza para abrocharse la ropa, escribir o agarrar objetos chicos.	Works on fully opening the hand, which tends to be lost in Parkinson's due to stiffness. It helps maintain the dexterity to button clothes, write or grab small objects.
+El porcentaje mostrado en Progreso resume el cumplimiento o avance que la app registra para esa métrica. Para una interpretación clínica de tu evolución, consultá a tu profesional.	The percentage shown in Progress summarizes the adherence or progress the app records for that metric. For a clinical interpretation of your progress, consult your professional.
+Realizá ejercicios personalizados para mejorar tu movilidad, seguí tu evolución día a día y recibí recomendaciones para tu bienestar. Estamos con vos en cada paso de tu tratamiento.	Do personalized exercises to improve your mobility, track your progress day by day and receive recommendations for your wellbeing. We're with you at every step of your treatment.
+Para gestionar la conexión del guante, entrá en Dispositivo dentro de PulsoFirme. Asegurate de que el guante esté encendido y seguí las opciones de conexión disponibles en pantalla.	To manage the glove connection, go to Device in PulsoFirme. Make sure the glove is on and follow the connection options on screen.
+Las alertas de medicación funcionan como recordatorios dentro del seguimiento. PulsiBot no indica medicamentos ni dosis; esas indicaciones deben provenir de un profesional de salud.	Medication alerts work as reminders within the follow-up. PulsiBot doesn't recommend medications or doses; those instructions must come from a healthcare professional.
+Probá reformulando la consulta. Puedo responder dudas sobre PulsoFirme, el guante, ejercicios, progreso, alertas, QuickDASH, navegación, Premium, pacientes y funciones de la cuenta.	Try rephrasing your question. I can answer questions about PulsoFirme, the glove, exercises, progress, alerts, QuickDASH, navigation, Premium, patients and account features.
+Apoyá la mano sobre una superficie con los dedos relajados. Levantá y bajá un dedo dando pequeños golpes y después alterná el movimiento entre los diferentes dedos de forma continua.	Rest your hand on a surface with your fingers relaxed. Lift and lower one finger with small taps, then keep alternating the movement between the different fingers.
+Usá el guante en la mano indicada para tu seguimiento o rutina. Si no sabés cuál corresponde, revisá tus datos médicos en PulsoFirme o consultá al profesional que acompaña tu tratamiento.	Wear the glove on the hand indicated for your follow-up or routine. If you don't know which one, check your medical data in PulsoFirme or ask the professional who supports your treatment.
+Mantiene la articulación de la muñeca móvil y lubricada. En artritis, el movimiento suave y regular ayuda a que la rigidez matinal dure menos y a conservar la fuerza para tareas cotidianas.	It keeps the wrist joint mobile and lubricated. In arthritis, gentle and regular movement helps morning stiffness last less and preserves strength for everyday tasks.
+Si sentís dolor mientras usás el guante, detené su uso y retiralo. PulsiBot no puede determinar la causa del dolor. Si el dolor es importante o continúa, consultá a un profesional de salud.	If you feel pain while wearing the glove, stop using it and take it off. PulsiBot can't determine the cause of the pain. If the pain is significant or continues, consult a healthcare professional.
+Para usar el guante, primero colocátelo correctamente y luego utilizá su control de encendido. Una vez encendido, podés ir a la sección Dispositivo de PulsoFirme para gestionar la conexión.	To use the glove, first put it on correctly and then use its power switch. Once it's on, you can go to the Device section in PulsoFirme to manage the connection.
+Apoyá la mano sobre una superficie con los dedos juntos y estirados. Deslizá lentamente los dedos hacia los lados para separarlos. Después volvé a juntarlos suavemente y repetí el movimiento.	Rest your hand on a surface with your fingers together and stretched. Slowly slide your fingers sideways to spread them. Then gently bring them back together and repeat the movement.
+El resultado de QuickDASH queda registrado para el seguimiento. PulsiBot puede explicarte la función del cuestionario, pero la interpretación clínica del resultado corresponde a un profesional de salud.	The QuickDASH result is recorded for follow-up. PulsiBot can explain what the questionnaire is for, but the clinical interpretation of the result belongs to a healthcare professional.
+Apoyá el antebrazo en una mesa con la palma hacia abajo. Abrí los dedos de forma lenta y pareja, estirándolos todo lo que puedas sin tensionar. La lentitud es parte del ejercicio: hacerlo rápido no suma.	Rest your forearm on a table with your palm down. Open your fingers slowly and evenly, stretching them as much as you can without tension. Going slowly is part of the exercise: doing it fast doesn't help.
+El guante PulsoFirme forma parte del sistema de apoyo para la rehabilitación de la mano y trabaja junto con la aplicación. Permite acompañar las actividades y el seguimiento previsto dentro de PulsoFirme.	The PulsoFirme glove is part of the hand rehabilitation support system and works together with the app. It helps support the activities and follow-up planned in PulsoFirme.
+Si no podés terminar un ejercicio, no te fuerces. Si aparece dolor importante, mareo o un síntoma inesperado, detené la actividad. Para modificar una indicación de rehabilitación, consultá a tu profesional.	If you can't finish an exercise, don't force yourself. If significant pain, dizziness or an unexpected symptom appears, stop the activity. To change a rehabilitation instruction, consult your professional.
+Sentate con la espalda apoyada y el antebrazo sobre una mesa, dejando la mano por fuera del borde. Movés solo la muñeca, no el brazo. Respirá normal y hacelo lento: el movimiento tiene que salir sin esfuerzo.	Sit with your back supported and your forearm on a table, leaving your hand off the edge. Move only your wrist, not your arm. Breathe normally and go slowly: the movement should feel effortless.
+No compartimos tus datos con terceros, salvo cuando sea necesario para el funcionamiento de la app o por obligación legal. Un cuidador solo puede ver la información del paciente que el usuario autoriza compartir.	We don't share your data with third parties, except when necessary for the app to work or when required by law. A caregiver can only see the patient information the user authorizes them to share.
+PulsoFirme está pensado para acompañar ejercicios de manos en Parkinson y artritis, pero no reemplaza la indicación de un profesional de la salud. Si tenés cualquier duda y querés que te ayudemos, escribinos a {0}.	PulsoFirme is designed to support hand exercises for Parkinson's and arthritis, but it doesn't replace a healthcare professional's instructions. If you have any questions and want our help, write to us at {0}.
+El guante está correctamente colocado cuando los dedos están bien acomodados, queda firme pero cómodo y no provoca dolor, adormecimiento ni presión excesiva. Los cables y componentes tampoco deberían quedar tirantes.	The glove is put on correctly when the fingers are well placed, it's snug but comfortable and doesn't cause pain, numbness or too much pressure. The cables and components shouldn't be pulled tight either.
+¡Excelente! Ahora, tu médico, tutor, padre o amigo autorizado podrá monitorizar tu progreso, ver tu historial de sesiones y estadísticas en tiempo real para apoyarte en tu recuperación. Todo controlado por ti desde la app.	Excellent! Now your doctor, guardian, parent or authorized friend can monitor your progress, see your session history and real-time statistics to support your recovery. All controlled by you from the app.
+Eso depende de la actividad indicada. Revisá las instrucciones del ejercicio dentro de PulsoFirme. Si el ejercicio requiere el guante, utilizalo como se indica; si tenés dudas sobre una indicación clínica, consultá a tu profesional.	That depends on the indicated activity. Check the exercise instructions in PulsoFirme. If the exercise requires the glove, use it as indicated; if you have questions about a clinical instruction, consult your professional.
+Si el guante te molesta, apagalo y retiralo. Volvé a colocarlo verificando que los dedos estén acomodados y que no quede demasiado apretado. Si la molestia continúa, no sigas utilizándolo hasta consultar con el responsable correspondiente.	If the glove bothers you, turn it off and take it off. Put it back on making sure the fingers are well placed and that it's not too tight. If the discomfort continues, stop using it until you check with the person in charge.
+Tu compañero para el monitoreo y rehabilitación de Parkinson y Artritis. Realizá ejercicios guiados para mejorar la movilidad de tus manos y otras extremidades, y seguí tu progreso día a día. Estamos acá para acompañarte en cada movimiento.	Your companion for monitoring and rehabilitation of Parkinson's and Arthritis. Do guided exercises to improve the mobility of your hands and other limbs, and track your progress day by day. We're here to support you in every movement.
+Premium del paciente y Premium Profesional son facetas independientes. Premium Profesional está orientado a la gestión y comparación de pacientes, reportes PDF y seguimiento avanzado. Tener una suscripción no activa automáticamente la otra.	Patient Premium and Professional Premium are independent. Professional Premium is aimed at managing and comparing patients, PDF reports and advanced follow-up. Having one subscription doesn't automatically activate the other.
+Si el guante no conecta o presenta un problema, verificá que esté encendido y correctamente colocado. Después entrá en Dispositivo y volvé a intentar la conexión. Si continúa fallando, entrá en Cuenta → Ayuda y soporte para reportar el problema.	If the glove doesn't connect or has a problem, check that it's on and put on correctly. Then go to Device and try connecting again. If it keeps failing, go to Account → Help and support to report the problem.
+Premium Profesional es una suscripción independiente orientada al seguimiento profesional. Permite vincular más de un paciente, exportar reportes en PDF, acceder a un panel comparativo entre pacientes y utilizar herramientas avanzadas de seguimiento.	Professional Premium is an independent subscription aimed at professional follow-up. It lets you link more than one patient, export PDF reports, access a patient comparison dashboard and use advanced tracking tools.
+Para colocarte el guante: primero asegurate de que esté apagado. Introducí la mano suavemente, acomodá los dedos y verificá que quede firme pero cómodo, sin apretar demasiado. Revisá que ningún cable o componente quede tirante o doblado de forma incómoda. Después podés encenderlo y gestionar su conexión desde Dispositivo.	To put on the glove: first make sure it's off. Slide your hand in gently, place your fingers and check that it's snug but comfortable, not too tight. Make sure no cable or component is pulled tight or bent uncomfortably. Then you can turn it on and manage its connection from Device.
+Esta es una versión de demostración desarrollada por estudiantes de la Escuela EXPERIMENTAL PROA. PulsoFirme está pensado para acompañar ejercicios de manos en Parkinson y artritis, pero no reemplaza la indicación de un profesional de la salud. Si tenés cualquier duda y querés que te ayudemos, escribinos a holapulsofirmearg@gmail.com.	This is a demo version developed by students of Escuela EXPERIMENTAL PROA. PulsoFirme is designed to support hand exercises for Parkinson's and arthritis, but it doesn't replace a healthcare professional's instructions. If you have any questions and want our help, write to us at holapulsofirmearg@gmail.com.
+PulsoFirme es un proyecto tecnológico orientado a la rehabilitación y al acompañamiento de personas con patologías que afectan la mano. Integra un guante inteligente con una aplicación móvil que permite realizar ejercicios, consultar el progreso, gestionar alertas, completar evaluaciones como QuickDASH y facilitar el seguimiento por parte de tutores y profesionales de la salud. El proyecto está integrado por 4 personas: Ivan Correa, Gustavo Carrasco, Ana Cabagna y Morena Martinez.	PulsoFirme is a technology project aimed at rehabilitation and support for people with conditions that affect the hand. It combines a smart glove with a mobile app to do exercises, check progress, manage alerts, complete assessments like QuickDASH and make follow-up easier for guardians and healthcare professionals. The project is made up of 4 people: Ivan Correa, Gustavo Carrasco, Ana Cabagna and Morena Martinez.
+1 día	1 day
+Logo PulsoFirme	PulsoFirme logo

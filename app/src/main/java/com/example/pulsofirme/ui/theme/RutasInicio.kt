@@ -786,8 +786,8 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
 
                                                         cargando = false
                                                         Avisos.mostrar(if (denegado) "No se pudo vincular: el paciente ya alcanzó " +
-                                                                "el máximo de tutores (${LimiteTutores.MAX_GRATIS} en el plan gratis, " +
-                                                                "${LimiteTutores.MAX_PREMIUM} con Premium) o el código no es válido."
+                                                                trf("el máximo de tutores ({0} en el plan gratis, ", LimiteTutores.MAX_GRATIS) +
+                                                                trf("{0} con Premium) o el código no es válido.", LimiteTutores.MAX_PREMIUM)
                                                         else ErroresFirebase.datos(error, "No se pudo completar la vinculación"), largo = true)
                                                     }
                                             }

@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -18,10 +20,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-private val VerdeCP = Color(0xFF07884A)
-private val VerdeClaroCP = Color(0xFFEAF8F0)
-private val GrisCP = Color(0xFF7A8294)
-
+private val VerdeCP: Color
+    @Composable get() = Color(0xFF07884A).enTema()
+private val VerdeClaroCP: Color
+    @Composable get() = Color(0xFFEAF8F0).enTema()
+private val GrisCP: Color
+    @Composable get() = Color(0xFF7A8294).enTema()
 @Composable
 fun AccountProfessionalScreen(
     nombreProfesional: String,
@@ -39,11 +43,11 @@ fun AccountProfessionalScreen(
     onCerrarSesion: () -> Unit = {}
 ) {
     Scaffold(
-        containerColor = Color.White,
+        containerColor = Color.White.enTema(),
 
         bottomBar = {
             NavigationBar(
-                containerColor = Color.White
+                containerColor = Color.White.enTema()
             ) {
                 val menu = listOf(
                     Triple(
@@ -80,13 +84,13 @@ fun AccountProfessionalScreen(
                         icon = {
                             Icon(
                                 imageVector = item.second,
-                                contentDescription = item.first
+                                contentDescription = tr(item.first)
                             )
                         },
 
                         label = {
                             Text(
-                                text = item.first,
+                                text = tr(item.first),
                                 fontSize = 11.sp,
                                 maxLines = 1
                             )
@@ -121,7 +125,7 @@ fun AccountProfessionalScreen(
         ) {
 
             Text(
-                text = "Cuenta",
+                text = tr("Cuenta"),
                 fontSize = 16.sp,
                 color = GrisCP
             )
@@ -149,9 +153,9 @@ fun AccountProfessionalScreen(
                 ) {
 
                     Text(
-                        text = inicialesProfesionalCuenta(
+                        text = tr(inicialesProfesionalCuenta(
                             nombreProfesional
-                        ),
+                        )),
                         color = Color.White,
                         fontSize = 28.sp,
                         fontWeight = FontWeight.Bold
@@ -165,20 +169,20 @@ fun AccountProfessionalScreen(
                 Column {
 
                     Text(
-                        text = nombreProfesional,
+                        text = tr(nombreProfesional),
                         fontSize = 24.sp,
                         fontWeight = FontWeight.Bold,
                         color = VerdeCP
                     )
 
                     Text(
-                        text = "Profesional de salud",
+                        text = tr("Profesional de salud"),
                         fontSize = 14.sp,
                         color = GrisCP
                     )
 
                     Text(
-                        text = "Matrícula: $matricula",
+                        text = trf("Matrícula: {0}", matricula),
                         fontSize = 14.sp,
                         color = GrisCP
                     )
@@ -244,13 +248,13 @@ fun AccountProfessionalScreen(
                     Column {
 
                         Text(
-                            text = lugarTrabajo,
+                            text = tr(lugarTrabajo),
                             fontSize = 16.sp,
                             fontWeight = FontWeight.SemiBold
                         )
 
                         Text(
-                            text = especialidad,
+                            text = tr(especialidad),
                             fontSize = 13.sp,
                             color = GrisCP
                         )
@@ -278,7 +282,7 @@ fun AccountProfessionalScreen(
                 shape = RoundedCornerShape(14.dp),
 
                 colors = CardDefaults.cardColors(
-                    containerColor = Color(0xFFF7FAF8)
+                    containerColor = Color(0xFFF7FAF8).enTema()
                 )
             ) {
 
@@ -302,13 +306,13 @@ fun AccountProfessionalScreen(
                     ) {
 
                         Text(
-                            text = "Plan actual",
+                            text = tr("Plan actual"),
                             fontSize = 13.sp,
                             color = GrisCP
                         )
 
                         Text(
-                            text = "Profesional · 5 pacientes",
+                            text = tr("Profesional · 5 pacientes"),
                             fontSize = 16.sp,
                             fontWeight = FontWeight.SemiBold
                         )
@@ -360,7 +364,7 @@ fun AccountProfessionalScreen(
             OpcionCP(
                 texto = "Cerrar sesión",
                 onClick = onCerrarSesion,
-                color = Color(0xFFB42318)
+                color = Color(0xFFB42318).enTema()
             )
 
             // Espacio final para que Cerrar sesión
@@ -383,7 +387,7 @@ private fun TituloCP(
 ) {
 
     Text(
-        text = texto,
+        text = tr(texto),
         fontSize = 16.sp,
         color = GrisCP
     )
@@ -402,7 +406,7 @@ private fun TituloCP(
 private fun OpcionCP(
     texto: String,
     onClick: () -> Unit,
-    color: Color = Color(0xFF171A24)
+    color: Color = Color(0xFF171A24).enTema()
 ) {
 
     Row(
@@ -417,7 +421,7 @@ private fun OpcionCP(
     ) {
 
         Text(
-            text = texto,
+            text = tr(texto),
             modifier = Modifier.weight(1f),
             fontSize = 15.sp,
             color = color

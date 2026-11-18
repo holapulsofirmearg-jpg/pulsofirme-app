@@ -804,7 +804,7 @@ fun NavGraphBuilder.rutasPaciente(estado: EstadoNav) {
                                 document.getString("zonaAfectada")
                                     ?: document.getString("mano")
                                         ?.takeIf { it.isNotBlank() }
-                                        ?.let { "Mano ${it.lowercase()}" }
+                                        ?.let { trf("Mano {0}", it.lowercase()) }
                                             ?: ""
 
                             medicalProfesional =
@@ -1015,7 +1015,7 @@ fun NavGraphBuilder.rutasPaciente(estado: EstadoNav) {
                 onExportarDatos = {
                     scopeAjustes.launch {
                         val archivo = exportarMisDatos(context)
-                        Avisos.mostrar(if (archivo != null) "Guardado en Descargas: $archivo"
+                        Avisos.mostrar(if (archivo != null) trf("Guardado en Descargas: {0}", archivo)
                         else "No se pudieron exportar tus datos", largo = true)
                     }
                 }

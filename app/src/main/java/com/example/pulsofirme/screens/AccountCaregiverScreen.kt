@@ -121,12 +121,12 @@ fun AccountCaregiverScreen(
                         icon = {
                             Icon(
                                 imageVector = item.second,
-                                contentDescription = item.first
+                                contentDescription = tr(item.first)
                             )
                         },
                         label = {
                             Text(
-                                text = item.first,
+                                text = tr(item.first),
                                 fontSize = 13.sp,
                                 maxLines = 1
                             )
@@ -159,7 +159,7 @@ fun AccountCaregiverScreen(
             item {
 
                 Text(
-                    text = "Cuenta",
+                    text = tr("Cuenta"),
                     fontSize = 17.sp,
                     color = Color(0xFF9CA3AF).enTema(),
                     fontWeight = FontWeight.Normal
@@ -182,7 +182,7 @@ fun AccountCaregiverScreen(
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
-                            text = nombreTutor.firstOrNull()?.uppercase() ?: "C",
+                            text = tr(nombreTutor.firstOrNull()?.uppercase() ?: "C"),
                             color = Color.White,
                             fontSize = 35.sp,
                             fontWeight = FontWeight.Medium
@@ -194,7 +194,7 @@ fun AccountCaregiverScreen(
                     Column {
 
                         Text(
-                            text = nombreTutor.ifBlank { "Cuidador" },
+                            text = tr(nombreTutor.ifBlank { "Cuidador" }),
                             fontSize = 28.sp,
                             fontWeight = FontWeight.Bold,
                             color = VerdeCuidador
@@ -203,7 +203,7 @@ fun AccountCaregiverScreen(
                         Spacer(modifier = Modifier.height(1.dp))
 
                         Text(
-                            text = if (desde.isBlank()) "Cuidador" else "Cuidador, desde el $desde",
+                            text = tr(if (desde.isBlank()) "Cuidador" else trf("Cuidador, desde el {0}", desde)),
                             fontSize = 15.sp,
                             color = Color(0xFF9CA3AF).enTema()
                         )
@@ -217,7 +217,7 @@ fun AccountCaregiverScreen(
             item {
 
                 Text(
-                    text = "Perfil",
+                    text = tr("Perfil"),
                     fontSize = 18.sp,
                     color = Color(0xFF9CA3AF).enTema()
                 )
@@ -245,7 +245,7 @@ fun AccountCaregiverScreen(
             item {
 
                 Text(
-                    text = "Paciente vinculado",
+                    text = tr("Paciente vinculado"),
                     fontSize = 18.sp,
                     color = Color(0xFF9CA3AF).enTema()
                 )
@@ -294,7 +294,7 @@ fun AccountCaregiverScreen(
                     ) {
 
                         Text(
-                            text = "Paciente vinculado",
+                            text = tr("Paciente vinculado"),
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Medium,
                             color = Color(0xFF163B2D).enTema()
@@ -303,7 +303,7 @@ fun AccountCaregiverScreen(
                         Spacer(modifier = Modifier.height(2.dp))
 
                         Text(
-                            text = nombrePaciente.ifBlank { "Paciente" },
+                            text = tr(nombrePaciente.ifBlank { "Paciente" }),
                             fontSize = 13.sp,
                             color = Color(0xFF8A9A92).enTema()
                         )
@@ -320,7 +320,7 @@ fun AccountCaregiverScreen(
                 Spacer(modifier = Modifier.height(8.dp))
 
                 Text(
-                    text = "Cambiar paciente",
+                    text = tr("Cambiar paciente"),
                     fontSize = 14.sp,
                     fontWeight = FontWeight.SemiBold,
                     color = VerdeCuidador,
@@ -342,7 +342,7 @@ fun AccountCaregiverScreen(
             item {
 
                 Text(
-                    text = "Preferencias",
+                    text = tr("Preferencias"),
                     fontSize = 18.sp,
                     color = Color(0xFF9CA3AF).enTema()
                 )
@@ -368,7 +368,7 @@ fun AccountCaregiverScreen(
             item {
 
                 Text(
-                    text = "Ajustes",
+                    text = tr("Ajustes"),
                     fontSize = 16.sp,
                     color = Color(0xFF1A1A1A).enTema(),
                     modifier = Modifier
@@ -383,7 +383,7 @@ fun AccountCaregiverScreen(
                 Spacer(modifier = Modifier.height(8.dp))
 
                 Text(
-                    text = "Probar como profesional",
+                    text = tr("Probar como profesional"),
                     fontSize = 16.sp,
                     color = VerdeCuidador,
                     modifier = Modifier
@@ -398,7 +398,7 @@ fun AccountCaregiverScreen(
                 Spacer(modifier = Modifier.height(8.dp))
 
                 Text(
-                    text = "Cerrar sesión",
+                    text = tr("Cerrar sesión"),
                     fontSize = 16.sp,
                     color = Color(0xFFD64545).enTema(),
                     modifier = Modifier
@@ -430,7 +430,7 @@ private fun FilaCuentaCuidador(
     ) {
 
         Text(
-            text = titulo,
+            text = tr(titulo),
             fontSize = 16.sp,
             color = Color(0xFF1A1A1A).enTema(),
             modifier = Modifier.weight(1f)

@@ -107,11 +107,11 @@ fun AlertsScreen(
         horariosHoy.isEmpty() ->
             "Hoy no tenés tomas programadas" to false
         atrasada != null ->
-            "Te falta registrar la toma de las $atrasada hs" to true
+            trf("Te falta registrar la toma de las {0} hs", atrasada) to true
         proxima != null ->
-            "Próxima toma: $proxima hs (${tomadas.count { it in horariosHoy }} de ${horariosHoy.size} registradas)" to false
+            trf("Próxima toma: {0} hs ({1} de {2} registradas)", proxima, tomadas.count { it in horariosHoy }, horariosHoy.size) to false
         else ->
-            "Registraste todas las tomas de hoy (${horariosHoy.size} de ${horariosHoy.size})" to false
+            trf("Registraste todas las tomas de hoy ({0} de {1})", horariosHoy.size, horariosHoy.size) to false
     }
 
     // Ejercicio de hoy y racha
@@ -122,13 +122,13 @@ fun AlertsScreen(
     val textoEjercicio = when (hechosHoy) {
         0 -> "Todavía no hiciste ejercicios hoy"
         1 -> "Hiciste 1 ejercicio hoy. ¡Bien!"
-        else -> "Hiciste $hechosHoy ejercicios hoy. ¡Bien!"
+        else -> trf("Hiciste {0} ejercicios hoy. ¡Bien!", hechosHoy)
     }
 
     val (tituloRacha, textoRacha) = when (racha) {
         0 -> "Empezá tu racha" to "Hacé un ejercicio hoy para arrancar"
         1 -> "Nueva racha" to "Vas por el primer día"
-        else -> "Racha de $racha días" to "Llevás $racha días seguidos haciendo ejercicio"
+        else -> trf("Racha de {0} días", racha) to trf("Llevás {0} días seguidos haciendo ejercicio", racha)
     }
 
     Scaffold(
@@ -139,8 +139,8 @@ fun AlertsScreen(
                     NavigationBarItem(
                         selected = rutaActual == item.ruta,
                         onClick = { onNavigate(item.ruta) },
-                        icon = { Icon(item.icono, contentDescription = item.label) },
-                        label = { Text(item.label, fontSize = 11.sp) },
+                        icon = { Icon(item.icono, contentDescription = tr(item.label)) },
+                        label = { Text(tr(item.label), fontSize = 11.sp) },
                         colors = NavigationBarItemDefaults.colors(
                             selectedIconColor = VerdeAl,
                             selectedTextColor = VerdeAl,
@@ -164,24 +164,24 @@ fun AlertsScreen(
 
             Row(verticalAlignment = Alignment.Top) {
                 Column(Modifier.weight(1f)) {
-                    Text("Alertas", fontSize = 15.sp, color = GrisAl)
+                    Text(tr("Alertas"), fontSize = 15.sp, color = GrisAl)
                     Spacer(Modifier.height(2.dp))
                     Text(
-                        "Al día con tu rutina",
+                        tr("Al día con tu rutina"),
                         fontSize = 26.sp,
                         fontWeight = FontWeight.Bold,
                         color = VerdeOscuroAl
                     )
                 }
                 IconButton(onClick = onConfigClick) {
-                    Icon(Icons.Filled.Settings, contentDescription = "Configuración", tint = GrisAl)
+                    Icon(Icons.Filled.Settings, contentDescription = tr("Configuración"), tint = GrisAl)
                 }
             }
 
             Spacer(Modifier.height(20.dp))
 
             // ---------- HOY ----------
-            Text("Hoy", fontSize = 14.sp, color = GrisAl)
+            Text(tr("Hoy"), fontSize = 14.sp, color = GrisAl)
             Spacer(Modifier.height(10.dp))
 
             ItemAlerta(
@@ -233,7 +233,7 @@ fun AlertsScreen(
             if (guanteConectado) {
                 Spacer(Modifier.height(24.dp))
 
-                Text("Esta semana", fontSize = 14.sp, color = GrisAl)
+                Text(tr("Esta semana"), fontSize = 14.sp, color = GrisAl)
                 Spacer(Modifier.height(10.dp))
 
                 ItemAlerta(
@@ -279,9 +279,9 @@ private fun ItemAlerta(
         }
         Spacer(Modifier.width(14.dp))
         Column(Modifier.weight(1f)) {
-            Text(titulo, fontSize = 16.sp, fontWeight = FontWeight.SemiBold, color = NegroAl)
+            Text(tr(titulo), fontSize = 16.sp, fontWeight = FontWeight.SemiBold, color = NegroAl)
             Spacer(Modifier.height(2.dp))
-            Text(detalle, fontSize = 13.sp, color = GrisAl, lineHeight = 18.sp)
+            Text(tr(detalle), fontSize = 13.sp, color = GrisAl, lineHeight = 18.sp)
         }
         if (puntoVerde) {
             Spacer(Modifier.width(10.dp))

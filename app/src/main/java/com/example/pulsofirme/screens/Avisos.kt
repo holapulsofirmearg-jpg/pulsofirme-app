@@ -74,7 +74,8 @@ object Avisos {
     fun mostrar(mensaje: String, largo: Boolean = false, tipo: TipoAviso? = null) {
         actual = Aviso(
             id = System.nanoTime(),
-            mensaje = mensaje,
+            // Se traduce si el usuario eligió inglés (el tipo se deduce del texto original)
+            mensaje = tr(mensaje),
             tipo = tipo ?: deducirTipo(mensaje),
             largo = largo || mensaje.length > 70
         )

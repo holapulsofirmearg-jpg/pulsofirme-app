@@ -78,7 +78,7 @@ fun AlertsConfigScreen(
         IconButton(onClick = onBack, modifier = Modifier.size(56.dp)) {
             Icon(
                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                contentDescription = "Volver",
+                contentDescription = tr("Volver"),
                 tint = Color.Black
             )
         }
@@ -86,7 +86,7 @@ fun AlertsConfigScreen(
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
-            text = "Configuración de alertas",
+            text = tr("Configuración de alertas"),
             fontSize = 28.sp,
             fontWeight = FontWeight.Bold,
             color = AzulTexto
@@ -95,7 +95,7 @@ fun AlertsConfigScreen(
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
-            text = "Elegí qué alertas querés recibir.",
+            text = tr("Elegí qué alertas querés recibir."),
             fontSize = 15.sp,
             color = GrisSubtitulo,
             lineHeight = 21.sp
@@ -153,7 +153,7 @@ fun AlertsConfigScreen(
             shape = RoundedCornerShape(14.dp),
             colors = ButtonDefaults.buttonColors(containerColor = VerdeTitulo)
         ) {
-            Text("Guardar cambios", fontSize = 17.sp, fontWeight = FontWeight.Bold, color = Color.White)
+            Text(tr("Guardar cambios"), fontSize = 17.sp, fontWeight = FontWeight.Bold, color = Color.White)
         }
 
         Spacer(modifier = Modifier.height(40.dp))
@@ -193,9 +193,9 @@ private fun FilaAlertaConfig(
         Spacer(modifier = Modifier.width(14.dp))
 
         Column(modifier = Modifier.weight(1f)) {
-            Text(titulo, fontSize = 16.sp, fontWeight = FontWeight.Bold, color = AzulTexto)
+            Text(tr(titulo), fontSize = 16.sp, fontWeight = FontWeight.Bold, color = AzulTexto)
             Spacer(modifier = Modifier.height(2.dp))
-            Text(descripcion, fontSize = 13.sp, color = GrisSubtitulo, lineHeight = 18.sp)
+            Text(tr(descripcion), fontSize = 13.sp, color = GrisSubtitulo, lineHeight = 18.sp)
         }
 
         Spacer(modifier = Modifier.width(8.dp))

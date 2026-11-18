@@ -1,5 +1,7 @@
 package com.example.pulsofirme
 
+import com.example.pulsofirme.screens.trf
+
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -223,7 +225,7 @@ object PacienteDelTutor {
         segundos <= 0 -> "0 min"
         segundos < 60 -> "$segundos s"
         segundos < 3600 -> "${segundos / 60} min"
-        else -> "${segundos / 3600} h ${(segundos % 3600) / 60} min"
+        else -> trf("{0} h {1} min", segundos / 3600, (segundos % 3600) / 60)
     }
 
     fun textoFecha(ms: Long): String =
@@ -237,7 +239,7 @@ object PacienteDelTutor {
         return when (dias) {
             0 -> "Hoy"
             1 -> "Ayer"
-            else -> "Hace $dias días"
+            else -> trf("Hace {0} días", dias)
         }
     }
 

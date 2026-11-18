@@ -162,7 +162,7 @@ fun AlertsConfigCaregiverScreen(
         IconButton(onClick = onBack) {
             Icon(
                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                contentDescription = "Volver",
+                contentDescription = tr("Volver"),
                 tint = Color.Black
             )
         }
@@ -170,7 +170,7 @@ fun AlertsConfigCaregiverScreen(
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
-            text = "Configuración de alertas",
+            text = tr("Configuración de alertas"),
             fontSize = 28.sp,
             fontWeight = FontWeight.Bold,
             color = AzulTexto
@@ -179,7 +179,7 @@ fun AlertsConfigCaregiverScreen(
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
-            text = "Elegí qué alertas querés recibir del usuario asociado.",
+            text = tr("Elegí qué alertas querés recibir del usuario asociado."),
             fontSize = 15.sp,
             color = GrisSubtitulo,
             lineHeight = 21.sp
@@ -247,7 +247,7 @@ fun AlertsConfigCaregiverScreen(
             colors = ButtonDefaults.buttonColors(containerColor = VerdeTitulo)
         ) {
             Text(
-                if (guardando) "Guardando…" else "Guardar cambios",
+                tr(if (guardando) "Guardando…" else "Guardar cambios"),
                 fontSize = 17.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.White
@@ -272,7 +272,7 @@ fun AlertsConfigCaregiverScreen(
                 modifier = Modifier.size(20.dp)
             )
             Spacer(modifier = Modifier.width(8.dp))
-            Text("Probar avisos ahora", fontSize = 16.sp, fontWeight = FontWeight.SemiBold, color = VerdeTitulo)
+            Text(tr("Probar avisos ahora"), fontSize = 16.sp, fontWeight = FontWeight.SemiBold, color = VerdeTitulo)
         }
 
         Spacer(modifier = Modifier.height(10.dp))
@@ -280,8 +280,8 @@ fun AlertsConfigCaregiverScreen(
         Text(
 
 
-            text = "La app revisa los datos del paciente más o menos cada 1 hora, aunque no la tengas abierta. " +
-                    "Android puede demorar un poco el aviso para cuidar la batería.",
+            text = tr("La app revisa los datos del paciente más o menos cada 1 hora, aunque no la tengas abierta. " +
+                    "Android puede demorar un poco el aviso para cuidar la batería."),
             fontSize = 13.sp,
             color = GrisSubtitulo,
             lineHeight = 18.sp
@@ -323,9 +323,9 @@ private fun FilaAlertaConfig(
         Spacer(modifier = Modifier.width(14.dp))
 
         Column(modifier = Modifier.weight(1f)) {
-            Text(titulo, fontSize = 16.sp, fontWeight = FontWeight.Bold, color = AzulTexto)
+            Text(tr(titulo), fontSize = 16.sp, fontWeight = FontWeight.Bold, color = AzulTexto)
             Spacer(modifier = Modifier.height(2.dp))
-            Text(descripcion, fontSize = 13.sp, color = GrisSubtitulo, lineHeight = 18.sp)
+            Text(tr(descripcion), fontSize = 13.sp, color = GrisSubtitulo, lineHeight = 18.sp)
         }
 
         Spacer(modifier = Modifier.width(8.dp))
