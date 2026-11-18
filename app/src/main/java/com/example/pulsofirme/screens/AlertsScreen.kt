@@ -20,6 +20,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pulsofirme.ProgresoData
 import com.example.pulsofirme.UserData
+import com.example.pulsofirme.EjercicioPaciente
+import com.example.pulsofirme.PacienteDelTutor
+import com.example.pulsofirme.alarmas.RecordatorioEjercicio
+import com.example.pulsofirme.alarmas.TomasMedicacion
+import androidx.compose.ui.platform.LocalContext
+import com.google.firebase.Timestamp
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.tasks.await
+import java.util.Calendar
+import java.util.Date
 
 private val VerdeAl = Color(0xFF1B7A4B)
 private val VerdeOscuroAl = Color(0xFF1B4332)
@@ -35,19 +46,82 @@ fun AlertsScreen(
     onConfigClick: () -> Unit = {},
     guanteConectado: Boolean = false
 ) {
-    val horarios = UserData.horariosMedicacion
-    val hechos = ProgresoData.ejerciciosCompletados
+    val contexto = LocalContext.current
 
-    val textoMedicacion = if (horarios.isEmpty()) {
-        "Todavía no configuraste tus horarios"
-    } else {
-        "Es hora de tu dosis de las ${horarios.first()} hs"
+    // ---------- Datos reales (antes había textos fijos) ----------
+    // Ejercicios del último tiempo y si tiene cuidador vinculado, desde Firestore.
+    // Si no hay internet, se usa lo guardado en el celular.
+    var ejercicios by remember { mutableStateOf<List<EjercicioPaciente>?>(null) }
+    var tieneCuidador by remember { mutableStateOf<Boolean?>(null) }
+
+    LaunchedEffect(Unit) {
+        val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return@LaunchedEffect
+        try {
+            val ref = FirebaseFirestore.getInstance().collection("usuarios").document(uid)
+            val yo = ref.get().await()
+            val tutores = (yo.get("tutoresVinculados") as? List<*>).orEmpty()
+            val profesionales = (yo.get("profesionalesVinculados") as? List<*>).orEmpty()
+            tieneCuidador = tutores.isNotEmpty() || profesionales.isNotEmpty()
+
+            val desde = Timestamp(Date(System.currentTimeMillis() - 120L * 24 * 60 * 60 * 1000))
+            ejercicios = ref.collection("ejerciciosRealizados")
+                .whereGreaterThanOrEqualTo("fecha", desde).get().await()
+                .documents.mapNotNull { d ->
+                    val ms = d.getTimestamp("fecha")?.toDate()?.time ?: return@mapNotNull null
+                    EjercicioPaciente(
+                        fechaMs = ms,
+                        nombre = d.getString("ejercicio")?.ifBlank { null } ?: "Ejercicio",
+                        segundos = d.getLong("segundos") ?: 0L,
+                        repeticiones = d.getLong("repeticiones") ?: 0L
+                    )
+                }
+                .sortedByDescending { it.fechaMs }
+        } catch (_: Exception) {
+            // Sin conexión: se muestran los datos del celular y se oculta el aviso de cuidador
+        }
     }
 
-    val textoEjercicio = if (hechos == 0) {
-        "Todavía no hiciste ejercicios hoy"
-    } else {
-        "Llevás $hechos/$hechos ejercicios de hoy"
+    // Medicación: horarios que tocan hoy y cuáles ya marcó con "Ya la tomé"
+    val horariosHoy = TomasMedicacion.horariosDeHoy(contexto)
+    val tomadas = TomasMedicacion.tomadasHoy(contexto)
+    val pendientes = horariosHoy.filter { it !in tomadas }
+    val ahora = Calendar.getInstance()
+    val minutosAhora = ahora.get(Calendar.HOUR_OF_DAY) * 60 + ahora.get(Calendar.MINUTE)
+    fun minutosDe(h: String): Int {
+        val partes = h.split(":")
+        return (partes.getOrNull(0)?.toIntOrNull() ?: 0) * 60 + (partes.getOrNull(1)?.toIntOrNull() ?: 0)
+    }
+    val atrasada = pendientes.firstOrNull { minutosDe(it) <= minutosAhora }
+    val proxima = pendientes.firstOrNull { minutosDe(it) > minutosAhora }
+
+    val (textoMedicacion, medicacionDestacada) = when {
+        UserData.horariosMedicacion.isEmpty() && horariosHoy.isEmpty() ->
+            "Todavía no configuraste tus horarios" to false
+        horariosHoy.isEmpty() ->
+            "Hoy no tenés tomas programadas" to false
+        atrasada != null ->
+            "Te falta registrar la toma de las $atrasada hs" to true
+        proxima != null ->
+            "Próxima toma: $proxima hs (${tomadas.count { it in horariosHoy }} de ${horariosHoy.size} registradas)" to false
+        else ->
+            "Registraste todas las tomas de hoy (${horariosHoy.size} de ${horariosHoy.size})" to false
+    }
+
+    // Ejercicio de hoy y racha
+    val hechosHoy = ejercicios?.let { PacienteDelTutor.deHoy(it).size } ?: ProgresoData.ejerciciosCompletados
+    val racha = ejercicios?.let { PacienteDelTutor.racha(it) } ?: RecordatorioEjercicio.rachaActual(contexto)
+
+    val tituloEjercicio = if (hechosHoy == 0) "Ejercicio pendiente" else "Ejercicio de hoy"
+    val textoEjercicio = when (hechosHoy) {
+        0 -> "Todavía no hiciste ejercicios hoy"
+        1 -> "Hiciste 1 ejercicio hoy. ¡Bien!"
+        else -> "Hiciste $hechosHoy ejercicios hoy. ¡Bien!"
+    }
+
+    val (tituloRacha, textoRacha) = when (racha) {
+        0 -> "Empezá tu racha" to "Hacé un ejercicio hoy para arrancar"
+        1 -> "Nueva racha" to "Vas por el primer día"
+        else -> "Racha de $racha días" to "Llevás $racha días seguidos haciendo ejercicio"
     }
 
     Scaffold(
@@ -108,8 +182,8 @@ fun AlertsScreen(
                 colorIcono = AmarilloAl,
                 titulo = "Medicación",
                 detalle = textoMedicacion,
-                destacada = true,
-                puntoVerde = true
+                destacada = medicacionDestacada,
+                puntoVerde = medicacionDestacada
             )
 
             Spacer(Modifier.height(10.dp))
@@ -117,10 +191,10 @@ fun AlertsScreen(
             ItemAlerta(
                 icono = Icons.Filled.Bolt,
                 colorIcono = VerdeAl,
-                titulo = "Ejercicio pendiente",
+                titulo = tituloEjercicio,
                 detalle = textoEjercicio,
-                destacada = true,
-                puntoVerde = true
+                destacada = hechosHoy == 0,
+                puntoVerde = hechosHoy == 0
             )
 
             Spacer(Modifier.height(10.dp))
@@ -128,22 +202,25 @@ fun AlertsScreen(
             ItemAlerta(
                 icono = Icons.Filled.EmojiEvents,
                 colorIcono = VerdeAl,
-                titulo = "Nueva racha",
-                detalle = "Vas por el primer día",
+                titulo = tituloRacha,
+                detalle = textoRacha,
                 destacada = false,
                 puntoVerde = false
             )
 
-            Spacer(Modifier.height(10.dp))
+            // Solo si de verdad no tiene ningún tutor ni profesional vinculado
+            if (tieneCuidador == false) {
+                Spacer(Modifier.height(10.dp))
 
-            ItemAlerta(
-                icono = Icons.Filled.PersonAdd,
-                colorIcono = VerdeAl,
-                titulo = "Todavía no tenés un cuidador",
-                detalle = "Vinculá a un familiar o profesional para que siga tu progreso",
-                destacada = false,
-                puntoVerde = false
-            )
+                ItemAlerta(
+                    icono = Icons.Filled.PersonAdd,
+                    colorIcono = VerdeAl,
+                    titulo = "Todavía no tenés un cuidador",
+                    detalle = "Vinculá a un familiar o profesional para que siga tu progreso",
+                    destacada = false,
+                    puntoVerde = false
+                )
+            }
 
             // ---------- ESTA SEMANA ----------
             if (guanteConectado) {
