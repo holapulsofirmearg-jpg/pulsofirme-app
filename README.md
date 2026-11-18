@@ -2,9 +2,9 @@
   <img src="app/src/main/res/drawable/logooo.png" alt="Logo de PulsoFirme" width="130">
 </p>
 
-# PulsoFirme
+# Pulso Firme
 
-PulsoFirme es una app para Android que hicimos como proyecto en la Escuela Experimental PROA de Alta Gracia. Está pensada para personas con Parkinson o artritis que necesitan hacer ejercicios de mano todos los días, y funciona junto con un guante que armamos nosotros.
+Pulso Firme es una app para Android que hicimos como proyecto en la Escuela Experimental PROA de Alta Gracia. Está pensada para personas con Parkinson o artritis que necesitan hacer ejercicios de mano todos los días, y funciona junto con un guante que armamos nosotros.
 
 La idea surgió de algo simple: los ejercicios de rehabilitación se hacen en casa, muchas veces solos, y es fácil dejarlos o no saber si se están haciendo bien. Con la app la persona sigue rutinas guiadas, anota cómo se siente y puede compartir su progreso con un familiar o con su médico.
 
@@ -44,7 +44,7 @@ Algunas cosas que agregamos:
 - Opciones de accesibilidad: letra grande, alto contraste, botones más grandes y soporte para TalkBack.
 - Modo oscuro, y la app está en español y en inglés.
 
-PulsoFirme acompaña el tratamiento, pero no lo reemplaza. Los ejercicios siempre tienen que estar indicados por un profesional.
+Pulso Firme acompaña el tratamiento, pero no lo reemplaza. Los ejercicios siempre tienen que estar indicados por un profesional.
 
 ## Con qué está hecha
 
