@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -23,22 +27,27 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pulsofirme.R
 
-private val VerdePremiumPro = Color(0xFF0A8F50)
-private val VerdeOscuroPremiumPro = Color(0xFF18513B)
-private val VerdeClaroPremiumPro = Color(0xFFEAF6EF)
-private val DoradoPremiumPro = Color(0xFFC89418)
-private val DoradoClaroPremiumPro = Color(0xFFFFF6E2)
-private val GrisPremiumPro = Color(0xFF6B7280)
-
+private val VerdePremiumPro: Color
+    @Composable get() = Color(0xFF0A8F50).enTema()
+private val VerdeOscuroPremiumPro: Color
+    @Composable get() = Color(0xFF18513B).enTema()
+private val VerdeClaroPremiumPro: Color
+    @Composable get() = Color(0xFFEAF6EF).enTema()
+private val DoradoPremiumPro: Color
+    @Composable get() = Color(0xFFC89418).enTema()
+private val DoradoClaroPremiumPro: Color
+    @Composable get() = Color(0xFFFFF6E2).enTema()
+private val GrisPremiumPro: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
 @Composable
 fun ProfessionalPremiumScreen(
     onBack: () -> Unit,
     onActivarPremium: (String) -> Unit = {}
 ) {
-    var planSeleccionado by remember { mutableStateOf("anual") }
-    var mostrarConfirmacionPremium by remember { mutableStateOf(false) }
+    var planSeleccionado by rememberSaveable { mutableStateOf("anual") }
+    var mostrarConfirmacionPremium by rememberSaveable { mutableStateOf(false) }
 
-    Scaffold(containerColor = Color.White) { padding ->
+    Scaffold(containerColor = Color.White.enTema()) { padding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -269,7 +278,7 @@ fun ProfessionalPremiumScreen(
                 }
             },
             shape = RoundedCornerShape(24.dp),
-            containerColor = Color.White
+            containerColor = Color.White.enTema()
         )
     }
 }
@@ -285,7 +294,7 @@ private fun BeneficioPremiumPro(
             .fillMaxWidth()
             .padding(bottom = 10.dp),
         shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.cardColors(containerColor = Color(0xFFF5FAF7))
+        colors = CardDefaults.cardColors(containerColor = Color(0xFFF5FAF7).enTema())
     ) {
         Row(
             modifier = Modifier.padding(14.dp),
@@ -307,7 +316,7 @@ private fun BeneficioPremiumPro(
                     titulo,
                     fontSize = 15.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFF151515)
+                    color = Color(0xFF151515).enTema()
                 )
                 Text(
                     descripcion,
@@ -335,7 +344,7 @@ private fun PlanPremiumPro(
             .clickable { onClick() },
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(
-            containerColor = if (seleccionado) DoradoClaroPremiumPro else Color.White
+            containerColor = if (seleccionado) DoradoClaroPremiumPro else Color.White.enTema()
         ),
         border = CardDefaults.outlinedCardBorder(
             enabled = true
@@ -363,7 +372,7 @@ private fun PlanPremiumPro(
                 Box(
                     modifier = Modifier
                         .size(24.dp)
-                        .background(Color.White, CircleShape)
+                        .background(Color.White.enTema(), CircleShape)
                 )
             }
 
@@ -404,7 +413,7 @@ private fun PlanPremiumPro(
                     precio,
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
-                    color = if (seleccionado) DoradoPremiumPro else Color(0xFF151515)
+                    color = if (seleccionado) DoradoPremiumPro else Color(0xFF151515).enTema()
                 )
                 Text("por mes", fontSize = 11.sp, color = GrisPremiumPro)
             }

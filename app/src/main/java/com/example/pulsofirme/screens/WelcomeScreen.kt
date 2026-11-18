@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
@@ -33,12 +37,16 @@ import androidx.compose.ui.unit.sp
 import com.example.pulsofirme.R
 
 private val AzulCabecera = Color(0xFF1565C0)
-private val VerdeBotones = Color(0xFF237A68)
-private val GrisOscuroCuidador = Color(0xFF394A51)
-private val GrisSubtitulo = Color(0xFF555555)
-private val GrisBordeIdioma = Color(0xFFD0D0D0)
-private val VerdeClaroSeleccionado = Color(0xFFEFF6F1)
-
+private val VerdeBotones: Color
+    @Composable get() = Color(0xFF237A68).enTema()
+private val GrisOscuroCuidador: Color
+    @Composable get() = Color(0xFF394A51).enTema()
+private val GrisSubtitulo: Color
+    @Composable get() = Color(0xFF555555).enTema()
+private val GrisBordeIdioma: Color
+    @Composable get() = Color(0xFFD0D0D0).enTema()
+private val VerdeClaroSeleccionado: Color
+    @Composable get() = Color(0xFFEFF6F1).enTema()
 private data class Idioma(
     val nombre: String,
     val bandera: String
@@ -59,16 +67,16 @@ fun WelcomeScreen(
     onNavigateToCaregiver: () -> Unit
 ) {
     var idiomaSeleccionado by remember { mutableStateOf(idiomasDisponibles.first()) }
-    var mostrarSelectorIdioma by remember { mutableStateOf(false) }
+    var mostrarSelectorIdioma by rememberSaveable { mutableStateOf(false) }
 
     Scaffold(
-        containerColor = Color.White
+        containerColor = Color.White.enTema()
     ) { padding ->
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
-                .background(Color.White)
+                .background(Color.White.enTema())
         ) {
             // Curva azul superior (cae suave hacia la derecha)
             Canvas(
@@ -152,7 +160,7 @@ fun WelcomeScreen(
                             Box(
                                 modifier = Modifier
                                     .size(28.dp)
-                                    .background(Color.White, RoundedCornerShape(14.dp)),
+                                    .background(Color.White.enTema(), RoundedCornerShape(14.dp)),
                                 contentAlignment = Alignment.Center
                             ) {
                                 Icon(
@@ -246,7 +254,7 @@ fun WelcomeScreen(
                         .height(54.dp),
                     shape = RoundedCornerShape(14.dp),
                     border = androidx.compose.foundation.BorderStroke(1.2.dp, GrisBordeIdioma),
-                    colors = ButtonDefaults.outlinedButtonColors(containerColor = Color.White)
+                    colors = ButtonDefaults.outlinedButtonColors(containerColor = Color.White.enTema())
                 ) {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
@@ -269,7 +277,7 @@ fun WelcomeScreen(
                         Icon(
                             imageVector = if (mostrarSelectorIdioma) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore,
                             contentDescription = null,
-                            tint = Color(0xFF6B7280),
+                            tint = Color(0xFF6B7280).enTema(),
                             modifier = Modifier.size(20.dp)
                         )
                     }
@@ -281,7 +289,7 @@ fun WelcomeScreen(
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .background(Color.White, RoundedCornerShape(14.dp))
+                            .background(Color.White.enTema(), RoundedCornerShape(14.dp))
                             .background(
                                 androidx.compose.ui.graphics.Color.Transparent
                             )
@@ -289,7 +297,7 @@ fun WelcomeScreen(
                         Column(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .background(Color.White, RoundedCornerShape(14.dp))
+                                .background(Color.White.enTema(), RoundedCornerShape(14.dp))
                         ) {
                             idiomasDisponibles.forEach { idioma ->
                                 val seleccionado = idioma.nombre == idiomaSeleccionado.nombre
@@ -333,7 +341,7 @@ fun WelcomeScreen(
                                 }
 
                                 if (idioma != idiomasDisponibles.last()) {
-                                    HorizontalDivider(color = Color(0xFFEFEFEF))
+                                    HorizontalDivider(color = Color(0xFFEFEFEF).enTema())
                                 }
                             }
                         }

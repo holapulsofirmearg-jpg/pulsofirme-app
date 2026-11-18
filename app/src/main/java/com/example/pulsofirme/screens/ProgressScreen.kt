@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
 import com.example.pulsofirme.ui.theme.enTema
 
 import androidx.compose.foundation.background
@@ -135,7 +137,7 @@ fun ProgressScreen(
     onNavigate: (String) -> Unit,
     onQuickDashClick: () -> Unit = {}
 ) {
-    var pestania by remember { mutableStateOf("Semana") }
+    var pestania by rememberSaveable { mutableStateOf("Semana") }
 
     // Datos reales del paciente (último año)
     var registros by remember { mutableStateOf<List<RegistroEjercicio>>(emptyList()) }

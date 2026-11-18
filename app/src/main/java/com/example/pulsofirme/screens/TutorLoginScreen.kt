@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -43,11 +47,14 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 
-private val VerdeTutor = Color(0xFF237A68)
-private val VerdeTexto = Color(0xFF1B7A6E)
-private val GrisTexto = Color(0xFF6E6E6E)
-private val GrisBorde = Color(0xFFD8D8D8)
-
+private val VerdeTutor: Color
+    @Composable get() = Color(0xFF237A68).enTema()
+private val VerdeTexto: Color
+    @Composable get() = Color(0xFF1B7A6E).enTema()
+private val GrisTexto: Color
+    @Composable get() = Color(0xFF6E6E6E).enTema()
+private val GrisBorde: Color
+    @Composable get() = Color(0xFFD8D8D8).enTema()
 @Composable
 fun TutorLoginScreen(
     onBack: () -> Unit = {},
@@ -57,11 +64,11 @@ fun TutorLoginScreen(
     // true mientras se verifica el inicio de sesión (bloquea el botón)
     cargando: Boolean = false
 ) {
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
-    var passwordVisible by remember { mutableStateOf(false) }
-    var codigo by remember { mutableStateOf("") }
-    var mostrarAccesibilidad by remember { mutableStateOf(false) }
+    var email by rememberSaveable { mutableStateOf("") }
+    var password by rememberSaveable { mutableStateOf("") }
+    var passwordVisible by rememberSaveable { mutableStateOf(false) }
+    var codigo by rememberSaveable { mutableStateOf("") }
+    var mostrarAccesibilidad by rememberSaveable { mutableStateOf(false) }
 
     // Opciones de accesibilidad antes de iniciar sesión (tamaño de letra y contraste).
     // Usa las mismas preferencias que Ajustes, así que quedan guardadas para toda la app.
@@ -70,7 +77,7 @@ fun TutorLoginScreen(
     }
 
     Scaffold(
-        containerColor = Color.White
+        containerColor = Color.White.enTema()
     ) { padding ->
         Column(
             modifier = Modifier
@@ -308,14 +315,14 @@ private fun DialogoAccesibilidadRapida(onCerrar: () -> Unit) {
     val contexto = LocalContext.current
     AlertDialog(
         onDismissRequest = onCerrar,
-        containerColor = Color.White,
+        containerColor = Color.White.enTema(),
         shape = RoundedCornerShape(20.dp),
         title = {
             Text("Accesibilidad", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = VerdeTutor)
         },
         text = {
             Column {
-                Text("Tamaño de la letra", fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = Color(0xFF1A1A1A))
+                Text("Tamaño de la letra", fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = Color(0xFF1A1A1A).enTema())
                 Spacer(modifier = Modifier.height(6.dp))
                 Accesibilidad.niveles.forEach { nivel ->
                     val elegido = Accesibilidad.tamanoLetra == nivel
@@ -337,7 +344,7 @@ private fun DialogoAccesibilidadRapida(onCerrar: () -> Unit) {
                             colors = RadioButtonDefaults.colors(selectedColor = VerdeTutor)
                         )
                         Spacer(modifier = Modifier.width(8.dp))
-                        Text(nivel, fontSize = 16.sp, color = Color(0xFF1A1A1A))
+                        Text(nivel, fontSize = 16.sp, color = Color(0xFF1A1A1A).enTema())
                     }
                 }
                 Spacer(modifier = Modifier.height(10.dp))
@@ -352,7 +359,7 @@ private fun DialogoAccesibilidadRapida(onCerrar: () -> Unit) {
                         )
                         .heightIn(min = 48.dp)
                 ) {
-                    Text("Alto contraste", fontSize = 16.sp, color = Color(0xFF1A1A1A), modifier = Modifier.weight(1f))
+                    Text("Alto contraste", fontSize = 16.sp, color = Color(0xFF1A1A1A).enTema(), modifier = Modifier.weight(1f))
                     Switch(
                         checked = Accesibilidad.altoContraste,
                         onCheckedChange = null,

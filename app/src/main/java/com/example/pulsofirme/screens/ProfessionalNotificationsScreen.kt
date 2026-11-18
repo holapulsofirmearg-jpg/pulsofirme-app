@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -28,7 +32,8 @@ import java.util.Locale
 
 private val VerdeNotifPro = Color(0xFF07884A)
 private val VerdeClaroNotifPro = Color(0xFFEAF8F0)
-private val GrisNotifPro = Color(0xFF6B7280)
+private val GrisNotifPro: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
 private val NaranjaNotifPro = Color(0xFFF59E0B)
 
 data class NotificacionProfesionalFirebase(
@@ -40,7 +45,7 @@ data class NotificacionProfesionalFirebase(
 @Composable
 fun ProfessionalNotificationsScreen(onBack: () -> Unit, onPacienteClick: (String) -> Unit = {}) {
     val db = FirebaseFirestore.getInstance(); val uid = FirebaseAuth.getInstance().currentUser?.uid
-    var filtro by remember { mutableStateOf("Todas") }; var cargando by remember { mutableStateOf(true) }
+    var filtro by rememberSaveable { mutableStateOf("Todas") }; var cargando by remember { mutableStateOf(true) }
     var notificaciones by remember { mutableStateOf<List<NotificacionProfesionalFirebase>>(emptyList()) }
     var leidasHasta by remember { mutableLongStateOf(0L) }
 
@@ -75,17 +80,17 @@ fun ProfessionalNotificationsScreen(onBack: () -> Unit, onPacienteClick: (String
     }
     LaunchedEffect(uid) { cargar() }
     val visibles = if (filtro == "Todas") notificaciones else notificaciones.filter { it.categoria == filtro }
-    Scaffold(containerColor = Color.White) { padding ->
+    Scaffold(containerColor = Color.White.enTema()) { padding ->
         Column(Modifier.fillMaxSize().padding(padding).padding(horizontal = 20.dp, vertical = 16.dp)) {
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                 IconButton(onClick = onBack) { Icon(Icons.Filled.ArrowBack, "Volver") }
-                Text("Notificaciones", Modifier.weight(1f), fontSize = 25.sp, fontWeight = FontWeight.Bold, color = Color(0xFF10152B))
+                Text("Notificaciones", Modifier.weight(1f), fontSize = 25.sp, fontWeight = FontWeight.Bold, color = Color(0xFF10152B).enTema())
                 TextButton(onClick = {
                     if (uid != null) db.collection("usuarios").document(uid).update("notificacionesLeidasHasta", FieldValue.serverTimestamp()).addOnSuccessListener { leidasHasta = System.currentTimeMillis(); notificaciones = notificaciones.map { it.copy(noLeida = false) } }
                 }) { Text("Marcar leídas") }
             }
             Spacer(Modifier.height(14.dp))
-            Row(Modifier.fillMaxWidth().background(Color(0xFFF7F8FA), RoundedCornerShape(16.dp))) {
+            Row(Modifier.fillMaxWidth().background(Color(0xFFF7F8FA).enTema(), RoundedCornerShape(16.dp))) {
                 listOf("Todas", "Actividad", "Progreso").forEach { op -> Surface(Modifier.weight(1f).clickable { filtro = op }, color = if (filtro == op) VerdeNotifPro else Color.Transparent, shape = RoundedCornerShape(16.dp)) { Text(op, Modifier.padding(vertical = 12.dp), color = if (filtro == op) Color.White else GrisNotifPro, fontWeight = FontWeight.SemiBold, fontSize = 13.sp, textAlign = androidx.compose.ui.text.style.TextAlign.Center) } }
             }
             Spacer(Modifier.height(14.dp))
@@ -101,7 +106,7 @@ fun ProfessionalNotificationsScreen(onBack: () -> Unit, onPacienteClick: (String
 @Composable
 private fun NotificationProfessionalCardFirebase(n: NotificacionProfesionalFirebase, onClick: () -> Unit) {
     val fechaTexto = n.fecha?.toDate()?.let { SimpleDateFormat("dd/MM · HH:mm", Locale.getDefault()).format(it) } ?: "Sin fecha"
-    Card(Modifier.fillMaxWidth().clickable { onClick() }, shape = RoundedCornerShape(18.dp), colors = CardDefaults.cardColors(containerColor = if (n.noLeida) Color(0xFFF3FCF7) else Color.White), border = CardDefaults.outlinedCardBorder()) {
+    Card(Modifier.fillMaxWidth().clickable { onClick() }, shape = RoundedCornerShape(18.dp), colors = CardDefaults.cardColors(containerColor = if (n.noLeida) Color(0xFFF3FCF7).enTema() else Color.White.enTema()), border = CardDefaults.outlinedCardBorder()) {
         Row(Modifier.padding(15.dp), verticalAlignment = Alignment.CenterVertically) {
             Box(Modifier.size(48.dp).background(n.fondo, CircleShape), contentAlignment = Alignment.Center) { Icon(n.icono, null, tint = n.color); if (n.noLeida) Box(Modifier.align(Alignment.TopStart).size(9.dp).background(VerdeNotifPro, CircleShape)) }
             Spacer(Modifier.width(13.dp)); Column(Modifier.weight(1f)) { Text(n.paciente, fontWeight = FontWeight.Bold); Text(n.titulo, fontWeight = FontWeight.SemiBold, color = n.color); Text(n.descripcion, fontSize = 13.sp, color = GrisNotifPro); Spacer(Modifier.height(5.dp)); Text(fechaTexto, fontSize = 12.sp, color = GrisNotifPro) }; Icon(Icons.Filled.ChevronRight, "Ver paciente", tint = GrisNotifPro)

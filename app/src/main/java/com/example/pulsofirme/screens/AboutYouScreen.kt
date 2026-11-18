@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -43,27 +47,30 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pulsofirme.UserData
 
-private val VerdeBoton = Color(0xFF2E9E63)
-private val VerdeTexto = Color(0xFF1B7A4B)
+private val VerdeBoton: Color
+    @Composable get() = Color(0xFF2E9E63).enTema()
+private val VerdeTexto: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
 private val AzulCabecera = Color(0xFF1565C0)
-private val VerdeFondoSel = Color(0xFFEFF6F1)
-private val BordeGris = Color(0xFFD8DED9)
-
+private val VerdeFondoSel: Color
+    @Composable get() = Color(0xFFEFF6F1).enTema()
+private val BordeGris: Color
+    @Composable get() = Color(0xFFD8DED9).enTema()
 @Composable
 fun AboutYouScreen(
     onBack: () -> Unit,
     onContinue: (List<String>, String) -> Unit
 ) {
-    var parkinson by remember { mutableStateOf(false) }
-    var artritis by remember { mutableStateOf(false) }
-    var mano by remember { mutableStateOf("") }
+    var parkinson by rememberSaveable { mutableStateOf(false) }
+    var artritis by rememberSaveable { mutableStateOf(false) }
+    var mano by rememberSaveable { mutableStateOf("") }
 
     val puedeContinuar = (parkinson || artritis) && mano.isNotBlank()
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(rememberScrollState())
     ) {
         Box(modifier = Modifier.fillMaxWidth().height(180.dp)) {
@@ -115,7 +122,7 @@ fun AboutYouScreen(
                 text = "¿Qué te trae a PulsoFirme?",
                 fontSize = 17.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFF1A1A1A)
+                color = Color(0xFF1A1A1A).enTema()
             )
 
             Spacer(modifier = Modifier.height(6.dp))
@@ -123,7 +130,7 @@ fun AboutYouScreen(
             Text(
                 text = "Podés elegir más de una opción.",
                 fontSize = 14.sp,
-                color = Color(0xFF6B7280)
+                color = Color(0xFF6B7280).enTema()
             )
 
             Spacer(modifier = Modifier.height(18.dp))
@@ -144,7 +151,7 @@ fun AboutYouScreen(
 
             Spacer(modifier = Modifier.height(28.dp))
 
-            Divider(color = Color(0xFFE8EBE9), thickness = 1.dp)
+            Divider(color = Color(0xFFE8EBE9).enTema(), thickness = 1.dp)
 
             Spacer(modifier = Modifier.height(28.dp))
 
@@ -152,7 +159,7 @@ fun AboutYouScreen(
                 text = "¿En qué mano usás el guante?",
                 fontSize = 17.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFF1A1A1A)
+                color = Color(0xFF1A1A1A).enTema()
             )
 
             Spacer(modifier = Modifier.height(6.dp))
@@ -160,7 +167,7 @@ fun AboutYouScreen(
             Text(
                 text = "Así ajustamos los ejercicios a la mano que vas a monitorear.",
                 fontSize = 14.sp,
-                color = Color(0xFF6B7280),
+                color = Color(0xFF6B7280).enTema(),
                 lineHeight = 19.sp
             )
 
@@ -179,14 +186,14 @@ fun AboutYouScreen(
                 Icon(
                     imageVector = Icons.Default.Lock,
                     contentDescription = null,
-                    tint = Color(0xFF9AA0A6),
+                    tint = Color(0xFF9AA0A6).enTema(),
                     modifier = Modifier.size(14.dp)
                 )
                 Spacer(modifier = Modifier.width(6.dp))
                 Text(
                     text = "Por ahora el guante solo está disponible para mano derecha.",
                     fontSize = 12.sp,
-                    color = Color(0xFF9AA0A6)
+                    color = Color(0xFF9AA0A6).enTema()
                 )
             }
 
@@ -217,7 +224,7 @@ fun AboutYouScreen(
                 shape = RoundedCornerShape(12.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = VerdeBoton,
-                    disabledContainerColor = Color(0xFFE0E0E0)
+                    disabledContainerColor = Color(0xFFE0E0E0).enTema()
                 )
             ) {
                 Text(
@@ -268,7 +275,7 @@ private fun OpcionTilde(
         Text(
             text = texto,
             fontSize = 16.sp,
-            color = if (seleccionado) VerdeTexto else Color(0xFF3D3D3D)
+            color = if (seleccionado) VerdeTexto else Color(0xFF3D3D3D).enTema()
         )
     }
 }
@@ -286,7 +293,7 @@ private fun OpcionMano(
             .height(78.dp)
             .background(
                 color = when {
-                    !habilitada -> Color(0xFFF5F5F5)
+                    !habilitada -> Color(0xFFF5F5F5).enTema()
                     seleccionado -> VerdeFondoSel
                     else -> Color.White
                 },
@@ -307,7 +314,7 @@ private fun OpcionMano(
             Icon(
                 imageVector = Icons.Default.Lock,
                 contentDescription = null,
-                tint = Color(0xFFB0B0B0),
+                tint = Color(0xFFB0B0B0).enTema(),
                 modifier = Modifier.size(20.dp)
             )
         }
@@ -316,9 +323,9 @@ private fun OpcionMano(
             text = texto,
             fontSize = 15.sp,
             color = when {
-                !habilitada -> Color(0xFFB0B0B0)
+                !habilitada -> Color(0xFFB0B0B0).enTema()
                 seleccionado -> VerdeTexto
-                else -> Color(0xFF3D3D3D)
+                else -> Color(0xFF3D3D3D).enTema()
             },
             textAlign = TextAlign.Center
         )
@@ -326,7 +333,7 @@ private fun OpcionMano(
             Text(
                 text = "Próximamente",
                 fontSize = 11.sp,
-                color = Color(0xFFB0B0B0)
+                color = Color(0xFFB0B0B0).enTema()
             )
         }
     }

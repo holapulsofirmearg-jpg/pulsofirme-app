@@ -1,5 +1,8 @@
-
 package com.example.pulsofirme.screens
+
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -28,10 +31,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-private val VerdePE = Color(0xFF07884A)
-private val VerdeClaroPE = Color(0xFFE8F5EE)
-private val GrisPE = Color(0xFF7A8294)
-
+private val VerdePE: Color
+    @Composable get() = Color(0xFF07884A).enTema()
+private val VerdeClaroPE: Color
+    @Composable get() = Color(0xFFE8F5EE).enTema()
+private val GrisPE: Color
+    @Composable get() = Color(0xFF7A8294).enTema()
 @Composable
 fun ProfessionalEditProfileScreen(
     nombreInicial: String = "",
@@ -82,10 +87,10 @@ fun ProfessionalEditProfileScreen(
         }
     }
 
-    var menuGenero by remember { mutableStateOf(false) }
-    var menuPais by remember { mutableStateOf(false) }
+    var menuGenero by rememberSaveable { mutableStateOf(false) }
+    var menuPais by rememberSaveable { mutableStateOf(false) }
 
-    Scaffold(containerColor = Color.White) { padding ->
+    Scaffold(containerColor = Color.White.enTema()) { padding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -256,7 +261,7 @@ fun ProfessionalEditProfileScreen(
                     .height(54.dp),
                 shape = RoundedCornerShape(28.dp),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFFDDF2E6),
+                    containerColor = Color(0xFFDDF2E6).enTema(),
                     contentColor = VerdePE
                 )
             ) {
@@ -312,14 +317,14 @@ private fun CampoProfesional(
         modifier = Modifier
             .fillMaxWidth()
             .padding(bottom = 14.dp),
-        placeholder = { Text(etiqueta, color = Color(0xFF9AA2B2)) },
+        placeholder = { Text(etiqueta, color = Color(0xFF9AA2B2).enTema()) },
         leadingIcon = { Icon(icono, contentDescription = null, tint = GrisPE) },
         singleLine = true,
         keyboardOptions = KeyboardOptions(keyboardType = keyboardType),
         shape = RoundedCornerShape(13.dp),
         colors = OutlinedTextFieldDefaults.colors(
             focusedBorderColor = VerdePE,
-            unfocusedBorderColor = Color(0xFFD6DAD8)
+            unfocusedBorderColor = Color(0xFFD6DAD8).enTema()
         )
     )
 }
@@ -338,7 +343,7 @@ private fun CampoSeleccionProfesional(
         shape = RoundedCornerShape(13.dp),
         border = androidx.compose.foundation.BorderStroke(
             1.dp,
-            Color(0xFFD6DAD8)
+            Color(0xFFD6DAD8).enTema()
         ),
         color = Color.White
     ) {
@@ -351,7 +356,7 @@ private fun CampoSeleccionProfesional(
             Text(
                 text = texto,
                 modifier = Modifier.weight(1f),
-                color = if (texto == "Género" || texto == "País") Color(0xFF9AA2B2) else Color(0xFF171A24)
+                color = if (texto == "Género" || texto == "País") Color(0xFF9AA2B2).enTema() else Color(0xFF171A24).enTema()
             )
             Icon(Icons.Filled.ChevronRight, contentDescription = null, tint = GrisPE)
         }

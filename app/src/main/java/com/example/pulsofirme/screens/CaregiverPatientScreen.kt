@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -34,16 +36,24 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-private val VerdeTitulo = Color(0xFF1B7A4B)
-private val AzulTexto = Color(0xFF16324F)
-private val GrisSubtitulo = Color(0xFF6B7280)
-private val VerdeFondo = Color(0xFFEFF6F1)
-private val VerdeIconoFondo = Color(0xFFDFF3E4)
-private val GrisFondoLista = Color(0xFFF7F8F8)
-private val VerdeAutorizadoFondo = Color(0xFFDCEFE3)
-private val GrisDivider = Color(0xFFE5E7EB)
-private val GrisBorde = Color(0xFFD8DED9)
-
+private val VerdeTitulo: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val AzulTexto: Color
+    @Composable get() = Color(0xFF16324F).enTema()
+private val GrisSubtitulo: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val VerdeFondo: Color
+    @Composable get() = Color(0xFFEFF6F1).enTema()
+private val VerdeIconoFondo: Color
+    @Composable get() = Color(0xFFDFF3E4).enTema()
+private val GrisFondoLista: Color
+    @Composable get() = Color(0xFFF7F8F8).enTema()
+private val VerdeAutorizadoFondo: Color
+    @Composable get() = Color(0xFFDCEFE3).enTema()
+private val GrisDivider: Color
+    @Composable get() = Color(0xFFE5E7EB).enTema()
+private val GrisBorde: Color
+    @Composable get() = Color(0xFFD8DED9).enTema()
 @Composable
 fun CaregiverPatientScreen(
     nombrePaciente: String = "Nombre del paciente",
@@ -61,7 +71,7 @@ fun CaregiverPatientScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 24.dp)
     ) {
@@ -96,7 +106,7 @@ fun CaregiverPatientScreen(
             Box(
                 modifier = Modifier
                     .size(56.dp)
-                    .background(Color.White, CircleShape),
+                    .background(Color.White.enTema(), CircleShape),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
@@ -254,7 +264,7 @@ private fun FilaDatoPaciente(
         Icon(
             imageVector = Icons.AutoMirrored.Filled.ArrowForwardIos,
             contentDescription = null,
-            tint = Color(0xFF9CA3AF),
+            tint = Color(0xFF9CA3AF).enTema(),
             modifier = Modifier.size(14.dp)
         )
     }
@@ -292,8 +302,8 @@ private fun FilaPermisoAutorizado(
         // Antes decía siempre "Autorizado"; ahora muestra lo que eligió el paciente
         val (texto, fondo, color) = when (autorizado) {
             true -> Triple("Autorizado", VerdeAutorizadoFondo, VerdeTitulo)
-            false -> Triple("No autorizado", Color(0xFFF1F2F4), Color(0xFF6B7280))
-            null -> Triple("…", Color(0xFFF1F2F4), Color(0xFF6B7280))
+            false -> Triple("No autorizado", Color(0xFFF1F2F4).enTema(), Color(0xFF6B7280).enTema())
+            null -> Triple("…", Color(0xFFF1F2F4).enTema(), Color(0xFF6B7280).enTema())
         }
         Box(
             modifier = Modifier

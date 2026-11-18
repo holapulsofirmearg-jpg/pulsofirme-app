@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -18,10 +20,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-private val VerdeDP = Color(0xFF07884A)
-private val VerdeClaroDP = Color(0xFFE8F5EE)
-private val GrisDP = Color(0xFF7A8294)
-
+private val VerdeDP: Color
+    @Composable get() = Color(0xFF07884A).enTema()
+private val VerdeClaroDP: Color
+    @Composable get() = Color(0xFFE8F5EE).enTema()
+private val GrisDP: Color
+    @Composable get() = Color(0xFF7A8294).enTema()
 @Composable
 fun ProfessionalDataScreen(
     lugarTrabajoInicial: String = "",
@@ -38,7 +42,7 @@ fun ProfessionalDataScreen(
         mutableStateOf(formacionAdicionalInicial)
     }
 
-    Scaffold(containerColor = Color.White) { padding ->
+    Scaffold(containerColor = Color.White.enTema()) { padding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -137,7 +141,7 @@ fun ProfessionalDataScreen(
                     .height(56.dp),
                 shape = RoundedCornerShape(28.dp),
                 colors = ButtonDefaults.buttonColors(
-                    containerColor = Color(0xFFDDF2E6),
+                    containerColor = Color(0xFFDDF2E6).enTema(),
                     contentColor = VerdeDP
                 )
             ) {
@@ -168,7 +172,7 @@ private fun CampoDatoProfesional(
             .fillMaxWidth()
             .padding(bottom = 14.dp),
         label = { Text(titulo) },
-        placeholder = { Text(ejemplo, color = Color(0xFF9AA2B2)) },
+        placeholder = { Text(ejemplo, color = Color(0xFF9AA2B2).enTema()) },
         leadingIcon = {
             Icon(icono, contentDescription = null, tint = GrisDP)
         },
@@ -178,7 +182,7 @@ private fun CampoDatoProfesional(
         colors = OutlinedTextFieldDefaults.colors(
             focusedBorderColor = VerdeDP,
             focusedLabelColor = VerdeDP,
-            unfocusedBorderColor = Color(0xFFD6DAD8)
+            unfocusedBorderColor = Color(0xFFD6DAD8).enTema()
         )
     )
 }

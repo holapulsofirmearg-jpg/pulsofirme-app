@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -19,12 +21,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-private val VerdeCumplimiento = Color(0xFF07884A)
-private val VerdeClaroCumplimiento = Color(0xFFEAF8F0)
-private val GrisCumplimiento = Color(0xFF6B7280)
-private val NaranjaCumplimiento = Color(0xFFF59E0B)
-private val NaranjaClaroCumplimiento = Color(0xFFFFF4DB)
-
+private val VerdeCumplimiento: Color
+    @Composable get() = Color(0xFF07884A).enTema()
+private val VerdeClaroCumplimiento: Color
+    @Composable get() = Color(0xFFEAF8F0).enTema()
+private val GrisCumplimiento: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val NaranjaCumplimiento: Color
+    @Composable get() = Color(0xFFF59E0B).enTema()
+private val NaranjaClaroCumplimiento: Color
+    @Composable get() = Color(0xFFFFF4DB).enTema()
 private data class PacienteCumplimiento(
     val nombre: String,
     val ejercicios: Int
@@ -48,7 +54,7 @@ fun ProfessionalComplianceScreen(
         .average()
         .toInt()
 
-    Scaffold(containerColor = Color.White) { padding ->
+    Scaffold(containerColor = Color.White.enTema()) { padding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -64,7 +70,7 @@ fun ProfessionalComplianceScreen(
                     "Cumplimiento de pacientes",
                     fontSize = 23.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFF10152B)
+                    color = Color(0xFF10152B).enTema()
                 )
             }
 
@@ -91,7 +97,7 @@ fun ProfessionalComplianceScreen(
                             "$promedio%",
                             fontSize = 30.sp,
                             fontWeight = FontWeight.Bold,
-                            color = Color(0xFF10152B)
+                            color = Color(0xFF10152B).enTema()
                         )
                         Text(
                             "Cumplimiento promedio",
@@ -113,7 +119,7 @@ fun ProfessionalComplianceScreen(
                 "Por paciente",
                 fontSize = 21.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFF10152B)
+                color = Color(0xFF10152B).enTema()
             )
 
             Spacer(Modifier.height(10.dp))
@@ -139,7 +145,7 @@ fun ProfessionalComplianceScreen(
                         .fillMaxWidth()
                         .padding(bottom = 10.dp),
                     shape = RoundedCornerShape(16.dp),
-                    colors = CardDefaults.cardColors(containerColor = Color.White),
+                    colors = CardDefaults.cardColors(containerColor = Color.White.enTema()),
                     border = CardDefaults.outlinedCardBorder()
                 ) {
                     Column(Modifier.padding(15.dp)) {
@@ -149,7 +155,7 @@ fun ProfessionalComplianceScreen(
                                     paciente.nombre,
                                     fontSize = 16.sp,
                                     fontWeight = FontWeight.SemiBold,
-                                    color = Color(0xFF10152B)
+                                    color = Color(0xFF10152B).enTema()
                                 )
                                 Text(
                                     "${paciente.ejercicios} / 5 ejercicios",
@@ -179,7 +185,7 @@ fun ProfessionalComplianceScreen(
                                 .fillMaxWidth()
                                 .height(8.dp),
                             color = VerdeCumplimiento,
-                            trackColor = Color(0xFFE5E7EB)
+                            trackColor = Color(0xFFE5E7EB).enTema()
                         )
 
                         Spacer(Modifier.height(9.dp))

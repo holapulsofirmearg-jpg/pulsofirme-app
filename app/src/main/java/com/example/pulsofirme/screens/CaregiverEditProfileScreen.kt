@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import com.example.pulsofirme.ui.theme.enTema
+
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -44,13 +46,18 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 
-private val VerdeTitulo = Color(0xFF1B7A4B)
-private val GrisEtiqueta = Color(0xFF9CA3AF)
-private val GrisBorde = Color(0xFFD8DED9)
-private val VerdeBotonClaro = Color(0xFFDCEFE3)
-private val VerdeTextoBoton = Color(0xFF1B7A4B)
-private val VerdeFondoCirculo = Color(0xFFE3F0EC)
-
+private val VerdeTitulo: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val GrisEtiqueta: Color
+    @Composable get() = Color(0xFF9CA3AF).enTema()
+private val GrisBorde: Color
+    @Composable get() = Color(0xFFD8DED9).enTema()
+private val VerdeBotonClaro: Color
+    @Composable get() = Color(0xFFDCEFE3).enTema()
+private val VerdeTextoBoton: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val VerdeFondoCirculo: Color
+    @Composable get() = Color(0xFFE3F0EC).enTema()
 @Composable
 fun CaregiverEditProfileScreen(
     nombreInicial: String = "Nombre del cuidador",
@@ -84,7 +91,7 @@ fun CaregiverEditProfileScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 24.dp)
     ) {
@@ -290,14 +297,14 @@ private fun CampoEditable(
         onValueChange = onValorCambia,
         label = { Text(text = etiqueta, color = GrisEtiqueta) },
         leadingIcon = {
-            Icon(imageVector = icono, contentDescription = null, tint = Color(0xFF6B7280))
+            Icon(imageVector = icono, contentDescription = null, tint = Color(0xFF6B7280).enTema())
         },
         trailingIcon = {
             if (conFlecha) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowForwardIos,
                     contentDescription = null,
-                    tint = Color(0xFF9CA3AF),
+                    tint = Color(0xFF9CA3AF).enTema(),
                     modifier = Modifier.size(14.dp)
                 )
             }

@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -45,11 +49,11 @@ fun ProfessionalPatientsScreen(
     val db = FirebaseFirestore.getInstance()
     val profesionalUid = auth.currentUser?.uid
 
-    var busqueda by remember { mutableStateOf("") }
-    var codigo by remember { mutableStateOf("") }
+    var busqueda by rememberSaveable { mutableStateOf("") }
+    var codigo by rememberSaveable { mutableStateOf("") }
     var vinculando by remember { mutableStateOf(false) }
     var cargando by remember { mutableStateOf(true) }
-    var esPremium by remember { mutableStateOf(false) }
+    var esPremium by rememberSaveable { mutableStateOf(false) }
     var pacientes by remember { mutableStateOf<List<PacienteProfesionalFirebase>>(emptyList()) }
     var pacienteADesvincular by remember { mutableStateOf<PacienteProfesionalFirebase?>(null) }
 
@@ -225,7 +229,7 @@ fun ProfessionalPatientsScreen(
             items(filtrados, key = { it.uid }) { paciente ->
                 Card(Modifier.fillMaxWidth().clickable(role = Role.Button, onClickLabel = "Ver paciente ${paciente.nombre}") { onPacienteClick(paciente.uid) }, shape = RoundedCornerShape(16.dp)) {
                     Row(Modifier.fillMaxWidth().heightIn(min = 72.dp).padding(16.dp), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {
-                        Column(Modifier.weight(1f)) { Text(paciente.nombre, fontWeight = FontWeight.Bold); Text(paciente.diagnostico, color = Color.Gray); Text(paciente.estado, color = Color(0xFF1B7A4B)) }
+                        Column(Modifier.weight(1f)) { Text(paciente.nombre, fontWeight = FontWeight.Bold); Text(paciente.diagnostico, color = Color.Gray); Text(paciente.estado, color = Color(0xFF1B7A4B).enTema()) }
                         IconButton(onClick = { pacienteADesvincular = paciente }, modifier = Modifier.size(56.dp)) { Icon(Icons.Filled.DeleteOutline, "Desvincular", tint = MaterialTheme.colorScheme.error) }
                         Icon(Icons.Filled.ChevronRight, null)
                     }

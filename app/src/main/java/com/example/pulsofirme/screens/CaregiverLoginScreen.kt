@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -47,12 +51,16 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 
-private val VerdeTitulo = Color(0xFF1B7A4B)
-private val GrisSubtitulo = Color(0xFF6B7280)
-private val GrisEtiqueta = Color(0xFF6B7280)
-private val CampoFondo = Color(0xFFEAF3EF)
-private val GrisDivider = Color(0xFFD8DED9)
-
+private val VerdeTitulo: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val GrisSubtitulo: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val GrisEtiqueta: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val CampoFondo: Color
+    @Composable get() = Color(0xFFEAF3EF).enTema()
+private val GrisDivider: Color
+    @Composable get() = Color(0xFFD8DED9).enTema()
 @Composable
 fun CaregiverLoginScreen(
     onBack: () -> Unit,
@@ -62,15 +70,15 @@ fun CaregiverLoginScreen(
     // true mientras se verifica el inicio de sesión (bloquea el botón)
     cargando: Boolean = false
 ) {
-    var correo by remember { mutableStateOf("") }
-    var contrasenia by remember { mutableStateOf("") }
-    var verPass by remember { mutableStateOf(false) }
-    var errorFormulario by remember { mutableStateOf("") }
+    var correo by rememberSaveable { mutableStateOf("") }
+    var contrasenia by rememberSaveable { mutableStateOf("") }
+    var verPass by rememberSaveable { mutableStateOf(false) }
+    var errorFormulario by rememberSaveable { mutableStateOf("") }
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 24.dp)
     ) {
@@ -204,7 +212,7 @@ fun CaregiverLoginScreen(
         if (errorFormulario.isNotBlank()) {
             Text(
                 text = errorFormulario,
-                color = Color(0xFFB3261E),
+                color = Color(0xFFB3261E).enTema(),
                 fontSize = 13.sp,
                 modifier = Modifier.fillMaxWidth()
             )

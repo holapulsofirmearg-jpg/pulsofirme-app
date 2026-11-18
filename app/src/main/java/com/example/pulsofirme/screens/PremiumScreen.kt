@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -51,18 +53,28 @@ private const val MODO_DEMO_PREMIUM = true
 /** Precio que se muestra en el checkout. Cambialo acá. */
 private const val PRECIO_MENSUAL = "$4.999"
 
-private val VerdePm = Color(0xFF1B7A4B)
-private val VerdeBotonPm = Color(0xFF2E9E63)
-private val VerdeOscuroPm = Color(0xFF1B4332)
-private val VerdeFondoPm = Color(0xFFEFF6F1)
-private val VerdeIconoPm = Color(0xFFDFF3E4)
-private val GrisPm = Color(0xFF6B7280)
-private val GrisBordePm = Color(0xFFE5E7EB)
-private val NegroPm = Color(0xFF1A1A1A)
-private val AmarilloDemo = Color(0xFFFFF7E0)
-private val AmarilloBordeDemo = Color(0xFFF2D58A)
-private val CelesteMp = Color(0xFF009EE3)
-
+private val VerdePm: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val VerdeBotonPm: Color
+    @Composable get() = Color(0xFF2E9E63).enTema()
+private val VerdeOscuroPm: Color
+    @Composable get() = Color(0xFF1B4332).enTema()
+private val VerdeFondoPm: Color
+    @Composable get() = Color(0xFFEFF6F1).enTema()
+private val VerdeIconoPm: Color
+    @Composable get() = Color(0xFFDFF3E4).enTema()
+private val GrisPm: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val GrisBordePm: Color
+    @Composable get() = Color(0xFFE5E7EB).enTema()
+private val NegroPm: Color
+    @Composable get() = Color(0xFF1A1A1A).enTema()
+private val AmarilloDemo: Color
+    @Composable get() = Color(0xFFFFF7E0).enTema()
+private val AmarilloBordeDemo: Color
+    @Composable get() = Color(0xFFF2D58A).enTema()
+private val CelesteMp: Color
+    @Composable get() = Color(0xFF009EE3).enTema()
 private data class Beneficio(
     val emoji: String,
     val titulo: String,
@@ -146,7 +158,7 @@ fun PremiumScreen(
             Column(
                 modifier = Modifier
                     .clip(RoundedCornerShape(20.dp))
-                    .background(Color.White)
+                    .background(Color.White.enTema())
                     .padding(horizontal = 32.dp, vertical = 28.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -168,7 +180,7 @@ fun PremiumScreen(
     if (aprobado) {
         AlertDialog(
             onDismissRequest = { },
-            containerColor = Color.White,
+            containerColor = Color.White.enTema(),
             shape = RoundedCornerShape(20.dp),
             icon = {
                 Box(
@@ -200,7 +212,7 @@ fun PremiumScreen(
                     Text(
                         text = "Activaste Premium Guiada. Tus rutinas ahora se adaptan a vos y ya podés usar todos los ejercicios exclusivos.",
                         fontSize = 16.sp,
-                        color = Color(0xFF374151),
+                        color = Color(0xFF374151).enTema(),
                         textAlign = TextAlign.Center,
                         lineHeight = 23.sp,
                         modifier = Modifier.fillMaxWidth()
@@ -243,7 +255,7 @@ fun PremiumScreen(
     if (mostrarProximamente) {
         AlertDialog(
             onDismissRequest = { mostrarProximamente = false },
-            containerColor = Color.White,
+            containerColor = Color.White.enTema(),
             shape = RoundedCornerShape(20.dp),
             title = {
                 Text(
@@ -305,7 +317,7 @@ private fun PantallaInfo(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 20.dp)
     ) {
@@ -334,7 +346,7 @@ private fun PantallaInfo(
             Text(
                 text = "Tus rutinas se adaptan a cómo estás hoy: a tu medicación, a tu evolución y a cómo te sentís.",
                 fontSize = 15.sp,
-                color = Color(0xFF3D3D3D),
+                color = Color(0xFF3D3D3D).enTema(),
                 textAlign = TextAlign.Center,
                 lineHeight = 22.sp
             )
@@ -471,7 +483,7 @@ private fun PantallaCheckout(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 20.dp)
     ) {
@@ -491,12 +503,12 @@ private fun PantallaCheckout(
                 .padding(14.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Icon(Icons.Filled.Info, contentDescription = null, tint = Color(0xFF9A6B00), modifier = Modifier.size(20.dp))
+            Icon(Icons.Filled.Info, contentDescription = null, tint = Color(0xFF9A6B00).enTema(), modifier = Modifier.size(20.dp))
             Spacer(Modifier.width(10.dp))
             Text(
                 "Modo demostración: no se realizan cobros. Usá datos de prueba, no tu tarjeta real.",
                 fontSize = 13.sp,
-                color = Color(0xFF5C4400),
+                color = Color(0xFF5C4400).enTema(),
                 lineHeight = 18.sp
             )
         }
@@ -615,7 +627,7 @@ private fun PantallaCheckout(
             shape = RoundedCornerShape(14.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = if (metodo == MetodoPago.MERCADO_PAGO) CelesteMp else VerdeBotonPm,
-                disabledContainerColor = Color(0xFFBFC5CC)
+                disabledContainerColor = Color(0xFFBFC5CC).enTema()
             )
         ) {
             Icon(Icons.Filled.Lock, contentDescription = null, tint = Color.White, modifier = Modifier.size(20.dp))
@@ -679,7 +691,7 @@ private fun OpcionMetodo(
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(16.dp))
-            .background(if (seleccionado) VerdeFondoPm else Color.White)
+            .background(if (seleccionado) VerdeFondoPm else Color.White.enTema())
             .border(
                 width = if (seleccionado) 2.dp else 1.dp,
                 color = if (seleccionado) VerdePm else GrisBordePm,
@@ -693,7 +705,7 @@ private fun OpcionMetodo(
         Box(
             modifier = Modifier
                 .size(44.dp)
-                .background(Color.White, CircleShape)
+                .background(Color.White.enTema(), CircleShape)
                 .border(1.dp, GrisBordePm, CircleShape),
             contentAlignment = Alignment.Center
         ) {

@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
 import android.net.Uri
@@ -41,13 +45,18 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pulsofirme.UserData
 
-private val VerdeEd = Color(0xFF1B7A4B)
-private val VerdeOscuroEd = Color(0xFF1B4332)
-private val VerdeSuaveEd = Color(0xFFEAF5EC)
-private val BordeEd = Color(0xFFD8DED9)
-private val GrisEd = Color(0xFF6B7280)
-private val NegroEd = Color(0xFF1A1A1A)
-
+private val VerdeEd: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val VerdeOscuroEd: Color
+    @Composable get() = Color(0xFF1B4332).enTema()
+private val VerdeSuaveEd: Color
+    @Composable get() = Color(0xFFEAF5EC).enTema()
+private val BordeEd: Color
+    @Composable get() = Color(0xFFD8DED9).enTema()
+private val GrisEd: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val NegroEd: Color
+    @Composable get() = Color(0xFF1A1A1A).enTema()
 private val paisesEd = listOf(
     "Argentina", "Bolivia", "Brasil", "Chile", "Colombia", "Ecuador",
     "España", "México", "Paraguay", "Perú", "Uruguay", "Venezuela"
@@ -78,8 +87,8 @@ fun EditProfileScreen(
     var genero by remember(generoInicial) { mutableStateOf(generoInicial.ifBlank { UserData.genero }) }
     var fotoUri by remember { mutableStateOf(UserData.fotoPerfil) }
 
-    var menuPaises by remember { mutableStateOf(false) }
-    var guardado by remember { mutableStateOf(false) }
+    var menuPaises by rememberSaveable { mutableStateOf(false) }
+    var guardado by rememberSaveable { mutableStateOf(false) }
 
     // ---------- Selector de imagen de la galería ----------
     val selectorFoto = rememberLauncherForActivityResult(
@@ -127,7 +136,7 @@ fun EditProfileScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 20.dp)
     ) {
@@ -294,7 +303,7 @@ fun EditProfileScreen(
                 Text(
                     text = if (pais.isBlank()) "Sin completar" else pais,
                     fontSize = 15.sp,
-                    color = if (pais.isBlank()) Color(0xFF9AA0A6) else NegroEd,
+                    color = if (pais.isBlank()) Color(0xFF9AA0A6).enTema() else NegroEd,
                     modifier = Modifier.weight(1f)
                 )
                 Icon(
@@ -307,7 +316,7 @@ fun EditProfileScreen(
             DropdownMenu(
                 expanded = menuPaises,
                 onDismissRequest = { menuPaises = false },
-                modifier = Modifier.background(Color.White)
+                modifier = Modifier.background(Color.White.enTema())
             ) {
                 paisesEd.forEach { p ->
                     DropdownMenuItem(
@@ -345,7 +354,7 @@ fun EditProfileScreen(
                 Text(
                     text = g,
                     fontSize = 15.sp,
-                    color = if (seleccionado) VerdeEd else Color(0xFF3D3D3D)
+                    color = if (seleccionado) VerdeEd else Color(0xFF3D3D3D).enTema()
                 )
             }
         }
@@ -485,7 +494,7 @@ private fun CampoEditable(
         OutlinedTextField(
             value = valor,
             onValueChange = onCambio,
-            placeholder = { Text("Sin completar", color = Color(0xFF9AA0A6), fontSize = 15.sp) },
+            placeholder = { Text("Sin completar", color = Color(0xFF9AA0A6).enTema(), fontSize = 15.sp) },
             leadingIcon = {
                 Icon(icono, contentDescription = null, tint = VerdeEd, modifier = Modifier.size(22.dp))
             },

@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.animateContentSize
@@ -36,12 +40,18 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pulsofirme.screens.ItemMenuCuidadorCompartido
 
-private val VerdeTitulo = Color(0xFF1B7A4B)
-private val GrisSubtitulo = Color(0xFF6B7280)
-private val AzulTexto = Color(0xFF16324F)
-private val CelesteFondo = Color(0xFFF3F8FA)
-private val CelesteFondoActivo = Color(0xFFE5F1F5)
-private val VerdeIconoFondo = Color(0xFFE2F4E6)
+private val VerdeTitulo: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val GrisSubtitulo: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val AzulTexto: Color
+    @Composable get() = Color(0xFF16324F).enTema()
+private val CelesteFondo: Color
+    @Composable get() = Color(0xFFF3F8FA).enTema()
+private val CelesteFondoActivo: Color
+    @Composable get() = Color(0xFFE5F1F5).enTema()
+private val VerdeIconoFondo: Color
+    @Composable get() = Color(0xFFE2F4E6).enTema()
 private val BordeActivo = Color(0xFF1B7A4B).copy(alpha = 0.3f)
 
 private data class Pregunta(
@@ -87,7 +97,7 @@ fun DudasFrecuentesCaregiverScreen(
     Scaffold(
         bottomBar = {
             NavigationBar(
-                containerColor = Color.White,
+                containerColor = Color.White.enTema(),
                 tonalElevation = 8.dp
             ) {
                 ItemMenuCuidadorCompartido.items.forEach { item ->
@@ -99,8 +109,8 @@ fun DudasFrecuentesCaregiverScreen(
                         colors = NavigationBarItemDefaults.colors(
                             selectedIconColor = VerdeTitulo,
                             selectedTextColor = VerdeTitulo,
-                            unselectedIconColor = Color(0xFF9CA3AF),
-                            unselectedTextColor = Color(0xFF9CA3AF),
+                            unselectedIconColor = Color(0xFF9CA3AF).enTema(),
+                            unselectedTextColor = Color(0xFF9CA3AF).enTema(),
                             indicatorColor = VerdeIconoFondo
                         )
                     )
@@ -112,7 +122,7 @@ fun DudasFrecuentesCaregiverScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
-                .background(Color.White)
+                .background(Color.White.enTema())
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 20.dp)
         ) {
@@ -122,13 +132,13 @@ fun DudasFrecuentesCaregiverScreen(
                 onClick = onBack,
                 modifier = Modifier
                     .clip(CircleShape)
-                    .background(Color(0xFFF3F4F6))
+                    .background(Color(0xFFF3F4F6).enTema())
                     .size(40.dp)
             ) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                     contentDescription = "Volver",
-                    tint = Color(0xFF1F2937),
+                    tint = Color(0xFF1F2937).enTema(),
                     modifier = Modifier.size(20.dp)
                 )
             }
@@ -166,7 +176,7 @@ fun DudasFrecuentesCaregiverScreen(
 
 @Composable
 private fun TarjetaPreguntaMejorada(pregunta: Pregunta) {
-    var expandido by remember { mutableStateOf(false) }
+    var expandido by rememberSaveable { mutableStateOf(false) }
 
     val rotacionFlecha by animateFloatAsState(
         targetValue = if (expandido) 180f else 0f,
@@ -233,7 +243,7 @@ private fun TarjetaPreguntaMejorada(pregunta: Pregunta) {
                 Icon(
                     imageVector = Icons.Filled.ExpandMore,
                     contentDescription = if (expandido) "Contraer" else "Expandir",
-                    tint = Color(0xFF6B7280),
+                    tint = Color(0xFF6B7280).enTema(),
                     modifier = Modifier
                         .size(24.dp)
                         .rotate(rotacionFlecha)
@@ -249,12 +259,12 @@ private fun TarjetaPreguntaMejorada(pregunta: Pregunta) {
                     HorizontalDivider(
                         modifier = Modifier.padding(vertical = 12.dp),
                         thickness = 1.dp,
-                        color = Color(0xFFD1E3EA)
+                        color = Color(0xFFD1E3EA).enTema()
                     )
                     Text(
                         text = pregunta.respuesta,
                         fontSize = 13.5.sp,
-                        color = Color(0xFF374151),
+                        color = Color(0xFF374151).enTema(),
                         lineHeight = 19.5.sp
                     )
                 }

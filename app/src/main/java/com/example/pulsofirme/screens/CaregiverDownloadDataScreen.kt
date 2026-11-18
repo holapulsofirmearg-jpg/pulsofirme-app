@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -20,18 +22,21 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-private val VerdeCuidador = Color(0xFF007953)
-private val VerdeIconoFondo = Color(0xFFE8F5E9)
-private val CardFondo = Color(0xFFF3F8F9)
-private val TextoSubtitulo = Color(0xFF718096)
-
+private val VerdeCuidador: Color
+    @Composable get() = Color(0xFF007953).enTema()
+private val VerdeIconoFondo: Color
+    @Composable get() = Color(0xFFE8F5E9).enTema()
+private val CardFondo: Color
+    @Composable get() = Color(0xFFF3F8F9).enTema()
+private val TextoSubtitulo: Color
+    @Composable get() = Color(0xFF718096).enTema()
 @Composable
 fun CaregiverDownloadDataScreen(
     onBack: () -> Unit,
     onSolicitarDescarga: () -> Unit = {}
 ) {
     Scaffold(
-        containerColor = Color.White
+        containerColor = Color.White.enTema()
     ) { padding ->
         Column(
             modifier = Modifier
@@ -71,7 +76,7 @@ fun CaregiverDownloadDataScreen(
                 text = "Obtené una copia de la información de tu cuenta.",
                 fontSize = 16.sp,
                 fontWeight = FontWeight.SemiBold,
-                color = Color(0xFF4A5568)
+                color = Color(0xFF4A5568).enTema()
             )
 
             Spacer(modifier = Modifier.height(8.dp))
@@ -112,7 +117,7 @@ fun CaregiverDownloadDataScreen(
 
                     HorizontalDivider(
                         modifier = Modifier.padding(vertical = 14.dp),
-                        color = Color(0xFFE2E8F0)
+                        color = Color(0xFFE2E8F0).enTema()
                     )
 
                     ItemIncluido(
@@ -122,7 +127,7 @@ fun CaregiverDownloadDataScreen(
 
                     HorizontalDivider(
                         modifier = Modifier.padding(vertical = 14.dp),
-                        color = Color(0xFFE2E8F0)
+                        color = Color(0xFFE2E8F0).enTema()
                     )
 
                     ItemIncluido(
@@ -132,7 +137,7 @@ fun CaregiverDownloadDataScreen(
 
                     HorizontalDivider(
                         modifier = Modifier.padding(vertical = 14.dp),
-                        color = Color(0xFFE2E8F0)
+                        color = Color(0xFFE2E8F0).enTema()
                     )
 
                     ItemIncluido(
@@ -230,7 +235,7 @@ private fun ItemIncluido(
             text = texto,
             fontSize = 15.sp,
             fontWeight = FontWeight.Medium,
-            color = Color(0xFF2D3748)
+            color = Color(0xFF2D3748).enTema()
         )
     }
 }

@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -35,13 +39,18 @@ import com.example.pulsofirme.R
 import kotlinx.coroutines.launch
 import java.text.Normalizer
 
-private val VerdePB = Color(0xFF07885C)
-private val VerdeClaroPB = Color(0xFFF1F9F5)
-private val VerdeTarjetaPB = Color(0xFFE6F4ED)
-private val BordePB = Color(0xFFD5E6DE)
-private val TextoPB = Color(0xFF092B2A)
-private val GrisPB = Color(0xFF66817B)
-
+private val VerdePB: Color
+    @Composable get() = Color(0xFF07885C).enTema()
+private val VerdeClaroPB: Color
+    @Composable get() = Color(0xFFF1F9F5).enTema()
+private val VerdeTarjetaPB: Color
+    @Composable get() = Color(0xFFE6F4ED).enTema()
+private val BordePB: Color
+    @Composable get() = Color(0xFFD5E6DE).enTema()
+private val TextoPB: Color
+    @Composable get() = Color(0xFF092B2A).enTema()
+private val GrisPB: Color
+    @Composable get() = Color(0xFF66817B).enTema()
 private data class MensajePulsiBot(
     val texto: String,
     val esUsuario: Boolean
@@ -56,7 +65,7 @@ fun PulsiBotScreen(
     onVerProgreso: () -> Unit = {},
     onComoConectarGuante: () -> Unit = {}
 ) {
-    var texto by remember { mutableStateOf("") }
+    var texto by rememberSaveable { mutableStateOf("") }
     val lista = remember { mutableStateListOf<MensajePulsiBot>() }
     val listState = rememberLazyListState()
     val scope = rememberCoroutineScope()
@@ -65,7 +74,7 @@ fun PulsiBotScreen(
     // IA real: se prepara al abrir la pantalla con los datos del usuario
     val ia = remember { PulsiBotIA() }
     var iaLista by remember { mutableStateOf<Boolean?>(null) } // null = preparando
-    var pensando by remember { mutableStateOf(false) }
+    var pensando by rememberSaveable { mutableStateOf(false) }
 
     val rolNormalizado = rolUsuario.lowercase()
     val saludo = remember(nombreUsuario, rolNormalizado) {
@@ -157,7 +166,7 @@ fun PulsiBotScreen(
                         Box(
                             Modifier
                                 .size(8.dp)
-                                .background(Color(0xFF5CE5A3), CircleShape)
+                                .background(Color(0xFF5CE5A3).enTema(), CircleShape)
                         )
                         Spacer(Modifier.width(6.dp))
                         Text(
@@ -178,7 +187,7 @@ fun PulsiBotScreen(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color.White)
+                    .background(Color.White.enTema())
                     .navigationBarsPadding()
                     .padding(horizontal = 12.dp, vertical = 10.dp),
                 verticalAlignment = Alignment.CenterVertically

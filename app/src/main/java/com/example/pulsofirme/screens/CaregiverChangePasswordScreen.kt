@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -36,28 +40,32 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-private val VerdeTitulo = Color(0xFF1B7A4B)
-private val VerdeFondo = Color(0xFFEFF6F1)
-private val GrisEtiqueta = Color(0xFF6B7280)
-private val GrisBorde = Color(0xFFD8DED9)
-private val GrisFondoLista = Color(0xFFF3F5F4)
-
+private val VerdeTitulo: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val VerdeFondo: Color
+    @Composable get() = Color(0xFFEFF6F1).enTema()
+private val GrisEtiqueta: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val GrisBorde: Color
+    @Composable get() = Color(0xFFD8DED9).enTema()
+private val GrisFondoLista: Color
+    @Composable get() = Color(0xFFF3F5F4).enTema()
 @Composable
 fun CaregiverChangePasswordScreen(
     onBack: () -> Unit,
     onCambiarContrasena: (String, String) -> Unit = { _, _ -> }
 ) {
-    var contraseniaActual by remember { mutableStateOf("") }
-    var nuevaContrasenia by remember { mutableStateOf("") }
-    var confirmarContrasenia by remember { mutableStateOf("") }
-    var verActual by remember { mutableStateOf(false) }
-    var verNueva by remember { mutableStateOf(false) }
-    var verConfirmar by remember { mutableStateOf(false) }
+    var contraseniaActual by rememberSaveable { mutableStateOf("") }
+    var nuevaContrasenia by rememberSaveable { mutableStateOf("") }
+    var confirmarContrasenia by rememberSaveable { mutableStateOf("") }
+    var verActual by rememberSaveable { mutableStateOf(false) }
+    var verNueva by rememberSaveable { mutableStateOf(false) }
+    var verConfirmar by rememberSaveable { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 24.dp)
     ) {
@@ -92,7 +100,7 @@ fun CaregiverChangePasswordScreen(
             Box(
                 modifier = Modifier
                     .size(44.dp)
-                    .background(Color.White, CircleShape),
+                    .background(Color.White.enTema(), CircleShape),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(Icons.Filled.Lock, contentDescription = null, tint = VerdeTitulo, modifier = Modifier.size(20.dp))
@@ -101,7 +109,7 @@ fun CaregiverChangePasswordScreen(
             Spacer(modifier = Modifier.width(14.dp))
 
             Column {
-                Text("Seguridad de tu cuenta", fontSize = 16.sp, fontWeight = FontWeight.Bold, color = Color(0xFF1A1A1A))
+                Text("Seguridad de tu cuenta", fontSize = 16.sp, fontWeight = FontWeight.Bold, color = Color(0xFF1A1A1A).enTema())
                 Spacer(modifier = Modifier.height(2.dp))
                 Text(
                     "Elegí una contraseña segura para proteger tu información.",
@@ -184,7 +192,7 @@ fun CaregiverChangePasswordScreen(
             shape = RoundedCornerShape(28.dp),
             border = androidx.compose.foundation.BorderStroke(1.dp, GrisBorde)
         ) {
-            Text("Cancelar", fontSize = 17.sp, fontWeight = FontWeight.Bold, color = Color(0xFF16324F))
+            Text("Cancelar", fontSize = 17.sp, fontWeight = FontWeight.Bold, color = Color(0xFF16324F).enTema())
         }
 
         Spacer(modifier = Modifier.height(40.dp))
@@ -242,6 +250,6 @@ private fun RequisitoContrasenia(texto: String) {
             modifier = Modifier.size(18.dp)
         )
         Spacer(modifier = Modifier.width(10.dp))
-        Text(texto, fontSize = 14.sp, color = Color(0xFF374151))
+        Text(texto, fontSize = 14.sp, color = Color(0xFF374151).enTema())
     }
 }

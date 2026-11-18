@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -30,11 +32,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pulsofirme.R
 
-private val TealFondo = Color(0xFF1B7A6E)
-private val SubtituloColor = Color(0xFFCFE9E3)
-private val BotonSiguiente = Color(0xFF0D2B2B)
-private val BarraIndicador = Color(0x33FFFFFF)
-
+private val TealFondo: Color
+    @Composable get() = Color(0xFF1B7A6E).enTema()
+private val SubtituloColor: Color
+    @Composable get() = Color(0xFFCFE9E3).enTema()
+private val BotonSiguiente: Color
+    @Composable get() = Color(0xFF0D2B2B).enTema()
+private val BarraIndicador: Color
+    @Composable get() = Color(0x33FFFFFF).enTema()
 @Composable
 fun CaregiverRoleScreen(
     onBack: () -> Unit,

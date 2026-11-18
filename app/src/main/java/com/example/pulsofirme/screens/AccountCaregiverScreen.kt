@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -25,9 +29,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-private val VerdeCuidador = Color(0xFF1B7A4B)
-private val VerdeClaroCuidador = Color(0xFFEFF6F1)
-
+private val VerdeCuidador: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val VerdeClaroCuidador: Color
+    @Composable get() = Color(0xFFEFF6F1).enTema()
 @Composable
 fun AccountCaregiverScreen(
     rutaActual: String,
@@ -39,8 +44,8 @@ fun AccountCaregiverScreen(
     onProbarComoProfesional: () -> Unit = {},
     rolUsuario: String = "tutor"
 ) {
-    var nombreTutor by remember { mutableStateOf("") }
-    var nombrePaciente by remember { mutableStateOf("") }
+    var nombreTutor by rememberSaveable { mutableStateOf("") }
+    var nombrePaciente by rememberSaveable { mutableStateOf("") }
     val usuario = FirebaseAuth.getInstance().currentUser
     val desde = remember(usuario?.uid) {
         usuario?.metadata?.creationTimestamp?.let {
@@ -67,7 +72,7 @@ fun AccountCaregiverScreen(
     Scaffold(
         bottomBar = {
             NavigationBar(
-                containerColor = Color.White
+                containerColor = Color.White.enTema()
             ) {
 
                 val itemsMenuCuidador = listOf(
@@ -129,8 +134,8 @@ fun AccountCaregiverScreen(
                         colors = NavigationBarItemDefaults.colors(
                             selectedIconColor = VerdeCuidador,
                             selectedTextColor = VerdeCuidador,
-                            unselectedIconColor = Color(0xFF9CA3AF),
-                            unselectedTextColor = Color(0xFF9CA3AF),
+                            unselectedIconColor = Color(0xFF9CA3AF).enTema(),
+                            unselectedTextColor = Color(0xFF9CA3AF).enTema(),
                             indicatorColor = VerdeClaroCuidador
                         )
                     )
@@ -156,7 +161,7 @@ fun AccountCaregiverScreen(
                 Text(
                     text = "Cuenta",
                     fontSize = 17.sp,
-                    color = Color(0xFF9CA3AF),
+                    color = Color(0xFF9CA3AF).enTema(),
                     fontWeight = FontWeight.Normal
                 )
 
@@ -200,7 +205,7 @@ fun AccountCaregiverScreen(
                         Text(
                             text = if (desde.isBlank()) "Cuidador" else "Cuidador, desde el $desde",
                             fontSize = 15.sp,
-                            color = Color(0xFF9CA3AF)
+                            color = Color(0xFF9CA3AF).enTema()
                         )
                     }
                 }
@@ -214,7 +219,7 @@ fun AccountCaregiverScreen(
                 Text(
                     text = "Perfil",
                     fontSize = 18.sp,
-                    color = Color(0xFF9CA3AF)
+                    color = Color(0xFF9CA3AF).enTema()
                 )
 
                 Spacer(modifier = Modifier.height(12.dp))
@@ -242,7 +247,7 @@ fun AccountCaregiverScreen(
                 Text(
                     text = "Paciente vinculado",
                     fontSize = 18.sp,
-                    color = Color(0xFF9CA3AF)
+                    color = Color(0xFF9CA3AF).enTema()
                 )
 
                 Spacer(modifier = Modifier.height(12.dp))
@@ -292,7 +297,7 @@ fun AccountCaregiverScreen(
                             text = "Paciente vinculado",
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Medium,
-                            color = Color(0xFF163B2D)
+                            color = Color(0xFF163B2D).enTema()
                         )
 
                         Spacer(modifier = Modifier.height(2.dp))
@@ -300,14 +305,14 @@ fun AccountCaregiverScreen(
                         Text(
                             text = nombrePaciente.ifBlank { "Paciente" },
                             fontSize = 13.sp,
-                            color = Color(0xFF8A9A92)
+                            color = Color(0xFF8A9A92).enTema()
                         )
                     }
 
                     Icon(
                         imageVector = Icons.Filled.ChevronRight,
                         contentDescription = null,
-                        tint = Color(0xFF9CA3AF),
+                        tint = Color(0xFF9CA3AF).enTema(),
                         modifier = Modifier.size(24.dp)
                     )
                 }
@@ -339,7 +344,7 @@ fun AccountCaregiverScreen(
                 Text(
                     text = "Preferencias",
                     fontSize = 18.sp,
-                    color = Color(0xFF9CA3AF)
+                    color = Color(0xFF9CA3AF).enTema()
                 )
 
                 Spacer(modifier = Modifier.height(12.dp))
@@ -365,7 +370,7 @@ fun AccountCaregiverScreen(
                 Text(
                     text = "Ajustes",
                     fontSize = 16.sp,
-                    color = Color(0xFF1A1A1A),
+                    color = Color(0xFF1A1A1A).enTema(),
                     modifier = Modifier
                         .fillMaxWidth()
                         .heightIn(min = 56.dp)
@@ -395,7 +400,7 @@ fun AccountCaregiverScreen(
                 Text(
                     text = "Cerrar sesión",
                     fontSize = 16.sp,
-                    color = Color(0xFFD64545),
+                    color = Color(0xFFD64545).enTema(),
                     modifier = Modifier
                         .fillMaxWidth()
                         .heightIn(min = 56.dp)
@@ -427,14 +432,14 @@ private fun FilaCuentaCuidador(
         Text(
             text = titulo,
             fontSize = 16.sp,
-            color = Color(0xFF1A1A1A),
+            color = Color(0xFF1A1A1A).enTema(),
             modifier = Modifier.weight(1f)
         )
 
         Icon(
             imageVector = Icons.Filled.ChevronRight,
             contentDescription = null,
-            tint = Color(0xFF9CA3AF),
+            tint = Color(0xFF9CA3AF).enTema(),
             modifier = Modifier.size(22.dp)
         )
     }

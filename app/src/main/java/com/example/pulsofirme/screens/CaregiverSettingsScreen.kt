@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -31,7 +33,7 @@ fun CaregiverSettingsScreen(
     onBack: () -> Unit,
     onCuentaEliminada: () -> Unit = {}
 ) {
-    var sonidosActivados by remember { mutableStateOf(true) }
+    var sonidosActivados by rememberSaveable { mutableStateOf(true) }
 
     Column(
         modifier = Modifier

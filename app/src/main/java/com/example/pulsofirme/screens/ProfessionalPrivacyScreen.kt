@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -46,14 +50,14 @@ fun ProfessionalPrivacyScreen(
     onCuentaEliminada: () -> Unit = {}
 ) {
     val context = LocalContext.current; val db = FirebaseFirestore.getInstance(); val uid = FirebaseAuth.getInstance().currentUser?.uid
-    var progreso by remember { mutableStateOf(true) }; var medicacion by remember { mutableStateOf(true) }; var ubicacion by remember { mutableStateOf(false) }; var cargando by remember { mutableStateOf(true) }; var mostrarPolitica by remember { mutableStateOf(false) }
-    var mostrarBorrar by remember { mutableStateOf(false) }; var borrando by remember { mutableStateOf(false) }; var clave by remember { mutableStateOf("") }; val scope = rememberCoroutineScope()
+    var progreso by rememberSaveable { mutableStateOf(true) }; var medicacion by rememberSaveable { mutableStateOf(true) }; var ubicacion by rememberSaveable { mutableStateOf(false) }; var cargando by remember { mutableStateOf(true) }; var mostrarPolitica by rememberSaveable { mutableStateOf(false) }
+    var mostrarBorrar by rememberSaveable { mutableStateOf(false) }; var borrando by remember { mutableStateOf(false) }; var clave by rememberSaveable { mutableStateOf("") }; val scope = rememberCoroutineScope()
     LaunchedEffect(uid) { if (uid == null) { cargando=false; return@LaunchedEffect }; db.collection("usuarios").document(uid).get().addOnSuccessListener { d -> progreso=d.getBoolean("permisoProgresoEjercicios")?:true; medicacion=d.getBoolean("permisoAlertasMedicacion")?:true; ubicacion=d.getBoolean("permisoUbicacion")?:false; cargando=false }.addOnFailureListener { cargando=false } }
     fun guardar(campo:String, valor:Boolean) { if(uid!=null) db.collection("usuarios").document(uid).update(campo,valor).addOnFailureListener { Toast.makeText(context,"No se pudo guardar el permiso",Toast.LENGTH_SHORT).show() } }
     if (mostrarPolitica) DialogoLegal(titulo = "Política de privacidad", texto = TextosLegales.politica) { mostrarPolitica = false }
     if (mostrarBorrar) AlertDialog(
         onDismissRequest = { if (!borrando) { mostrarBorrar = false; clave = "" } },
-        containerColor = Color.White,
+        containerColor = Color.White.enTema(),
         title = { Text("Eliminar mi cuenta", fontWeight = FontWeight.Bold) },
         text = {
             Column {
@@ -73,11 +77,11 @@ fun ProfessionalPrivacyScreen(
                         is ResultadoBorrado.Fallo -> { borrando = false; Toast.makeText(context, r.detalle, Toast.LENGTH_LONG).show() }
                     }
                 }
-            }) { Text(if (borrando) "Eliminando…" else "Eliminar definitivamente", color = Color(0xFFC0392B), fontWeight = FontWeight.Bold) }
+            }) { Text(if (borrando) "Eliminando…" else "Eliminar definitivamente", color = Color(0xFFC0392B).enTema(), fontWeight = FontWeight.Bold) }
         },
         dismissButton = { TextButton(enabled = !borrando, modifier = Modifier.heightIn(min = 56.dp), onClick = { mostrarBorrar = false; clave = "" }) { Text("Cancelar", color = GrisPP) } }
     )
-    Scaffold(containerColor=Color.White){ padding -> Column(Modifier.fillMaxSize().padding(padding).verticalScroll(rememberScrollState()).padding(horizontal=22.dp,vertical=18.dp)) {
+    Scaffold(containerColor=Color.White.enTema()){ padding -> Column(Modifier.fillMaxSize().padding(padding).verticalScroll(rememberScrollState()).padding(horizontal=22.dp,vertical=18.dp)) {
         Row(verticalAlignment=Alignment.CenterVertically){IconButton(onClick=onBack){Icon(Icons.Filled.ArrowBack,"Volver",tint=AzulTextoPP)};Text("Privacidad y datos",color=VerdePP,fontSize=27.sp,fontWeight=FontWeight.Bold)}
         Text("Gestioná la información y los permisos de tu cuenta profesional.",color=GrisPP,fontSize=15.sp); if(cargando){Spacer(Modifier.height(8.dp));LinearProgressIndicator(Modifier.fillMaxWidth())}; Spacer(Modifier.height(24.dp))
         TituloPP(Icons.Filled.Security,"Permisos profesionales"); Spacer(Modifier.height(12.dp)); Card(Modifier.fillMaxWidth(),shape=RoundedCornerShape(18.dp),colors=CardDefaults.cardColors(containerColor=AzulClaroPP)){Column(Modifier.padding(horizontal=16.dp,vertical=8.dp)){
@@ -93,5 +97,5 @@ fun ProfessionalPrivacyScreen(
 }
 
 @Composable private fun TituloPP(icono:ImageVector,texto:String){Row(verticalAlignment=Alignment.CenterVertically){Icon(icono,null,tint=VerdePP,modifier=Modifier.size(25.dp));Spacer(Modifier.width(12.dp));Text(texto,color=AzulTextoPP,fontSize=17.sp,fontWeight=FontWeight.Bold)}}
-@Composable private fun PermisoPP(icono:ImageVector,titulo:String,descripcion:String,checked:Boolean,onCheckedChange:(Boolean)->Unit){Row(Modifier.fillMaxWidth().padding(vertical=14.dp),verticalAlignment=Alignment.CenterVertically){Box(Modifier.size(48.dp).background(Color.White,CircleShape),contentAlignment=Alignment.Center){Icon(icono,null,tint=VerdePP)};Spacer(Modifier.width(14.dp));Column(Modifier.weight(1f)){Text(titulo,color=AzulTextoPP,fontWeight=FontWeight.Bold);Text(descripcion,color=GrisPP,fontSize=13.sp)};Switch(checked,onCheckedChange)}}
+@Composable private fun PermisoPP(icono:ImageVector,titulo:String,descripcion:String,checked:Boolean,onCheckedChange:(Boolean)->Unit){Row(Modifier.fillMaxWidth().padding(vertical=14.dp),verticalAlignment=Alignment.CenterVertically){Box(Modifier.size(48.dp).background(Color.White.enTema(),CircleShape),contentAlignment=Alignment.Center){Icon(icono,null,tint=VerdePP)};Spacer(Modifier.width(14.dp));Column(Modifier.weight(1f)){Text(titulo,color=AzulTextoPP,fontWeight=FontWeight.Bold);Text(descripcion,color=GrisPP,fontSize=13.sp)};Switch(checked,onCheckedChange)}}
 @Composable private fun OpcionPP(icono:ImageVector,titulo:String,descripcion:String,onClick:()->Unit){Row(Modifier.fillMaxWidth().heightIn(min=56.dp).clickable{onClick()}.padding(16.dp),verticalAlignment=Alignment.CenterVertically){Box(Modifier.size(46.dp).background(VerdeClaroPP,CircleShape),contentAlignment=Alignment.Center){Icon(icono,null,tint=VerdePP)};Spacer(Modifier.width(14.dp));Column(Modifier.weight(1f)){Text(titulo,color=AzulTextoPP,fontWeight=FontWeight.Bold);Text(descripcion,color=GrisPP,fontSize=13.sp)};Icon(Icons.Filled.ChevronRight,null,tint=GrisPP)}}

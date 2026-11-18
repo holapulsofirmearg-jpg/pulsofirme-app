@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -30,13 +32,18 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pulsofirme.R
 
-private val VerdeAPS = Color(0xFF07884A)
-private val VerdeClaroAPS = Color(0xFFEAF5EE)
-private val AzulAPS = Color(0xFF17365D)
-private val AzulBotonAPS = Color(0xFF315E96)
-private val GrisAPS = Color(0xFF7A8294)
-private val BordeAPS = Color(0xFFE0E4EA)
-
+private val VerdeAPS: Color
+    @Composable get() = Color(0xFF07884A).enTema()
+private val VerdeClaroAPS: Color
+    @Composable get() = Color(0xFFEAF5EE).enTema()
+private val AzulAPS: Color
+    @Composable get() = Color(0xFF17365D).enTema()
+private val AzulBotonAPS: Color
+    @Composable get() = Color(0xFF315E96).enTema()
+private val GrisAPS: Color
+    @Composable get() = Color(0xFF7A8294).enTema()
+private val BordeAPS: Color
+    @Composable get() = Color(0xFFE0E4EA).enTema()
 @Composable
 fun ProfessionalHelpSupportScreen(
     onBack: () -> Unit,
@@ -49,7 +56,7 @@ fun ProfessionalHelpSupportScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 22.dp)
     ) {
@@ -92,7 +99,7 @@ fun ProfessionalHelpSupportScreen(
                 modifier = Modifier
                     .size(48.dp)
                     .clip(CircleShape)
-                    .background(Color.White),
+                    .background(Color.White.enTema()),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
@@ -139,7 +146,7 @@ fun ProfessionalHelpSupportScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(17.dp))
-                .background(Color.White)
+                .background(Color.White.enTema())
                 .then(
                     Modifier
                 )
@@ -205,7 +212,7 @@ fun ProfessionalHelpSupportScreen(
                                 "La cuenta profesional de PulsoFirme permite gestionar pacientes, consultar su progreso y acompañar su seguimiento. " +
                                 "PulsoFirme es una herramienta de apoyo y no reemplaza el criterio ni la indicación de un profesional de la salud.",
                         fontSize = 14.sp,
-                        color = Color(0xFF262626),
+                        color = Color(0xFF262626).enTema(),
                         lineHeight = 20.sp
                     )
                 }

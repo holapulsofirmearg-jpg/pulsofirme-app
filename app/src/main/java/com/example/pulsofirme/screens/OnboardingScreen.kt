@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -82,7 +84,7 @@ fun OnboardingScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFF00695C))
+            .background(Color(0xFF00695C).enTema())
             .padding(24.dp)
     ) {
 
@@ -141,7 +143,7 @@ fun OnboardingScreen(
 
                         withStyle(
                             SpanStyle(
-                                color = Color(0xFF4FC3F7)
+                                color = Color(0xFF4FC3F7).enTema()
                             )
                         ) {
                             append(data.titleBlue)
@@ -149,7 +151,7 @@ fun OnboardingScreen(
 
                         withStyle(
                             SpanStyle(
-                                color = Color(0xFF8BC34A)
+                                color = Color(0xFF8BC34A).enTema()
                             )
                         ) {
                             append(data.titleGreen)
@@ -247,7 +249,7 @@ fun OnboardingScreen(
                     }
                 },
 
-                containerColor = Color.White,
+                containerColor = Color.White.enTema(),
 
                 shape = CircleShape,
 
@@ -259,7 +261,7 @@ fun OnboardingScreen(
                 Icon(
                     imageVector = Icons.Filled.ArrowForward,
                     contentDescription = "Siguiente",
-                    tint = Color(0xFF00695C)
+                    tint = Color(0xFF00695C).enTema()
                 )
             }
         }

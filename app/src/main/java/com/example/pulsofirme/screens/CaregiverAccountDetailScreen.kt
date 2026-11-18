@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -27,13 +29,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-private val VerdeTitulo = Color(0xFF1B7A4B)
-private val GrisSubtitulo = Color(0xFF6B7280)
-private val GrisEtiqueta = Color(0xFF9CA3AF)
-private val AzulTexto = Color(0xFF16324F)
-private val CelesteFondo = Color(0xFFEAF3F7)
-private val GrisDivider = Color(0xFFDCE3E0)
-
+private val VerdeTitulo: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val GrisSubtitulo: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val GrisEtiqueta: Color
+    @Composable get() = Color(0xFF9CA3AF).enTema()
+private val AzulTexto: Color
+    @Composable get() = Color(0xFF16324F).enTema()
+private val CelesteFondo: Color
+    @Composable get() = Color(0xFFEAF3F7).enTema()
+private val GrisDivider: Color
+    @Composable get() = Color(0xFFDCE3E0).enTema()
 @Composable
 fun CaregiverAccountDetailScreen(
     codigoVinculacion: String = "482 913",
@@ -47,7 +54,7 @@ fun CaregiverAccountDetailScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 24.dp)
     ) {
@@ -128,7 +135,7 @@ fun CaregiverAccountDetailScreen(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color(0xFFDCEFE3), shape = RoundedCornerShape(28.dp))
+                .background(Color(0xFFDCEFE3).enTema(), shape = RoundedCornerShape(28.dp))
                 .clickable { onEditarDatos() }
                 .padding(vertical = 16.dp),
             horizontalArrangement = Arrangement.Center,
@@ -176,7 +183,7 @@ private fun FilaDato(
         Icon(
             imageVector = icono,
             contentDescription = null,
-            tint = Color(0xFF6B7280),
+            tint = Color(0xFF6B7280).enTema(),
             modifier = Modifier
                 .padding(top = 2.dp)
                 .size(20.dp)

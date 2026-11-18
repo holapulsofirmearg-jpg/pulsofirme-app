@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -16,10 +18,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-private val VerdeEjProf = Color(0xFF07884A)
-private val VerdeClaroEjProf = Color(0xFFEAF8F0)
-private val GrisEjProf = Color(0xFF6B7280)
-
+private val VerdeEjProf: Color
+    @Composable get() = Color(0xFF07884A).enTema()
+private val VerdeClaroEjProf: Color
+    @Composable get() = Color(0xFFEAF8F0).enTema()
+private val GrisEjProf: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
 private data class PacienteEjercicios(
     val nombre: String,
     val realizados: Int
@@ -37,7 +41,7 @@ fun ProfessionalExercisesProgressScreen(
         PacienteEjercicios("Ana Suárez", 1)
     )
 
-    Scaffold(containerColor = Color.White) { padding ->
+    Scaffold(containerColor = Color.White.enTema()) { padding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -54,7 +58,7 @@ fun ProfessionalExercisesProgressScreen(
                         "Ejercicios realizados",
                         fontSize = 25.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color(0xFF10152B)
+                        color = Color(0xFF10152B).enTema()
                     )
                     Text(
                         "Progreso semanal de tus 5 pacientes",
@@ -108,7 +112,7 @@ fun ProfessionalExercisesProgressScreen(
                         .fillMaxWidth()
                         .padding(bottom = 12.dp),
                     shape = RoundedCornerShape(16.dp),
-                    colors = CardDefaults.cardColors(containerColor = Color.White),
+                    colors = CardDefaults.cardColors(containerColor = Color.White.enTema()),
                     border = CardDefaults.outlinedCardBorder()
                 ) {
                     Column(Modifier.padding(16.dp)) {
@@ -121,7 +125,7 @@ fun ProfessionalExercisesProgressScreen(
                                     paciente.nombre,
                                     fontSize = 16.sp,
                                     fontWeight = FontWeight.SemiBold,
-                                    color = Color(0xFF10152B)
+                                    color = Color(0xFF10152B).enTema()
                                 )
                                 Text(
                                     "${paciente.realizados} de 5 ejercicios",
@@ -155,7 +159,7 @@ fun ProfessionalExercisesProgressScreen(
                                 .fillMaxWidth()
                                 .height(8.dp),
                             color = VerdeEjProf,
-                            trackColor = Color(0xFFE5E7EB)
+                            trackColor = Color(0xFFE5E7EB).enTema()
                         )
                     }
                 }

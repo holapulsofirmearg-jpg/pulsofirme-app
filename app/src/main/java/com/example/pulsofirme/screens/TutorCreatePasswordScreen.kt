@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -44,12 +48,16 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 
-private val VerdeTitulo = Color(0xFF1B7A4B)
-private val GrisSubtitulo = Color(0xFF6B7280)
-private val GrisEtiqueta = Color(0xFF6B7280)
-private val GrisBorde = Color(0xFFD8DED9)
-private val GrisFondoLista = Color(0xFFF3F5F4)
-
+private val VerdeTitulo: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val GrisSubtitulo: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val GrisEtiqueta: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val GrisBorde: Color
+    @Composable get() = Color(0xFFD8DED9).enTema()
+private val GrisFondoLista: Color
+    @Composable get() = Color(0xFFF3F5F4).enTema()
 @Composable
 fun TutorCreatePasswordScreen(
     onBack: () -> Unit,
@@ -57,11 +65,11 @@ fun TutorCreatePasswordScreen(
     // true mientras se crea la cuenta (bloquea el botón)
     cargando: Boolean = false
 ) {
-    var contrasenia by remember { mutableStateOf("") }
-    var confirmarContrasenia by remember { mutableStateOf("") }
-    var verContrasenia by remember { mutableStateOf(false) }
-    var verConfirmar by remember { mutableStateOf(false) }
-    var aceptaTerminos by remember { mutableStateOf(false) }
+    var contrasenia by rememberSaveable { mutableStateOf("") }
+    var confirmarContrasenia by rememberSaveable { mutableStateOf("") }
+    var verContrasenia by rememberSaveable { mutableStateOf(false) }
+    var verConfirmar by rememberSaveable { mutableStateOf(false) }
+    var aceptaTerminos by rememberSaveable { mutableStateOf(false) }
 
     val puedeContinuar = contrasenia.isNotBlank() &&
             contrasenia == confirmarContrasenia &&
@@ -70,7 +78,7 @@ fun TutorCreatePasswordScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 24.dp)
     ) {
@@ -209,7 +217,7 @@ fun TutorCreatePasswordScreen(
             Text(
                 text = "Acepto los Términos y Condiciones y la Política de Privacidad",
                 fontSize = 14.sp,
-                color = Color(0xFF333333),
+                color = Color(0xFF333333).enTema(),
                 lineHeight = 19.sp
             )
         }
@@ -225,7 +233,7 @@ fun TutorCreatePasswordScreen(
             shape = RoundedCornerShape(28.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = VerdeTitulo,
-                disabledContainerColor = Color(0xFFBEE0CC)
+                disabledContainerColor = Color(0xFFBEE0CC).enTema()
             )
         ) {
             if (cargando) {
@@ -251,7 +259,7 @@ fun TutorCreatePasswordScreen(
             shape = RoundedCornerShape(28.dp),
             border = androidx.compose.foundation.BorderStroke(1.dp, GrisBorde)
         ) {
-            Text("Cancelar", fontSize = 17.sp, fontWeight = FontWeight.Bold, color = Color(0xFF16324F))
+            Text("Cancelar", fontSize = 17.sp, fontWeight = FontWeight.Bold, color = Color(0xFF16324F).enTema())
         }
 
         Spacer(modifier = Modifier.height(40.dp))
@@ -271,6 +279,6 @@ private fun RequisitoContrasenia(texto: String) {
             modifier = Modifier.size(18.dp)
         )
         Spacer(modifier = Modifier.width(10.dp))
-        Text(texto, fontSize = 14.sp, color = Color(0xFF374151))
+        Text(texto, fontSize = 14.sp, color = Color(0xFF374151).enTema())
     }
 }

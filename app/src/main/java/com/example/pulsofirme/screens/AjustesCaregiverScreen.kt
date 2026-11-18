@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -51,15 +55,22 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.Role
 import com.example.pulsofirme.Accesibilidad
 
-private val VerdeTitulo = Color(0xFF1B7A4B)
-private val AzulTexto = Color(0xFF16324F)
-private val GrisSubtitulo = Color(0xFF6B7280)
-private val CelesteFondo = Color(0xFFEAF3F7)
-private val VerdeClaroFondo = Color(0xFFEFF6F1)
-private val VerdeIconoFondo = Color(0xFFDFF3E4)
-private val RojoBoton = Color(0xFFE05A4E)
-private val GrisDivider = Color(0xFFE5E7EB)
-
+private val VerdeTitulo: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val AzulTexto: Color
+    @Composable get() = Color(0xFF16324F).enTema()
+private val GrisSubtitulo: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val CelesteFondo: Color
+    @Composable get() = Color(0xFFEAF3F7).enTema()
+private val VerdeClaroFondo: Color
+    @Composable get() = Color(0xFFEFF6F1).enTema()
+private val VerdeIconoFondo: Color
+    @Composable get() = Color(0xFFDFF3E4).enTema()
+private val RojoBoton: Color
+    @Composable get() = Color(0xFFE05A4E).enTema()
+private val GrisDivider: Color
+    @Composable get() = Color(0xFFE5E7EB).enTema()
 @Composable
 fun AjustesCaregiverScreen(
     onBack: () -> Unit,
@@ -67,14 +78,14 @@ fun AjustesCaregiverScreen(
     onEliminarCuenta: () -> Unit = {}
 ) {
     val contexto = LocalContext.current
-    var accesibilidadExpandida by remember { mutableStateOf(false) }
-    var mostrarTamanoTexto by remember { mutableStateOf(false) }
+    var accesibilidadExpandida by rememberSaveable { mutableStateOf(false) }
+    var mostrarTamanoTexto by rememberSaveable { mutableStateOf(false) }
 
     // Las opciones de accesibilidad son las mismas de toda la app (se guardan en el celular)
     if (mostrarTamanoTexto) {
         AlertDialog(
             onDismissRequest = { mostrarTamanoTexto = false },
-            containerColor = Color.White,
+            containerColor = Color.White.enTema(),
             shape = RoundedCornerShape(20.dp),
             title = {
                 Text("Tamaño del texto", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = VerdeTitulo)
@@ -100,7 +111,7 @@ fun AjustesCaregiverScreen(
                                 colors = RadioButtonDefaults.colors(selectedColor = VerdeTitulo)
                             )
                             Spacer(modifier = Modifier.width(8.dp))
-                            Text(nivel, fontSize = 16.sp, color = Color(0xFF1A1A1A))
+                            Text(nivel, fontSize = 16.sp, color = Color(0xFF1A1A1A).enTema())
                         }
                     }
                 }
@@ -116,7 +127,7 @@ fun AjustesCaregiverScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 24.dp)
     ) {
@@ -294,7 +305,7 @@ private fun FilaAjuste(
         Text(
             titulo,
             fontSize = 16.sp,
-            color = Color(0xFF1A1A1A),
+            color = Color(0xFF1A1A1A).enTema(),
             modifier = Modifier.weight(1f)
         )
         if (valor.isNotEmpty()) {

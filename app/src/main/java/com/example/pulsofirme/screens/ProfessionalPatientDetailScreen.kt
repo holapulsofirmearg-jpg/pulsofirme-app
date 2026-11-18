@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -32,11 +36,14 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
-private val VerdeDet = Color(0xFF1B7A4B)
-private val RojoDet = Color(0xFFC0392B)
-private val GrisDet = Color(0xFF6B7280)
-private val GrisVacioDet = Color(0xFFF1F3F5)
-
+private val VerdeDet: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val RojoDet: Color
+    @Composable get() = Color(0xFFC0392B).enTema()
+private val GrisDet: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val GrisVacioDet: Color
+    @Composable get() = Color(0xFFF1F3F5).enTema()
 // Un día de los últimos 7
 private data class DiaPaciente(
     val letra: String,
@@ -58,21 +65,21 @@ fun ProfessionalPatientDetailScreen(
     val db = FirebaseFirestore.getInstance()
     val miUid = FirebaseAuth.getInstance().currentUser?.uid
 
-    var pacienteUid by remember { mutableStateOf("") }
-    var nombre by remember { mutableStateOf("Paciente") }
-    var diagnostico by remember { mutableStateOf("Sin diagnóstico informado") }
-    var fechaNacimiento by remember { mutableStateOf("No informada") }
-    var genero by remember { mutableStateOf("No informado") }
-    var mano by remember { mutableStateOf("No informada") }
+    var pacienteUid by rememberSaveable { mutableStateOf("") }
+    var nombre by rememberSaveable { mutableStateOf("Paciente") }
+    var diagnostico by rememberSaveable { mutableStateOf("Sin diagnóstico informado") }
+    var fechaNacimiento by rememberSaveable { mutableStateOf("No informada") }
+    var genero by rememberSaveable { mutableStateOf("No informado") }
+    var mano by rememberSaveable { mutableStateOf("No informada") }
     var quickDash by remember { mutableStateOf<String?>(null) }
     var cargando by remember { mutableStateOf(true) }
-    var noEncontrado by remember { mutableStateOf(false) }
+    var noEncontrado by rememberSaveable { mutableStateOf(false) }
 
     // Semana + permisos que dio el paciente a este profesional
     var semana by remember { mutableStateOf<List<DiaPaciente>>(emptyList()) }
     var horarios by remember { mutableStateOf<List<String>>(emptyList()) }
-    var comparteProgreso by remember { mutableStateOf(true) }
-    var comparteMedicacion by remember { mutableStateOf(true) }
+    var comparteProgreso by rememberSaveable { mutableStateOf(true) }
+    var comparteMedicacion by rememberSaveable { mutableStateOf(true) }
 
     // Uso del guante registrado por el paciente
     var usoGuante by remember { mutableStateOf(UsoGuante.Resumen()) }

@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
@@ -50,14 +54,20 @@ import com.example.pulsofirme.UserData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-private val Verde = Color(0xFF1B7A4B)
-private val VerdeClaro = Color(0xFFEFF6F1)
-private val BordeGris = Color(0xFFE5E7EB)
-private val AmbarPausa = Color(0xFFBA7517)
-private val AmbarPausaClaro = Color(0xFFFAEEDA)
-private val RojoAviso = Color(0xFFC0392B)
-private val RojoAvisoClaro = Color(0xFFFBEAE8)
-
+private val Verde: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val VerdeClaro: Color
+    @Composable get() = Color(0xFFEFF6F1).enTema()
+private val BordeGris: Color
+    @Composable get() = Color(0xFFE5E7EB).enTema()
+private val AmbarPausa: Color
+    @Composable get() = Color(0xFFBA7517).enTema()
+private val AmbarPausaClaro: Color
+    @Composable get() = Color(0xFFFAEEDA).enTema()
+private val RojoAviso: Color
+    @Composable get() = Color(0xFFC0392B).enTema()
+private val RojoAvisoClaro: Color
+    @Composable get() = Color(0xFFFBEAE8).enTema()
 data class PasoEjercicio(
     val numero: Int,
     val titulo: String,
@@ -695,9 +705,9 @@ fun ExerciseInProgressScreen(
     var repeticionActual by remember { mutableIntStateOf(1) }
     var fase by remember { mutableStateOf(FaseEjercicio.SOSTENIENDO) }
     var segundosRestantes by remember { mutableIntStateOf(segundosSostener) }
-    var pausadoPorUsuario by remember { mutableStateOf(false) }
-    var terminado by remember { mutableStateOf(false) }
-    var mostrarInfo by remember { mutableStateOf(false) }
+    var pausadoPorUsuario by rememberSaveable { mutableStateOf(false) }
+    var terminado by rememberSaveable { mutableStateOf(false) }
+    var mostrarInfo by rememberSaveable { mutableStateOf(false) }
     var segundosTranscurridos by remember { mutableIntStateOf(0) }
 
     // Diagnósticos del usuario, para mostrar el cartel que le corresponde
@@ -714,8 +724,8 @@ fun ExerciseInProgressScreen(
     var pasoAnimadoIndex by remember { mutableIntStateOf(0) }
 
     // ---------- Lectura en voz alta (voz del celular, sin internet) ----------
-    var vozActiva by remember { mutableStateOf(false) }
-    var vozLista by remember { mutableStateOf(false) }
+    var vozActiva by rememberSaveable { mutableStateOf(false) }
+    var vozLista by rememberSaveable { mutableStateOf(false) }
     var finLectura by remember { mutableIntStateOf(0) }
     var motorVoz by remember { mutableStateOf<TextToSpeech?>(null) }
 
@@ -820,14 +830,14 @@ fun ExerciseInProgressScreen(
     if (mostrarInfo) {
         AlertDialog(
             onDismissRequest = { mostrarInfo = false },
-            containerColor = Color.White,
+            containerColor = Color.White.enTema(),
             shape = RoundedCornerShape(20.dp),
             title = {
                 Column {
                     Text(
                         text = "Sobre este ejercicio",
                         fontSize = 13.sp,
-                        color = Color(0xFF6B7280)
+                        color = Color(0xFF6B7280).enTema()
                     )
                     Text(
                         text = nombreEjercicio,
@@ -872,7 +882,7 @@ fun ExerciseInProgressScreen(
                         Text(
                             text = contenido.infoCuandoParar,
                             fontSize = 13.sp,
-                            color = Color(0xFF374151),
+                            color = Color(0xFF374151).enTema(),
                             lineHeight = 19.sp
                         )
                     }
@@ -904,7 +914,7 @@ fun ExerciseInProgressScreen(
                         Text(
                             text = contenido.infoQueMide,
                             fontSize = 13.sp,
-                            color = Color(0xFF374151),
+                            color = Color(0xFF374151).enTema(),
                             lineHeight = 19.sp
                         )
                     }
@@ -914,7 +924,7 @@ fun ExerciseInProgressScreen(
                     Text(
                         text = "Esta información es orientativa y no reemplaza la indicación de tu profesional de salud.",
                         fontSize = 12.sp,
-                        color = Color(0xFF6B7280),
+                        color = Color(0xFF6B7280).enTema(),
                         lineHeight = 17.sp
                     )
                 }
@@ -957,7 +967,7 @@ fun ExerciseInProgressScreen(
             }
             Column(modifier = Modifier.weight(1f)) {
                 Text(text = nombreEjercicio, fontSize = 22.sp, fontWeight = FontWeight.Bold, color = Verde)
-                Text(text = "$zonaMostrada · $tipoMostrado", fontSize = 14.sp, color = Color(0xFF6B7280))
+                Text(text = "$zonaMostrada · $tipoMostrado", fontSize = 14.sp, color = Color(0xFF6B7280).enTema())
             }
             IconButton(
                 onClick = {
@@ -975,7 +985,7 @@ fun ExerciseInProgressScreen(
         Text(
             text = contenido.descripcion,
             fontSize = 13.sp,
-            color = Color(0xFF6B7280),
+            color = Color(0xFF6B7280).enTema(),
             lineHeight = 18.sp
         )
 
@@ -999,11 +1009,11 @@ fun ExerciseInProgressScreen(
                 Text(
                     text = "${parametros.repeticiones} repeticiones · unos ${parametros.segundos} segundos en total",
                     fontSize = 13.sp,
-                    color = Color(0xFF374151)
+                    color = Color(0xFF374151).enTema()
                 )
                 if (parametros.nota != null) {
                     Spacer(modifier = Modifier.height(4.dp))
-                    Text(text = parametros.nota, fontSize = 13.sp, color = Color(0xFF374151), lineHeight = 18.sp)
+                    Text(text = parametros.nota, fontSize = 13.sp, color = Color(0xFF374151).enTema(), lineHeight = 18.sp)
                 }
             }
             if (contenido.advertencia != null) {
@@ -1017,7 +1027,7 @@ fun ExerciseInProgressScreen(
                 ) {
                     Icon(Icons.Filled.Warning, contentDescription = null, tint = RojoAviso, modifier = Modifier.size(20.dp))
                     Spacer(modifier = Modifier.width(10.dp))
-                    Text(text = contenido.advertencia, fontSize = 13.sp, color = Color(0xFF374151), lineHeight = 18.sp)
+                    Text(text = contenido.advertencia, fontSize = 13.sp, color = Color(0xFF374151).enTema(), lineHeight = 18.sp)
                 }
             }
         }
@@ -1040,7 +1050,7 @@ fun ExerciseInProgressScreen(
                     text = "Cómo se hace",
                     fontSize = 13.sp,
                     fontWeight = FontWeight.SemiBold,
-                    color = Color(0xFF1A1A1A),
+                    color = Color(0xFF1A1A1A).enTema(),
                     modifier = Modifier.weight(1f)
                 )
                 // Botón 🔊: lee los pasos en voz alta
@@ -1124,14 +1134,14 @@ fun ExerciseInProgressScreen(
                                 if (paso.titulo.isNotBlank()) " · ${paso.titulo}" else "",
                         fontSize = 13.sp,
                         fontWeight = FontWeight.SemiBold,
-                        color = Color(0xFF1A1A1A),
+                        color = Color(0xFF1A1A1A).enTema(),
                         textAlign = TextAlign.Center
                     )
                     Spacer(modifier = Modifier.height(6.dp))
                     Text(
                         text = paso.detalle,
                         fontSize = 13.sp,
-                        color = Color(0xFF6B7280),
+                        color = Color(0xFF6B7280).enTema(),
                         lineHeight = 18.sp,
                         textAlign = TextAlign.Center
                     )
@@ -1196,21 +1206,21 @@ fun ExerciseInProgressScreen(
             Icon(Icons.Filled.Autorenew, contentDescription = null, tint = Verde, modifier = Modifier.size(22.dp))
             Spacer(modifier = Modifier.width(12.dp))
             Column {
-                Text(text = if (premium != null) "Hacé $totalRepeticiones repeticiones" else "Repetí de 5 a 10 veces", fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = Color(0xFF1A1A1A))
-                Text(text = "Cada repetición incluye una pausa de descanso.", fontSize = 12.sp, color = Color(0xFF6B7280))
+                Text(text = if (premium != null) "Hacé $totalRepeticiones repeticiones" else "Repetí de 5 a 10 veces", fontSize = 14.sp, fontWeight = FontWeight.SemiBold, color = Color(0xFF1A1A1A).enTema())
+                Text(text = "Cada repetición incluye una pausa de descanso.", fontSize = 12.sp, color = Color(0xFF6B7280).enTema())
             }
         }
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        androidx.compose.material3.HorizontalDivider(color = Color(0xFFECECEC))
+        androidx.compose.material3.HorizontalDivider(color = Color(0xFFECECEC).enTema())
 
         Spacer(modifier = Modifier.height(24.dp))
 
         Text(
             text = "Repetición",
             fontSize = 15.sp,
-            color = Color(0xFF374151),
+            color = Color(0xFF374151).enTema(),
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
 
@@ -1234,7 +1244,7 @@ fun ExerciseInProgressScreen(
                 text = "$repeticionActual/$totalRepeticiones",
                 fontSize = 32.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFF1A1A1A)
+                color = Color(0xFF1A1A1A).enTema()
             )
         }
 
@@ -1262,9 +1272,9 @@ fun ExerciseInProgressScreen(
         ) {
             Icon(Icons.Filled.AccessTime, contentDescription = null, tint = colorFase, modifier = Modifier.size(20.dp))
             Spacer(modifier = Modifier.width(6.dp))
-            Text(text = "$segundosRestantes", fontSize = 24.sp, fontWeight = FontWeight.Bold, color = Color(0xFF1A1A1A))
+            Text(text = "$segundosRestantes", fontSize = 24.sp, fontWeight = FontWeight.Bold, color = Color(0xFF1A1A1A).enTema())
             Spacer(modifier = Modifier.width(4.dp))
-            Text(text = "segundos", fontSize = 15.sp, color = Color(0xFF6B7280))
+            Text(text = "segundos", fontSize = 15.sp, color = Color(0xFF6B7280).enTema())
         }
 
         Spacer(modifier = Modifier.height(20.dp))
@@ -1309,12 +1319,12 @@ fun ExerciseInProgressScreen(
                         text = tituloFase,
                         fontSize = 18.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color(0xFF1A1A1A)
+                        color = Color(0xFF1A1A1A).enTema()
                     )
                     Text(
                         text = subtituloFase,
                         fontSize = 13.sp,
-                        color = Color(0xFF6B7280)
+                        color = Color(0xFF6B7280).enTema()
                     )
                 }
 
@@ -1352,12 +1362,12 @@ fun ExerciseInProgressScreen(
                         text = "Progreso del ejercicio",
                         fontSize = 15.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color(0xFF1A1A1A)
+                        color = Color(0xFF1A1A1A).enTema()
                     )
                     Text(
                         text = "Repetición $repeticionActual de $totalRepeticiones",
                         fontSize = 12.sp,
-                        color = Color(0xFF6B7280)
+                        color = Color(0xFF6B7280).enTema()
                     )
                 }
 
@@ -1378,7 +1388,7 @@ fun ExerciseInProgressScreen(
                     .height(10.dp)
                     .clip(RoundedCornerShape(10.dp)),
                 color = colorFase,
-                trackColor = Color(0xFFF0F1F2)
+                trackColor = Color(0xFFF0F1F2).enTema()
             )
         }
 
@@ -1443,12 +1453,12 @@ fun ExerciseInProgressScreen(
             text = "Beneficios del ejercicio",
             fontSize = 19.sp,
             fontWeight = FontWeight.Bold,
-            color = Color(0xFF1A1A1A)
+            color = Color(0xFF1A1A1A).enTema()
         )
         Text(
             text = "Lo que trabajás con este movimiento",
             fontSize = 13.sp,
-            color = Color(0xFF6B7280)
+            color = Color(0xFF6B7280).enTema()
         )
 
         Spacer(modifier = Modifier.height(14.dp))
@@ -1467,13 +1477,13 @@ fun ExerciseInProgressScreen(
                         .padding(vertical = 15.dp, horizontal = 4.dp),
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Medium,
-                    color = Color(0xFF374151),
+                    color = Color(0xFF374151).enTema(),
                     lineHeight = 19.sp
                 )
 
                 if (index < contenido.beneficios.lastIndex) {
                     HorizontalDivider(
-                        color = Color(0xFFF0F1F2)
+                        color = Color(0xFFF0F1F2).enTema()
                     )
                 }
             }
@@ -1500,7 +1510,7 @@ fun ExerciseInProgressScreen(
             Text(
                 text = "Realizá cada movimiento lentamente y sin forzar. Si sentís dolor, detenete y consultá con tu profesional de salud.",
                 fontSize = 13.sp,
-                color = Color(0xFF374151),
+                color = Color(0xFF374151).enTema(),
                 lineHeight = 18.sp
             )
         }
@@ -1516,13 +1526,13 @@ private fun BloqueInfo(titulo: String, texto: String) {
             text = titulo,
             fontSize = 14.sp,
             fontWeight = FontWeight.Bold,
-            color = Color(0xFF1A1A1A)
+            color = Color(0xFF1A1A1A).enTema()
         )
         Spacer(Modifier.height(4.dp))
         Text(
             text = texto,
             fontSize = 13.sp,
-            color = Color(0xFF6B7280),
+            color = Color(0xFF6B7280).enTema(),
             lineHeight = 19.sp
         )
     }
@@ -1540,7 +1550,7 @@ private fun BeneficioFila(emoji: String, texto: String) {
             Text(text = emoji, fontSize = 16.sp)
         }
         Spacer(modifier = Modifier.width(12.dp))
-        Text(text = texto, fontSize = 14.sp, color = Color(0xFF374151))
+        Text(text = texto, fontSize = 14.sp, color = Color(0xFF374151).enTema())
     }
 }
 
@@ -1611,14 +1621,14 @@ private fun CartelDiagnostico(diagnosticos: List<String>) {
             .fillMaxWidth()
             .clip(RoundedCornerShape(16.dp))
             .background(VerdeClaro)
-            .border(1.dp, Color(0xFFCDE5D6), RoundedCornerShape(16.dp))
+            .border(1.dp, Color(0xFFCDE5D6).enTema(), RoundedCornerShape(16.dp))
             .padding(18.dp)
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Box(
                 modifier = Modifier
                     .size(40.dp)
-                    .background(Color.White, CircleShape),
+                    .background(Color.White.enTema(), CircleShape),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
@@ -1633,7 +1643,7 @@ private fun CartelDiagnostico(diagnosticos: List<String>) {
                 text = cartel.titulo,
                 fontSize = 17.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFF1A1A1A),
+                color = Color(0xFF1A1A1A).enTema(),
                 lineHeight = 22.sp
             )
         }
@@ -1643,7 +1653,7 @@ private fun CartelDiagnostico(diagnosticos: List<String>) {
         Text(
             text = cartel.texto,
             fontSize = 14.sp,
-            color = Color(0xFF374151),
+            color = Color(0xFF374151).enTema(),
             lineHeight = 20.sp
         )
 
@@ -1653,14 +1663,14 @@ private fun CartelDiagnostico(diagnosticos: List<String>) {
             modifier = Modifier
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(12.dp))
-                .background(Color(0xFFFFF7E0))
+                .background(Color(0xFFFFF7E0).enTema())
                 .padding(12.dp),
             verticalAlignment = Alignment.Top
         ) {
             Icon(
                 Icons.Filled.Warning,
                 contentDescription = null,
-                tint = Color(0xFF9A6B00),
+                tint = Color(0xFF9A6B00).enTema(),
                 modifier = Modifier
                     .padding(top = 1.dp)
                     .size(18.dp)
@@ -1672,7 +1682,7 @@ private fun CartelDiagnostico(diagnosticos: List<String>) {
                     append(cartel.importante)
                 },
                 fontSize = 13.sp,
-                color = Color(0xFF5C4400),
+                color = Color(0xFF5C4400).enTema(),
                 lineHeight = 19.sp
             )
         }
@@ -1682,7 +1692,7 @@ private fun CartelDiagnostico(diagnosticos: List<String>) {
         Text(
             text = NO_REEMPLAZA,
             fontSize = 12.sp,
-            color = Color(0xFF6B7280),
+            color = Color(0xFF6B7280).enTema(),
             lineHeight = 17.sp
         )
     }

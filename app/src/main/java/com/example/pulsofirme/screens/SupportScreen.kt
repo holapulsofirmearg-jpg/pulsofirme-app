@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.animation.AnimatedVisibility
@@ -31,14 +35,20 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pulsofirme.R
 
-private val VerdeSp = Color(0xFF1B7A4B)
-private val VerdeOscuroSp = Color(0xFF1B4332)
-private val VerdeSuaveSp = Color(0xFFEAF5EC)
-private val AzulBotonSp = Color(0xFF2C5F8D)
-private val BordeSp = Color(0xFFE5E7EB)
-private val GrisSp = Color(0xFF6B7280)
-private val NegroSp = Color(0xFF1A1A1A)
-
+private val VerdeSp: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val VerdeOscuroSp: Color
+    @Composable get() = Color(0xFF1B4332).enTema()
+private val VerdeSuaveSp: Color
+    @Composable get() = Color(0xFFEAF5EC).enTema()
+private val AzulBotonSp: Color
+    @Composable get() = Color(0xFF2C5F8D).enTema()
+private val BordeSp: Color
+    @Composable get() = Color(0xFFE5E7EB).enTema()
+private val GrisSp: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val NegroSp: Color
+    @Composable get() = Color(0xFF1A1A1A).enTema()
 private const val CORREO_SOPORTE = "holapulsofirmearg@gmail.com"
 
 private val dudasFrecuentes = listOf(
@@ -67,8 +77,8 @@ fun SupportScreen(
     onDudasFrecuentes: () -> Unit = {}
 ) {
     val contexto = LocalContext.current
-    var abiertoDudas by remember { mutableStateOf(false) }
-    var abiertoGuia by remember { mutableStateOf(false) }
+    var abiertoDudas by rememberSaveable { mutableStateOf(false) }
+    var abiertoGuia by rememberSaveable { mutableStateOf(false) }
 
     val abrirCorreo: (String) -> Unit = { asunto ->
         val intent = Intent(Intent.ACTION_SENDTO).apply {
@@ -85,7 +95,7 @@ fun SupportScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 20.dp)
     ) {
@@ -123,7 +133,7 @@ fun SupportScreen(
                 modifier = Modifier
                     .size(52.dp)
                     .clip(CircleShape)
-                    .background(Color.White),
+                    .background(Color.White.enTema()),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
@@ -204,7 +214,7 @@ fun SupportScreen(
                 text = "Esta es una versión de demostración desarrollada por estudiantes de la Escuela EXPERIMENTAL PROA. " +
                         "PulsoFirme está pensado para acompañar ejercicios de manos en Parkinson y artritis, pero no reemplaza la indicación de un profesional de la salud. Si tenés cualquier duda y querés que te ayudemos, escribinos a $CORREO_SOPORTE.",
                 fontSize = 15.sp,
-                color = Color(0xFF374151),
+                color = Color(0xFF374151).enTema(),
                 lineHeight = 23.sp
             )
         }
@@ -296,7 +306,7 @@ private fun FilaDesplegable(titulo: String, abierto: Boolean, onClick: () -> Uni
         Icon(
             imageVector = if (abierto) Icons.Filled.ExpandLess else Icons.Filled.ExpandMore,
             contentDescription = null,
-            tint = Color(0xFF9CA3AF)
+            tint = Color(0xFF9CA3AF).enTema()
         )
     }
 }

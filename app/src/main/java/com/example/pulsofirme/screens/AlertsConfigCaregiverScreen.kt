@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -46,12 +50,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-private val VerdeTitulo = Color(0xFF1B7A4B)
-private val AzulTexto = Color(0xFF16324F)
-private val GrisSubtitulo = Color(0xFF6B7280)
-private val VerdeIconoFondo = Color(0xFFDFF3E4)
-private val GrisBorde = Color(0xFFE5E7EB)
-
+private val VerdeTitulo: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val AzulTexto: Color
+    @Composable get() = Color(0xFF16324F).enTema()
+private val GrisSubtitulo: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val VerdeIconoFondo: Color
+    @Composable get() = Color(0xFFDFF3E4).enTema()
+private val GrisBorde: Color
+    @Composable get() = Color(0xFFE5E7EB).enTema()
 @Composable
 fun AlertsConfigCaregiverScreen(
     onBack: () -> Unit,
@@ -63,11 +71,11 @@ fun AlertsConfigCaregiverScreen(
         alertasGenerales: Boolean
     ) -> Unit = { _, _, _, _, _ -> }
 ) {
-    var alertasMedicacion by remember { mutableStateOf(true) }
-    var alertasDispositivo by remember { mutableStateOf(true) }
-    var evaluacionQuickDash by remember { mutableStateOf(true) }
-    var progreso by remember { mutableStateOf(false) }
-    var alertasGenerales by remember { mutableStateOf(true) }
+    var alertasMedicacion by rememberSaveable { mutableStateOf(true) }
+    var alertasDispositivo by rememberSaveable { mutableStateOf(true) }
+    var evaluacionQuickDash by rememberSaveable { mutableStateOf(true) }
+    var progreso by rememberSaveable { mutableStateOf(false) }
+    var alertasGenerales by rememberSaveable { mutableStateOf(true) }
     var guardando by remember { mutableStateOf(false) }
 
     val contexto = LocalContext.current
@@ -149,7 +157,7 @@ fun AlertsConfigCaregiverScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 24.dp)
     ) {

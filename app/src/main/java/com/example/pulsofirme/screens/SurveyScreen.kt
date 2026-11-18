@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -27,10 +31,12 @@ import androidx.compose.ui.unit.sp
 import com.example.pulsofirme.R
 
 // Verde (Defecto / Rigidez u otras)
-private val VerdeEn = Color(0xFF1B7A4B)
-private val VerdeOscuroEn = Color(0xFF1B4332)
-private val VerdeSuaveEn = Color(0xFFEAF5EC)
-
+private val VerdeEn: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val VerdeOscuroEn: Color
+    @Composable get() = Color(0xFF1B4332).enTema()
+private val VerdeSuaveEn: Color
+    @Composable get() = Color(0xFFEAF5EC).enTema()
 // Ámbar / Miel (Para Hinchazón)
 private val AmarilloEn = Color(0xFFC99700)      // Miel / ámbar seco
 private val AmarilloOscuroEn = Color(0xFF4D3800) // Bronce oscuro
@@ -41,10 +47,12 @@ private val AzulEn = Color(0xFF1D68C8)        // Azul principal
 private val AzulOscuroEn = Color(0xFF0F3B7A)  // Azul noche para títulos
 private val AzulSuaveEn = Color(0xFFEBF3FC)   // Azul pastel muy suave
 
-private val BordeEn = Color(0xFFE5E7EB)
-private val GrisEn = Color(0xFF6B7280)
-private val NegroEn = Color(0xFF1A1A1A)
-
+private val BordeEn: Color
+    @Composable get() = Color(0xFFE5E7EB).enTema()
+private val GrisEn: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val NegroEn: Color
+    @Composable get() = Color(0xFF1A1A1A).enTema()
 private data class PreguntaEncuesta(
     val titulo: String,
     val ayuda: String,
@@ -171,7 +179,7 @@ fun SurveyScreen(
     }
 
     var indice by remember { mutableIntStateOf(0) }
-    var mostrarResultado by remember { mutableStateOf(false) }
+    var mostrarResultado by rememberSaveable { mutableStateOf(false) }
 
     if (mostrarResultado) {
         val (ejercicio, motivo) = ejercicioRecomendadoDinamico(sensacionInicial, respuestas)
@@ -179,7 +187,7 @@ fun SurveyScreen(
         BoxWithConstraints(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color.White)
+                .background(Color.White.enTema())
         ) {
             val minHeight = maxHeight
 
@@ -312,7 +320,7 @@ fun SurveyScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .padding(horizontal = 24.dp)
     ) {
         Spacer(Modifier.height(48.dp))
@@ -362,7 +370,7 @@ fun SurveyScreen(
                 .height(9.dp)
                 .clip(RoundedCornerShape(5.dp)),
             color = colorPrincipal,
-            trackColor = Color(0xFFF0F1F3)
+            trackColor = Color(0xFFF0F1F3).enTema()
         )
 
         Spacer(Modifier.height(26.dp))
@@ -403,7 +411,7 @@ fun SurveyScreen(
                         .fillMaxWidth()
                         .padding(bottom = 10.dp)
                         .clip(RoundedCornerShape(14.dp))
-                        .background(if (elegida) colorSuave else Color.White)
+                        .background(if (elegida) colorSuave else Color.White.enTema())
                         .border(
                             width = if (elegida) 2.dp else 1.dp,
                             color = if (elegida) colorPrincipal else BordeEn,
@@ -416,7 +424,7 @@ fun SurveyScreen(
                     Text(
                         text = opcion,
                         fontSize = 16.sp,
-                        color = if (elegida) colorOscuro else Color(0xFF374151),
+                        color = if (elegida) colorOscuro else Color(0xFF374151).enTema(),
                         fontWeight = if (elegida) FontWeight.SemiBold else FontWeight.Normal,
                         modifier = Modifier.weight(1f)
                     )
@@ -447,8 +455,8 @@ fun SurveyScreen(
             colors = ButtonDefaults.buttonColors(
                 containerColor = colorPrincipal,
                 contentColor = Color.White,
-                disabledContainerColor = Color(0xFFDCDCDC),
-                disabledContentColor = Color(0xFF8A8A8A)
+                disabledContainerColor = Color(0xFFDCDCDC).enTema(),
+                disabledContentColor = Color(0xFF8A8A8A).enTema()
             )
         ) {
             Text(

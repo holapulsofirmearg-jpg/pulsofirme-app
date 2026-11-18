@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -14,10 +16,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-private val VerdeTiempoProf = Color(0xFF07884A)
-private val VerdeClaroTiempoProf = Color(0xFFEAF8F0)
-private val GrisTiempoProf = Color(0xFF6B7280)
-
+private val VerdeTiempoProf: Color
+    @Composable get() = Color(0xFF07884A).enTema()
+private val VerdeClaroTiempoProf: Color
+    @Composable get() = Color(0xFFEAF8F0).enTema()
+private val GrisTiempoProf: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
 private data class TiempoPacienteProfesional(
     val nombre: String,
     val minutos: Int
@@ -39,7 +43,7 @@ fun ProfessionalActivityTimeScreen(
     val horas = totalMinutos / 60
     val minutos = totalMinutos % 60
 
-    Scaffold(containerColor = Color.White) { padding ->
+    Scaffold(containerColor = Color.White.enTema()) { padding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -58,7 +62,7 @@ fun ProfessionalActivityTimeScreen(
                         text = "Tiempo de actividad",
                         fontSize = 25.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color(0xFF10152B)
+                        color = Color(0xFF10152B).enTema()
                     )
                     Text(
                         text = "Actividad semanal de tus 5 pacientes",
@@ -118,7 +122,7 @@ fun ProfessionalActivityTimeScreen(
                         .fillMaxWidth()
                         .padding(bottom = 12.dp),
                     shape = RoundedCornerShape(16.dp),
-                    colors = CardDefaults.cardColors(containerColor = Color.White),
+                    colors = CardDefaults.cardColors(containerColor = Color.White.enTema()),
                     border = CardDefaults.outlinedCardBorder()
                 ) {
                     Column(
@@ -133,7 +137,7 @@ fun ProfessionalActivityTimeScreen(
                                 modifier = Modifier.weight(1f),
                                 fontSize = 16.sp,
                                 fontWeight = FontWeight.SemiBold,
-                                color = Color(0xFF10152B)
+                                color = Color(0xFF10152B).enTema()
                             )
 
                             Text(
@@ -152,7 +156,7 @@ fun ProfessionalActivityTimeScreen(
                                 .fillMaxWidth()
                                 .height(8.dp),
                             color = VerdeTiempoProf,
-                            trackColor = Color(0xFFE5E7EB)
+                            trackColor = Color(0xFFE5E7EB).enTema()
                         )
 
                         Spacer(Modifier.height(6.dp))

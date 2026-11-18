@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.selection.toggleable
@@ -35,12 +37,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-private val VerdeTitulo = Color(0xFF1B7A4B)
-private val AzulTexto = Color(0xFF16324F)
-private val GrisSubtitulo = Color(0xFF6B7280)
-private val VerdeIconoFondo = Color(0xFFDFF3E4)
-private val GrisBorde = Color(0xFFE5E7EB)
-
+private val VerdeTitulo: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val AzulTexto: Color
+    @Composable get() = Color(0xFF16324F).enTema()
+private val GrisSubtitulo: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val VerdeIconoFondo: Color
+    @Composable get() = Color(0xFFDFF3E4).enTema()
+private val GrisBorde: Color
+    @Composable get() = Color(0xFFE5E7EB).enTema()
 @Composable
 fun AlertsConfigScreen(
     onBack: () -> Unit,
@@ -63,7 +69,7 @@ fun AlertsConfigScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 24.dp)
     ) {

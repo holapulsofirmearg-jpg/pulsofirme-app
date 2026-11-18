@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -18,11 +20,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-private val VerdeEvolucion = Color(0xFF07884A)
-private val VerdeClaroEvolucion = Color(0xFFEAF8F0)
-private val AzulClaroEvolucion = Color(0xFFEAF6FF)
-private val GrisEvolucion = Color(0xFF6B7280)
-
+private val VerdeEvolucion: Color
+    @Composable get() = Color(0xFF07884A).enTema()
+private val VerdeClaroEvolucion: Color
+    @Composable get() = Color(0xFFEAF8F0).enTema()
+private val AzulClaroEvolucion: Color
+    @Composable get() = Color(0xFFEAF6FF).enTema()
+private val GrisEvolucion: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
 private data class PacienteEvolucion(
     val nombre: String,
     val inicio: Int,
@@ -45,7 +50,7 @@ fun ProfessionalPatientEvolutionScreen(
 
     val pacientesEnMejora = pacientes.count { it.actual > it.inicio }
 
-    Scaffold(containerColor = Color.White) { padding ->
+    Scaffold(containerColor = Color.White.enTema()) { padding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -61,7 +66,7 @@ fun ProfessionalPatientEvolutionScreen(
                     text = "Evolución de pacientes",
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFF10152B)
+                    color = Color(0xFF10152B).enTema()
                 )
             }
 
@@ -88,7 +93,7 @@ fun ProfessionalPatientEvolutionScreen(
                             text = "$pacientesEnMejora / ${pacientes.size}",
                             fontSize = 30.sp,
                             fontWeight = FontWeight.Bold,
-                            color = Color(0xFF10152B)
+                            color = Color(0xFF10152B).enTema()
                         )
                         Text(
                             text = "Pacientes en mejora",
@@ -110,7 +115,7 @@ fun ProfessionalPatientEvolutionScreen(
                 text = "Por paciente",
                 fontSize = 21.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFF10152B)
+                color = Color(0xFF10152B).enTema()
             )
 
             Spacer(Modifier.height(10.dp))
@@ -125,7 +130,7 @@ fun ProfessionalPatientEvolutionScreen(
                         .fillMaxWidth()
                         .padding(bottom = 10.dp),
                     shape = RoundedCornerShape(16.dp),
-                    colors = CardDefaults.cardColors(containerColor = Color.White),
+                    colors = CardDefaults.cardColors(containerColor = Color.White.enTema()),
                     border = CardDefaults.outlinedCardBorder()
                 ) {
                     Column(modifier = Modifier.padding(15.dp)) {
@@ -135,7 +140,7 @@ fun ProfessionalPatientEvolutionScreen(
                                     text = paciente.nombre,
                                     fontSize = 16.sp,
                                     fontWeight = FontWeight.SemiBold,
-                                    color = Color(0xFF10152B)
+                                    color = Color(0xFF10152B).enTema()
                                 )
                                 Text(
                                     text = "Precisión y control de movimiento",
@@ -145,7 +150,7 @@ fun ProfessionalPatientEvolutionScreen(
                             }
 
                             Surface(
-                                color = if (mejora) VerdeClaroEvolucion else Color(0xFFF3F4F6),
+                                color = if (mejora) VerdeClaroEvolucion else Color(0xFFF3F4F6).enTema(),
                                 shape = RoundedCornerShape(50)
                             ) {
                                 Text(
@@ -187,7 +192,7 @@ fun ProfessionalPatientEvolutionScreen(
                                     .weight(2f)
                                     .height(8.dp),
                                 color = VerdeEvolucion,
-                                trackColor = Color(0xFFE5E7EB)
+                                trackColor = Color(0xFFE5E7EB).enTema()
                             )
 
                             Spacer(Modifier.width(14.dp))
@@ -220,13 +225,13 @@ fun ProfessionalPatientEvolutionScreen(
                     Icon(
                         imageVector = Icons.Filled.Info,
                         contentDescription = null,
-                        tint = Color(0xFF2583C5)
+                        tint = Color(0xFF2583C5).enTema()
                     )
                     Spacer(Modifier.width(10.dp))
                     Column {
                         Text(
                             text = "Indicador de evolución",
-                            color = Color(0xFF2583C5),
+                            color = Color(0xFF2583C5).enTema(),
                             fontWeight = FontWeight.Bold
                         )
                         Text(

@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -54,12 +58,16 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 
-private val VerdeTitulo = Color(0xFF1B7A4B)
-private val GrisSubtitulo = Color(0xFF6B7280)
-private val GrisEtiqueta = Color(0xFF6B7280)
-private val CampoFondo = Color(0xFFEAF3EF)
-private val AzulLink = Color(0xFF2196F3)
-
+private val VerdeTitulo: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val GrisSubtitulo: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val GrisEtiqueta: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val CampoFondo: Color
+    @Composable get() = Color(0xFFEAF3EF).enTema()
+private val AzulLink: Color
+    @Composable get() = Color(0xFF2196F3).enTema()
 private val profesiones = listOf("Médico/a", "Kinesiólogo/a", "Terapista ocupacional", "Enfermero/a", "Otro")
 
 @Composable
@@ -70,21 +78,21 @@ fun CaregiverRegisterScreen(
     // true mientras se crea la cuenta (bloquea el botón)
     cargando: Boolean = false
 ) {
-    var nombre by remember { mutableStateOf("") }
-    var apellido by remember { mutableStateOf("") }
-    var correo by remember { mutableStateOf("") }
-    var contrasenia by remember { mutableStateOf("") }
-    var confirmar by remember { mutableStateOf("") }
-    var verPass by remember { mutableStateOf(false) }
-    var verConfirmar by remember { mutableStateOf(false) }
-    var profesion by remember { mutableStateOf("") }
-    var menuProfesionAbierto by remember { mutableStateOf(false) }
-    var matricula by remember { mutableStateOf("") }
-    var aceptaTerminos by remember { mutableStateOf(false) }
-    var aceptaConfidencialidad by remember { mutableStateOf(false) }
-    var mostrarTerminos by remember { mutableStateOf(false) }
-    var mostrarPolitica by remember { mutableStateOf(false) }
-    var errorFormulario by remember { mutableStateOf("") }
+    var nombre by rememberSaveable { mutableStateOf("") }
+    var apellido by rememberSaveable { mutableStateOf("") }
+    var correo by rememberSaveable { mutableStateOf("") }
+    var contrasenia by rememberSaveable { mutableStateOf("") }
+    var confirmar by rememberSaveable { mutableStateOf("") }
+    var verPass by rememberSaveable { mutableStateOf(false) }
+    var verConfirmar by rememberSaveable { mutableStateOf(false) }
+    var profesion by rememberSaveable { mutableStateOf("") }
+    var menuProfesionAbierto by rememberSaveable { mutableStateOf(false) }
+    var matricula by rememberSaveable { mutableStateOf("") }
+    var aceptaTerminos by rememberSaveable { mutableStateOf(false) }
+    var aceptaConfidencialidad by rememberSaveable { mutableStateOf(false) }
+    var mostrarTerminos by rememberSaveable { mutableStateOf(false) }
+    var mostrarPolitica by rememberSaveable { mutableStateOf(false) }
+    var errorFormulario by rememberSaveable { mutableStateOf("") }
 
     if (mostrarTerminos) {
         DialogoLegal(titulo = "Términos y condiciones", texto = TextosLegales.terminos) { mostrarTerminos = false }
@@ -96,7 +104,7 @@ fun CaregiverRegisterScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 24.dp)
     ) {
@@ -236,7 +244,7 @@ fun CaregiverRegisterScreen(
                 placeholder = { Text("Seleccioná tu profesión") },
                 trailingIcon = {
                     IconButton(onClick = { menuProfesionAbierto = true }) {
-                        Icon(Icons.Filled.ArrowDropDown, contentDescription = null, tint = GrisEtiqueta)
+                        Icon(Icons.Filled.ArrowDropDown, contentDescription = "Elegir profesión", tint = GrisEtiqueta)
                     }
                 },
                 singleLine = true,
@@ -255,7 +263,7 @@ fun CaregiverRegisterScreen(
             DropdownMenu(
                 expanded = menuProfesionAbierto,
                 onDismissRequest = { menuProfesionAbierto = false },
-                modifier = Modifier.background(Color.White)
+                modifier = Modifier.background(Color.White.enTema())
             ) {
                 profesiones.forEach { p ->
                     DropdownMenuItem(
@@ -296,7 +304,7 @@ fun CaregiverRegisterScreen(
             Text(
                 text = "Acepto los términos y condiciones y la política de privacidad.",
                 fontSize = 14.sp,
-                color = Color(0xFF333333),
+                color = Color(0xFF333333).enTema(),
                 lineHeight = 20.sp
             )
         }
@@ -347,7 +355,7 @@ fun CaregiverRegisterScreen(
                 text = "Entiendo que voy a acceder a datos de salud de pacientes, que son datos sensibles. " +
                         "Me comprometo a usarlos solo con fines de seguimiento y a respetar el secreto profesional.",
                 fontSize = 14.sp,
-                color = Color(0xFF333333),
+                color = Color(0xFF333333).enTema(),
                 lineHeight = 20.sp
             )
         }
@@ -357,7 +365,7 @@ fun CaregiverRegisterScreen(
         if (errorFormulario.isNotBlank()) {
             Text(
                 text = errorFormulario,
-                color = Color(0xFFB3261E),
+                color = Color(0xFFB3261E).enTema(),
                 fontSize = 13.sp,
                 modifier = Modifier.fillMaxWidth()
             )

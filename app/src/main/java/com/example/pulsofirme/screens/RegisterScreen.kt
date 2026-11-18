@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -46,32 +50,35 @@ import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.launch
 
 private val AzulCabecera = Color(0xFF1565C0)
-private val VerdeReg = Color(0xFF1B7A4B)
-private val GrisBorde = Color(0xFFE0E0E0)
-private val AzulLink = Color(0xFF2196F3)
-private val RojoError = Color(0xFFC63927)
-
+private val VerdeReg: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val GrisBorde: Color
+    @Composable get() = Color(0xFFE0E0E0).enTema()
+private val AzulLink: Color
+    @Composable get() = Color(0xFF2196F3).enTema()
+private val RojoError: Color
+    @Composable get() = Color(0xFFC63927).enTema()
 @Composable
 fun RegisterScreen(
     onBack: () -> Unit,
     onCreateAccount: (String) -> Unit,
     onGoToLogin: () -> Unit
 ) {
-    var nombre by remember { mutableStateOf("") }
-    var correo by remember { mutableStateOf("") }
-    var contrasenia by remember { mutableStateOf("") }
-    var confirmar by remember { mutableStateOf("") }
-    var verPass by remember { mutableStateOf(false) }
-    var verConfirmar by remember { mutableStateOf(false) }
+    var nombre by rememberSaveable { mutableStateOf("") }
+    var correo by rememberSaveable { mutableStateOf("") }
+    var contrasenia by rememberSaveable { mutableStateOf("") }
+    var confirmar by rememberSaveable { mutableStateOf("") }
+    var verPass by rememberSaveable { mutableStateOf(false) }
+    var verConfirmar by rememberSaveable { mutableStateOf(false) }
 
     // Consentimientos: separados y destildados por defecto (consentimiento expreso)
-    var aceptaTerminos by remember { mutableStateOf(false) }
-    var consentimientoSalud by remember { mutableStateOf(false) }
-    var mostrarTerminos by remember { mutableStateOf(false) }
-    var mostrarPolitica by remember { mutableStateOf(false) }
+    var aceptaTerminos by rememberSaveable { mutableStateOf(false) }
+    var consentimientoSalud by rememberSaveable { mutableStateOf(false) }
+    var mostrarTerminos by rememberSaveable { mutableStateOf(false) }
+    var mostrarPolitica by rememberSaveable { mutableStateOf(false) }
 
     var cargando by remember { mutableStateOf(false) }
-    var mensajeError by remember { mutableStateOf("") }
+    var mensajeError by rememberSaveable { mutableStateOf("") }
 
     val scope = rememberCoroutineScope()
 
@@ -176,7 +183,7 @@ fun RegisterScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(rememberScrollState())
     ) {
 
@@ -258,7 +265,7 @@ fun RegisterScreen(
             Text(
                 text = "Completa tus datos para crear tu cuenta",
                 fontSize = 15.sp,
-                color = Color(0xFF5A5A5A),
+                color = Color(0xFF5A5A5A).enTema(),
                 textAlign = TextAlign.Center
             )
 
@@ -386,14 +393,14 @@ fun RegisterScreen(
                     modifier = Modifier.padding(top = 2.dp, end = 10.dp),
                     colors = CheckboxDefaults.colors(
                         checkedColor = VerdeReg,
-                        uncheckedColor = Color(0xFF9E9E9E)
+                        uncheckedColor = Color(0xFF9E9E9E).enTema()
                     )
                 )
                 Column {
                     Text(
                         "Leí y acepto los Términos y Condiciones y la Política de Privacidad.",
                         fontSize = 14.sp,
-                        color = Color(0xFF333333),
+                        color = Color(0xFF333333).enTema(),
                         lineHeight = 20.sp
                     )
                     Row {
@@ -440,7 +447,7 @@ fun RegisterScreen(
                     modifier = Modifier.padding(top = 2.dp, end = 10.dp),
                     colors = CheckboxDefaults.colors(
                         checkedColor = VerdeReg,
-                        uncheckedColor = Color(0xFF9E9E9E)
+                        uncheckedColor = Color(0xFF9E9E9E).enTema()
                     )
                 )
                 Column {
@@ -449,7 +456,7 @@ fun RegisterScreen(
                                 "(diagnóstico, medicación, ejercicios y evaluaciones) y los guarde en " +
                                 "servidores de Google, que pueden estar fuera de la Argentina.",
                         fontSize = 14.sp,
-                        color = Color(0xFF333333),
+                        color = Color(0xFF333333).enTema(),
                         lineHeight = 20.sp
                     )
                     Text(
@@ -457,7 +464,7 @@ fun RegisterScreen(
                                 "desde Privacidad y datos. Compartir con un cuidador o profesional " +
                                 "solo ocurre si vos los vinculás.",
                         fontSize = 12.sp,
-                        color = Color(0xFF6B7280),
+                        color = Color(0xFF6B7280).enTema(),
                         lineHeight = 17.sp,
                         modifier = Modifier.padding(top = 4.dp)
                     )
@@ -505,7 +512,7 @@ fun RegisterScreen(
             // Un solo texto: si la letra es grande, baja de renglón en vez de cortarse
             Text(
                 text = buildAnnotatedString {
-                    withStyle(SpanStyle(color = Color(0xFF333333))) {
+                    withStyle(SpanStyle(color = Color(0xFF333333).enTema())) {
                         append("¿Ya tenés cuenta? ")
                     }
                     withStyle(SpanStyle(color = AzulLink, fontWeight = FontWeight.SemiBold)) {

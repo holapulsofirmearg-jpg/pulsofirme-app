@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -25,8 +29,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 
-private val VerdeCp = Color(0xFF1B7A4B)
-
+private val VerdeCp: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
 /**
  * Pantalla para cuentas que se registraron antes de existir el consentimiento
  * (o cuando se sube TextosLegales.VERSION). Bloquea la app hasta aceptar o salir.
@@ -42,10 +46,10 @@ fun PantallaConsentimientoPendiente(
     val context = LocalContext.current
     val esPaciente = rol == "paciente"
 
-    var aceptaTerminos by remember { mutableStateOf(false) }
-    var aceptaSegundo by remember { mutableStateOf(false) }
-    var mostrarTerminos by remember { mutableStateOf(false) }
-    var mostrarPolitica by remember { mutableStateOf(false) }
+    var aceptaTerminos by rememberSaveable { mutableStateOf(false) }
+    var aceptaSegundo by rememberSaveable { mutableStateOf(false) }
+    var mostrarTerminos by rememberSaveable { mutableStateOf(false) }
+    var mostrarPolitica by rememberSaveable { mutableStateOf(false) }
     var guardando by remember { mutableStateOf(false) }
 
     if (mostrarTerminos) {
@@ -92,7 +96,7 @@ fun PantallaConsentimientoPendiente(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 24.dp)
     ) {
@@ -112,7 +116,7 @@ fun PantallaConsentimientoPendiente(
                     "(Ley 25.326 de Protección de los Datos Personales). " +
                     "Necesitamos tu aceptación para que sigas usando la app.",
             fontSize = 15.sp,
-            color = Color(0xFF374151),
+            color = Color(0xFF374151).enTema(),
             lineHeight = 22.sp
         )
 
@@ -134,7 +138,7 @@ fun PantallaConsentimientoPendiente(
             Text(
                 text = "Acepto los términos y condiciones y la política de privacidad.",
                 fontSize = 14.sp,
-                color = Color(0xFF333333),
+                color = Color(0xFF333333).enTema(),
                 lineHeight = 20.sp
             )
         }
@@ -191,7 +195,7 @@ fun PantallaConsentimientoPendiente(
                                 "Me comprometo a usarlos solo para acompañarlo y a no compartirlos con terceros."
                 },
                 fontSize = 14.sp,
-                color = Color(0xFF333333),
+                color = Color(0xFF333333).enTema(),
                 lineHeight = 20.sp
             )
         }
@@ -202,7 +206,7 @@ fun PantallaConsentimientoPendiente(
                 text = "Podés retirar este consentimiento y borrar tus datos cuando quieras, " +
                         "desde Privacidad y datos.",
                 fontSize = 13.sp,
-                color = Color(0xFF6B7280),
+                color = Color(0xFF6B7280).enTema(),
                 lineHeight = 18.sp,
                 modifier = Modifier.padding(start = 40.dp)
             )
@@ -241,7 +245,7 @@ fun PantallaConsentimientoPendiente(
                 text = "No acepto, cerrar sesión",
                 fontSize = 16.sp,
                 fontWeight = FontWeight.SemiBold,
-                color = Color(0xFF16324F)
+                color = Color(0xFF16324F).enTema()
             )
         }
 

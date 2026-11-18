@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -30,13 +32,18 @@ import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
-private val AzulNot = Color(0xFF1565C0)
-private val AzulOscuroNot = Color(0xFF0D3B66)
-private val AzulSuaveNot = Color(0xFFE7F0FB)
-private val GrisFondoNot = Color(0xFFF5F7FA)
-private val GrisNot = Color(0xFF6B7280)
-private val NegroNot = Color(0xFF1A1A1A)
-
+private val AzulNot: Color
+    @Composable get() = Color(0xFF1565C0).enTema()
+private val AzulOscuroNot: Color
+    @Composable get() = Color(0xFF0D3B66).enTema()
+private val AzulSuaveNot: Color
+    @Composable get() = Color(0xFFE7F0FB).enTema()
+private val GrisFondoNot: Color
+    @Composable get() = Color(0xFFF5F7FA).enTema()
+private val GrisNot: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val NegroNot: Color
+    @Composable get() = Color(0xFF1A1A1A).enTema()
 data class Notificacion(
     val icono: ImageVector,
     val titulo: String,
@@ -165,7 +172,7 @@ fun NotificationsScreen(onBack: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 20.dp)
     ) {
@@ -259,7 +266,7 @@ private fun FilaNotificacion(n: Notificacion) {
             modifier = Modifier
                 .size(40.dp)
                 .clip(CircleShape)
-                .background(if (n.nueva) Color.White else AzulSuaveNot),
+                .background(if (n.nueva) Color.White.enTema() else AzulSuaveNot),
             contentAlignment = Alignment.Center
         ) {
             Icon(n.icono, contentDescription = null, tint = AzulNot, modifier = Modifier.size(20.dp))

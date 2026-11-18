@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -44,18 +48,28 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 
-private val VerdeTitulo = Color(0xFF1B7A4B)
-private val AzulTexto = Color(0xFF16324F)
-private val GrisSubtitulo = Color(0xFF6B7280)
-private val CelesteFondo = Color(0xFFEAF3F7)
-private val VerdeIconoFondo = Color(0xFFDFF3E4)
-private val RojoFondo = Color(0xFFFBE9E9)
-private val RojoTexto = Color(0xFFC94A4A)
-private val RojoBoton = Color(0xFFE05A4E)
-private val GrisDivider = Color(0xFFDCE3E0)
-private val VerdeBoton = Color(0xFFDCEFE3)
-private val GrisBordeCancelar = Color(0xFFD8DED9)
-
+private val VerdeTitulo: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val AzulTexto: Color
+    @Composable get() = Color(0xFF16324F).enTema()
+private val GrisSubtitulo: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val CelesteFondo: Color
+    @Composable get() = Color(0xFFEAF3F7).enTema()
+private val VerdeIconoFondo: Color
+    @Composable get() = Color(0xFFDFF3E4).enTema()
+private val RojoFondo: Color
+    @Composable get() = Color(0xFFFBE9E9).enTema()
+private val RojoTexto: Color
+    @Composable get() = Color(0xFFC94A4A).enTema()
+private val RojoBoton: Color
+    @Composable get() = Color(0xFFE05A4E).enTema()
+private val GrisDivider: Color
+    @Composable get() = Color(0xFFDCE3E0).enTema()
+private val VerdeBoton: Color
+    @Composable get() = Color(0xFFDCEFE3).enTema()
+private val GrisBordeCancelar: Color
+    @Composable get() = Color(0xFFD8DED9).enTema()
 @Composable
 fun CaregiverPrivacyScreen(
     onBack: () -> Unit,
@@ -63,18 +77,18 @@ fun CaregiverPrivacyScreen(
     onDesvincularPaciente: () -> Unit = {},
     onEliminarDatos: () -> Unit = {}
 ) {
-    var mostrarPoliticaPrivacidad by remember { mutableStateOf(false) }
-    var mostrarInfoPaciente by remember { mutableStateOf(false) }
-    var mostrarConfirmarDesvincular by remember { mutableStateOf(false) }
-    var mostrarConfirmarEliminar by remember { mutableStateOf(false) }
-    var progresoYEjercicios by remember { mutableStateOf(true) }
-    var alertasMedicacion by remember { mutableStateOf(true) }
-    var ubicacion by remember { mutableStateOf(false) }
+    var mostrarPoliticaPrivacidad by rememberSaveable { mutableStateOf(false) }
+    var mostrarInfoPaciente by rememberSaveable { mutableStateOf(false) }
+    var mostrarConfirmarDesvincular by rememberSaveable { mutableStateOf(false) }
+    var mostrarConfirmarEliminar by rememberSaveable { mutableStateOf(false) }
+    var progresoYEjercicios by rememberSaveable { mutableStateOf(true) }
+    var alertasMedicacion by rememberSaveable { mutableStateOf(true) }
+    var ubicacion by rememberSaveable { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 24.dp)
     ) {
@@ -235,7 +249,7 @@ fun CaregiverPrivacyScreen(
             Box(
                 modifier = Modifier
                     .size(40.dp)
-                    .background(Color.White, CircleShape),
+                    .background(Color.White.enTema(), CircleShape),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(Icons.Filled.Delete, contentDescription = null, tint = RojoTexto, modifier = Modifier.size(20.dp))
@@ -282,7 +296,7 @@ fun CaregiverPrivacyScreen(
         Dialog(onDismissRequest = { mostrarPoliticaPrivacidad = false }) {
             Column(
                 modifier = Modifier
-                    .background(Color.White, shape = RoundedCornerShape(20.dp))
+                    .background(Color.White.enTema(), shape = RoundedCornerShape(20.dp))
                     .padding(horizontal = 24.dp, vertical = 24.dp)
                     .verticalScroll(rememberScrollState())
             ) {
@@ -298,7 +312,7 @@ fun CaregiverPrivacyScreen(
                 Text(
                     text = "Pulso Firme protege tu información personal como cuidador, y la utiliza únicamente para brindarte un mejor servicio y permitirte acompañar al paciente vinculado.",
                     fontSize = 15.sp,
-                    color = Color(0xFF1A1A1A),
+                    color = Color(0xFF1A1A1A).enTema(),
                     lineHeight = 22.sp
                 )
 
@@ -307,7 +321,7 @@ fun CaregiverPrivacyScreen(
                 Text(
                     text = "No compartimos tus datos con terceros, salvo cuando sea necesario para el funcionamiento de la app o por obligación legal. Un cuidador solo puede ver la información del paciente que el usuario autoriza compartir.",
                     fontSize = 15.sp,
-                    color = Color(0xFF1A1A1A),
+                    color = Color(0xFF1A1A1A).enTema(),
                     lineHeight = 22.sp
                 )
 
@@ -316,7 +330,7 @@ fun CaregiverPrivacyScreen(
                 Text(
                     text = "Podés borrar toda tu información en cualquier momento desde el botón \"Eliminar mis datos\". Esta acción no se puede deshacer.",
                     fontSize = 15.sp,
-                    color = Color(0xFF1A1A1A),
+                    color = Color(0xFF1A1A1A).enTema(),
                     lineHeight = 22.sp
                 )
 
@@ -325,7 +339,7 @@ fun CaregiverPrivacyScreen(
                 Text(
                     text = "Esta es una versión de demostración desarrollada como proyecto escolar. Ante cualquier duda, podés escribirnos a holapulsofirmearg@gmail.com.",
                     fontSize = 15.sp,
-                    color = Color(0xFF1A1A1A),
+                    color = Color(0xFF1A1A1A).enTema(),
                     lineHeight = 22.sp
                 )
 
@@ -349,7 +363,7 @@ fun CaregiverPrivacyScreen(
         Dialog(onDismissRequest = { mostrarInfoPaciente = false }) {
             Column(
                 modifier = Modifier
-                    .background(Color.White, shape = RoundedCornerShape(24.dp))
+                    .background(Color.White.enTema(), shape = RoundedCornerShape(24.dp))
                     .padding(horizontal = 24.dp, vertical = 28.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -442,7 +456,7 @@ fun CaregiverPrivacyScreen(
         Dialog(onDismissRequest = { mostrarConfirmarDesvincular = false }) {
             Column(
                 modifier = Modifier
-                    .background(Color.White, shape = RoundedCornerShape(24.dp))
+                    .background(Color.White.enTema(), shape = RoundedCornerShape(24.dp))
                     .padding(horizontal = 24.dp, vertical = 28.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -489,7 +503,7 @@ fun CaregiverPrivacyScreen(
                     Row(
                         modifier = Modifier
                             .weight(1f)
-                            .background(Color.White, RoundedCornerShape(28.dp))
+                            .background(Color.White.enTema(), RoundedCornerShape(28.dp))
                             .border(BorderStroke(1.dp, GrisBordeCancelar), RoundedCornerShape(28.dp))
                             .clickable { mostrarConfirmarDesvincular = false }
                             .padding(vertical = 14.dp),
@@ -530,7 +544,7 @@ fun CaregiverPrivacyScreen(
         Dialog(onDismissRequest = { mostrarConfirmarEliminar = false }) {
             Column(
                 modifier = Modifier
-                    .background(Color.White, shape = RoundedCornerShape(24.dp))
+                    .background(Color.White.enTema(), shape = RoundedCornerShape(24.dp))
                     .padding(horizontal = 24.dp, vertical = 28.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -587,7 +601,7 @@ fun CaregiverPrivacyScreen(
                     Row(
                         modifier = Modifier
                             .weight(1f)
-                            .background(Color.White, RoundedCornerShape(28.dp))
+                            .background(Color.White.enTema(), RoundedCornerShape(28.dp))
                             .border(BorderStroke(1.dp, GrisBordeCancelar), RoundedCornerShape(28.dp))
                             .clickable { mostrarConfirmarEliminar = false }
                             .padding(vertical = 14.dp),
@@ -643,7 +657,7 @@ private fun FilaInfoPaciente(
         Box(
             modifier = Modifier
                 .size(38.dp)
-                .background(Color.White, CircleShape),
+                .background(Color.White.enTema(), CircleShape),
             contentAlignment = Alignment.Center
         ) {
             Icon(imageVector = icono, contentDescription = null, tint = VerdeTitulo, modifier = Modifier.size(18.dp))
@@ -675,7 +689,7 @@ private fun FilaPermiso(
         Box(
             modifier = Modifier
                 .size(44.dp)
-                .background(Color.White, CircleShape),
+                .background(Color.White.enTema(), CircleShape),
             contentAlignment = Alignment.Center
         ) {
             Icon(imageVector = icono, contentDescription = null, tint = VerdeTitulo, modifier = Modifier.size(20.dp))
@@ -732,7 +746,7 @@ private fun FilaAccion(
         Icon(
             imageVector = Icons.AutoMirrored.Filled.ArrowForwardIos,
             contentDescription = null,
-            tint = Color(0xFF9CA3AF),
+            tint = Color(0xFF9CA3AF).enTema(),
             modifier = Modifier.size(14.dp)
         )
     }

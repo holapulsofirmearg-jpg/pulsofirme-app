@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -36,8 +40,10 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-private val VerdeBoton = Color(0xFF2E9E63)
-private val VerdeTexto = Color(0xFF1B7A4B)
+private val VerdeBoton: Color
+    @Composable get() = Color(0xFF2E9E63).enTema()
+private val VerdeTexto: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
 private val AzulCabecera = Color(0xFF1565C0)
 
 private val paises = listOf(
@@ -55,13 +61,13 @@ fun ProfileScreen(
     onSave: (String, String, String, String, String) -> Unit,
     onLater: () -> Unit
 ) {
-    var fechaNacimiento by remember { mutableStateOf("") }
-    var pais by remember { mutableStateOf("") }
-    var menuPaises by remember { mutableStateOf(false) }
-    var generoElegido by remember { mutableStateOf("Prefiero no decir") }
-    var telefono by remember { mutableStateOf("") }
-    var direccion by remember { mutableStateOf("") }
-    var mostrarCalendario by remember { mutableStateOf(false) }
+    var fechaNacimiento by rememberSaveable { mutableStateOf("") }
+    var pais by rememberSaveable { mutableStateOf("") }
+    var menuPaises by rememberSaveable { mutableStateOf(false) }
+    var generoElegido by rememberSaveable { mutableStateOf("Prefiero no decir") }
+    var telefono by rememberSaveable { mutableStateOf("") }
+    var direccion by rememberSaveable { mutableStateOf("") }
+    var mostrarCalendario by rememberSaveable { mutableStateOf(false) }
 
     val estadoScroll = rememberScrollState()
     val datePickerState = rememberDatePickerState()
@@ -88,7 +94,7 @@ fun ProfileScreen(
             },
             dismissButton = {
                 TextButton(onClick = { mostrarCalendario = false }) {
-                    Text("Cancelar", color = Color(0xFF6B7280))
+                    Text("Cancelar", color = Color(0xFF6B7280).enTema())
                 }
             }
         ) {
@@ -99,7 +105,7 @@ fun ProfileScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(estadoScroll)
     ) {
         Box(
@@ -164,7 +170,7 @@ fun ProfileScreen(
             text = if (nombre.isBlank()) "¡Hola!" else "Hola, $nombre",
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
-            color = Color(0xFF1A1A1A),
+            color = Color(0xFF1A1A1A).enTema(),
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth()
         )
@@ -174,7 +180,7 @@ fun ProfileScreen(
         Text(
             text = "¡Completa estos datos para tener una mejor experiencia!",
             fontSize = 14.sp,
-            color = Color(0xFF6B7280),
+            color = Color(0xFF6B7280).enTema(),
             textAlign = TextAlign.Center,
             modifier = Modifier
                 .fillMaxWidth()
@@ -189,7 +195,7 @@ fun ProfileScreen(
                 value = fechaNacimiento,
                 onValueChange = { },
                 readOnly = true,
-                placeholder = { Text("Fecha de nacimiento", color = Color(0xFF9AA0A6), fontSize = 15.sp) },
+                placeholder = { Text("Fecha de nacimiento", color = Color(0xFF9AA0A6).enTema(), fontSize = 15.sp) },
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Default.DateRange,
@@ -206,7 +212,7 @@ fun ProfileScreen(
                     .height(60.dp),
                 colors = OutlinedTextFieldDefaults.colors(
                     focusedBorderColor = VerdeTexto,
-                    unfocusedBorderColor = Color(0xFFD8DED9),
+                    unfocusedBorderColor = Color(0xFFD8DED9).enTema(),
                     focusedContainerColor = Color.White,
                     unfocusedContainerColor = Color.White
                 )
@@ -219,7 +225,7 @@ fun ProfileScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(60.dp)
-                        .border(1.dp, Color(0xFFD8DED9), RoundedCornerShape(12.dp))
+                        .border(1.dp, Color(0xFFD8DED9).enTema(), RoundedCornerShape(12.dp))
                         .clickable { menuPaises = true }
                         .padding(horizontal = 16.dp),
                     verticalAlignment = Alignment.CenterVertically
@@ -229,20 +235,20 @@ fun ProfileScreen(
                     Text(
                         text = if (pais.isBlank()) "País" else pais,
                         fontSize = 15.sp,
-                        color = if (pais.isBlank()) Color(0xFF9AA0A6) else Color(0xFF1A1A1A),
+                        color = if (pais.isBlank()) Color(0xFF9AA0A6).enTema() else Color(0xFF1A1A1A).enTema(),
                         modifier = Modifier.weight(1f)
                     )
                     Icon(
                         imageVector = Icons.Default.ArrowDropDown,
                         contentDescription = null,
-                        tint = Color(0xFF6B7280)
+                        tint = Color(0xFF6B7280).enTema()
                     )
                 }
 
                 DropdownMenu(
                     expanded = menuPaises,
                     onDismissRequest = { menuPaises = false },
-                    modifier = Modifier.background(Color.White)
+                    modifier = Modifier.background(Color.White.enTema())
                 ) {
                     paises.forEach { p ->
                         DropdownMenuItem(
@@ -261,7 +267,7 @@ fun ProfileScreen(
             Text(
                 text = "Género",
                 fontSize = 14.sp,
-                color = Color(0xFF6B7280)
+                color = Color(0xFF6B7280).enTema()
             )
 
             Spacer(modifier = Modifier.height(8.dp))
@@ -275,7 +281,7 @@ fun ProfileScreen(
                         .padding(bottom = 8.dp)
                         .border(
                             width = if (seleccionado) 2.dp else 1.dp,
-                            color = if (seleccionado) VerdeTexto else Color(0xFFD8DED9),
+                            color = if (seleccionado) VerdeTexto else Color(0xFFD8DED9).enTema(),
                             shape = RoundedCornerShape(12.dp)
                         )
                         .clickable { generoElegido = g },
@@ -284,7 +290,7 @@ fun ProfileScreen(
                     Text(
                         text = g,
                         fontSize = 15.sp,
-                        color = if (seleccionado) VerdeTexto else Color(0xFF3D3D3D)
+                        color = if (seleccionado) VerdeTexto else Color(0xFF3D3D3D).enTema()
                     )
                 }
             }
@@ -344,7 +350,7 @@ fun ProfileScreen(
                 Text(
                     text = "Completar más tarde",
                     fontSize = 14.sp,
-                    color = Color(0xFF6B7280),
+                    color = Color(0xFF6B7280).enTema(),
                     modifier = Modifier.clickable { onLater() }
                 )
             }
@@ -366,7 +372,7 @@ private fun CampoPerfil(
         value = valor,
         onValueChange = onCambio,
         placeholder = {
-            Text(text = placeholder, color = Color(0xFF9AA0A6), fontSize = 15.sp)
+            Text(text = placeholder, color = Color(0xFF9AA0A6).enTema(), fontSize = 15.sp)
         },
         leadingIcon = {
             Icon(
@@ -381,7 +387,7 @@ private fun CampoPerfil(
                 Text(
                     text = textoDerecha,
                     fontSize = 13.sp,
-                    color = Color(0xFF9AA0A6),
+                    color = Color(0xFF9AA0A6).enTema(),
                     modifier = Modifier.padding(end = 14.dp)
                 )
             }
@@ -393,7 +399,7 @@ private fun CampoPerfil(
             .height(60.dp),
         colors = OutlinedTextFieldDefaults.colors(
             focusedBorderColor = VerdeTexto,
-            unfocusedBorderColor = Color(0xFFD8DED9),
+            unfocusedBorderColor = Color(0xFFD8DED9).enTema(),
             focusedContainerColor = Color.White,
             unfocusedContainerColor = Color.White
         )

@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -31,14 +35,20 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-private val VerdeTitulo = Color(0xFF1B7A4B)
-private val AzulTexto = Color(0xFF16324F)
-private val GrisSubtitulo = Color(0xFF6B7280)
-private val VerdeFondo = Color(0xFFEFF6F1)
-private val AmarilloFondo = Color(0xFFFCF0D9)
-private val AmarilloTexto = Color(0xFF8A6D1D)
-private val GrisBorde = Color(0xFFD8DED9)
-
+private val VerdeTitulo: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val AzulTexto: Color
+    @Composable get() = Color(0xFF16324F).enTema()
+private val GrisSubtitulo: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val VerdeFondo: Color
+    @Composable get() = Color(0xFFEFF6F1).enTema()
+private val AmarilloFondo: Color
+    @Composable get() = Color(0xFFFCF0D9).enTema()
+private val AmarilloTexto: Color
+    @Composable get() = Color(0xFF8A6D1D).enTema()
+private val GrisBorde: Color
+    @Composable get() = Color(0xFFD8DED9).enTema()
 @Composable
 fun CaregiverChangePatientScreen(
     nombrePacienteActual: String = "Nombre del paciente",
@@ -46,12 +56,12 @@ fun CaregiverChangePatientScreen(
     onBack: () -> Unit,
     onVincularNuevoPaciente: (String) -> Unit = {}
 ) {
-    var codigoNuevoPaciente by remember { mutableStateOf("") }
+    var codigoNuevoPaciente by rememberSaveable { mutableStateOf("") }
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 24.dp)
     ) {
@@ -86,7 +96,7 @@ fun CaregiverChangePatientScreen(
             Box(
                 modifier = Modifier
                     .size(56.dp)
-                    .background(Color.White, CircleShape),
+                    .background(Color.White.enTema(), CircleShape),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
@@ -169,7 +179,7 @@ fun CaregiverChangePatientScreen(
             Box(
                 modifier = Modifier
                     .size(32.dp)
-                    .background(Color(0xFFF5C451), CircleShape),
+                    .background(Color(0xFFF5C451).enTema(), CircleShape),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
@@ -200,7 +210,7 @@ fun CaregiverChangePatientScreen(
             shape = RoundedCornerShape(28.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = VerdeTitulo,
-                disabledContainerColor = Color(0xFFBEE0CC)
+                disabledContainerColor = Color(0xFFBEE0CC).enTema()
             )
         ) {
             Text("Vincular nuevo paciente", fontSize = 17.sp, fontWeight = FontWeight.Bold, color = Color.White)

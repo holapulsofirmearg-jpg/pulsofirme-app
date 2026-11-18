@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -35,13 +39,18 @@ import java.util.Locale
 import kotlin.math.abs
 import kotlin.math.roundToInt
 
-private val AzulQd = Color(0xFF1565C0)
-private val AzulOscuroQd = Color(0xFF0D3B66)
-private val AzulSuaveQd = Color(0xFFE7F0FB)
-private val BordeQd = Color(0xFFE5E7EB)
-private val GrisQd = Color(0xFF6B7280)
-private val NegroQd = Color(0xFF1A1A1A)
-
+private val AzulQd: Color
+    @Composable get() = Color(0xFF1565C0).enTema()
+private val AzulOscuroQd: Color
+    @Composable get() = Color(0xFF0D3B66).enTema()
+private val AzulSuaveQd: Color
+    @Composable get() = Color(0xFFE7F0FB).enTema()
+private val BordeQd: Color
+    @Composable get() = Color(0xFFE5E7EB).enTema()
+private val GrisQd: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val NegroQd: Color
+    @Composable get() = Color(0xFF1A1A1A).enTema()
 private val opcionesDificultad = listOf(
     "Ninguna dificultad",
     "Dificultad leve",
@@ -138,8 +147,8 @@ fun QuickDashScreen(
     val contexto = LocalContext.current
     val respuestas = remember { mutableStateListOf<Int?>(*arrayOfNulls<Int?>(preguntas.size)) }
     var indice by remember { mutableIntStateOf(0) }
-    var mostrarResultado by remember { mutableStateOf(false) }
-    var mostrarCompartir by remember { mutableStateOf(false) }
+    var mostrarResultado by rememberSaveable { mutableStateOf(false) }
+    var mostrarCompartir by rememberSaveable { mutableStateOf(false) }
 
     // Se capturan al entrar, antes de guardar la evaluación nueva
     val puntajeAnterior = remember { ProgresoData.puntajeQuickDash }
@@ -150,7 +159,7 @@ fun QuickDashScreen(
     if (mostrarCompartir) {
         AlertDialog(
             onDismissRequest = { mostrarCompartir = false },
-            containerColor = Color.White,
+            containerColor = Color.White.enTema(),
             shape = RoundedCornerShape(20.dp),
             title = {
                 Text(
@@ -194,7 +203,7 @@ fun QuickDashScreen(
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color.White)
+                .background(Color.White.enTema())
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 24.dp)
         ) {
@@ -306,7 +315,7 @@ fun QuickDashScreen(
                     Text(
                         text = "Es tu primera evaluación. Repetila en unas semanas para comparar.",
                         fontSize = 14.sp,
-                        color = Color(0xFF374151),
+                        color = Color(0xFF374151).enTema(),
                         lineHeight = 20.sp
                     )
                 } else {
@@ -335,7 +344,7 @@ fun QuickDashScreen(
                         else
                             "Subió ${unDecimal(abs(diferencia))} puntos respecto a tu evaluación de $textoDias.",
                         fontSize = 14.sp,
-                        color = Color(0xFF374151),
+                        color = Color(0xFF374151).enTema(),
                         lineHeight = 20.sp
                     )
                 }
@@ -380,14 +389,14 @@ fun QuickDashScreen(
                     Text(
                         text = adaptativa.motivo,
                         fontSize = 14.sp,
-                        color = Color(0xFF374151),
+                        color = Color(0xFF374151).enTema(),
                         lineHeight = 20.sp
                     )
                 } else {
                     Text(
                         text = "Con Premium Guiada, tus rutinas suben o bajan solas según este resultado y cómo te sentiste en cada encuesta.",
                         fontSize = 14.sp,
-                        color = Color(0xFF374151),
+                        color = Color(0xFF374151).enTema(),
                         lineHeight = 20.sp
                     )
                 }
@@ -460,7 +469,7 @@ fun QuickDashScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 24.dp)
     ) {
@@ -519,7 +528,7 @@ fun QuickDashScreen(
                 .height(9.dp)
                 .clip(RoundedCornerShape(5.dp)),
             color = AzulQd,
-            trackColor = Color(0xFFF0F1F3)
+            trackColor = Color(0xFFF0F1F3).enTema()
         )
 
         Spacer(Modifier.height(22.dp))
@@ -551,7 +560,7 @@ fun QuickDashScreen(
                     .padding(bottom = 10.dp)
                     .areaTactil()
                     .clip(RoundedCornerShape(14.dp))
-                    .background(if (elegida) AzulSuaveQd else Color.White)
+                    .background(if (elegida) AzulSuaveQd else Color.White.enTema())
                     .border(
                         width = if (elegida) 2.dp else 1.dp,
                         color = if (elegida) AzulQd else BordeQd,
@@ -568,7 +577,7 @@ fun QuickDashScreen(
                 Text(
                     text = opcion,
                     fontSize = 16.sp,
-                    color = if (elegida) AzulOscuroQd else Color(0xFF374151),
+                    color = if (elegida) AzulOscuroQd else Color(0xFF374151).enTema(),
                     fontWeight = if (elegida) FontWeight.SemiBold else FontWeight.Normal,
                     modifier = Modifier.weight(1f)
                 )
@@ -601,8 +610,8 @@ fun QuickDashScreen(
             colors = ButtonDefaults.buttonColors(
                 containerColor = AzulQd,
                 contentColor = Color.White,
-                disabledContainerColor = Color(0xFFDCDCDC),
-                disabledContentColor = Color(0xFF8A8A8A)
+                disabledContainerColor = Color(0xFFDCDCDC).enTema(),
+                disabledContentColor = Color(0xFF8A8A8A).enTema()
             )
         ) {
             Text(

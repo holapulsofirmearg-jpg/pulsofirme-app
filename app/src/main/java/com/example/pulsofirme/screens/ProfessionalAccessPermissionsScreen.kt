@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -28,13 +32,18 @@ import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-private val VerdePA = Color(0xFF07884A)
-private val VerdeClaroPA = Color(0xFFEAF8F0)
-private val AzulClaroPA = Color(0xFFEEF7F8)
-private val AzulTextoPA = Color(0xFF17365D)
-private val GrisTextoPA = Color(0xFF7A8294)
-private val BordePA = Color(0xFFE5E7EB)
-
+private val VerdePA: Color
+    @Composable get() = Color(0xFF07884A).enTema()
+private val VerdeClaroPA: Color
+    @Composable get() = Color(0xFFEAF8F0).enTema()
+private val AzulClaroPA: Color
+    @Composable get() = Color(0xFFEEF7F8).enTema()
+private val AzulTextoPA: Color
+    @Composable get() = Color(0xFF17365D).enTema()
+private val GrisTextoPA: Color
+    @Composable get() = Color(0xFF7A8294).enTema()
+private val BordePA: Color
+    @Composable get() = Color(0xFFE5E7EB).enTema()
 data class PacientePermisosProfesional(
     val uid: String,
     val nombre: String,
@@ -159,7 +168,7 @@ fun ProfessionalAccessPermissionsScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 20.dp)
     ) {
@@ -255,7 +264,7 @@ private fun PacientePermisoFila(
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(16.dp))
-            .background(Color(0xFFF8FAF9))
+            .background(Color(0xFFF8FAF9).enTema())
             .clickable { onClick() }
             .padding(15.dp),
         verticalAlignment = Alignment.CenterVertically
@@ -314,7 +323,7 @@ fun ProfessionalPatientPermissionsScreen(
     val profesionalUid = auth.currentUser?.uid
 
     var cargando by remember { mutableStateOf(true) }
-    var fecha by remember { mutableStateOf("") }
+    var fecha by rememberSaveable { mutableStateOf("") }
 
     // Lo que el paciente autoriza (el profesional no lo puede cambiar).
     var autorizados by remember { mutableStateOf(AUTORIZADO_POR_DEFECTO) }
@@ -386,7 +395,7 @@ fun ProfessionalPatientPermissionsScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 20.dp)
     ) {
@@ -414,7 +423,7 @@ fun ProfessionalPatientPermissionsScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(18.dp))
-                .background(Color(0xFFF8FAF9))
+                .background(Color(0xFFF8FAF9).enTema())
                 .padding(16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -573,13 +582,13 @@ private fun PermisoDetallePA(
                     Icon(
                         Icons.Filled.Lock,
                         contentDescription = null,
-                        tint = Color(0xFFA0A7B4),
+                        tint = Color(0xFFA0A7B4).enTema(),
                         modifier = Modifier.size(15.dp)
                     )
                     Spacer(Modifier.width(5.dp))
                     Text(
                         "Requiere autorización del paciente.",
-                        color = Color(0xFFA0A7B4),
+                        color = Color(0xFFA0A7B4).enTema(),
                         fontSize = 12.sp
                     )
                 }
@@ -596,9 +605,9 @@ private fun PermisoDetallePA(
                 checkedThumbColor = Color.White,
                 checkedTrackColor = VerdePA,
                 uncheckedThumbColor = Color.White,
-                uncheckedTrackColor = Color(0xFFD9D6DE),
-                disabledUncheckedThumbColor = Color(0xFF9894A1),
-                disabledUncheckedTrackColor = Color(0xFFE5E2E8)
+                uncheckedTrackColor = Color(0xFFD9D6DE).enTema(),
+                disabledUncheckedThumbColor = Color(0xFF9894A1).enTema(),
+                disabledUncheckedTrackColor = Color(0xFFE5E2E8).enTema()
             )
         )
     }

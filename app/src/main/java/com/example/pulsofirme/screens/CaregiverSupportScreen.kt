@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -30,12 +34,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pulsofirme.R
 
-private val VerdeTitulo = Color(0xFF1B7A4B)
-private val GrisSubtitulo = Color(0xFF6B7280)
-private val VerdeClaroFondo = Color(0xFFEFF6F1)
-private val GrisBorde = Color(0xFFE5E7EB)
-private val AzulBoton = Color(0xFF2C5282)
-
+private val VerdeTitulo: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val GrisSubtitulo: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val VerdeClaroFondo: Color
+    @Composable get() = Color(0xFFEFF6F1).enTema()
+private val GrisBorde: Color
+    @Composable get() = Color(0xFFE5E7EB).enTema()
+private val AzulBoton: Color
+    @Composable get() = Color(0xFF2C5282).enTema()
 private data class PasoGuante(
     val titulo: String,
     val descripcion: String
@@ -63,12 +71,12 @@ fun CaregiverSupportScreen(
     onGuiaGuante: () -> Unit = {}, // <-- Parámetro agregado como lambda
     onReportarProblema: () -> Unit = {}
 ) {
-    var guiaGuanteExpandida by remember { mutableStateOf(false) }
+    var guiaGuanteExpandida by rememberSaveable { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 24.dp)
     ) {
@@ -104,7 +112,7 @@ fun CaregiverSupportScreen(
             Box(
                 modifier = Modifier
                     .size(44.dp)
-                    .background(Color.White, CircleShape),
+                    .background(Color.White.enTema(), CircleShape),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
@@ -122,7 +130,7 @@ fun CaregiverSupportScreen(
                     text = "¿Necesitás ayuda?",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFF1A1A1A)
+                    color = Color(0xFF1A1A1A).enTema()
                 )
                 Spacer(modifier = Modifier.height(2.dp))
                 Text(
@@ -166,7 +174,7 @@ fun CaregiverSupportScreen(
                         text = "PulsoFirme",
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color(0xFF1A1A1A)
+                        color = Color(0xFF1A1A1A).enTema()
                     )
 
                     Spacer(modifier = Modifier.height(2.dp))
@@ -192,7 +200,7 @@ fun CaregiverSupportScreen(
             Text(
                 text = "Esta es una versión de demostración desarrollada por estudiantes de la Escuela EXPERIMENTAL PROA. PulsoFirme está pensado para acompañar ejercicios de manos en Parkinson y artritis, pero no reemplaza la indicación de un profesional de la salud. Si tenés cualquier duda y querés que te ayudemos, escribinos a holapulsofirmearg@gmail.com.",
                 fontSize = 14.sp,
-                color = Color(0xFF1A1A1A),
+                color = Color(0xFF1A1A1A).enTema(),
                 lineHeight = 20.sp
             )
         }
@@ -233,14 +241,14 @@ fun CaregiverSupportScreen(
                     Text(
                         text = "Guía de uso del guante",
                         fontSize = 16.sp,
-                        color = Color(0xFF1A1A1A),
+                        color = Color(0xFF1A1A1A).enTema(),
                         modifier = Modifier.weight(1f)
                     )
 
                     Icon(
                         imageVector = Icons.Filled.ExpandMore,
                         contentDescription = if (guiaGuanteExpandida) "Contraer" else "Expandir",
-                        tint = Color(0xFF9CA3AF)
+                        tint = Color(0xFF9CA3AF).enTema()
                     )
                 }
 
@@ -252,7 +260,7 @@ fun CaregiverSupportScreen(
                             text = paso.titulo,
                             fontSize = 15.sp,
                             fontWeight = FontWeight.Bold,
-                            color = Color(0xFF1A1A1A)
+                            color = Color(0xFF1A1A1A).enTema()
                         )
 
                         Spacer(modifier = Modifier.height(4.dp))
@@ -309,14 +317,14 @@ private fun FilaRecurso(
         Text(
             text = titulo,
             fontSize = 16.sp,
-            color = Color(0xFF1A1A1A),
+            color = Color(0xFF1A1A1A).enTema(),
             modifier = Modifier.weight(1f)
         )
 
         Icon(
             imageVector = Icons.Filled.ExpandMore,
             contentDescription = null,
-            tint = Color(0xFF9CA3AF)
+            tint = Color(0xFF9CA3AF).enTema()
         )
     }
 }

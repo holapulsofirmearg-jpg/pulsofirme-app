@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -36,29 +40,34 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pulsofirme.R
 
-private val VerdePrincipal = Color(0xFF006C3B)
-private val VerdeClaroChip = Color(0xFFE8F5E9)
-private val VerdeTextoChip = Color(0xFF1B5E20)
-private val GrisTexto = Color(0xFF6E6E6E)
-private val GrisBorde = Color(0xFFE0E0E0)
-private val GrisFondoChips = Color(0xFFF8F9FA)
-
+private val VerdePrincipal: Color
+    @Composable get() = Color(0xFF006C3B).enTema()
+private val VerdeClaroChip: Color
+    @Composable get() = Color(0xFFE8F5E9).enTema()
+private val VerdeTextoChip: Color
+    @Composable get() = Color(0xFF1B5E20).enTema()
+private val GrisTexto: Color
+    @Composable get() = Color(0xFF6E6E6E).enTema()
+private val GrisBorde: Color
+    @Composable get() = Color(0xFFE0E0E0).enTema()
+private val GrisFondoChips: Color
+    @Composable get() = Color(0xFFF8F9FA).enTema()
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CompletaTusDatosScreen(
     onBack: () -> Unit = {},
     onGuardarYContinuar: () -> Unit = {}
 ) {
-    var nombre by remember { mutableStateOf("") }
-    var telefono by remember { mutableStateOf("") }
-    var fechaNacimiento by remember { mutableStateOf("") }
-    var relacionSeleccionada by remember { mutableStateOf("") }
-    var expandedDropdown by remember { mutableStateOf(false) }
+    var nombre by rememberSaveable { mutableStateOf("") }
+    var telefono by rememberSaveable { mutableStateOf("") }
+    var fechaNacimiento by rememberSaveable { mutableStateOf("") }
+    var relacionSeleccionada by rememberSaveable { mutableStateOf("") }
+    var expandedDropdown by rememberSaveable { mutableStateOf(false) }
 
     val opcionesRelacion = listOf("Familiar", "Amigo/a", "Cuidador/a", "Otro")
 
     Scaffold(
-        containerColor = Color.White
+        containerColor = Color.White.enTema()
     ) { padding ->
         Column(
             modifier = Modifier

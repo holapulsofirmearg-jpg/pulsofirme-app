@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
 import com.example.pulsofirme.ui.theme.enTema
 import com.example.pulsofirme.ui.theme.ModoTema
 import com.example.pulsofirme.ui.theme.TemaApp
@@ -93,8 +95,8 @@ fun AjustesScreen(
     }
 
     // Estado para controlar el diálogo de confirmación
-    var mostrarDialogoEliminar by remember { mutableStateOf(false) }
-    var mostrarDialogoTema by remember { mutableStateOf(false) }
+    var mostrarDialogoEliminar by rememberSaveable { mutableStateOf(false) }
+    var mostrarDialogoTema by rememberSaveable { mutableStateOf(false) }
 
     // --- DIÁLOGO DE TEMA (claro / oscuro / automático) ---
     if (mostrarDialogoTema) {
@@ -145,10 +147,10 @@ fun AjustesScreen(
     }
 
     // Diálogo de exportar datos
-    var mostrarDialogoExportar by remember { mutableStateOf(false) }
+    var mostrarDialogoExportar by rememberSaveable { mutableStateOf(false) }
 
     // Acordeón de accesibilidad
-    var accesibilidadExpandida by remember { mutableStateOf(false) }
+    var accesibilidadExpandida by rememberSaveable { mutableStateOf(false) }
 
     // --- DIÁLOGO DE CONFIRMACIÓN ELIMINAR CUENTA ---
     if (mostrarDialogoEliminar) {

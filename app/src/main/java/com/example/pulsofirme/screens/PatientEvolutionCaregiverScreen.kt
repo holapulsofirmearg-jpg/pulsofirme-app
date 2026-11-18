@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -26,11 +28,14 @@ import com.example.pulsofirme.PacienteDelTutor
 import com.example.pulsofirme.rememberPacienteDelTutor
 import kotlin.math.roundToInt
 
-private val VerdeEvolucion = Color(0xFF1B7A4B)
-private val VerdeClaroEvolucion = Color(0xFFEFF6F1)
-private val BordeEvolucion = Color(0xFFE5E7EB)
-private val GrisEvolucion = Color(0xFF6B7280)
-
+private val VerdeEvolucion: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val VerdeClaroEvolucion: Color
+    @Composable get() = Color(0xFFEFF6F1).enTema()
+private val BordeEvolucion: Color
+    @Composable get() = Color(0xFFE5E7EB).enTema()
+private val GrisEvolucion: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
 @Composable
 fun PatientEvolutionCaregiverScreen(
     onBack: () -> Unit
@@ -41,7 +46,7 @@ fun PatientEvolutionCaregiverScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 20.dp)
     ) {
@@ -62,7 +67,7 @@ fun PatientEvolutionCaregiverScreen(
                 text = "Evolución del paciente",
                 fontSize = 21.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFF1A1A1A)
+                color = Color(0xFF1A1A1A).enTema()
             )
         }
 
@@ -85,7 +90,7 @@ fun PatientEvolutionCaregiverScreen(
             Box(
                 modifier = Modifier
                     .size(48.dp)
-                    .background(Color.White, CircleShape),
+                    .background(Color.White.enTema(), CircleShape),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
@@ -192,7 +197,7 @@ fun PatientEvolutionCaregiverScreen(
                 Icon(
                     Icons.Default.Schedule,
                     contentDescription = null,
-                    tint = Color(0xFF1565C0)
+                    tint = Color(0xFF1565C0).enTema()
                 )
             }
         )
@@ -237,7 +242,7 @@ private fun TarjetaEvolucion(
                 text = valor,
                 fontSize = 17.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFF1A1A1A)
+                color = Color(0xFF1A1A1A).enTema()
             )
 
             Spacer(modifier = Modifier.height(4.dp))

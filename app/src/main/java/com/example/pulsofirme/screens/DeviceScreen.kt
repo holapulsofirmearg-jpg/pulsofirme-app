@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
@@ -36,16 +40,23 @@ import kotlin.math.roundToInt
 private const val MODELO_GUANTE = "Movit-v3"
 
 private val Verde = Color(0xFF1B7A4B)
-private val VerdeOscuro = Color(0xFF1B4332)
+private val VerdeOscuro: Color
+    @Composable get() = Color(0xFF1B4332).enTema()
 private val VerdeClaro = Color(0xFFEFF6F1)
-private val BordeGris = Color(0xFFE5E7EB)
-private val GrisTexto = Color(0xFF6B7280)
-private val NegroTexto = Color(0xFF1A1A1A)
-private val RojoBoton = Color(0xFFB91C1C)
-private val AmbarAviso = Color(0xFFBA7517)
-private val AmbarAvisoClaro = Color(0xFFFAEEDA)
-private val AzulEjeY = Color(0xFF1565C0)
-
+private val BordeGris: Color
+    @Composable get() = Color(0xFFE5E7EB).enTema()
+private val GrisTexto: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val NegroTexto: Color
+    @Composable get() = Color(0xFF1A1A1A).enTema()
+private val RojoBoton: Color
+    @Composable get() = Color(0xFFB91C1C).enTema()
+private val AmbarAviso: Color
+    @Composable get() = Color(0xFFBA7517).enTema()
+private val AmbarAvisoClaro: Color
+    @Composable get() = Color(0xFFFAEEDA).enTema()
+private val AzulEjeY: Color
+    @Composable get() = Color(0xFF1565C0).enTema()
 private const val CIERRE_AVISO =
     "Es un acompañamiento del tratamiento, no un reemplazo. PulsoFirme no cura la enfermedad " +
             "ni sustituye la medicación ni las indicaciones de tu médico o kinesiólogo.\n\n" +
@@ -62,7 +73,7 @@ fun DeviceScreen(
     val conectado = estado == GuanteConexion.Estado.CONECTADO
     val encendido = GuanteConexion.guanteEncendido
 
-    var mostrarAviso by remember { mutableStateOf(false) }
+    var mostrarAviso by rememberSaveable { mutableStateOf(false) }
 
     // Diagnósticos elegidos en el perfil (lista + diagnóstico principal)
     val textoDiagnostico =
@@ -105,7 +116,7 @@ fun DeviceScreen(
     if (mostrarAviso) {
         AlertDialog(
             onDismissRequest = { mostrarAviso = false },
-            containerColor = Color.White,
+            containerColor = Color.White.enTema(),
             shape = RoundedCornerShape(20.dp),
             icon = {
                 Icon(
@@ -128,7 +139,7 @@ fun DeviceScreen(
                     Text(
                         text = textoAviso,
                         fontSize = 14.sp,
-                        color = Color(0xFF374151),
+                        color = Color(0xFF374151).enTema(),
                         lineHeight = 21.sp
                     )
                 }
@@ -148,7 +159,7 @@ fun DeviceScreen(
 
     Scaffold(
         bottomBar = {
-            NavigationBar(containerColor = Color.White) {
+            NavigationBar(containerColor = Color.White.enTema()) {
                 itemsMenuInferior.forEach { item ->
                     NavigationBarItem(
                         selected = rutaActual == item.ruta,
@@ -158,8 +169,8 @@ fun DeviceScreen(
                         colors = NavigationBarItemDefaults.colors(
                             selectedIconColor = Verde,
                             selectedTextColor = Verde,
-                            unselectedIconColor = Color(0xFF9CA3AF),
-                            unselectedTextColor = Color(0xFF9CA3AF),
+                            unselectedIconColor = Color(0xFF9CA3AF).enTema(),
+                            unselectedTextColor = Color(0xFF9CA3AF).enTema(),
                             indicatorColor = VerdeClaro
                         )
                     )
@@ -171,7 +182,7 @@ fun DeviceScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
-                .background(Color.White)
+                .background(Color.White.enTema())
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 20.dp)
         ) {
@@ -210,7 +221,7 @@ fun DeviceScreen(
                 conectado -> AmbarAviso
                 estado == GuanteConexion.Estado.CONECTANDO -> AmbarAviso
                 estado == GuanteConexion.Estado.ERROR -> RojoBoton
-                else -> Color(0xFF9CA3AF)
+                else -> Color(0xFF9CA3AF).enTema()
             }
             val textoEstado = when {
                 conectado && encendido -> "Encendido"
@@ -230,8 +241,8 @@ fun DeviceScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(16.dp))
-                    .border(1.dp, Color(0xFFE2F0E7), RoundedCornerShape(16.dp))
-                    .background(if (encendido) Color(0xFFF6FAF7) else Color.White)
+                    .border(1.dp, Color(0xFFE2F0E7).enTema(), RoundedCornerShape(16.dp))
+                    .background(if (encendido) Color(0xFFF6FAF7).enTema() else Color.White.enTema())
                     .padding(18.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -245,7 +256,7 @@ fun DeviceScreen(
                     Icon(
                         imageVector = Icons.Filled.Power,
                         contentDescription = null,
-                        tint = if (encendido) Verde else Color(0xFF9CA3AF),
+                        tint = if (encendido) Verde else Color(0xFF9CA3AF).enTema(),
                         modifier = Modifier.size(24.dp)
                     )
                 }
@@ -290,7 +301,7 @@ fun DeviceScreen(
                     Text(
                         text = "Dejaron de llegar datos. Puede que hayas apagado el guante o que te alejaste demasiado. Se reanuda solo al volver la señal.",
                         fontSize = 13.sp,
-                        color = Color(0xFF374151),
+                        color = Color(0xFF374151).enTema(),
                         lineHeight = 19.sp
                     )
                 }
@@ -315,7 +326,7 @@ fun DeviceScreen(
                     Text(
                         text = GuanteConexion.mensajeError,
                         fontSize = 13.sp,
-                        color = Color(0xFF374151),
+                        color = Color(0xFF374151).enTema(),
                         lineHeight = 19.sp
                     )
                 }
@@ -544,7 +555,7 @@ fun DeviceScreen(
                             modifier = Modifier
                                 .weight(1f)
                                 .clip(RoundedCornerShape(14.dp))
-                                .background(if (elegida) Verde else Color.White)
+                                .background(if (elegida) Verde else Color.White.enTema())
                                 .border(
                                     width = if (elegida) 0.dp else 1.dp,
                                     color = if (elegida) Verde else BordeGris,
@@ -569,7 +580,7 @@ fun DeviceScreen(
                                             .background(
                                                 when {
                                                     i > niveles && elegida -> Color.White.copy(alpha = 0.3f)
-                                                    i > niveles -> Color(0xFFE0E0E0)
+                                                    i > niveles -> Color(0xFFE0E0E0).enTema()
                                                     elegida -> Color.White
                                                     else -> Verde
                                                 }
@@ -604,7 +615,7 @@ fun DeviceScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .clip(RoundedCornerShape(12.dp))
-                        .background(if (conectado) VerdeClaro else Color(0xFFF5F5F5))
+                        .background(if (conectado) VerdeClaro else Color(0xFFF5F5F5).enTema())
                         .padding(14.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
@@ -621,7 +632,7 @@ fun DeviceScreen(
                         else
                             "Conectá el guante para poder cambiar la velocidad.",
                         fontSize = 13.sp,
-                        color = Color(0xFF374151),
+                        color = Color(0xFF374151).enTema(),
                         lineHeight = 19.sp
                     )
                 }
@@ -662,8 +673,8 @@ fun DeviceScreen(
                 shape = RoundedCornerShape(14.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = Verde,
-                    disabledContainerColor = Color(0xFFDCDCDC),
-                    disabledContentColor = Color(0xFF8A8A8A)
+                    disabledContainerColor = Color(0xFFDCDCDC).enTema(),
+                    disabledContentColor = Color(0xFF8A8A8A).enTema()
                 )
             ) {
                 Text(
@@ -726,7 +737,7 @@ private fun TarjetaEje(
                 modifier = Modifier
                     .size(9.dp)
                     .clip(CircleShape)
-                    .background(if (activo) color else Color(0xFFC7C7C7))
+                    .background(if (activo) color else Color(0xFFC7C7C7).enTema())
             )
             Spacer(modifier = Modifier.width(7.dp))
             Text(
@@ -741,7 +752,7 @@ private fun TarjetaEje(
             text = valor,
             fontSize = 32.sp,
             fontWeight = FontWeight.Bold,
-            color = if (activo) color else Color(0xFFB5B5B5)
+            color = if (activo) color else Color(0xFFB5B5B5).enTema()
         )
         Spacer(modifier = Modifier.height(2.dp))
         Text(

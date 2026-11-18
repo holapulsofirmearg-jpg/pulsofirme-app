@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -21,12 +25,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-private val VerdePr = Color(0xFF1B7A4B)
-private val VerdeOscuroPr = Color(0xFF1B4332)
-private val VerdeSuavePr = Color(0xFFEAF5EC)
-private val GrisPr = Color(0xFF6B7280)
-private val NegroPr = Color(0xFF1A1A1A)
-
+private val VerdePr: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val VerdeOscuroPr: Color
+    @Composable get() = Color(0xFF1B4332).enTema()
+private val VerdeSuavePr: Color
+    @Composable get() = Color(0xFFEAF5EC).enTema()
+private val GrisPr: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val NegroPr: Color
+    @Composable get() = Color(0xFF1A1A1A).enTema()
 data class PreguntaFrecuente(
     val pregunta: String,
     val respuesta: String
@@ -60,7 +68,7 @@ fun DudasFrecuentesScreen(onBack: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 20.dp)
     ) {
@@ -106,13 +114,13 @@ fun DudasFrecuentesScreen(onBack: () -> Unit) {
 
 @Composable
 private fun ItemPregunta(item: PreguntaFrecuente) {
-    var expandido by remember { mutableStateOf(false) }
+    var expandido by rememberSaveable { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(16.dp))
-            .background(if (expandido) VerdeSuavePr else Color(0xFFF9FAFB))
+            .background(if (expandido) VerdeSuavePr else Color(0xFFF9FAFB).enTema())
             .clickable { expandido = !expandido }
             .padding(16.dp)
     ) {

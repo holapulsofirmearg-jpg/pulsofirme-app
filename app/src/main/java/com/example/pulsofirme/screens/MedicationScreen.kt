@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import com.example.pulsofirme.ui.theme.enTema
+
 import android.Manifest
 import androidx.compose.ui.semantics.Role
 import android.app.NotificationManager
@@ -36,9 +38,10 @@ import android.widget.Toast
 import com.example.pulsofirme.UserData
 import com.example.pulsofirme.alarmas.AlarmaScheduler
 
-private val Verde = Color(0xFF1B7A4B)
-private val BordeGris = Color(0xFFD8DED9)
-
+private val Verde: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val BordeGris: Color
+    @Composable get() = Color(0xFFD8DED9).enTema()
 data class DiaSemana(
     val letra: String,
     val nombre: String
@@ -197,7 +200,7 @@ fun MedicationScreen(
                     mostrarAvisoPantallaCompleta = false
                     avisarGuardado()
                 }) {
-                    Text("Ahora no", color = Color(0xFF6B7280))
+                    Text("Ahora no", color = Color(0xFF6B7280).enTema())
                 }
             }
         )
@@ -227,7 +230,7 @@ fun MedicationScreen(
             },
             dismissButton = {
                 TextButton(onClick = { mostrarSelectorHora = false }) {
-                    Text(text = "Cancelar", color = Color(0xFF6B7280))
+                    Text(text = "Cancelar", color = Color(0xFF6B7280).enTema())
                 }
             },
             text = {
@@ -266,18 +269,18 @@ fun MedicationScreen(
         }
 
         Spacer(modifier = Modifier.height(8.dp))
-        HorizontalDivider(color = Color(0xFFECECEC))
+        HorizontalDivider(color = Color(0xFFECECEC).enTema())
         Spacer(modifier = Modifier.height(24.dp))
 
         // HORARIOS
-        Text(text = "Horarios", fontSize = 14.sp, color = Color(0xFF6B7280))
+        Text(text = "Horarios", fontSize = 14.sp, color = Color(0xFF6B7280).enTema())
         Spacer(modifier = Modifier.height(10.dp))
 
         if (horarios.isEmpty()) {
             Text(
                 text = "Todavía no agregaste ningún horario.",
                 fontSize = 14.sp,
-                color = Color(0xFF9CA3AF),
+                color = Color(0xFF9CA3AF).enTema(),
                 modifier = Modifier.padding(bottom = 12.dp)
             )
         }
@@ -301,13 +304,13 @@ fun MedicationScreen(
                 Text(
                     text = horario,
                     fontSize = 15.sp,
-                    color = Color(0xFF1A1A1A),
+                    color = Color(0xFF1A1A1A).enTema(),
                     modifier = Modifier.weight(1f)
                 )
                 Icon(
                     imageVector = Icons.Filled.Close,
                     contentDescription = "Quitar horario",
-                    tint = Color(0xFF9CA3AF),
+                    tint = Color(0xFF9CA3AF).enTema(),
                     modifier = Modifier
                         .size(56.dp)
                         .clickable(role = Role.Button) {
@@ -344,7 +347,7 @@ fun MedicationScreen(
         Spacer(modifier = Modifier.height(28.dp))
 
         // DÍAS
-        Text(text = "Días", fontSize = 14.sp, color = Color(0xFF6B7280))
+        Text(text = "Días", fontSize = 14.sp, color = Color(0xFF6B7280).enTema())
         Spacer(modifier = Modifier.height(10.dp))
 
         Row(modifier = Modifier.fillMaxWidth()) {
@@ -357,7 +360,7 @@ fun MedicationScreen(
                         .padding(end = if (index < diasSemana.size - 1) 4.dp else 0.dp)
                         .heightIn(min = 48.dp)
                         .clip(RoundedCornerShape(14.dp))
-                        .background(if (seleccionado) Verde else Color.White)
+                        .background(if (seleccionado) Verde else Color.White.enTema())
                         .border(
                             width = 1.dp,
                             color = if (seleccionado) Verde else BordeGris,
@@ -374,7 +377,7 @@ fun MedicationScreen(
                         text = dia.letra,
                         fontSize = 13.sp,
                         fontWeight = FontWeight.SemiBold,
-                        color = if (seleccionado) Color.White else Color(0xFF374151)
+                        color = if (seleccionado) Color.White else Color(0xFF374151).enTema()
                     )
                 }
             }
@@ -396,7 +399,7 @@ fun MedicationScreen(
                 Text(
                     text = if (activo) "Vas a recibir este recordatorio" else "Recordatorio apagado",
                     fontSize = 13.sp,
-                    color = Color(0xFF6B7280)
+                    color = Color(0xFF6B7280).enTema()
                 )
             }
             Switch(
@@ -460,9 +463,9 @@ fun MedicationScreen(
                 .fillMaxWidth()
                 .heightIn(min = 56.dp),
             shape = RoundedCornerShape(14.dp),
-            border = androidx.compose.foundation.BorderStroke(1.dp, Color(0xFFD32F2F))
+            border = androidx.compose.foundation.BorderStroke(1.dp, Color(0xFFD32F2F).enTema())
         ) {
-            Text(text = "Eliminar recordatorio", fontSize = 16.sp, color = Color(0xFFD32F2F))
+            Text(text = "Eliminar recordatorio", fontSize = 16.sp, color = Color(0xFFD32F2F).enTema())
         }
 
         Spacer(modifier = Modifier.height(24.dp))

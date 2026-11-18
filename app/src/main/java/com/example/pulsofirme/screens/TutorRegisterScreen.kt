@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -45,29 +49,33 @@ import com.example.pulsofirme.R
 import com.example.pulsofirme.TextosLegales
 import com.example.pulsofirme.areaTactil
 
-private val VerdeTitulo = Color(0xFF1B7A4B)
-private val GrisSubtitulo = Color(0xFF6B7280)
-private val GrisEtiqueta = Color(0xFF6B7280)
-private val CampoFondo = Color(0xFFEAF3EF)
-private val GrisBorde = Color(0xFFD8DED9)
-
+private val VerdeTitulo: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val GrisSubtitulo: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val GrisEtiqueta: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val CampoFondo: Color
+    @Composable get() = Color(0xFFEAF3EF).enTema()
+private val GrisBorde: Color
+    @Composable get() = Color(0xFFD8DED9).enTema()
 @Composable
 fun TutorRegisterScreen(
     onBack: () -> Unit,
     onCrearCuenta: (String, String, String, String, String, String) -> Unit = { _, _, _, _, _, _ -> }
 ) {
-    var nombre by remember { mutableStateOf("") }
-    var apellido by remember { mutableStateOf("") }
-    var correo by remember { mutableStateOf("") }
-    var telefono by remember { mutableStateOf("") }
-    var fechaNacimiento by remember { mutableStateOf("") }
-    var codigoVinculacion by remember { mutableStateOf("") }
+    var nombre by rememberSaveable { mutableStateOf("") }
+    var apellido by rememberSaveable { mutableStateOf("") }
+    var correo by rememberSaveable { mutableStateOf("") }
+    var telefono by rememberSaveable { mutableStateOf("") }
+    var fechaNacimiento by rememberSaveable { mutableStateOf("") }
+    var codigoVinculacion by rememberSaveable { mutableStateOf("") }
 
     // Consentimiento expreso: separado y destildado por defecto (Ley 25.326)
-    var aceptaTerminos by remember { mutableStateOf(false) }
-    var aceptaConfidencialidad by remember { mutableStateOf(false) }
-    var mostrarTerminos by remember { mutableStateOf(false) }
-    var mostrarPolitica by remember { mutableStateOf(false) }
+    var aceptaTerminos by rememberSaveable { mutableStateOf(false) }
+    var aceptaConfidencialidad by rememberSaveable { mutableStateOf(false) }
+    var mostrarTerminos by rememberSaveable { mutableStateOf(false) }
+    var mostrarPolitica by rememberSaveable { mutableStateOf(false) }
 
     if (mostrarTerminos) {
         DialogoLegal(titulo = "Términos y condiciones", texto = TextosLegales.terminos) { mostrarTerminos = false }
@@ -79,7 +87,7 @@ fun TutorRegisterScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 24.dp)
     ) {
@@ -184,7 +192,7 @@ fun TutorRegisterScreen(
             Text(
                 text = "Acepto los términos y condiciones y la política de privacidad.",
                 fontSize = 14.sp,
-                color = Color(0xFF333333),
+                color = Color(0xFF333333).enTema(),
                 lineHeight = 20.sp
             )
         }
@@ -235,7 +243,7 @@ fun TutorRegisterScreen(
                 text = "Entiendo que voy a ver datos de salud del paciente, que son datos sensibles. " +
                         "Me comprometo a usarlos solo para acompañarlo y a no compartirlos con terceros.",
                 fontSize = 14.sp,
-                color = Color(0xFF333333),
+                color = Color(0xFF333333).enTema(),
                 lineHeight = 20.sp
             )
         }
@@ -266,7 +274,7 @@ fun TutorRegisterScreen(
             shape = RoundedCornerShape(28.dp),
             border = androidx.compose.foundation.BorderStroke(1.dp, GrisBorde)
         ) {
-            Text("Cancelar", fontSize = 17.sp, fontWeight = FontWeight.Bold, color = Color(0xFF16324F))
+            Text("Cancelar", fontSize = 17.sp, fontWeight = FontWeight.Bold, color = Color(0xFF16324F).enTema())
         }
 
         Spacer(modifier = Modifier.height(40.dp))

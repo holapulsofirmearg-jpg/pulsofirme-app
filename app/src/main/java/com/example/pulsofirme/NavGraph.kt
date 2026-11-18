@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -63,79 +65,79 @@ fun AppNavGraph() {
     val auth = FirebaseAuth.getInstance()
     val db = FirebaseFirestore.getInstance()
 
-    var nombreEjercicioActual by remember { mutableStateOf("") }
-    var zonaEjercicioActual by remember { mutableStateOf("") }
-    var tipoEjercicioActual by remember { mutableStateOf("") }
+    var nombreEjercicioActual by rememberSaveable { mutableStateOf("") }
+    var zonaEjercicioActual by rememberSaveable { mutableStateOf("") }
+    var tipoEjercicioActual by rememberSaveable { mutableStateOf("") }
 
-    var repeticionesCompletadas by remember { mutableStateOf(0) }
-    var totalRepeticiones by remember { mutableStateOf(0) }
-    var tiempoTotalSegundos by remember { mutableStateOf(0) }
+    var repeticionesCompletadas by rememberSaveable { mutableStateOf(0) }
+    var totalRepeticiones by rememberSaveable { mutableStateOf(0) }
+    var tiempoTotalSegundos by rememberSaveable { mutableStateOf(0) }
 
-    var sensacionInicial by remember { mutableStateOf("") }
+    var sensacionInicial by rememberSaveable { mutableStateOf("") }
 
-    var nombreUsuarioActual by remember {
+    var nombreUsuarioActual by rememberSaveable {
         mutableStateOf("Usuario")
     }
 
-    var rolCuidadorActual by remember {
+    var rolCuidadorActual by rememberSaveable {
         mutableStateOf("tutor")
     }
 
     // Datos reales del perfil profesional cargados desde Firestore
-    var profesionalMatricula by remember { mutableStateOf("") }
-    var profesionalLugarTrabajo by remember { mutableStateOf("") }
-    var profesionalEspecialidad by remember { mutableStateOf("") }
+    var profesionalMatricula by rememberSaveable { mutableStateOf("") }
+    var profesionalLugarTrabajo by rememberSaveable { mutableStateOf("") }
+    var profesionalEspecialidad by rememberSaveable { mutableStateOf("") }
 
     // Rol con el que se abrió PulsiBot.
-    var rolPulsiBotActual by remember {
+    var rolPulsiBotActual by rememberSaveable {
         mutableStateOf("paciente")
     }
 
-    var pacienteProfesionalSeleccionado by remember {
+    var pacienteProfesionalSeleccionado by rememberSaveable {
         mutableStateOf("")
     }
 
     // UID del paciente elegido en la pantalla de permisos del profesional
-    var pacienteProfesionalUidSeleccionado by remember {
+    var pacienteProfesionalUidSeleccionado by rememberSaveable {
         mutableStateOf("")
     }
 
     // Datos temporales del registro de tutor
-    var tutorNombre by remember { mutableStateOf("") }
-    var tutorApellido by remember { mutableStateOf("") }
-    var tutorCorreo by remember { mutableStateOf("") }
-    var tutorTelefono by remember { mutableStateOf("") }
-    var tutorFechaNacimiento by remember { mutableStateOf("") }
-    var tutorCodigoVinculacion by remember { mutableStateOf("") }
+    var tutorNombre by rememberSaveable { mutableStateOf("") }
+    var tutorApellido by rememberSaveable { mutableStateOf("") }
+    var tutorCorreo by rememberSaveable { mutableStateOf("") }
+    var tutorTelefono by rememberSaveable { mutableStateOf("") }
+    var tutorFechaNacimiento by rememberSaveable { mutableStateOf("") }
+    var tutorCodigoVinculacion by rememberSaveable { mutableStateOf("") }
 
     // Datos del perfil del tutor
-    var tutorPerfilNombre by remember { mutableStateOf("") }
-    var tutorPerfilApellido by remember { mutableStateOf("") }
-    var tutorPerfilCorreo by remember { mutableStateOf("") }
-    var tutorPerfilTelefono by remember { mutableStateOf("") }
-    var tutorPerfilFechaNacimiento by remember { mutableStateOf("") }
-    var tutorPerfilGenero by remember { mutableStateOf("") }
-    var tutorPerfilPais by remember { mutableStateOf("") }
+    var tutorPerfilNombre by rememberSaveable { mutableStateOf("") }
+    var tutorPerfilApellido by rememberSaveable { mutableStateOf("") }
+    var tutorPerfilCorreo by rememberSaveable { mutableStateOf("") }
+    var tutorPerfilTelefono by rememberSaveable { mutableStateOf("") }
+    var tutorPerfilFechaNacimiento by rememberSaveable { mutableStateOf("") }
+    var tutorPerfilGenero by rememberSaveable { mutableStateOf("") }
+    var tutorPerfilPais by rememberSaveable { mutableStateOf("") }
 
-    var editNombre by remember { mutableStateOf("") }
-    var editCorreo by remember { mutableStateOf("") }
-    var editFecha by remember { mutableStateOf("") }
-    var editPais by remember { mutableStateOf("") }
-    var editTelefono by remember { mutableStateOf("") }
-    var editDireccion by remember { mutableStateOf("") }
-    var editGenero by remember { mutableStateOf("") }
+    var editNombre by rememberSaveable { mutableStateOf("") }
+    var editCorreo by rememberSaveable { mutableStateOf("") }
+    var editFecha by rememberSaveable { mutableStateOf("") }
+    var editPais by rememberSaveable { mutableStateOf("") }
+    var editTelefono by rememberSaveable { mutableStateOf("") }
+    var editDireccion by rememberSaveable { mutableStateOf("") }
+    var editGenero by rememberSaveable { mutableStateOf("") }
 
-    var medicalDiagnostico by remember { mutableStateOf("") }
-    var medicalZona by remember { mutableStateOf("") }
-    var medicalProfesional by remember { mutableStateOf("") }
-    var medicalNotas by remember { mutableStateOf("") }
+    var medicalDiagnostico by rememberSaveable { mutableStateOf("") }
+    var medicalZona by rememberSaveable { mutableStateOf("") }
+    var medicalProfesional by rememberSaveable { mutableStateOf("") }
+    var medicalNotas by rememberSaveable { mutableStateOf("") }
 
-    var alertaMedicacion by remember { mutableStateOf(true) }
-    var alertaEjercicioPendiente by remember { mutableStateOf(true) }
-    var alertaRacha by remember { mutableStateOf(true) }
-    var alertaNuevoCuidador by remember { mutableStateOf(true) }
-    var codigoVinculacionPaciente by remember { mutableStateOf("") }
-    var cantidadTutoresVinculados by remember { mutableStateOf(0) }
+    var alertaMedicacion by rememberSaveable { mutableStateOf(true) }
+    var alertaEjercicioPendiente by rememberSaveable { mutableStateOf(true) }
+    var alertaRacha by rememberSaveable { mutableStateOf(true) }
+    var alertaNuevoCuidador by rememberSaveable { mutableStateOf(true) }
+    var codigoVinculacionPaciente by rememberSaveable { mutableStateOf("") }
+    var cantidadTutoresVinculados by rememberSaveable { mutableStateOf(0) }
 
     // ---------------------------------------------------------
     // Cuentas viejas: si no aceptaron la versión vigente de los términos
@@ -2460,7 +2462,7 @@ fun AppNavGraph() {
 
             val context = LocalContext.current
             val scopeAjustes = rememberCoroutineScope()
-            var pedirClaveBorrado by remember { mutableStateOf(false) }
+            var pedirClaveBorrado by rememberSaveable { mutableStateOf(false) }
 
             // Antes solo volvía al login y la cuenta seguía existiendo.
             // Ahora pide la contraseña y borra la cuenta y los datos de verdad.
@@ -2988,10 +2990,10 @@ fun AppNavGraph() {
             val context = LocalContext.current
             val uid = auth.currentUser?.uid
 
-            var lugarTrabajo by remember { mutableStateOf("") }
-            var especialidad by remember { mutableStateOf("") }
-            var matricula by remember { mutableStateOf("") }
-            var formacionAdicional by remember { mutableStateOf("") }
+            var lugarTrabajo by rememberSaveable { mutableStateOf("") }
+            var especialidad by rememberSaveable { mutableStateOf("") }
+            var matricula by rememberSaveable { mutableStateOf("") }
+            var formacionAdicional by rememberSaveable { mutableStateOf("") }
 
             LaunchedEffect(uid) {
                 if (uid != null) {
@@ -3507,11 +3509,11 @@ fun AppNavGraph() {
 
             val tutorUid = auth.currentUser?.uid
 
-            var pacienteNombre by remember { mutableStateOf("") }
-            var pacienteFechaVinculo by remember { mutableStateOf("") }
-            var pacienteFechaNacimiento by remember { mutableStateOf("") }
-            var pacienteGenero by remember { mutableStateOf("") }
-            var pacientePais by remember { mutableStateOf("") }
+            var pacienteNombre by rememberSaveable { mutableStateOf("") }
+            var pacienteFechaVinculo by rememberSaveable { mutableStateOf("") }
+            var pacienteFechaNacimiento by rememberSaveable { mutableStateOf("") }
+            var pacienteGenero by rememberSaveable { mutableStateOf("") }
+            var pacientePais by rememberSaveable { mutableStateOf("") }
             var pacienteComparteProgreso by remember { mutableStateOf<Boolean?>(null) }
             var pacienteComparteMedicacion by remember { mutableStateOf<Boolean?>(null) }
             var pacienteComparteUbicacion by remember { mutableStateOf<Boolean?>(null) }
@@ -3671,7 +3673,7 @@ fun AppNavGraph() {
                 val context = LocalContext.current
                 val tutorUid = auth.currentUser?.uid
                 val scope = rememberCoroutineScope()
-                var pedirClaveBorrado by remember { mutableStateOf(false) }
+                var pedirClaveBorrado by rememberSaveable { mutableStateOf(false) }
                 var borrando by remember { mutableStateOf(false) }
 
                 if (pedirClaveBorrado) {
@@ -3931,7 +3933,7 @@ fun AppNavGraph() {
 
         composable("caregiver_settings") {
             val context = LocalContext.current
-            var pedirClaveBorrado by remember { mutableStateOf(false) }
+            var pedirClaveBorrado by rememberSaveable { mutableStateOf(false) }
 
             // Antes solo volvía al login y la cuenta seguía existiendo.
             // Ahora pide la contraseña y borra la cuenta y los datos de verdad.
@@ -4025,7 +4027,7 @@ private fun DialogoClaveParaBorrar(
     onCancelar: () -> Unit,
     onConfirmar: (String) -> Unit
 ) {
-    var clave by remember { mutableStateOf("") }
+    var clave by rememberSaveable { mutableStateOf("") }
 
     AlertDialog(
         onDismissRequest = onCancelar,

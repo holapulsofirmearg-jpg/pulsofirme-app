@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -27,9 +29,10 @@ import java.util.Calendar
 import kotlin.math.roundToInt
 
 private val VerdeCuidador = Color(0xFF1B7A4B)
-private val VerdeClaroCuidador = Color(0xFFEFF6F1)
-private val BordeGrisCuidador = Color(0xFFE5E7EB)
-
+private val VerdeClaroCuidador: Color
+    @Composable get() = Color(0xFFEFF6F1).enTema()
+private val BordeGrisCuidador: Color
+    @Composable get() = Color(0xFFE5E7EB).enTema()
 private data class AlertaCuidador(
     val titulo: String,
     val descripcion: String,
@@ -178,7 +181,7 @@ fun AlertsCaregiverScreen(
     Scaffold(
         bottomBar = {
             NavigationBar(
-                containerColor = Color.White
+                containerColor = Color.White.enTema()
             ) {
 
                 // MENÚ DEL CUIDADOR: SOLO 4 ÍTEMS
@@ -227,8 +230,8 @@ fun AlertsCaregiverScreen(
                         colors = NavigationBarItemDefaults.colors(
                             selectedIconColor = VerdeCuidador,
                             selectedTextColor = VerdeCuidador,
-                            unselectedIconColor = Color(0xFF9CA3AF),
-                            unselectedTextColor = Color(0xFF9CA3AF),
+                            unselectedIconColor = Color(0xFF9CA3AF).enTema(),
+                            unselectedTextColor = Color(0xFF9CA3AF).enTema(),
                             indicatorColor = VerdeClaroCuidador
                         )
                     )
@@ -254,7 +257,7 @@ fun AlertsCaregiverScreen(
                     text = "Alertas",
                     fontSize = 26.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color(0xFF1A1A1A)
+                    color = Color(0xFF1A1A1A).enTema()
                 )
 
                 Spacer(modifier = Modifier.height(4.dp))
@@ -262,7 +265,7 @@ fun AlertsCaregiverScreen(
                 Text(
                     text = "Consultá las alertas del usuario asociado",
                     fontSize = 14.sp,
-                    color = Color(0xFF6B7280)
+                    color = Color(0xFF6B7280).enTema()
                 )
             }
 
@@ -276,7 +279,7 @@ fun AlertsCaregiverScreen(
                         )
                         .border(
                             1.dp,
-                            Color(0xFFD5E5DA),
+                            Color(0xFFD5E5DA).enTema(),
                             RoundedCornerShape(16.dp)
                         )
                         .padding(16.dp)
@@ -308,7 +311,7 @@ fun AlertsCaregiverScreen(
                                 text = "Estado de alertas",
                                 fontSize = 16.sp,
                                 fontWeight = FontWeight.SemiBold,
-                                color = Color(0xFF1A1A1A)
+                                color = Color(0xFF1A1A1A).enTema()
                             )
 
                             Spacer(modifier = Modifier.height(3.dp))
@@ -322,7 +325,7 @@ fun AlertsCaregiverScreen(
                                     else -> "Hay $importantes alertas para revisar."
                                 },
                                 fontSize = 13.sp,
-                                color = Color(0xFF5A6B60)
+                                color = Color(0xFF5A6B60).enTema()
                             )
                         }
                     }
@@ -334,7 +337,7 @@ fun AlertsCaregiverScreen(
                     text = "Alertas recientes",
                     fontSize = 17.sp,
                     fontWeight = FontWeight.SemiBold,
-                    color = Color(0xFF1A1A1A)
+                    color = Color(0xFF1A1A1A).enTema()
                 )
             }
 
@@ -382,7 +385,7 @@ fun AlertsCaregiverScreen(
                             text = alerta.titulo,
                             fontSize = 15.sp,
                             fontWeight = FontWeight.SemiBold,
-                            color = Color(0xFF1A1A1A)
+                            color = Color(0xFF1A1A1A).enTema()
                         )
 
                         Spacer(modifier = Modifier.height(4.dp))
@@ -390,7 +393,7 @@ fun AlertsCaregiverScreen(
                         Text(
                             text = alerta.descripcion,
                             fontSize = 13.sp,
-                            color = Color(0xFF6B7280)
+                            color = Color(0xFF6B7280).enTema()
                         )
                     }
                 }
@@ -419,7 +422,7 @@ fun AlertsCaregiverScreen(
                             modifier = Modifier
                                 .size(44.dp)
                                 .background(
-                                    Color(0xFFF3F4F6),
+                                    Color(0xFFF3F4F6).enTema(),
                                     CircleShape
                                 ),
                             contentAlignment = Alignment.Center
@@ -427,7 +430,7 @@ fun AlertsCaregiverScreen(
                             Icon(
                                 imageVector = Icons.Filled.Settings,
                                 contentDescription = null,
-                                tint = Color(0xFF6B7280),
+                                tint = Color(0xFF6B7280).enTema(),
                                 modifier = Modifier.size(22.dp)
                             )
                         }
@@ -441,7 +444,7 @@ fun AlertsCaregiverScreen(
                                 text = "Configuración de alertas",
                                 fontSize = 15.sp,
                                 fontWeight = FontWeight.Medium,
-                                color = Color(0xFF1A1A1A)
+                                color = Color(0xFF1A1A1A).enTema()
                             )
 
                             Spacer(modifier = Modifier.height(3.dp))
@@ -449,14 +452,14 @@ fun AlertsCaregiverScreen(
                             Text(
                                 text = "Configurá cómo recibir las alertas del usuario.",
                                 fontSize = 13.sp,
-                                color = Color(0xFF6B7280)
+                                color = Color(0xFF6B7280).enTema()
                             )
                         }
 
                         Icon(
                             imageVector = Icons.Filled.ChevronRight,
                             contentDescription = null,
-                            tint = Color(0xFF9CA3AF)
+                            tint = Color(0xFF9CA3AF).enTema()
                         )
                     }
                 }

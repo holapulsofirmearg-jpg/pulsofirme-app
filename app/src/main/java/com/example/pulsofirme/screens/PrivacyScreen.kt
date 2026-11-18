@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -42,14 +46,20 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.io.File
 
-private val VerdePv = Color(0xFF1B7A4B)
-private val VerdeOscuroPv = Color(0xFF1B4332)
-private val VerdeSuavePv = Color(0xFFEAF5EC)
-private val RojoPv = Color(0xFFC0392B)
-private val BordePv = Color(0xFFE5E7EB)
-private val GrisPv = Color(0xFF6B7280)
-private val NegroPv = Color(0xFF1A1A1A)
-
+private val VerdePv: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val VerdeOscuroPv: Color
+    @Composable get() = Color(0xFF1B4332).enTema()
+private val VerdeSuavePv: Color
+    @Composable get() = Color(0xFFEAF5EC).enTema()
+private val RojoPv: Color
+    @Composable get() = Color(0xFFC0392B).enTema()
+private val BordePv: Color
+    @Composable get() = Color(0xFFE5E7EB).enTema()
+private val GrisPv: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val NegroPv: Color
+    @Composable get() = Color(0xFF1A1A1A).enTema()
 // Permisos que el paciente le da a cada profesional.
 // Las claves son las mismas que lee la app del profesional.
 private val permisosProfesional = listOf(
@@ -75,18 +85,18 @@ fun PrivacyScreen(
     val contexto = LocalContext.current
     val scope = rememberCoroutineScope()
 
-    var mostrarPolitica by remember { mutableStateOf(false) }
-    var mostrarTerminos by remember { mutableStateOf(false) }
-    var mostrarDescarga by remember { mutableStateOf(false) }
-    var mostrarEliminar by remember { mutableStateOf(false) }
+    var mostrarPolitica by rememberSaveable { mutableStateOf(false) }
+    var mostrarTerminos by rememberSaveable { mutableStateOf(false) }
+    var mostrarDescarga by rememberSaveable { mutableStateOf(false) }
+    var mostrarEliminar by rememberSaveable { mutableStateOf(false) }
     var generando by remember { mutableStateOf(false) }
-    var errorPdf by remember { mutableStateOf(false) }
+    var errorPdf by rememberSaveable { mutableStateOf(false) }
     var archivoPdf by remember { mutableStateOf<File?>(null) }
 
     // Estado del borrado real
-    var contrasenaEliminar by remember { mutableStateOf("") }
+    var contrasenaEliminar by rememberSaveable { mutableStateOf("") }
     var eliminando by remember { mutableStateOf(false) }
-    var errorEliminar by remember { mutableStateOf("") }
+    var errorEliminar by rememberSaveable { mutableStateOf("") }
 
     // ---------- Datos reales de permisos (Firestore) ----------
     val db = FirebaseFirestore.getInstance()
@@ -212,7 +222,7 @@ fun PrivacyScreen(
         val listo = archivoPdf != null
         AlertDialog(
             onDismissRequest = { mostrarDescarga = false },
-            containerColor = Color.White,
+            containerColor = Color.White.enTema(),
             shape = RoundedCornerShape(20.dp),
             title = {
                 Text(
@@ -292,7 +302,7 @@ fun PrivacyScreen(
                     errorEliminar = ""
                 }
             },
-            containerColor = Color.White,
+            containerColor = Color.White.enTema(),
             shape = RoundedCornerShape(20.dp),
             title = {
                 Text(
@@ -407,7 +417,7 @@ fun PrivacyScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 20.dp)
     ) {
@@ -513,7 +523,7 @@ fun PrivacyScreen(
             Text(
                 text = "Podés cambiar estos permisos cuando quieras. Si desactivás uno, tu tutor o profesional deja de ver esa información la próxima vez que abra la app.",
                 fontSize = 13.sp,
-                color = Color(0xFF374151),
+                color = Color(0xFF374151).enTema(),
                 lineHeight = 19.sp
             )
         }
@@ -597,8 +607,8 @@ private fun FilaPermiso(
                 checkedThumbColor = Color.White,
                 checkedTrackColor = VerdePv,
                 uncheckedThumbColor = Color.White,
-                uncheckedTrackColor = Color(0xFFC7C7C7),
-                uncheckedBorderColor = Color(0xFFC7C7C7)
+                uncheckedTrackColor = Color(0xFFC7C7C7).enTema(),
+                uncheckedBorderColor = Color(0xFFC7C7C7).enTema()
             )
         )
     }
@@ -658,7 +668,7 @@ private fun TarjetaProfesional(
             Icon(
                 if (abierta) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown,
                 contentDescription = null,
-                tint = Color(0xFF9CA3AF)
+                tint = Color(0xFF9CA3AF).enTema()
             )
         }
 
@@ -697,7 +707,7 @@ private fun FilaEnlace(texto: String, onClick: () -> Unit) {
         Icon(
             Icons.Filled.KeyboardArrowRight,
             contentDescription = null,
-            tint = Color(0xFF9CA3AF)
+            tint = Color(0xFF9CA3AF).enTema()
         )
     }
 }
