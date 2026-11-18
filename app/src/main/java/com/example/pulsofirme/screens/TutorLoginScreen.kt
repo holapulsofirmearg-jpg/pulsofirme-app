@@ -1,6 +1,5 @@
 package com.example.pulsofirme.screens
 
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -25,7 +24,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
@@ -38,6 +36,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pulsofirme.R
+import com.example.pulsofirme.Accesibilidad
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.selection.toggleable
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 
@@ -52,9 +54,6 @@ fun TutorLoginScreen(
     onIngresar: (email: String, password: String, codigo: String) -> Unit = { _, _, _ -> },
     onOlvidasteContrasena: (String) -> Unit = {},
     onCrearCuenta: () -> Unit = {},
-    onGoogle: () -> Unit = {},
-    onApple: () -> Unit = {},
-    onAccesibilidad: () -> Unit = {},
     // true mientras se verifica el inicio de sesión (bloquea el botón)
     cargando: Boolean = false
 ) {
@@ -62,6 +61,13 @@ fun TutorLoginScreen(
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
     var codigo by remember { mutableStateOf("") }
+    var mostrarAccesibilidad by remember { mutableStateOf(false) }
+
+    // Opciones de accesibilidad antes de iniciar sesión (tamaño de letra y contraste).
+    // Usa las mismas preferencias que Ajustes, así que quedan guardadas para toda la app.
+    if (mostrarAccesibilidad) {
+        DialogoAccesibilidadRapida(onCerrar = { mostrarAccesibilidad = false })
+    }
 
     Scaffold(
         containerColor = Color.White
@@ -246,22 +252,6 @@ fun TutorLoginScreen(
 
             Spacer(modifier = Modifier.height(20.dp))
 
-            // Divider "o continúa con"
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Divider(modifier = Modifier.weight(1f), color = GrisBorde)
-                Text(
-                    text = "  o continúa con  ",
-                    fontSize = 12.sp,
-                    color = GrisTexto
-                )
-                Divider(modifier = Modifier.weight(1f), color = GrisBorde)
-            }
-
-            Spacer(modifier = Modifier.height(14.dp))
-
             // Un solo texto: si la letra es grande, baja de renglón en vez de cortarse
             Text(
                 text = buildAnnotatedString {
@@ -280,44 +270,11 @@ fun TutorLoginScreen(
 
             Spacer(modifier = Modifier.height(14.dp))
 
-            // Google / Apple
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
-                OutlinedButton(
-                    onClick = onGoogle,
-                    modifier = Modifier
-                        .weight(1f)
-                        .heightIn(min = 52.dp),
-                    shape = RoundedCornerShape(12.dp),
-                    border = androidx.compose.foundation.BorderStroke(1.dp, GrisBorde)
-                ) {
-                    Text(text = "G", fontSize = 16.sp, fontWeight = FontWeight.Bold, color = Color.Black)
-                    Spacer(modifier = Modifier.width(6.dp))
-                    Text(text = "Google", fontSize = 14.sp, color = Color.Black)
-                }
-                OutlinedButton(
-                    onClick = onApple,
-                    modifier = Modifier
-                        .weight(1f)
-                        .heightIn(min = 52.dp),
-                    shape = RoundedCornerShape(12.dp),
-                    border = androidx.compose.foundation.BorderStroke(1.dp, GrisBorde)
-                ) {
-                    IconoManzana(modifier = Modifier.size(15.dp))
-                    Spacer(modifier = Modifier.width(6.dp))
-                    Text(text = "Apple", fontSize = 14.sp, color = Color.Black)
-                }
-            }
-
-            Spacer(modifier = Modifier.height(20.dp))
-
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(12.dp))
-                    .clickableText(onAccesibilidad)
+                    .clickableText { mostrarAccesibilidad = true }
                     .heightIn(min = 48.dp),
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
@@ -341,57 +298,73 @@ fun TutorLoginScreen(
     }
 }
 
-@Composable
-private fun IconoManzana(modifier: Modifier = Modifier) {
-    Canvas(modifier = modifier) {
-        val w = size.width
-        val h = size.height
-
-        val cuerpo = Path().apply {
-            moveTo(w * 0.5f, h * 0.30f)
-            cubicTo(
-                w * 0.15f, h * 0.15f,
-                -w * 0.05f, h * 0.55f,
-                w * 0.20f, h * 0.85f
-            )
-            cubicTo(
-                w * 0.32f, h * 1.0f,
-                w * 0.42f, h * 0.95f,
-                w * 0.5f, h * 0.95f
-            )
-            cubicTo(
-                w * 0.58f, h * 0.95f,
-                w * 0.68f, h * 1.0f,
-                w * 0.80f, h * 0.85f
-            )
-            cubicTo(
-                w * 1.05f, h * 0.55f,
-                w * 0.85f, h * 0.15f,
-                w * 0.5f, h * 0.30f
-            )
-            close()
-        }
-        drawPath(path = cuerpo, color = Color.Black)
-
-        val hoja = Path().apply {
-            moveTo(w * 0.55f, h * 0.05f)
-            cubicTo(
-                w * 0.55f, h * 0.20f,
-                w * 0.70f, h * 0.25f,
-                w * 0.72f, h * 0.12f
-            )
-            cubicTo(
-                w * 0.65f, h * 0.0f,
-                w * 0.55f, h * 0.0f,
-                w * 0.55f, h * 0.05f
-            )
-            close()
-        }
-        drawPath(path = hoja, color = Color.Black)
-    }
-}
-
 // Extensión chiquita para hacer clickeable un Text sin usar Modifier.clickable directo
 // (evita import repetido de foundation.clickable en cada Text)
 private fun Modifier.clickableText(onClick: () -> Unit): Modifier =
     this.then(Modifier.clickable(onClick = onClick))
+
+@Composable
+private fun DialogoAccesibilidadRapida(onCerrar: () -> Unit) {
+    val contexto = LocalContext.current
+    AlertDialog(
+        onDismissRequest = onCerrar,
+        containerColor = Color.White,
+        shape = RoundedCornerShape(20.dp),
+        title = {
+            Text("Accesibilidad", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = VerdeTutor)
+        },
+        text = {
+            Column {
+                Text("Tamaño de la letra", fontSize = 15.sp, fontWeight = FontWeight.SemiBold, color = Color(0xFF1A1A1A))
+                Spacer(modifier = Modifier.height(6.dp))
+                Accesibilidad.niveles.forEach { nivel ->
+                    val elegido = Accesibilidad.tamanoLetra == nivel
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(10.dp))
+                            .selectable(
+                                selected = elegido,
+                                role = Role.RadioButton,
+                                onClick = { Accesibilidad.cambiarTamanoLetra(contexto, nivel) }
+                            )
+                            .heightIn(min = 48.dp)
+                    ) {
+                        RadioButton(
+                            selected = elegido,
+                            onClick = null,
+                            colors = RadioButtonDefaults.colors(selectedColor = VerdeTutor)
+                        )
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text(nivel, fontSize = 16.sp, color = Color(0xFF1A1A1A))
+                    }
+                }
+                Spacer(modifier = Modifier.height(10.dp))
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .toggleable(
+                            value = Accesibilidad.altoContraste,
+                            role = Role.Switch,
+                            onValueChange = { Accesibilidad.cambiarAltoContraste(contexto, it) }
+                        )
+                        .heightIn(min = 48.dp)
+                ) {
+                    Text("Alto contraste", fontSize = 16.sp, color = Color(0xFF1A1A1A), modifier = Modifier.weight(1f))
+                    Switch(
+                        checked = Accesibilidad.altoContraste,
+                        onCheckedChange = null,
+                        colors = SwitchDefaults.colors(checkedThumbColor = Color.White, checkedTrackColor = VerdeTutor)
+                    )
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onCerrar, modifier = Modifier.heightIn(min = 48.dp)) {
+                Text("Listo", color = VerdeTutor, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+            }
+        }
+    )
+}

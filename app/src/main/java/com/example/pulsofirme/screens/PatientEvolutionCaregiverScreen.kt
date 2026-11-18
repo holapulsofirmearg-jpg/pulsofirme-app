@@ -21,6 +21,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.pulsofirme.EstadoPacienteTutor
+import com.example.pulsofirme.PacienteDelTutor
+import com.example.pulsofirme.rememberPacienteDelTutor
+import kotlin.math.roundToInt
 
 private val VerdeEvolucion = Color(0xFF1B7A4B)
 private val VerdeClaroEvolucion = Color(0xFFEFF6F1)
@@ -31,6 +35,9 @@ private val GrisEvolucion = Color(0xFF6B7280)
 fun PatientEvolutionCaregiverScreen(
     onBack: () -> Unit
 ) {
+    // Datos reales del paciente vinculado (antes eran valores fijos)
+    val (estado, reintentar) = rememberPacienteDelTutor()
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -61,6 +68,13 @@ fun PatientEvolutionCaregiverScreen(
 
         Spacer(modifier = Modifier.height(18.dp))
 
+        if (estado !is EstadoPacienteTutor.Listo) {
+            MensajeEstadoTutor(estado, onReintentar = reintentar)
+            return@Column
+        }
+
+        val paciente = estado.paciente
+
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -85,7 +99,7 @@ fun PatientEvolutionCaregiverScreen(
 
             Column {
                 Text(
-                    text = "Juan Pérez",
+                    text = paciente.nombre,
                     fontSize = 17.sp,
                     fontWeight = FontWeight.Bold
                 )
@@ -99,6 +113,14 @@ fun PatientEvolutionCaregiverScreen(
 
         Spacer(modifier = Modifier.height(24.dp))
 
+        if (!paciente.comparteProgreso) {
+            TarjetaNoCompartido(
+                "${paciente.nombre} decidió no compartir su progreso. " +
+                        "Puede activarlo desde Cuenta → Privacidad y datos."
+            )
+            return@Column
+        }
+
         Text(
             text = "Resumen de evolución",
             fontSize = 17.sp,
@@ -107,10 +129,31 @@ fun PatientEvolutionCaregiverScreen(
 
         Spacer(modifier = Modifier.height(12.dp))
 
+        // Movilidad: sale de comparar las dos últimas evaluaciones QuickDASH
+        // (más bajo = menos dificultad). Diferencias chicas se toman como "estable".
+        val actual = paciente.evaluaciones.getOrNull(0)
+        val anterior = paciente.evaluaciones.getOrNull(1)
+        val (valorMovilidad, textoMovilidad) = when {
+            actual == null -> "Sin datos" to
+                    "Todavía no hizo ninguna evaluación QuickDASH."
+            anterior == null -> PacienteDelTutor.interpretacionQuickDash(actual.puntaje) to
+                    "Primera evaluación: ${actual.puntaje.roundToInt()} / 100. " +
+                    "Con la próxima vas a poder ver si mejora."
+            actual.puntaje <= anterior.puntaje - 5 -> "En mejora" to
+                    "Bajó de ${anterior.puntaje.roundToInt()} a ${actual.puntaje.roundToInt()} puntos " +
+                    "en el QuickDASH: tiene menos dificultad que antes."
+            actual.puntaje >= anterior.puntaje + 5 -> "Necesita atención" to
+                    "Subió de ${anterior.puntaje.roundToInt()} a ${actual.puntaje.roundToInt()} puntos " +
+                    "en el QuickDASH: tiene más dificultad que antes. Conviene consultarlo con su profesional."
+            else -> "Estable" to
+                    "Pasó de ${anterior.puntaje.roundToInt()} a ${actual.puntaje.roundToInt()} puntos " +
+                    "en el QuickDASH: sin cambios importantes."
+        }
+
         TarjetaEvolucion(
             titulo = "Movilidad",
-            valor = "En mejora",
-            descripcion = "Se observa una mejora en la movilidad de la mano derecha.",
+            valor = valorMovilidad,
+            descripcion = textoMovilidad,
             icono = {
                 Icon(
                     Icons.AutoMirrored.Filled.TrendingUp,
@@ -122,10 +165,12 @@ fun PatientEvolutionCaregiverScreen(
 
         Spacer(modifier = Modifier.height(12.dp))
 
+        val hoy = PacienteDelTutor.deHoy(paciente.ejercicios)
         TarjetaEvolucion(
-            titulo = "Ejercicios completados",
-            valor = "3 de 5",
-            descripcion = "Ejercicios realizados durante la jornada de hoy.",
+            titulo = "Ejercicios de hoy",
+            valor = if (hoy.size == 1) "1 ejercicio" else "${hoy.size} ejercicios",
+            descripcion = if (hoy.isEmpty()) "Todavía no registró ejercicios hoy."
+            else "Último: ${hoy.first().nombre}.",
             icono = {
                 Icon(
                     Icons.Default.CheckCircle,
@@ -137,10 +182,12 @@ fun PatientEvolutionCaregiverScreen(
 
         Spacer(modifier = Modifier.height(12.dp))
 
+        val semana = PacienteDelTutor.deUltimosDias(paciente.ejercicios, 7)
         TarjetaEvolucion(
             titulo = "Tiempo de actividad",
-            valor = "28 min",
-            descripcion = "Tiempo total dedicado a ejercicios de rehabilitación.",
+            valor = PacienteDelTutor.textoMinutos(semana.sumOf { it.segundos }),
+            descripcion = "Tiempo total de ejercicios en los últimos 7 días " +
+                    "(${if (semana.size == 1) "1 ejercicio" else "${semana.size} ejercicios"}).",
             icono = {
                 Icon(
                     Icons.Default.Schedule,
@@ -150,9 +197,7 @@ fun PatientEvolutionCaregiverScreen(
             }
         )
 
-        Spacer(modifier = Modifier.height(24.dp))
-
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(44.dp))
     }
 }
 

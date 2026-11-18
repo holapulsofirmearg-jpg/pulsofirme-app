@@ -40,6 +40,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import android.content.Intent
+import android.provider.Settings
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.RadioButtonDefaults
+import androidx.compose.material3.TextButton
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.semantics.Role
+import com.example.pulsofirme.Accesibilidad
 
 private val VerdeTitulo = Color(0xFF1B7A4B)
 private val AzulTexto = Color(0xFF16324F)
@@ -53,16 +63,55 @@ private val GrisDivider = Color(0xFFE5E7EB)
 @Composable
 fun AjustesCaregiverScreen(
     onBack: () -> Unit,
-    onCuentaEliminada: () -> Unit = {}
+    // Abre el pedido de contraseña para borrar la cuenta de verdad (lo maneja NavGraph)
+    onEliminarCuenta: () -> Unit = {}
 ) {
-    var sonidos by remember { mutableStateOf(true) }
+    val contexto = LocalContext.current
     var accesibilidadExpandida by remember { mutableStateOf(false) }
+    var mostrarTamanoTexto by remember { mutableStateOf(false) }
 
-    var altoContraste by remember { mutableStateOf(true) }
-    var botonesGrandes by remember { mutableStateOf(true) }
-    var reducirAnimaciones by remember { mutableStateOf(false) }
-    var lecturaPantalla by remember { mutableStateOf(false) }
-    var sonidosYVibracion by remember { mutableStateOf(true) }
+    // Las opciones de accesibilidad son las mismas de toda la app (se guardan en el celular)
+    if (mostrarTamanoTexto) {
+        AlertDialog(
+            onDismissRequest = { mostrarTamanoTexto = false },
+            containerColor = Color.White,
+            shape = RoundedCornerShape(20.dp),
+            title = {
+                Text("Tamaño del texto", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = VerdeTitulo)
+            },
+            text = {
+                Column {
+                    Accesibilidad.niveles.forEach { nivel ->
+                        val elegido = Accesibilidad.tamanoLetra == nivel
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .selectable(
+                                    selected = elegido,
+                                    role = Role.RadioButton,
+                                    onClick = { Accesibilidad.cambiarTamanoLetra(contexto, nivel) }
+                                )
+                                .heightIn(min = 48.dp)
+                        ) {
+                            RadioButton(
+                                selected = elegido,
+                                onClick = null,
+                                colors = RadioButtonDefaults.colors(selectedColor = VerdeTitulo)
+                            )
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Text(nivel, fontSize = 16.sp, color = Color(0xFF1A1A1A))
+                        }
+                    }
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { mostrarTamanoTexto = false }) {
+                    Text("Listo", color = VerdeTitulo, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                }
+            }
+        )
+    }
 
     Column(
         modifier = Modifier
@@ -95,44 +144,15 @@ fun AjustesCaregiverScreen(
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        FilaAjuste(titulo = "Idioma", valor = "Español", onClick = { /* TODO */ })
-
-        Spacer(modifier = Modifier.height(12.dp))
-
         FilaAjuste(titulo = "Tema", valor = "Claro", onClick = { /* TODO */ })
 
         Spacer(modifier = Modifier.height(12.dp))
 
-        FilaAjuste(titulo = "Unidad de medida", valor = "Métrico", onClick = { /* TODO */ })
-
-        Spacer(modifier = Modifier.height(12.dp))
-
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(CelesteFondo, RoundedCornerShape(14.dp))
-                .padding(horizontal = 18.dp, vertical = 16.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text(
-                "Sonidos",
-                fontSize = 16.sp,
-                color = Color(0xFF1A1A1A),
-                modifier = Modifier.weight(1f)
-            )
-            Switch(
-                checked = sonidos,
-                onCheckedChange = { sonidos = it },
-                colors = SwitchDefaults.colors(
-                    checkedThumbColor = Color.White,
-                    checkedTrackColor = VerdeTitulo
-                )
-            )
-        }
-
-        Spacer(modifier = Modifier.height(12.dp))
-
-        FilaAjuste(titulo = "Tamaño del texto", valor = "Mediano", onClick = { /* TODO */ })
+        FilaAjuste(
+            titulo = "Tamaño del texto",
+            valor = Accesibilidad.tamanoLetra,
+            onClick = { mostrarTamanoTexto = true }
+        )
 
         Spacer(modifier = Modifier.height(12.dp))
 
@@ -193,8 +213,8 @@ fun AjustesCaregiverScreen(
                     icono = Icons.Filled.Contrast,
                     titulo = "Alto contraste",
                     descripcion = "Aumenta el contraste de colores\npara una mejor visualización.",
-                    activo = altoContraste,
-                    onCambio = { altoContraste = it }
+                    activo = Accesibilidad.altoContraste,
+                    onCambio = { Accesibilidad.cambiarAltoContraste(contexto, it) }
                 )
                 HorizontalDivider(color = GrisDivider)
 
@@ -202,8 +222,8 @@ fun AjustesCaregiverScreen(
                     icono = Icons.Filled.PanTool,
                     titulo = "Botones más grandes",
                     descripcion = "Aumenta el tamaño de los botones\npara facilitar su uso.",
-                    activo = botonesGrandes,
-                    onCambio = { botonesGrandes = it }
+                    activo = Accesibilidad.botonesGrandes,
+                    onCambio = { Accesibilidad.cambiarBotonesGrandes(contexto, it) }
                 )
                 HorizontalDivider(color = GrisDivider)
 
@@ -211,26 +231,31 @@ fun AjustesCaregiverScreen(
                     icono = Icons.Filled.PlayArrow,
                     titulo = "Reducir animaciones",
                     descripcion = "Disminuye los movimientos\ny transiciones de la aplicación.",
-                    activo = reducirAnimaciones,
-                    onCambio = { reducirAnimaciones = it }
+                    activo = Accesibilidad.reducirAnimaciones,
+                    onCambio = { Accesibilidad.cambiarReducirAnimaciones(contexto, it) }
                 )
                 HorizontalDivider(color = GrisDivider)
 
-                FilaAccesibilidad(
+                // TalkBack se activa desde el teléfono: abrimos esa pantalla
+                FilaAccesibilidadAccion(
                     icono = Icons.Filled.RecordVoiceOver,
                     titulo = "Lectura de pantalla",
-                    descripcion = "Optimiza la aplicación para\nlectores de pantalla.",
-                    activo = lecturaPantalla,
-                    onCambio = { lecturaPantalla = it }
+                    descripcion = "Abre los ajustes de TalkBack\ndel teléfono para activarlo.",
+                    onClick = {
+                        contexto.startActivity(
+                            Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS)
+                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        )
+                    }
                 )
                 HorizontalDivider(color = GrisDivider)
 
                 FilaAccesibilidad(
                     icono = Icons.Filled.Notifications,
                     titulo = "Sonidos y vibración",
-                    descripcion = "Recibe una respuesta sonora\ny háptica al realizar acciones.",
-                    activo = sonidosYVibracion,
-                    onCambio = { sonidosYVibracion = it }
+                    descripcion = "Una vibración corta al tocar\nconfirma cada acción.",
+                    activo = Accesibilidad.sonidosYVibracion,
+                    onCambio = { Accesibilidad.cambiarSonidosYVibracion(contexto, it) }
                 )
             }
         }
@@ -238,7 +263,7 @@ fun AjustesCaregiverScreen(
         Spacer(modifier = Modifier.height(32.dp))
 
         Button(
-            onClick = onCuentaEliminada,
+            onClick = onEliminarCuenta,
             modifier = Modifier
                 .fillMaxWidth()
                 .height(56.dp),
@@ -329,6 +354,46 @@ private fun FilaAccesibilidad(
                 checkedThumbColor = Color.White,
                 checkedTrackColor = VerdeTitulo
             )
+        )
+    }
+}
+
+@Composable
+private fun FilaAccesibilidadAccion(
+    icono: ImageVector,
+    titulo: String,
+    descripcion: String,
+    onClick: () -> Unit
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(role = Role.Button, onClick = onClick)
+            .padding(vertical = 12.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Box(
+            modifier = Modifier
+                .size(40.dp)
+                .background(VerdeIconoFondo, CircleShape),
+            contentAlignment = Alignment.Center
+        ) {
+            Icon(imageVector = icono, contentDescription = null, tint = VerdeTitulo, modifier = Modifier.size(18.dp))
+        }
+
+        Spacer(modifier = Modifier.width(12.dp))
+
+        Column(modifier = Modifier.weight(1f)) {
+            Text(titulo, fontSize = 15.sp, fontWeight = FontWeight.Bold, color = AzulTexto)
+            Spacer(modifier = Modifier.height(2.dp))
+            Text(descripcion, fontSize = 12.sp, color = GrisSubtitulo, lineHeight = 16.sp)
+        }
+
+        Icon(
+            imageVector = Icons.AutoMirrored.Filled.ArrowForwardIos,
+            contentDescription = null,
+            tint = GrisSubtitulo,
+            modifier = Modifier.size(14.dp)
         )
     }
 }

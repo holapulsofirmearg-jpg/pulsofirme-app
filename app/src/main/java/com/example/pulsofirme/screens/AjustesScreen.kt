@@ -56,16 +56,6 @@ private val RojoEliminar = Color(0xFFC63927)
 private val VerdeClaroFondoPr = Color(0xFFEFF6F1)
 private val VerdeIconoFondoPr = Color(0xFFDFF3E4)
 
-// Idiomas disponibles: nombre en el idioma propio + aclaración en español
-private val idiomasDisponibles = listOf(
-    "Español" to "Español",
-    "English" to "Inglés",
-    "Français" to "Francés",
-    "Português" to "Portugués",
-    "日本語" to "Japonés",
-    "中文" to "Chino"
-)
-
 @Composable
 fun AjustesScreen(
     onBack: () -> Unit,
@@ -92,10 +82,6 @@ fun AjustesScreen(
             }
     }
 
-    // Idioma elegido
-    var idioma by remember { mutableStateOf("Español") }
-    var mostrarDialogoIdioma by remember { mutableStateOf(false) }
-
     // Estado para controlar el diálogo de confirmación
     var mostrarDialogoEliminar by remember { mutableStateOf(false) }
 
@@ -104,70 +90,6 @@ fun AjustesScreen(
 
     // Acordeón de accesibilidad
     var accesibilidadExpandida by remember { mutableStateOf(false) }
-
-    // --- DIÁLOGO DE IDIOMA ---
-    if (mostrarDialogoIdioma) {
-        AlertDialog(
-            onDismissRequest = { mostrarDialogoIdioma = false },
-            containerColor = Color.White,
-            shape = RoundedCornerShape(20.dp),
-            title = {
-                Text(
-                    text = "Elegí un idioma",
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = VerdeOscuroPr
-                )
-            },
-            text = {
-                Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-                    idiomasDisponibles.forEach { (nombre, traduccion) ->
-                        val elegido = idioma == nombre
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .areaTactil()
-                                .clickable {
-                                    idioma = nombre
-                                    mostrarDialogoIdioma = false
-                                }
-                                .padding(vertical = 10.dp),
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Column(modifier = Modifier.weight(1f)) {
-                                Text(
-                                    text = nombre,
-                                    fontSize = 18.sp,
-                                    fontWeight = if (elegido) FontWeight.Bold else FontWeight.Normal,
-                                    color = if (elegido) VerdePr else NegroPr
-                                )
-                                if (nombre != traduccion) {
-                                    Text(
-                                        text = traduccion,
-                                        fontSize = 14.sp,
-                                        color = GrisPr
-                                    )
-                                }
-                            }
-                            if (elegido) {
-                                Icon(
-                                    imageVector = Icons.Filled.Check,
-                                    contentDescription = "Elegido",
-                                    tint = VerdePr,
-                                    modifier = Modifier.size(24.dp)
-                                )
-                            }
-                        }
-                    }
-                }
-            },
-            confirmButton = {
-                TextButton(onClick = { mostrarDialogoIdioma = false }) {
-                    Text("Cerrar", color = GrisPr, fontSize = 17.sp)
-                }
-            }
-        )
-    }
 
     // --- DIÁLOGO DE CONFIRMACIÓN ELIMINAR CUENTA ---
     if (mostrarDialogoEliminar) {
@@ -195,10 +117,7 @@ fun AjustesScreen(
                 TextButton(
                     onClick = {
                         mostrarDialogoEliminar = false
-                        // Limpiamos los datos del usuario
-                        UserData.nombreUsuario = ""
-                        UserData.esPremium = false
-                        // Navegamos fuera de la app (pantalla de bienvenida)
+                        // Sigue con la contraseña: el borrado real lo hace NavGraph
                         onCuentaEliminada()
                     }
                 ) {
@@ -309,9 +228,7 @@ fun AjustesScreen(
 
         // SECCIÓN GENERAL
         TituloSeccion("General")
-        FilaAjusteConValor(label = "Idioma", valor = idioma) { mostrarDialogoIdioma = true }
         FilaAjusteConValor(label = "Tema", valor = "Claro") { }
-        FilaAjusteConValor(label = "Unidad de medida", valor = "Métrico") { }
 
         Spacer(Modifier.height(20.dp))
 

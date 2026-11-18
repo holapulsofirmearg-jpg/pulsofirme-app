@@ -51,8 +51,11 @@ fun CaregiverPatientScreen(
     fechaNacimiento: String = "21/09/1995",
     genero: String = "Mujer",
     pais: String = "Argentina",
+    // Permisos reales que dio el paciente (null = todavía cargando)
+    comparteProgreso: Boolean? = null,
+    comparteMedicacion: Boolean? = null,
+    comparteUbicacion: Boolean? = null,
     onBack: () -> Unit,
-    onVerPerfilPaciente: () -> Unit = {},
     onCambiarPaciente: () -> Unit = {}
 ) {
     Column(
@@ -182,14 +185,16 @@ fun CaregiverPatientScreen(
             FilaPermisoAutorizado(
                 icono = Icons.AutoMirrored.Filled.TrendingUp,
                 titulo = "Progreso del tratamiento",
-                descripcion = "Podés ver el progreso y estadísticas\ndel paciente."
+                descripcion = "Podés ver el progreso y estadísticas\ndel paciente.",
+                autorizado = comparteProgreso
             )
             HorizontalDivider(color = GrisDivider)
 
             FilaPermisoAutorizado(
                 icono = Icons.Filled.Notifications,
                 titulo = "Alertas de medicación",
-                descripcion = "Recibís avisos relacionados\ncon las tomas registradas."
+                descripcion = "Recibís avisos relacionados\ncon las tomas registradas.",
+                autorizado = comparteMedicacion
             )
             HorizontalDivider(color = GrisDivider)
 
@@ -197,24 +202,12 @@ fun CaregiverPatientScreen(
                 icono = Icons.Filled.LocationOn,
                 titulo = "Ubicación",
                 descripcion = "Solo podés verla si el paciente\nautorizó compartirla.",
+                autorizado = comparteUbicacion,
                 conDivider = false
             )
         }
 
         Spacer(modifier = Modifier.height(24.dp))
-
-        Button(
-            onClick = onVerPerfilPaciente,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(56.dp),
-            shape = RoundedCornerShape(28.dp),
-            colors = ButtonDefaults.buttonColors(containerColor = VerdeTitulo)
-        ) {
-            Text("Ver perfil del paciente", fontSize = 17.sp, fontWeight = FontWeight.Bold, color = Color.White)
-        }
-
-        Spacer(modifier = Modifier.height(14.dp))
 
         OutlinedButton(
             onClick = onCambiarPaciente,
@@ -242,7 +235,6 @@ private fun FilaDatoPaciente(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { }
             .padding(vertical = 14.dp)
     ) {
         Box(
@@ -273,6 +265,7 @@ private fun FilaPermisoAutorizado(
     icono: ImageVector,
     titulo: String,
     descripcion: String,
+    autorizado: Boolean?,
     conDivider: Boolean = true
 ) {
     Row(
@@ -296,12 +289,18 @@ private fun FilaPermisoAutorizado(
             Text(descripcion, fontSize = 13.sp, color = GrisSubtitulo, lineHeight = 17.sp)
         }
         Spacer(modifier = Modifier.width(8.dp))
+        // Antes decía siempre "Autorizado"; ahora muestra lo que eligió el paciente
+        val (texto, fondo, color) = when (autorizado) {
+            true -> Triple("Autorizado", VerdeAutorizadoFondo, VerdeTitulo)
+            false -> Triple("No autorizado", Color(0xFFF1F2F4), Color(0xFF6B7280))
+            null -> Triple("…", Color(0xFFF1F2F4), Color(0xFF6B7280))
+        }
         Box(
             modifier = Modifier
-                .background(VerdeAutorizadoFondo, RoundedCornerShape(20.dp))
+                .background(fondo, RoundedCornerShape(20.dp))
                 .padding(horizontal = 12.dp, vertical = 6.dp)
         ) {
-            Text("Autorizado", fontSize = 12.sp, fontWeight = FontWeight.Bold, color = VerdeTitulo)
+            Text(texto, fontSize = 12.sp, fontWeight = FontWeight.Bold, color = color)
         }
     }
 }

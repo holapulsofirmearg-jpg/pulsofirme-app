@@ -1,4 +1,3 @@
-
 package com.example.pulsofirme.screens
 
 import android.content.Intent

@@ -1,6 +1,5 @@
 package com.example.pulsofirme.screens
 
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -20,7 +19,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -45,7 +43,6 @@ val BorderGreen = Color(0xFF43A047)
 val LightGrayBorder = Color(0xFFE0E0E0)
 val DarkText = Color(0xFF1A1A1A)
 val SubtitleText = Color(0xFF666666)
-private val GoogleBlue = Color(0xFF4285F4)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -55,9 +52,6 @@ fun LoginScreen(
     onForgotPasswordClick: (String) -> Unit = {},
     onCrearCuenta: () -> Unit = {},
     onCuidador: () -> Unit = {},
-
-    onGoogleClick: () -> Unit = {},
-    onAppleClick: () -> Unit = {},
     // true mientras se verifica el inicio de sesión (bloquea el botón)
     cargando: Boolean = false
 ) {
@@ -296,121 +290,7 @@ fun LoginScreen(
                 }
             }
 
-            Spacer(modifier = Modifier.height(24.dp))
-
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                HorizontalDivider(modifier = Modifier.weight(1f), color = LightGrayBorder)
-                Text(
-                    text = " o continúa con ",
-                    fontSize = 12.sp,
-                    color = SubtitleText
-                )
-                HorizontalDivider(modifier = Modifier.weight(1f), color = LightGrayBorder)
-            }
-
-            Spacer(modifier = Modifier.height(20.dp))
-
-            // 9. Redes Sociales
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(16.dp)
-            ) {
-                OutlinedButton(
-                    onClick = { onGoogleClick() },
-                    modifier = Modifier
-                        .weight(1f)
-                        .heightIn(min = 52.dp),
-                    shape = RoundedCornerShape(10.dp),
-                    border = androidx.compose.foundation.BorderStroke(1.dp, LightGrayBorder)
-                ) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Center
-                    ) {
-                        Text(
-                            text = "G",
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = GoogleBlue
-                        )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(text = "Google", color = DarkText, fontWeight = FontWeight.Medium)
-                    }
-                }
-
-                OutlinedButton(
-                    onClick = { onAppleClick() },
-                    modifier = Modifier
-                        .weight(1f)
-                        .heightIn(min = 52.dp),
-                    shape = RoundedCornerShape(10.dp),
-                    border = androidx.compose.foundation.BorderStroke(1.dp, LightGrayBorder)
-                ) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Center
-                    ) {
-                        IconoManzana(modifier = Modifier.size(16.dp))
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(text = "Apple", color = DarkText, fontWeight = FontWeight.Medium)
-                    }
-                }
-            }
-
             Spacer(modifier = Modifier.height(32.dp))
         }
-    }
-}
-
-@Composable
-private fun IconoManzana(modifier: Modifier = Modifier) {
-    Canvas(modifier = modifier) {
-        val w = size.width
-        val h = size.height
-
-        val cuerpo = Path().apply {
-            moveTo(w * 0.5f, h * 0.30f)
-            cubicTo(
-                w * 0.15f, h * 0.15f,
-                -w * 0.05f, h * 0.55f,
-                w * 0.20f, h * 0.85f
-            )
-            cubicTo(
-                w * 0.32f, h * 1.0f,
-                w * 0.42f, h * 0.95f,
-                w * 0.5f, h * 0.95f
-            )
-            cubicTo(
-                w * 0.58f, h * 0.95f,
-                w * 0.68f, h * 1.0f,
-                w * 0.80f, h * 0.85f
-            )
-            cubicTo(
-                w * 1.05f, h * 0.55f,
-                w * 0.85f, h * 0.15f,
-                w * 0.5f, h * 0.30f
-            )
-            close()
-        }
-        drawPath(path = cuerpo, color = Color.Black)
-
-        val hoja = Path().apply {
-            moveTo(w * 0.55f, h * 0.05f)
-            cubicTo(
-                w * 0.55f, h * 0.20f,
-                w * 0.70f, h * 0.25f,
-                w * 0.72f, h * 0.12f
-            )
-            cubicTo(
-                w * 0.65f, h * 0.0f,
-                w * 0.55f, h * 0.0f,
-                w * 0.55f, h * 0.05f
-            )
-            close()
-        }
-        drawPath(path = hoja, color = Color.Black)
     }
 }

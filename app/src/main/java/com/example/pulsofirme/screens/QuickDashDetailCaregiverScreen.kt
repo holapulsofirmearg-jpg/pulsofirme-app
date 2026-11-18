@@ -23,6 +23,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.pulsofirme.EstadoPacienteTutor
+import com.example.pulsofirme.PacienteDelTutor
+import com.example.pulsofirme.rememberPacienteDelTutor
 
 private val VerdeTitulo = Color(0xFF1B7A4B)
 private val AzulTexto = Color(0xFF16324F)
@@ -47,30 +50,21 @@ private enum class NivelDificultad(val etiqueta: String, val fondo: Color, val t
 private data class PreguntaQuickDash(
     val numero: Int,
     val texto: String,
-    val nivel: NivelDificultad
+    val nivel: NivelDificultad,
+    // Lo que respondió el paciente, con las mismas palabras de la pregunta
+    val respuesta: String
 )
 
-private val preguntasQuickDash = listOf(
-    PreguntaQuickDash(1, "Abrir un frasco nuevo o muy apretado", NivelDificultad.NINGUNA),
-    PreguntaQuickDash(2, "Realizar tareas domésticas pesadas (ej. lavar pisos, paredes)", NivelDificultad.NINGUNA),
-    PreguntaQuickDash(3, "Llevar una bolsa o maletín", NivelDificultad.MODERADA),
-    PreguntaQuickDash(4, "Lavarse la espalda", NivelDificultad.SEVERA),
-    PreguntaQuickDash(5, "Usar un cuchillo para cortar alimentos", NivelDificultad.NINGUNA),
-    PreguntaQuickDash(6, "Actividades recreativas que requieren fuerza o impacto (ej. deportes, jardinería)", NivelDificultad.LEVE),
-    PreguntaQuickDash(7, "Mover objetos pesados", NivelDificultad.LEVE),
-    PreguntaQuickDash(8, "Usar transporte público", NivelDificultad.NINGUNA),
-    PreguntaQuickDash(9, "Realizar tareas de higiene personal (ej. vestirse, abotonar)", NivelDificultad.NINGUNA),
-    PreguntaQuickDash(10, "Realizar tareas del hogar cotidianas (ej. cocinar, limpiar)", NivelDificultad.MODERADA),
-    PreguntaQuickDash(11, "Participar en actividades sociales", NivelDificultad.SEVERA)
-)
+
 
 @Composable
 fun QuickDashDetailCaregiverScreen(
-    nombrePaciente: String = "María López",
-    fechaEvaluacion: String = "30 de septiembre de 2024",
     onBack: () -> Unit,
     onVolverAlResumen: () -> Unit = onBack
 ) {
+    // Datos reales: la última evaluación QuickDASH del paciente vinculado
+    val (estado, reintentar) = rememberPacienteDelTutor()
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -106,6 +100,40 @@ fun QuickDashDetailCaregiverScreen(
         )
 
         Spacer(modifier = Modifier.height(20.dp))
+
+        if (estado !is EstadoPacienteTutor.Listo) {
+            MensajeEstadoTutor(estado, onReintentar = reintentar)
+            return@Column
+        }
+
+        val paciente = estado.paciente
+        val evaluacion = paciente.evaluaciones.firstOrNull()
+
+        if (!paciente.comparteProgreso || evaluacion == null || evaluacion.respuestas.isEmpty()) {
+            TarjetaNoCompartido(
+                if (!paciente.comparteProgreso)
+                    "${paciente.nombre} decidió no compartir su progreso, que incluye las evaluaciones QuickDASH."
+                else "No hay respuestas guardadas de una evaluación QuickDASH."
+            )
+            return@Column
+        }
+
+        val nombrePaciente = paciente.nombre
+        val fechaEvaluacion = PacienteDelTutor.textoFechaCorta(evaluacion.fechaMs)
+        val preguntasQuickDash = PacienteDelTutor.preguntasQuickDash.mapIndexed { i, texto ->
+            val respuesta = evaluacion.respuestas.getOrNull(i)
+            PreguntaQuickDash(
+                numero = i + 1,
+                texto = texto,
+                nivel = when {
+                    respuesta == null || respuesta <= 0 -> NivelDificultad.NINGUNA
+                    respuesta == 1 -> NivelDificultad.LEVE
+                    respuesta == 2 -> NivelDificultad.MODERADA
+                    else -> NivelDificultad.SEVERA
+                },
+                respuesta = respuesta?.let { PacienteDelTutor.textoRespuesta(i, it) } ?: "Sin respuesta"
+            )
+        }
 
         Row(verticalAlignment = Alignment.CenterVertically) {
             Box(
@@ -198,7 +226,7 @@ private fun FilaPreguntaQuickDash(pregunta: PreguntaQuickDash) {
                 .padding(horizontal = 12.dp, vertical = 6.dp)
         ) {
             Text(
-                text = pregunta.nivel.etiqueta,
+                text = pregunta.respuesta,
                 fontSize = 12.sp,
                 fontWeight = FontWeight.Bold,
                 color = pregunta.nivel.texto

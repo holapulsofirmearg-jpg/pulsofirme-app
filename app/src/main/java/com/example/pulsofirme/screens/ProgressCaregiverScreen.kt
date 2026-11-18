@@ -16,6 +16,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
+import com.example.pulsofirme.EstadoPacienteTutor
+import com.example.pulsofirme.PacienteDelTutor
+import com.example.pulsofirme.rememberPacienteDelTutor
+import java.util.Calendar
+import kotlin.math.roundToInt
 
 private val VerdeCuidador = Color(0xFF1B7A4B)
 private val VerdeClaroCuidador = Color(0xFFEFF6F1)
@@ -86,6 +93,9 @@ fun ProgressCaregiverScreen(
         }
     ) { padding ->
 
+        // Datos reales del paciente vinculado (antes eran valores fijos)
+        val (estado, reintentar) = rememberPacienteDelTutor()
+
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
@@ -109,11 +119,36 @@ fun ProgressCaregiverScreen(
                 Spacer(modifier = Modifier.height(4.dp))
 
                 Text(
-                    text = "Consultá el progreso del usuario asociado",
+                    text = (estado as? EstadoPacienteTutor.Listo)?.paciente?.nombre
+                        ?.let { "Progreso de $it" }
+                        ?: "Consultá el progreso del usuario asociado",
                     fontSize = 14.sp,
                     color = Color(0xFF6B7280)
                 )
             }
+
+            if (estado !is EstadoPacienteTutor.Listo) {
+                item { MensajeEstadoTutor(estado, onReintentar = reintentar) }
+                return@LazyColumn
+            }
+
+            val paciente = estado.paciente
+
+            if (!paciente.comparteProgreso) {
+                item {
+                    TarjetaNoCompartido(
+                        "${paciente.nombre} decidió no compartir su progreso. " +
+                                "Puede activarlo desde Cuenta → Privacidad y datos."
+                    )
+                }
+                return@LazyColumn
+            }
+
+            val racha = PacienteDelTutor.racha(paciente.ejercicios)
+            val porDia = PacienteDelTutor.porDiaDeEstaSemana(paciente.ejercicios)
+            val totalSemana = porDia.sum()
+            val ultimo = paciente.ejercicios.firstOrNull()
+            val indiceHoy = (Calendar.getInstance().get(Calendar.DAY_OF_WEEK) + 5) % 7
 
             // Días de racha
             item {
@@ -156,7 +191,7 @@ fun ProgressCaregiverScreen(
                         Spacer(modifier = Modifier.height(2.dp))
 
                         Text(
-                            text = "0 días",
+                            text = if (racha == 1) "1 día" else "$racha días",
                             fontSize = 24.sp,
                             fontWeight = FontWeight.Bold,
                             color = Color.White
@@ -216,7 +251,7 @@ fun ProgressCaregiverScreen(
                         modifier = Modifier.weight(1f)
                     ) {
                         Text(
-                            text = "Ejercicios completados",
+                            text = "Completados esta semana",
                             fontSize = 15.sp,
                             fontWeight = FontWeight.Medium
                         )
@@ -224,14 +259,15 @@ fun ProgressCaregiverScreen(
                         Spacer(modifier = Modifier.height(3.dp))
 
                         Text(
-                            text = "Todavía no hay ejercicios registrados",
+                            text = if (ultimo == null) "Todavía no hay ejercicios registrados"
+                            else "Último: ${PacienteDelTutor.textoHace(ultimo.fechaMs)} · ${ultimo.nombre}",
                             fontSize = 13.sp,
                             color = Color(0xFF6B7280)
                         )
                     }
 
                     Text(
-                        text = "—",
+                        text = "$totalSemana",
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold,
                         color = VerdeCuidador
@@ -261,7 +297,7 @@ fun ProgressCaregiverScreen(
                         .padding(16.dp)
                 ) {
                     Text(
-                        text = "Actividad semanal",
+                        text = "Esta semana",
                         fontSize = 15.sp,
                         fontWeight = FontWeight.Medium
                     )
@@ -272,28 +308,43 @@ fun ProgressCaregiverScreen(
                         "Lun", "Mar", "Mié", "Jue",
                         "Vie", "Sáb", "Dom"
                     )
+                    val diasCompletos = listOf(
+                        "lunes", "martes", "miércoles", "jueves",
+                        "viernes", "sábado", "domingo"
+                    )
 
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
-                        dias.forEach { dia ->
+                        dias.forEachIndexed { i, dia ->
+                            val cantidad = porDia[i]
+                            val hizo = cantidad > 0
                             Column(
-                                horizontalAlignment = Alignment.CenterHorizontally
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                modifier = Modifier.semantics(mergeDescendants = true) {
+                                    contentDescription = "${diasCompletos[i]}: " +
+                                            if (cantidad == 1) "1 ejercicio" else "$cantidad ejercicios"
+                                }
                             ) {
                                 Box(
                                     modifier = Modifier
                                         .size(28.dp)
                                         .background(
-                                            Color(0xFFF3F4F6),
+                                            if (hizo) VerdeCuidador else Color(0xFFF3F4F6),
                                             CircleShape
+                                        )
+                                        .then(
+                                            if (i == indiceHoy) Modifier.border(2.dp, VerdeCuidador, CircleShape)
+                                            else Modifier
                                         ),
                                     contentAlignment = Alignment.Center
                                 ) {
                                     Text(
-                                        text = "0",
+                                        text = "$cantidad",
                                         fontSize = 11.sp,
-                                        color = Color(0xFF6B7280)
+                                        fontWeight = if (hizo) FontWeight.Bold else FontWeight.Normal,
+                                        color = if (hizo) Color.White else Color(0xFF6B7280)
                                     )
                                 }
 
@@ -302,7 +353,8 @@ fun ProgressCaregiverScreen(
                                 Text(
                                     text = dia,
                                     fontSize = 11.sp,
-                                    color = Color(0xFF6B7280)
+                                    fontWeight = if (i == indiceHoy) FontWeight.Bold else FontWeight.Normal,
+                                    color = if (i == indiceHoy) VerdeCuidador else Color(0xFF6B7280)
                                 )
                             }
                         }
@@ -310,10 +362,10 @@ fun ProgressCaregiverScreen(
                 }
             }
 
-            // Evaluación Kisdash
+            // Evaluación QuickDASH
             item {
                 Text(
-                    text = "Evaluación de Quickdash",
+                    text = "Evaluación QuickDASH",
                     fontSize = 17.sp,
                     fontWeight = FontWeight.SemiBold,
                     color = Color(0xFF1A1A1A)
@@ -321,6 +373,8 @@ fun ProgressCaregiverScreen(
             }
 
             item {
+                val ultimaEval = paciente.evaluaciones.firstOrNull()
+
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -362,7 +416,7 @@ fun ProgressCaregiverScreen(
                             modifier = Modifier.weight(1f)
                         ) {
                             Text(
-                                text = "Evaluación semanal",
+                                text = "Evaluación de las manos",
                                 fontSize = 16.sp,
                                 fontWeight = FontWeight.SemiBold
                             )
@@ -370,7 +424,7 @@ fun ProgressCaregiverScreen(
                             Spacer(modifier = Modifier.height(3.dp))
 
                             Text(
-                                text = "El usuario puede realizarla semanalmente.",
+                                text = "El paciente puede hacerla desde su Progreso.",
                                 fontSize = 13.sp,
                                 color = Color(0xFF5A6B60)
                             )
@@ -388,25 +442,32 @@ fun ProgressCaregiverScreen(
                     Spacer(modifier = Modifier.height(3.dp))
 
                     Text(
-                        text = "Sin evaluaciones realizadas",
+                        text = if (ultimaEval == null) "Sin evaluaciones realizadas"
+                        else "${PacienteDelTutor.textoFechaCorta(ultimaEval.fechaMs)} · " +
+                                "${ultimaEval.puntaje.roundToInt()} / 100 · " +
+                                PacienteDelTutor.interpretacionQuickDash(ultimaEval.puntaje),
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Medium
                     )
 
-                    Spacer(modifier = Modifier.height(14.dp))
+                    if (ultimaEval != null) {
+                        Spacer(modifier = Modifier.height(14.dp))
 
-                    Button(
-                        onClick = onQuickDashClick,
-                        modifier = Modifier.fillMaxWidth(),
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = VerdeCuidador
-                        ),
-                        shape = RoundedCornerShape(12.dp)
-                    ) {
-                        Text(
-                            text = "Ver evaluación",
-                            color = Color.White
-                        )
+                        Button(
+                            onClick = onQuickDashClick,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .heightIn(min = 52.dp),
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = VerdeCuidador
+                            ),
+                            shape = RoundedCornerShape(12.dp)
+                        ) {
+                            Text(
+                                text = "Ver evaluación",
+                                color = Color.White
+                            )
+                        }
                     }
                 }
             }

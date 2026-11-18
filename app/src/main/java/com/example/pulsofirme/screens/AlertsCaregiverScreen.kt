@@ -19,6 +19,12 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.pulsofirme.EstadoPacienteTutor
+import com.example.pulsofirme.PacienteDelTutor
+import com.example.pulsofirme.PacienteTutor
+import com.example.pulsofirme.rememberPacienteDelTutor
+import java.util.Calendar
+import kotlin.math.roundToInt
 
 private val VerdeCuidador = Color(0xFF1B7A4B)
 private val VerdeClaroCuidador = Color(0xFFEFF6F1)
@@ -31,14 +37,122 @@ private data class AlertaCuidador(
     val color: Color
 )
 
-private val alertasCuidador = listOf(
-    AlertaCuidador(
-        titulo = "Sin alertas nuevas",
-        descripcion = "No hay alertas pendientes del usuario.",
-        icono = Icons.Filled.CheckCircle,
-        color = VerdeCuidador
-    )
-)
+private val RojoAlerta = Color(0xFFC94A4A)
+private val AmbarAlerta = Color(0xFFB5850F)
+private val AzulAlerta = Color(0xFF1D64C7)
+private val GrisAlerta = Color(0xFF6B7280)
+
+// Alertas reales a partir de los datos del paciente (mismas reglas que los avisos en segundo plano).
+// "importante" = algo que conviene revisar; el resto es información.
+private data class AlertaCalculada(val alerta: AlertaCuidador, val importante: Boolean)
+
+private fun alertasDe(paciente: PacienteTutor): List<AlertaCalculada> {
+    val lista = mutableListOf<AlertaCalculada>()
+    val nombre = paciente.nombre
+
+    if (paciente.medicacionPendiente.isNotEmpty()) {
+        val horarios = paciente.medicacionPendiente.joinToString(", ")
+        lista += AlertaCalculada(
+            AlertaCuidador(
+                titulo = "No registró su medicación de hoy",
+                descripcion = "Pasó más de una hora y no marcó \"Ya la tomé\" en: $horarios.",
+                icono = Icons.Filled.Medication,
+                color = RojoAlerta
+            ),
+            importante = true
+        )
+    }
+
+    if (!paciente.comparteProgreso) {
+        lista += AlertaCalculada(
+            AlertaCuidador(
+                titulo = "$nombre no comparte su progreso",
+                descripcion = "Las alertas de ejercicios y evaluaciones aparecen si lo activa en Privacidad y datos.",
+                icono = Icons.Filled.Lock,
+                color = GrisAlerta
+            ),
+            importante = false
+        )
+        return lista
+    }
+
+    if (paciente.sensacionHoy?.contains("Dolor", ignoreCase = true) == true) {
+        lista += AlertaCalculada(
+            AlertaCuidador(
+                titulo = "Registró dolor hoy",
+                descripcion = "Indicó \"${paciente.sensacionHoy}\". Si el dolor sigue o aumenta, conviene consultar a su profesional.",
+                icono = Icons.Filled.Healing,
+                color = AmbarAlerta
+            ),
+            importante = true
+        )
+    }
+
+    val hoy = PacienteDelTutor.deHoy(paciente.ejercicios)
+    val diasSin = PacienteDelTutor.diasSinEjercicio(paciente.ejercicios)
+    val hora = Calendar.getInstance().get(Calendar.HOUR_OF_DAY)
+
+    when {
+        diasSin == null -> lista += AlertaCalculada(
+            AlertaCuidador(
+                titulo = "Todavía no registró ejercicios",
+                descripcion = "Cuando $nombre complete su primer ejercicio, lo vas a ver acá.",
+                icono = Icons.Filled.FitnessCenter,
+                color = AmbarAlerta
+            ),
+            importante = true
+        )
+        diasSin >= 3 -> lista += AlertaCalculada(
+            AlertaCuidador(
+                titulo = "Lleva $diasSin días sin hacer ejercicio",
+                descripcion = "Puede ser un buen momento para acompañarlo/a en una rutina corta.",
+                icono = Icons.Filled.FitnessCenter,
+                color = AmbarAlerta
+            ),
+            importante = true
+        )
+        hoy.isEmpty() && hora >= 18 -> lista += AlertaCalculada(
+            AlertaCuidador(
+                titulo = "Todavía no hizo ejercicio hoy",
+                descripcion = "Un mensajito para recordárselo puede ayudar a mantener la constancia.",
+                icono = Icons.Filled.FitnessCenter,
+                color = AmbarAlerta
+            ),
+            importante = true
+        )
+    }
+
+    val actual = paciente.evaluaciones.getOrNull(0)
+    val anterior = paciente.evaluaciones.getOrNull(1)
+    if (actual != null && System.currentTimeMillis() - actual.fechaMs <= 7L * 24 * 60 * 60 * 1000) {
+        val empeoro = anterior != null && actual.puntaje >= anterior.puntaje + 5
+        lista += AlertaCalculada(
+            AlertaCuidador(
+                titulo = if (empeoro) "Su evaluación QuickDASH empeoró" else "Completó su evaluación QuickDASH",
+                descripcion = "${PacienteDelTutor.textoHace(actual.fechaMs)}: ${actual.puntaje.roundToInt()} de 100 " +
+                        "(más bajo = menos dificultad)." +
+                        if (empeoro) " Conviene comentarlo con su profesional." else "",
+                icono = Icons.Filled.Assessment,
+                color = if (empeoro) RojoAlerta else AzulAlerta
+            ),
+            importante = empeoro
+        )
+    }
+
+    if (hoy.isNotEmpty()) {
+        lista += AlertaCalculada(
+            AlertaCuidador(
+                titulo = if (hoy.size == 1) "Hizo 1 ejercicio hoy" else "Hizo ${hoy.size} ejercicios hoy",
+                descripcion = "Último: ${hoy.first().nombre}.",
+                icono = Icons.Filled.CheckCircle,
+                color = VerdeCuidador
+            ),
+            importante = false
+        )
+    }
+
+    return lista
+}
 
 @Composable
 fun AlertsCaregiverScreen(
@@ -46,6 +160,21 @@ fun AlertsCaregiverScreen(
     onNavigate: (String) -> Unit,
     onConfigClick: () -> Unit = {}
 ) {
+    // Alertas reales del paciente vinculado (antes siempre decía "Sin alertas nuevas")
+    val (estado, reintentar) = rememberPacienteDelTutor()
+    val calculadas = (estado as? EstadoPacienteTutor.Listo)?.paciente?.let { alertasDe(it) }
+    val alertasCuidador = calculadas?.map { it.alerta }?.ifEmpty {
+        listOf(
+            AlertaCuidador(
+                titulo = "Sin alertas nuevas",
+                descripcion = "No hay nada para revisar por ahora.",
+                icono = Icons.Filled.CheckCircle,
+                color = VerdeCuidador
+            )
+        )
+    }.orEmpty()
+    val importantes = calculadas?.count { it.importante } ?: 0
+
     Scaffold(
         bottomBar = {
             NavigationBar(
@@ -185,7 +314,13 @@ fun AlertsCaregiverScreen(
                             Spacer(modifier = Modifier.height(3.dp))
 
                             Text(
-                                text = "Acá podés consultar si el usuario tiene alguna alerta.",
+                                text = when {
+                                    estado !is EstadoPacienteTutor.Listo ->
+                                        "Acá podés consultar si el usuario tiene alguna alerta."
+                                    importantes == 0 -> "Todo en orden: no hay nada urgente para revisar."
+                                    importantes == 1 -> "Hay 1 alerta para revisar."
+                                    else -> "Hay $importantes alertas para revisar."
+                                },
                                 fontSize = 13.sp,
                                 color = Color(0xFF5A6B60)
                             )
@@ -203,6 +338,10 @@ fun AlertsCaregiverScreen(
                 )
             }
 
+            if (estado !is EstadoPacienteTutor.Listo) {
+                item { MensajeEstadoTutor(estado, onReintentar = reintentar) }
+            }
+
             items(alertasCuidador) { alerta ->
 
                 Row(
@@ -213,7 +352,6 @@ fun AlertsCaregiverScreen(
                             BordeGrisCuidador,
                             RoundedCornerShape(16.dp)
                         )
-                        .clickable { }
                         .padding(16.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {

@@ -486,14 +486,6 @@ fun AppNavGraph() {
 
                 onCuidador = {
                     navController.navigate("tutor_login")
-                },
-
-                onGoogleClick = {
-                    // TODO
-                },
-
-                onAppleClick = {
-                    // TODO
                 }
             )
         }
@@ -676,7 +668,6 @@ fun AppNavGraph() {
             var cargando by remember { mutableStateOf(false) }
 
             TutorLoginScreen(
-
 
                 cargando = cargando,
 
@@ -865,18 +856,6 @@ fun AppNavGraph() {
 
                 onCrearCuenta = {
                     navController.navigate("tutor_register")
-                },
-
-                onGoogle = {
-                    // TODO
-                },
-
-                onApple = {
-                    // TODO
-                },
-
-                onAccesibilidad = {
-                    // TODO
                 }
             )
         }
@@ -2481,6 +2460,31 @@ fun AppNavGraph() {
 
             val context = LocalContext.current
             val scopeAjustes = rememberCoroutineScope()
+            var pedirClaveBorrado by remember { mutableStateOf(false) }
+
+            // Antes solo volvía al login y la cuenta seguía existiendo.
+            // Ahora pide la contraseña y borra la cuenta y los datos de verdad.
+            if (pedirClaveBorrado) {
+                BorrarCuentaConClave(
+                    onCancelar = { pedirClaveBorrado = false },
+                    onBorrada = {
+                        pedirClaveBorrado = false
+                        // También se borra lo guardado en este celular
+                        com.example.pulsofirme.UserData.borrarTodo()
+                        com.example.pulsofirme.alarmas.AlarmaScheduler.eliminarTodo(context)
+                        context.getSharedPreferences("tomas_medicacion", android.content.Context.MODE_PRIVATE)
+                            .edit().clear().apply()
+                        RecordatorioEjercicio.cancelar(context)
+                        DificultadAdaptativa.reiniciar(context)
+
+                        navController.navigate("login") {
+                            popUpTo(0) {
+                                inclusive = true
+                            }
+                        }
+                    }
+                )
+            }
 
             AjustesScreen(
 
@@ -2488,16 +2492,9 @@ fun AppNavGraph() {
                     navController.popBackStack()
                 },
 
+                // El usuario confirmó: ahora se pide la contraseña
                 onCuentaEliminada = {
-                    // La cuenta ya no existe: se cancelan los recordatorios
-                    RecordatorioEjercicio.cancelar(context)
-                    DificultadAdaptativa.reiniciar(context)
-
-                    navController.navigate("login") {
-                        popUpTo(0) {
-                            inclusive = true
-                        }
-                    }
+                    pedirClaveBorrado = true
                 },
 
                 onExportarDatos = {
@@ -3515,6 +3512,9 @@ fun AppNavGraph() {
             var pacienteFechaNacimiento by remember { mutableStateOf("") }
             var pacienteGenero by remember { mutableStateOf("") }
             var pacientePais by remember { mutableStateOf("") }
+            var pacienteComparteProgreso by remember { mutableStateOf<Boolean?>(null) }
+            var pacienteComparteMedicacion by remember { mutableStateOf<Boolean?>(null) }
+            var pacienteComparteUbicacion by remember { mutableStateOf<Boolean?>(null) }
 
             LaunchedEffect(tutorUid) {
                 if (tutorUid != null) {
@@ -3556,6 +3556,14 @@ fun AppNavGraph() {
                                             pacienteDocument.getString("genero") ?: ""
                                         pacientePais =
                                             pacienteDocument.getString("pais") ?: ""
+
+                                        // Permisos reales (mismos valores por defecto que Privacidad y datos)
+                                        pacienteComparteProgreso =
+                                            pacienteDocument.getBoolean("permisosTutor.progreso") ?: true
+                                        pacienteComparteMedicacion =
+                                            pacienteDocument.getBoolean("permisosTutor.medicacion") ?: true
+                                        pacienteComparteUbicacion =
+                                            pacienteDocument.getBoolean("permisosTutor.ubicacion") ?: false
                                     }
                             }
                         }
@@ -3568,13 +3576,12 @@ fun AppNavGraph() {
                 fechaNacimiento = pacienteFechaNacimiento.ifBlank { "-" },
                 genero = pacienteGenero.ifBlank { "-" },
                 pais = pacientePais.ifBlank { "-" },
+                comparteProgreso = pacienteComparteProgreso,
+                comparteMedicacion = pacienteComparteMedicacion,
+                comparteUbicacion = pacienteComparteUbicacion,
 
                 onBack = {
                     navController.popBackStack()
-                },
-
-                onVerPerfilPaciente = {
-                    // TODO
                 },
 
                 onCambiarPaciente = {
@@ -3884,6 +3891,8 @@ fun AppNavGraph() {
         // =====================================================
 
         composable("caregiver_support") {
+            val context = LocalContext.current
+
             CaregiverSupportScreen(
 
                 onBack = {
@@ -3897,7 +3906,20 @@ fun AppNavGraph() {
                 },
 
                 onReportarProblema = {
-                    // TODO
+                    val intentCorreo = Intent(Intent.ACTION_SENDTO).apply {
+                        data = Uri.parse("mailto:")
+                        putExtra(Intent.EXTRA_EMAIL, arrayOf("holapulsofirmearg@gmail.com"))
+                        putExtra(Intent.EXTRA_SUBJECT, "Reporte de problema - PulsoFirme Tutor")
+                    }
+                    try {
+                        context.startActivity(intentCorreo)
+                    } catch (_: Exception) {
+                        Toast.makeText(
+                            context,
+                            "No se encontró una aplicación de correo. Escribinos a holapulsofirmearg@gmail.com",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
                 }
             )
         }
@@ -3908,22 +3930,92 @@ fun AppNavGraph() {
         // =====================================================
 
         composable("caregiver_settings") {
+            val context = LocalContext.current
+            var pedirClaveBorrado by remember { mutableStateOf(false) }
+
+            // Antes solo volvía al login y la cuenta seguía existiendo.
+            // Ahora pide la contraseña y borra la cuenta y los datos de verdad.
+            if (pedirClaveBorrado) {
+                BorrarCuentaConClave(
+                    onCancelar = { pedirClaveBorrado = false },
+                    onBorrada = {
+                        pedirClaveBorrado = false
+                        DificultadAdaptativa.reiniciar(context)
+                        nombreUsuarioActual = "Usuario"
+                        rolCuidadorActual = "tutor"
+                        profesionalMatricula = ""
+                        profesionalLugarTrabajo = ""
+                        profesionalEspecialidad = ""
+                        navController.navigate("login") {
+                            popUpTo(0) { inclusive = true }
+                        }
+                    }
+                )
+            }
+
             AjustesCaregiverScreen(
 
                 onBack = {
                     navController.popBackStack()
                 },
 
-                onCuentaEliminada = {
-                    navController.navigate("login") {
-                        popUpTo(0) {
-                            inclusive = true
-                        }
-                    }
+                onEliminarCuenta = {
+                    pedirClaveBorrado = true
                 }
             )
         }
     }
+}
+
+/**
+ * Pide la contraseña y borra la cuenta completa (Firestore + Authentication).
+ * Se usa desde Ajustes del paciente y Ajustes del cuidador.
+ */
+@Composable
+private fun BorrarCuentaConClave(
+    onCancelar: () -> Unit,
+    onBorrada: () -> Unit
+) {
+    val context = LocalContext.current
+    val scope = rememberCoroutineScope()
+    var borrando by remember { mutableStateOf(false) }
+
+    DialogoClaveParaBorrar(
+        borrando = borrando,
+        onCancelar = { if (!borrando) onCancelar() },
+        onConfirmar = { clave ->
+            borrando = true
+            scope.launch {
+                when (val r = eliminarCuentaCompleta(clave)) {
+                    is ResultadoBorrado.Ok -> {
+                        borrando = false
+                        Toast.makeText(
+                            context,
+                            "Tu cuenta y tus datos fueron eliminados",
+                            Toast.LENGTH_LONG
+                        ).show()
+                        onBorrada()
+                    }
+                    is ResultadoBorrado.ContrasenaIncorrecta -> {
+                        borrando = false
+                        Toast.makeText(context, "La contraseña no es correcta", Toast.LENGTH_LONG).show()
+                    }
+                    is ResultadoBorrado.SinConexion -> {
+                        borrando = false
+                        Toast.makeText(
+                            context,
+                            "No hay conexión a internet. Probá de nuevo con WiFi o datos.",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                    is ResultadoBorrado.Fallo -> {
+                        borrando = false
+                        Toast.makeText(context, r.detalle, Toast.LENGTH_LONG).show()
+                    }
+                }
+            }
+        }
+    )
 }
 
 /** Pide la contraseña antes de borrar la cuenta (Firebase exige reautenticar). */
