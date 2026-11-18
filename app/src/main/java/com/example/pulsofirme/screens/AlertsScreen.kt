@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -32,13 +34,18 @@ import kotlinx.coroutines.tasks.await
 import java.util.Calendar
 import java.util.Date
 
-private val VerdeAl = Color(0xFF1B7A4B)
-private val VerdeOscuroAl = Color(0xFF1B4332)
-private val VerdeSuaveAl = Color(0xFFEAF5EC)
-private val GrisAl = Color(0xFF6B7280)
-private val NegroAl = Color(0xFF1A1A1A)
-private val AmarilloAl = Color(0xFFE0A73A)
-
+private val VerdeAl: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val VerdeOscuroAl: Color
+    @Composable get() = Color(0xFF1B4332).enTema()
+private val VerdeSuaveAl: Color
+    @Composable get() = Color(0xFFEAF5EC).enTema()
+private val GrisAl: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val NegroAl: Color
+    @Composable get() = Color(0xFF1A1A1A).enTema()
+private val AmarilloAl: Color
+    @Composable get() = Color(0xFFE0A73A).enTema()
 @Composable
 fun AlertsScreen(
     rutaActual: String,
@@ -125,9 +132,9 @@ fun AlertsScreen(
     }
 
     Scaffold(
-        containerColor = Color.White,
+        containerColor = Color.White.enTema(),
         bottomBar = {
-            NavigationBar(containerColor = Color.White) {
+            NavigationBar(containerColor = Color.White.enTema()) {
                 itemsMenuInferior.forEach { item ->
                     NavigationBarItem(
                         selected = rutaActual == item.ruta,
@@ -137,8 +144,8 @@ fun AlertsScreen(
                         colors = NavigationBarItemDefaults.colors(
                             selectedIconColor = VerdeAl,
                             selectedTextColor = VerdeAl,
-                            unselectedIconColor = Color(0xFF9CA3AF),
-                            unselectedTextColor = Color(0xFF9CA3AF),
+                            unselectedIconColor = Color(0xFF9CA3AF).enTema(),
+                            unselectedTextColor = Color(0xFF9CA3AF).enTema(),
                             indicatorColor = VerdeSuaveAl
                         )
                     )
@@ -265,7 +272,7 @@ private fun ItemAlerta(
             modifier = Modifier
                 .size(38.dp)
                 .clip(CircleShape)
-                .background(if (destacada) Color.White else VerdeSuaveAl),
+                .background(if (destacada) Color.White.enTema() else VerdeSuaveAl),
             contentAlignment = Alignment.Center
         ) {
             Icon(icono, contentDescription = null, tint = colorIcono, modifier = Modifier.size(19.dp))

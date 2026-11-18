@@ -11,6 +11,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
+import android.content.Context
+import androidx.compose.runtime.ReadOnlyComposable
+import kotlin.math.abs
 import com.example.pulsofirme.Accesibilidad
 
 // ---------- Modo elegido por el usuario ----------
@@ -22,6 +25,77 @@ enum class ModoTema(val etiqueta: String) {
 
 object TemaApp {
     var modo by mutableStateOf(ModoTema.CLARO)
+        private set
+
+    private const val PREFS = "tema_app"
+    private const val CLAVE_MODO = "modo"
+
+    /** Lee el tema elegido (se llama al abrir la app). */
+    fun cargar(context: Context) {
+        val guardado = context.applicationContext
+            .getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+            .getString(CLAVE_MODO, null)
+        modo = ModoTema.values().firstOrNull { it.name == guardado } ?: ModoTema.CLARO
+    }
+
+    /** Cambia el tema y lo guarda en el celular. */
+    fun cambiar(context: Context, nuevo: ModoTema) {
+        modo = nuevo
+        context.applicationContext
+            .getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+            .edit().putString(CLAVE_MODO, nuevo.name).apply()
+    }
+}
+
+/**
+ * Adapta un color pensado para modo claro al modo oscuro.
+ * En modo claro (y en alto contraste) devuelve el mismo color.
+ *
+ * - Blanco (fondos)            -> fondo oscuro
+ * - Grises muy claros          -> paneles y bordes oscuros
+ * - Tonos pastel (verde, etc.) -> el mismo tono, oscuro
+ * - Textos oscuros             -> el mismo tono, claro
+ * - Grises medios (subtítulos) -> gris claro legible
+ * - Colores de marca           -> un poco más claros para que se lean sobre negro
+ */
+@Composable
+@ReadOnlyComposable
+fun Color.enTema(): Color =
+    if (LocalColoresPF.current.esOscuro) colorParaOscuro(this) else this
+
+fun colorParaOscuro(color: Color): Color {
+    if (color == Color.Transparent || color.alpha == 0f) return color
+
+    val r = color.red
+    val g = color.green
+    val b = color.blue
+    val max = maxOf(r, g, b)
+    val min = minOf(r, g, b)
+    val l = (max + min) / 2f
+    val d = max - min
+    val s = if (d == 0f) 0f else d / (1f - abs(2f * l - 1f))
+    val h = when {
+        d == 0f -> 0f
+        max == r -> 60f * (((g - b) / d) % 6f)
+        max == g -> 60f * (((b - r) / d) + 2f)
+        else -> 60f * (((r - g) / d) + 4f)
+    }.let { if (it < 0f) it + 360f else it }
+
+    val resultado = when {
+        // Blanco o casi blanco: fondo de pantalla
+        l >= 0.97f && s < 0.25f -> FondoOscuro
+        // Grises muy claros: paneles y bordes
+        l >= 0.80f && s < 0.12f -> if (l >= 0.95f) SuperficieOscura else Color(0xFF333333)
+        // Pasteles (fondos de tarjetas): mismo tono, oscuro
+        l >= 0.80f -> Color.hsl(h, minOf(s, 0.30f), if (l >= 0.90f) 0.16f else 0.24f)
+        // Textos casi negros o muy oscuros: mismo tono, claro
+        l <= 0.22f -> if (s < 0.15f) TextoOscuro else Color.hsl(h, minOf(s, 0.45f), 0.86f)
+        // Grises medios (subtítulos, íconos apagados)
+        s < 0.15f -> if (l < 0.55f) Color(0xFFA0A6B0) else Color(0xFF7C828C)
+        // Colores de marca: un poco más claros
+        else -> Color.hsl(h, minOf(s, 0.60f), l.coerceIn(0.40f, 0.70f))
+    }
+    return resultado.copy(alpha = color.alpha)
 }
 
 // ---------- Colores propios de PulsoFirme, accesibles desde cualquier pantalla ----------

@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -33,16 +35,24 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
-private val VerdeAc = Color(0xFF1B7A4B)
-private val VerdeOscuroAc = Color(0xFF1B4332)
-private val VerdeSuaveAc = Color(0xFFEAF5EC)
-private val GrisAc = Color(0xFF8A8F98)
-private val NegroAc = Color(0xFF1A1A1A)
-private val RojoAc = Color(0xFFC0392B)
-private val DoradoAc = Color(0xFFB98A1E)
-private val DoradoClaroAc = Color(0xFFFFF6E3)
-private val DoradoBordeAc = Color(0xFFEBD9A8)
-
+private val VerdeAc: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val VerdeOscuroAc: Color
+    @Composable get() = Color(0xFF1B4332).enTema()
+private val VerdeSuaveAc: Color
+    @Composable get() = Color(0xFFEAF5EC).enTema()
+private val GrisAc: Color
+    @Composable get() = Color(0xFF8A8F98).enTema()
+private val NegroAc: Color
+    @Composable get() = Color(0xFF1A1A1A).enTema()
+private val RojoAc: Color
+    @Composable get() = Color(0xFFC0392B).enTema()
+private val DoradoAc: Color
+    @Composable get() = Color(0xFFB98A1E).enTema()
+private val DoradoClaroAc: Color
+    @Composable get() = Color(0xFFFFF6E3).enTema()
+private val DoradoBordeAc: Color
+    @Composable get() = Color(0xFFEBD9A8).enTema()
 // Iniciales del nombre: "Morena Martinez" -> "MM"
 private fun iniciales(nombre: String): String {
     val partes = nombre.trim().split(" ").filter { it.isNotBlank() }
@@ -103,9 +113,9 @@ fun AccountScreen(
     }
 
     Scaffold(
-        containerColor = Color.White,
+        containerColor = Color.White.enTema(),
         bottomBar = {
-            NavigationBar(containerColor = Color.White) {
+            NavigationBar(containerColor = Color.White.enTema()) {
                 itemsMenuInferior.forEach { item ->
                     NavigationBarItem(
                         selected = rutaActual == item.ruta,
@@ -115,8 +125,8 @@ fun AccountScreen(
                         colors = NavigationBarItemDefaults.colors(
                             selectedIconColor = VerdeAc,
                             selectedTextColor = VerdeAc,
-                            unselectedIconColor = Color(0xFF9CA3AF),
-                            unselectedTextColor = Color(0xFF9CA3AF),
+                            unselectedIconColor = Color(0xFF9CA3AF).enTema(),
+                            unselectedTextColor = Color(0xFF9CA3AF).enTema(),
                             indicatorColor = VerdeSuaveAc
                         )
                     )
@@ -207,7 +217,7 @@ fun AccountScreen(
                         modifier = Modifier
                             .size(44.dp)
                             .clip(CircleShape)
-                            .background(Color.White),
+                            .background(Color.White.enTema()),
                         contentAlignment = Alignment.Center
                     ) {
                         Icon(
@@ -230,7 +240,7 @@ fun AccountScreen(
                                 "Nadie se vinculó con vos todavía"
                             },
                             fontSize = 15.sp,
-                            color = Color(0xFF374151)
+                            color = Color(0xFF374151).enTema()
                         )
 
                         if (codigoVinculacion.isNotBlank()) {
@@ -422,7 +432,7 @@ private fun TarjetaPremium(esPremium: Boolean, onClick: () -> Unit) {
                     modifier = Modifier
                         .size(46.dp)
                         .clip(CircleShape)
-                        .background(Color.White),
+                        .background(Color.White.enTema()),
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
@@ -438,13 +448,13 @@ private fun TarjetaPremium(esPremium: Boolean, onClick: () -> Unit) {
                         text = "Premium Guiada",
                         fontSize = 17.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color(0xFF6B4E0B)
+                        color = Color(0xFF6B4E0B).enTema()
                     )
                     Spacer(Modifier.height(2.dp))
                     Text(
                         text = "Estás usando la versión gratuita",
                         fontSize = 13.sp,
-                        color = Color(0xFF8C7434)
+                        color = Color(0xFF8C7434).enTema()
                     )
                 }
                 Icon(
@@ -495,7 +505,7 @@ private fun BeneficioPremium(texto: String) {
         Text(
             text = texto,
             fontSize = 13.sp,
-            color = Color(0xFF6B5A2E),
+            color = Color(0xFF6B5A2E).enTema(),
             lineHeight = 18.sp
         )
     }
@@ -520,7 +530,7 @@ private fun FilaOpcion(texto: String, onClick: () -> Unit) {
         Icon(
             Icons.Filled.KeyboardArrowRight,
             contentDescription = null,
-            tint = Color(0xFF9CA3AF)
+            tint = Color(0xFF9CA3AF).enTema()
         )
     }
 }

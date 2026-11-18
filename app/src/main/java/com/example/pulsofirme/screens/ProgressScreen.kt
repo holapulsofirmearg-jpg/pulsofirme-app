@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -32,13 +34,18 @@ import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
-private val VerdePrincipal = Color(0xFF1B7A4B)
-private val VerdeOscuro = Color(0xFF1B4332)
-private val VerdeTarjeta = Color(0xFFEAF5EC)
-private val VerdeBarraSuave = Color(0xFFC9E6D4)
-private val GrisTexto = Color(0xFF8A8F98)
-private val NegroTexto = Color(0xFF1A1A1A)
-
+private val VerdePrincipal: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val VerdeOscuro: Color
+    @Composable get() = Color(0xFF1B4332).enTema()
+private val VerdeTarjeta: Color
+    @Composable get() = Color(0xFFEAF5EC).enTema()
+private val VerdeBarraSuave: Color
+    @Composable get() = Color(0xFFC9E6D4).enTema()
+private val GrisTexto: Color
+    @Composable get() = Color(0xFF8A8F98).enTema()
+private val NegroTexto: Color
+    @Composable get() = Color(0xFF1A1A1A).enTema()
 private data class DatosProgreso(
     val tituloGrafico: String,
     val etiquetas: List<String>,
@@ -181,9 +188,9 @@ fun ProgressScreen(
     val proximaMeta = listOf(3, 7, 15, 30, 60, 100).firstOrNull { it > racha } ?: (racha + 30)
 
     Scaffold(
-        containerColor = Color.White,
+        containerColor = Color.White.enTema(),
         bottomBar = {
-            NavigationBar(containerColor = Color.White) {
+            NavigationBar(containerColor = Color.White.enTema()) {
                 itemsMenuInferior.forEach { item ->
                     NavigationBarItem(
                         selected = rutaActual == item.ruta,
@@ -193,8 +200,8 @@ fun ProgressScreen(
                         colors = NavigationBarItemDefaults.colors(
                             selectedIconColor = VerdePrincipal,
                             selectedTextColor = VerdePrincipal,
-                            unselectedIconColor = Color(0xFF9CA3AF),
-                            unselectedTextColor = Color(0xFF9CA3AF),
+                            unselectedIconColor = Color(0xFF9CA3AF).enTema(),
+                            unselectedTextColor = Color(0xFF9CA3AF).enTema(),
                             indicatorColor = VerdeTarjeta
                         )
                     )
@@ -238,7 +245,7 @@ fun ProgressScreen(
                         Text(
                             text = t,
                             fontSize = 15.sp,
-                            color = if (seleccionada) Color.White else NegroTexto,
+                            color = if (seleccionada) Color.White.enTema() else NegroTexto,
                             fontWeight = if (seleccionada) FontWeight.SemiBold else FontWeight.Normal
                         )
                     }
@@ -455,7 +462,7 @@ private fun SemanaSensaciones(sensaciones: Map<String, String>) {
                         .clip(CircleShape)
                         .background(
                             if (texto != null) SensacionDiaria.colorDe(texto)
-                            else Color(0xFFF1F3F5)
+                            else Color(0xFFF1F3F5).enTema()
                         ),
                     contentAlignment = Alignment.Center
                 ) {

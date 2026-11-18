@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import com.example.pulsofirme.ui.theme.enTema
+import com.example.pulsofirme.ui.theme.ModoTema
+import com.example.pulsofirme.ui.theme.TemaApp
+
 import android.content.Context
 import android.content.Intent
 import android.widget.Toast
@@ -48,14 +52,20 @@ import com.example.pulsofirme.alarmas.RecordatorioEjercicio
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-private val VerdePr = Color(0xFF1B7A4B)
-private val VerdeOscuroPr = Color(0xFF1B4332)
-private val GrisPr = Color(0xFF6B7280)
-private val NegroPr = Color(0xFF1A1A1A)
-private val RojoEliminar = Color(0xFFC63927)
-private val VerdeClaroFondoPr = Color(0xFFEFF6F1)
-private val VerdeIconoFondoPr = Color(0xFFDFF3E4)
-
+private val VerdePr: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val VerdeOscuroPr: Color
+    @Composable get() = Color(0xFF1B4332).enTema()
+private val GrisPr: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
+private val NegroPr: Color
+    @Composable get() = Color(0xFF1A1A1A).enTema()
+private val RojoEliminar: Color
+    @Composable get() = Color(0xFFC63927).enTema()
+private val VerdeClaroFondoPr: Color
+    @Composable get() = Color(0xFFEFF6F1).enTema()
+private val VerdeIconoFondoPr: Color
+    @Composable get() = Color(0xFFDFF3E4).enTema()
 @Composable
 fun AjustesScreen(
     onBack: () -> Unit,
@@ -84,6 +94,55 @@ fun AjustesScreen(
 
     // Estado para controlar el diálogo de confirmación
     var mostrarDialogoEliminar by remember { mutableStateOf(false) }
+    var mostrarDialogoTema by remember { mutableStateOf(false) }
+
+    // --- DIÁLOGO DE TEMA (claro / oscuro / automático) ---
+    if (mostrarDialogoTema) {
+        AlertDialog(
+            onDismissRequest = { mostrarDialogoTema = false },
+            containerColor = Color.White.enTema(),
+            shape = RoundedCornerShape(20.dp),
+            title = {
+                Text("Tema", fontSize = 20.sp, fontWeight = FontWeight.Bold, color = VerdeOscuroPr)
+            },
+            text = {
+                Column {
+                    ModoTema.values().forEach { modo ->
+                        val elegido = TemaApp.modo == modo
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .selectable(
+                                    selected = elegido,
+                                    role = Role.RadioButton,
+                                    onClick = { TemaApp.cambiar(contexto, modo) }
+                                )
+                                .heightIn(min = 48.dp)
+                        ) {
+                            RadioButton(
+                                selected = elegido,
+                                onClick = null,
+                                colors = RadioButtonDefaults.colors(selectedColor = VerdePr)
+                            )
+                            Spacer(Modifier.width(8.dp))
+                            Column {
+                                Text(modo.etiqueta, fontSize = 16.sp, color = NegroPr)
+                                if (modo == ModoTema.AUTOMATICO) {
+                                    Text("Igual que el celular", fontSize = 13.sp, color = GrisPr)
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { mostrarDialogoTema = false }) {
+                    Text("Listo", color = VerdePr, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                }
+            }
+        )
+    }
 
     // Diálogo de exportar datos
     var mostrarDialogoExportar by remember { mutableStateOf(false) }
@@ -95,7 +154,7 @@ fun AjustesScreen(
     if (mostrarDialogoEliminar) {
         AlertDialog(
             onDismissRequest = { mostrarDialogoEliminar = false },
-            containerColor = Color.White,
+            containerColor = Color.White.enTema(),
             shape = RoundedCornerShape(20.dp),
             title = {
                 Text(
@@ -141,7 +200,7 @@ fun AjustesScreen(
     if (mostrarDialogoExportar) {
         AlertDialog(
             onDismissRequest = { mostrarDialogoExportar = false },
-            containerColor = Color.White,
+            containerColor = Color.White.enTema(),
             shape = RoundedCornerShape(20.dp),
             icon = {
                 Box(
@@ -200,7 +259,7 @@ fun AjustesScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color.White.enTema())
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 20.dp)
     ) {
@@ -228,7 +287,7 @@ fun AjustesScreen(
 
         // SECCIÓN GENERAL
         TituloSeccion("General")
-        FilaAjusteConValor(label = "Tema", valor = "Claro") { }
+        FilaAjusteConValor(label = "Tema", valor = TemaApp.modo.etiqueta) { mostrarDialogoTema = true }
 
         Spacer(Modifier.height(20.dp))
 
@@ -296,7 +355,7 @@ fun AjustesScreen(
                 .fillMaxWidth()
                 .animarTamano()
                 .background(
-                    if (accesibilidadExpandida) VerdeClaroFondoPr else Color(0xFFF5F5F5),
+                    if (accesibilidadExpandida) VerdeClaroFondoPr else Color(0xFFF5F5F5).enTema(),
                     RoundedCornerShape(14.dp)
                 )
                 .clickable { accesibilidadExpandida = !accesibilidadExpandida }
@@ -347,13 +406,13 @@ fun AjustesScreen(
                     activo = Accesibilidad.botonesGrandes,
                     onCambio = { Accesibilidad.cambiarBotonesGrandes(contexto, it) }
                 )
-                HorizontalDivider(color = Color(0xFFE5E7EB))
+                HorizontalDivider(color = Color(0xFFE5E7EB).enTema())
 
                 SelectorTamanoLetra(
                     seleccionado = Accesibilidad.tamanoLetra,
                     onSeleccionar = { Accesibilidad.cambiarTamanoLetra(contexto, it) }
                 )
-                HorizontalDivider(color = Color(0xFFE5E7EB))
+                HorizontalDivider(color = Color(0xFFE5E7EB).enTema())
 
                 FilaAccesibilidadPr(
                     icono = Icons.Filled.Contrast,
@@ -362,7 +421,7 @@ fun AjustesScreen(
                     activo = Accesibilidad.altoContraste,
                     onCambio = { Accesibilidad.cambiarAltoContraste(contexto, it) }
                 )
-                HorizontalDivider(color = Color(0xFFE5E7EB))
+                HorizontalDivider(color = Color(0xFFE5E7EB).enTema())
 
                 FilaAccesibilidadPr(
                     icono = Icons.Filled.PlayArrow,
@@ -371,7 +430,7 @@ fun AjustesScreen(
                     activo = Accesibilidad.reducirAnimaciones,
                     onCambio = { Accesibilidad.cambiarReducirAnimaciones(contexto, it) }
                 )
-                HorizontalDivider(color = Color(0xFFE5E7EB))
+                HorizontalDivider(color = Color(0xFFE5E7EB).enTema())
 
                 FilaAccesibilidadAccion(
                     icono = Icons.Filled.RecordVoiceOver,
@@ -384,7 +443,7 @@ fun AjustesScreen(
                         )
                     }
                 )
-                HorizontalDivider(color = Color(0xFFE5E7EB))
+                HorizontalDivider(color = Color(0xFFE5E7EB).enTema())
 
                 FilaAccesibilidadPr(
                     icono = Icons.Filled.Notifications,
@@ -505,7 +564,7 @@ private fun FilaAjusteSwitch(
                 checkedThumbColor = Color.White,
                 checkedTrackColor = VerdePr,
                 uncheckedThumbColor = Color.White,
-                uncheckedTrackColor = Color(0xFFD1D1D6)
+                uncheckedTrackColor = Color(0xFFD1D1D6).enTema()
             )
         )
     }
@@ -660,7 +719,7 @@ private fun SelectorTamanoLetra(
                         .weight(1f)
                         .areaTactil()
                         .clip(RoundedCornerShape(12.dp))
-                        .background(if (elegido) VerdePr else Color.White)
+                        .background(if (elegido) VerdePr else Color.White.enTema())
                         .selectable(
                             selected = elegido,
                             role = Role.RadioButton,
@@ -673,7 +732,7 @@ private fun SelectorTamanoLetra(
                         text = opcion,
                         fontSize = 13.sp,
                         fontWeight = if (elegido) FontWeight.Bold else FontWeight.Medium,
-                        color = if (elegido) Color.White else VerdePr,
+                        color = if (elegido) Color.White.enTema() else VerdePr,
                         textAlign = TextAlign.Center,
                         maxLines = 2
                     )

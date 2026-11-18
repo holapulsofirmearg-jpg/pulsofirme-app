@@ -27,6 +27,7 @@ import com.google.firebase.appcheck.debug.DebugAppCheckProviderFactory
 import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderFactory
 import com.example.pulsofirme.filtroAltoContraste
 import com.example.pulsofirme.ui.theme.PulsoFirmeTheme
+import com.example.pulsofirme.ui.theme.TemaApp
 
 class MainActivity : ComponentActivity() {
 
@@ -46,6 +47,8 @@ class MainActivity : ComponentActivity() {
 
         // Cargamos las preferencias de accesibilidad (por defecto: todo grande)
         Accesibilidad.init(applicationContext)
+        // Tema elegido en Ajustes (claro, oscuro o automático)
+        TemaApp.cargar(applicationContext)
 
         // Permiso de notificaciones en Android 13+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&

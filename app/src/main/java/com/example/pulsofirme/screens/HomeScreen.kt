@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -39,11 +41,14 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.delay
 
-private val Verde = Color(0xFF1B7A4B)
-private val VerdeClaro = Color(0xFFEFF6F1)
-private val BordeGris = Color(0xFFE5E7EB)
-private val RojoSuave = Color(0xFFD32F2F)
-
+private val Verde: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val VerdeClaro: Color
+    @Composable get() = Color(0xFFEFF6F1).enTema()
+private val BordeGris: Color
+    @Composable get() = Color(0xFFE5E7EB).enTema()
+private val RojoSuave: Color
+    @Composable get() = Color(0xFFD32F2F).enTema()
 // ---------------------------------------------------------------------
 // EJERCICIO RECOMENDADO DEL DÍA
 // Cambia según el diagnóstico, lo que ya hizo hoy, si tiene Premium
@@ -338,7 +343,7 @@ fun HomeScreen(
 
     Scaffold(
         bottomBar = {
-            NavigationBar(containerColor = Color.White) {
+            NavigationBar(containerColor = Color.White.enTema()) {
                 itemsMenuInferior.forEach { item ->
                     NavigationBarItem(
                         selected = rutaActual == item.ruta,
@@ -348,8 +353,8 @@ fun HomeScreen(
                         colors = NavigationBarItemDefaults.colors(
                             selectedIconColor = Verde,
                             selectedTextColor = Verde,
-                            unselectedIconColor = Color(0xFF9CA3AF),
-                            unselectedTextColor = Color(0xFF9CA3AF),
+                            unselectedIconColor = Color(0xFF9CA3AF).enTema(),
+                            unselectedTextColor = Color(0xFF9CA3AF).enTema(),
                             indicatorColor = VerdeClaro
                         )
                     )
@@ -371,12 +376,12 @@ fun HomeScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Column(modifier = Modifier.weight(1f)) {
-                    Text(text = "Panel de usuario", fontSize = 13.sp, color = Color(0xFF6B7280))
+                    Text(text = "Panel de usuario", fontSize = 13.sp, color = Color(0xFF6B7280).enTema())
                     Text(
                         text = "Hola, $nombreUsuario",
                         fontSize = 24.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color(0xFF1A1A1A)
+                        color = Color(0xFF1A1A1A).enTema()
                     )
                 }
                 Box(
@@ -398,7 +403,7 @@ fun HomeScreen(
                         Icon(
                             Icons.Filled.Notifications,
                             contentDescription = "Notificaciones",
-                            tint = Color(0xFF1A1A1A)
+                            tint = Color(0xFF1A1A1A).enTema()
                         )
                     }
                     if (avisosNuevos > 0) {
@@ -470,7 +475,7 @@ fun HomeScreen(
                 else
                     "Ya registraste cómo te sentís hoy. Podés cambiarlo cuando quieras.",
                 fontSize = 13.sp,
-                color = Color(0xFF6B7280)
+                color = Color(0xFF6B7280).enTema()
             )
 
             Spacer(modifier = Modifier.height(12.dp))
@@ -478,7 +483,7 @@ fun HomeScreen(
             Row(modifier = Modifier.fillMaxWidth()) {
                 OpcionSensacion(
                     texto = "Rigidez baja",
-                    color = Color(0xFF2E9E63),
+                    color = Color(0xFF2E9E63).enTema(),
                     seleccionado = sensacionElegida == "Rigidez baja",
                     onClick = { elegirSensacion("Rigidez baja") },
                     modifier = Modifier.weight(1f)
@@ -494,7 +499,7 @@ fun HomeScreen(
                 Spacer(modifier = Modifier.width(8.dp))
                 OpcionSensacion(
                     texto = "Dolor leve",
-                    color = Color(0xFF1565C0),
+                    color = Color(0xFF1565C0).enTema(),
                     seleccionado = sensacionElegida == "Dolor leve",
                     onClick = { elegirSensacion("Dolor leve") },
                     modifier = Modifier.weight(1f)
@@ -518,7 +523,7 @@ fun HomeScreen(
                 Text(
                     text = "Tus rutinas de hoy: nivel ${dificultadHoy.nivel} de 5 (${dificultadHoy.etiqueta}) · ${dificultadHoy.variante}",
                     fontSize = 13.sp,
-                    color = Color(0xFF374151),
+                    color = Color(0xFF374151).enTema(),
                     lineHeight = 18.sp
                 )
             }
@@ -564,7 +569,7 @@ fun HomeScreen(
                 Box(
                     modifier = Modifier
                         .size(44.dp)
-                        .background(Color.White, CircleShape),
+                        .background(Color.White.enTema(), CircleShape),
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
@@ -593,10 +598,10 @@ fun HomeScreen(
                 Box(
                     modifier = Modifier
                         .size(40.dp)
-                        .background(Color(0xFFFCE9D8), CircleShape),
+                        .background(Color(0xFFFCE9D8).enTema(), CircleShape),
                     contentAlignment = Alignment.Center
                 ) {
-                    Icon(Icons.Filled.MedicalServices, contentDescription = null, tint = Color(0xFFE0894A), modifier = Modifier.size(20.dp))
+                    Icon(Icons.Filled.MedicalServices, contentDescription = null, tint = Color(0xFFE0894A).enTema(), modifier = Modifier.size(20.dp))
                 }
                 Spacer(modifier = Modifier.width(12.dp))
                 Column(modifier = Modifier.weight(1f)) {
@@ -612,11 +617,11 @@ fun HomeScreen(
                         },
                         fontSize = 13.sp,
                         color = if (horariosHoy.isNotEmpty() && cantidadTomadas == horariosHoy.size)
-                            Verde else Color(0xFF6B7280),
+                            Verde else Color(0xFF6B7280).enTema(),
                         lineHeight = 18.sp
                     )
                 }
-                Icon(Icons.Filled.ChevronRight, contentDescription = null, tint = Color(0xFF9CA3AF))
+                Icon(Icons.Filled.ChevronRight, contentDescription = null, tint = Color(0xFF9CA3AF).enTema())
             }
 
             Spacer(modifier = Modifier.height(24.dp))
@@ -645,14 +650,14 @@ private fun TarjetaUsoGuante(
         modifier = Modifier
             .fillMaxWidth()
             .border(1.dp, if (enUso) Verde else BordeGris, RoundedCornerShape(16.dp))
-            .background(if (enUso) VerdeClaro else Color.White, RoundedCornerShape(16.dp))
+            .background(if (enUso) VerdeClaro else Color.White.enTema(), RoundedCornerShape(16.dp))
             .padding(16.dp)
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Box(
                 modifier = Modifier
                     .size(40.dp)
-                    .background(if (enUso) Color.White else VerdeClaro, CircleShape),
+                    .background(if (enUso) Color.White.enTema() else VerdeClaro, CircleShape),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(Icons.Filled.Timer, contentDescription = null, tint = Verde, modifier = Modifier.size(22.dp))
@@ -663,7 +668,7 @@ private fun TarjetaUsoGuante(
                 Text(
                     text = if (enUso) "En uso ahora" else "Registrá cuándo te lo ponés y te lo sacás",
                     fontSize = 13.sp,
-                    color = if (enUso) Verde else Color(0xFF6B7280)
+                    color = if (enUso) Verde else Color(0xFF6B7280).enTema()
                 )
             }
         }
@@ -686,7 +691,7 @@ private fun TarjetaUsoGuante(
             Text(
                 text = "Iniciá sesión para registrar el uso del guante.",
                 fontSize = 13.sp,
-                color = Color(0xFF6B7280)
+                color = Color(0xFF6B7280).enTema()
             )
         } else if (enUso) {
             Button(
@@ -734,13 +739,13 @@ private fun TarjetaUsoGuante(
         Text(
             text = "Últimos 7 días: ${UsoGuante.formatear(minutosSemana)} · usado $diasConUso de 7 días",
             fontSize = 13.sp,
-            color = Color(0xFF374151)
+            color = Color(0xFF374151).enTema()
         )
         Spacer(modifier = Modifier.height(2.dp))
         Text(
             text = "Tiempo registrado por vos desde la app.",
             fontSize = 11.sp,
-            color = Color(0xFF9CA3AF)
+            color = Color(0xFF9CA3AF).enTema()
         )
     }
 }
@@ -764,7 +769,7 @@ private fun DialogoCargaManual(
         title = { Text(titulo) },
         text = {
             Column {
-                Text(text = texto, fontSize = 14.sp, color = Color(0xFF374151))
+                Text(text = texto, fontSize = 14.sp, color = Color(0xFF374151).enTema())
                 Spacer(modifier = Modifier.height(14.dp))
 
                 opciones.chunked(3).forEach { fila ->
@@ -800,7 +805,7 @@ private fun DialogoCargaManual(
         },
         dismissButton = {
             TextButton(onClick = onCancelar) {
-                Text("Cancelar", color = Color(0xFF6B7280))
+                Text("Cancelar", color = Color(0xFF6B7280).enTema())
             }
         }
     )
@@ -820,9 +825,9 @@ private fun TarjetaResumen(
     ) {
         Icon(icono, contentDescription = null, tint = Verde, modifier = Modifier.size(22.dp))
         Spacer(modifier = Modifier.height(8.dp))
-        Text(text = valor, fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color(0xFF1A1A1A))
+        Text(text = valor, fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color(0xFF1A1A1A).enTema())
         Spacer(modifier = Modifier.height(2.dp))
-        Text(text = etiqueta, fontSize = 12.sp, color = Color(0xFF6B7280), lineHeight = 16.sp)
+        Text(text = etiqueta, fontSize = 12.sp, color = Color(0xFF6B7280).enTema(), lineHeight = 16.sp)
     }
 }
 
@@ -856,7 +861,7 @@ private fun OpcionSensacion(
             text = texto,
             fontSize = 12.sp,
             textAlign = TextAlign.Center,
-            color = if (seleccionado) Verde else Color(0xFF374151),
+            color = if (seleccionado) Verde else Color(0xFF374151).enTema(),
             fontWeight = if (seleccionado) FontWeight.SemiBold else FontWeight.Normal
         )
     }

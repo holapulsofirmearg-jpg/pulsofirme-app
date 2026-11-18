@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -30,10 +32,12 @@ import com.example.pulsofirme.EjercicioPremium
 import com.example.pulsofirme.EjerciciosPremium
 import com.example.pulsofirme.UserData
 
-private val Verde = Color(0xFF1B7A4B)
-private val VerdeClaro = Color(0xFFEFF6F1)
-private val BordeGris = Color(0xFFE5E7EB)
-
+private val Verde: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val VerdeClaro: Color
+    @Composable get() = Color(0xFFEFF6F1).enTema()
+private val BordeGris: Color
+    @Composable get() = Color(0xFFE5E7EB).enTema()
 @Composable
 fun ExercisesScreen(
     rutaActual: String,
@@ -65,7 +69,7 @@ fun ExercisesScreen(
 
     Scaffold(
         bottomBar = {
-            NavigationBar(containerColor = Color.White) {
+            NavigationBar(containerColor = Color.White.enTema()) {
                 itemsMenuInferior.forEach { item ->
                     NavigationBarItem(
                         selected = rutaActual == item.ruta,
@@ -75,8 +79,8 @@ fun ExercisesScreen(
                         colors = NavigationBarItemDefaults.colors(
                             selectedIconColor = Verde,
                             selectedTextColor = Verde,
-                            unselectedIconColor = Color(0xFF9CA3AF),
-                            unselectedTextColor = Color(0xFF9CA3AF),
+                            unselectedIconColor = Color(0xFF9CA3AF).enTema(),
+                            unselectedTextColor = Color(0xFF9CA3AF).enTema(),
                             indicatorColor = VerdeClaro
                         )
                     )
@@ -93,12 +97,12 @@ fun ExercisesScreen(
         ) {
             Spacer(modifier = Modifier.height(20.dp))
 
-            Text(text = "Ejercicios", fontSize = 13.sp, color = Color(0xFF6B7280))
+            Text(text = "Ejercicios", fontSize = 13.sp, color = Color(0xFF6B7280).enTema())
             Text(
                 text = "Movete a tu ritmo",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFF1A1A1A)
+                color = Color(0xFF1A1A1A).enTema()
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -147,7 +151,7 @@ fun ExercisesScreen(
                                 color = when {
                                     seleccionado -> Color.White
                                     esPremium -> Verde
-                                    else -> Color(0xFF374151)
+                                    else -> Color(0xFF374151).enTema()
                                 },
                                 fontSize = 14.sp,
                                 fontWeight = if (seleccionado || esPremium) FontWeight.SemiBold else FontWeight.Normal
@@ -171,7 +175,7 @@ fun ExercisesScreen(
                     Text(
                         text = "Los ejercicios de Parkinson son orientativos. Consultá a tu neurólogo o kinesiólogo antes de empezar una rutina.",
                         fontSize = 13.sp,
-                        color = Color(0xFF374151),
+                        color = Color(0xFF374151).enTema(),
                         lineHeight = 18.sp
                     )
                 }
@@ -252,7 +256,7 @@ fun ExercisesScreen(
                     Text(
                         text = "Los ejercicios de artritis son orientativos. Consultá a tu reumatólogo o kinesiólogo antes de empezar una rutina.",
                         fontSize = 13.sp,
-                        color = Color(0xFF374151),
+                        color = Color(0xFF374151).enTema(),
                         lineHeight = 18.sp
                     )
                 }
@@ -336,7 +340,7 @@ fun ExercisesScreen(
                         else
                             "Ejercicios exclusivos de Premium Guiada. Tocá uno para ver cómo activarlo.",
                         fontSize = 13.sp,
-                        color = Color(0xFF374151),
+                        color = Color(0xFF374151).enTema(),
                         lineHeight = 18.sp
                     )
                 }
@@ -397,7 +401,7 @@ private fun CartelTratamiento(
             text = numero,
             fontSize = 14.sp,
             fontWeight = FontWeight.SemiBold,
-            color = Color(0xFF6B7280),
+            color = Color(0xFF6B7280).enTema(),
             letterSpacing = 1.sp
         )
         Spacer(modifier = Modifier.height(4.dp))
@@ -425,7 +429,7 @@ private fun CartelTratamiento(
                     text = texto,
                     fontSize = 17.sp,
                     fontWeight = FontWeight.SemiBold,
-                    color = Color(0xFF1A1A1A)
+                    color = Color(0xFF1A1A1A).enTema()
                 )
             }
             Spacer(modifier = Modifier.height(16.dp))
@@ -437,7 +441,7 @@ private fun CartelTratamiento(
             modifier = Modifier
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(14.dp))
-                .background(if (bloqueado) Color(0xFF6B7280) else Verde)
+                .background(if (bloqueado) Color(0xFF6B7280).enTema() else Verde)
                 .clickable(role = Role.Button) { onClick() }
                 .heightIn(min = 56.dp)
                 .padding(vertical = 16.dp),
@@ -509,7 +513,7 @@ private fun BotonDiagnostico(
     Row(
         modifier = modifier
             .clip(RoundedCornerShape(16.dp))
-            .background(if (seleccionado) Verde else Color.White)
+            .background(if (seleccionado) Verde else Color.White.enTema())
             .border(
                 width = if (seleccionado) 2.dp else 1.dp,
                 color = if (seleccionado) Verde else BordeGris,
@@ -532,7 +536,7 @@ private fun BotonDiagnostico(
             text = texto,
             fontSize = 17.sp,
             fontWeight = FontWeight.Bold,
-            color = if (seleccionado) Color.White else Color(0xFF1A1A1A)
+            color = if (seleccionado) Color.White.enTema() else Color(0xFF1A1A1A).enTema()
         )
     }
 }
@@ -545,14 +549,14 @@ private fun CartelInfo(titulo: String, texto: String, importante: String) {
             .fillMaxWidth()
             .clip(RoundedCornerShape(16.dp))
             .background(VerdeClaro)
-            .border(1.dp, Color(0xFFCDE5D6), RoundedCornerShape(16.dp))
+            .border(1.dp, Color(0xFFCDE5D6).enTema(), RoundedCornerShape(16.dp))
             .padding(18.dp)
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Box(
                 modifier = Modifier
                     .size(40.dp)
-                    .background(Color.White, CircleShape),
+                    .background(Color.White.enTema(), CircleShape),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
@@ -567,7 +571,7 @@ private fun CartelInfo(titulo: String, texto: String, importante: String) {
                 text = titulo,
                 fontSize = 17.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFF1A1A1A),
+                color = Color(0xFF1A1A1A).enTema(),
                 lineHeight = 22.sp
             )
         }
@@ -577,7 +581,7 @@ private fun CartelInfo(titulo: String, texto: String, importante: String) {
         Text(
             text = texto,
             fontSize = 14.sp,
-            color = Color(0xFF374151),
+            color = Color(0xFF374151).enTema(),
             lineHeight = 20.sp
         )
 
@@ -587,14 +591,14 @@ private fun CartelInfo(titulo: String, texto: String, importante: String) {
             modifier = Modifier
                 .fillMaxWidth()
                 .clip(RoundedCornerShape(12.dp))
-                .background(Color(0xFFFFF7E0))
+                .background(Color(0xFFFFF7E0).enTema())
                 .padding(12.dp),
             verticalAlignment = Alignment.Top
         ) {
             Icon(
                 Icons.Filled.Warning,
                 contentDescription = null,
-                tint = Color(0xFF9A6B00),
+                tint = Color(0xFF9A6B00).enTema(),
                 modifier = Modifier
                     .padding(top = 1.dp)
                     .size(18.dp)
@@ -606,7 +610,7 @@ private fun CartelInfo(titulo: String, texto: String, importante: String) {
                     append(importante)
                 },
                 fontSize = 13.sp,
-                color = Color(0xFF5C4400),
+                color = Color(0xFF5C4400).enTema(),
                 lineHeight = 19.sp
             )
         }
