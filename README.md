@@ -11,10 +11,18 @@ La idea surgió de algo simple: los ejercicios de rehabilitación se hacen en ca
 ## Capturas
 
 <p>
-  <img src="Capturas/inicio.png" width="200">
-  <img src="Capturas/ejercicios.png" width="200">
-  <img src="Capturas/progreso.png" width="200">
-  <img src="Capturas/pulsibot.png" width="200">
+  <img src="Capturas/inicio.png" width="180">
+  <img src="Capturas/ejercicios.png" width="180">
+  <img src="Capturas/evaluacion.png" width="180">
+  <img src="Capturas/progreso.png" width="180">
+  <img src="Capturas/dispositivo.png" width="180">
+</p>
+<p>
+  <img src="Capturas/alertas.png" width="180">
+  <img src="Capturas/pulsibot.png" width="180">
+  <img src="Capturas/dudas.png" width="180">
+  <img src="Capturas/privacidad.png" width="180">
+  <img src="Capturas/terminos.png" width="180">
 </p>
 
 ## Cómo funciona
