@@ -120,8 +120,8 @@ fun ProfessionalPatientsScreen(
         if (profesionalUid == null) { Avisos.mostrar("No hay sesión profesional"); return }
         if (codigoLimpio.length != 6 || !codigoLimpio.all { it.isDigit() }) { Avisos.mostrar("Ingresá el código de 6 dígitos del paciente"); return }
         if (pacientes.size >= maxPacientes) {
-            val mensaje = if (esPremium) "Alcanzaste el máximo de $MAX_PACIENTES_PREMIUM pacientes"
-            else "El plan gratuito permite vincular $MAX_PACIENTES_GRATIS paciente. Pasate a Premium para vincular hasta $MAX_PACIENTES_PREMIUM."
+            val mensaje = if (esPremium) trf("Alcanzaste el máximo de {0} pacientes", MAX_PACIENTES_PREMIUM)
+            else trf("El plan gratuito permite vincular {0} paciente. Pasate a Premium para vincular hasta {1}.", MAX_PACIENTES_GRATIS, MAX_PACIENTES_PREMIUM)
             Avisos.mostrar(mensaje, largo = true)
             return
         }
@@ -196,40 +196,40 @@ fun ProfessionalPatientsScreen(
     pacienteADesvincular?.let { paciente ->
         AlertDialog(
             onDismissRequest = { pacienteADesvincular = null },
-            title = { Text("Desvincular paciente") },
-            text = { Text("¿Querés desvincular a ${paciente.nombre}? El paciente no se elimina: solamente se quita el vínculo profesional.") },
-            confirmButton = { TextButton(onClick = { desvincularPaciente(paciente) }, modifier = Modifier.heightIn(min = 48.dp)) { Text("Desvincular", color = MaterialTheme.colorScheme.error) } },
-            dismissButton = { TextButton(onClick = { pacienteADesvincular = null }, modifier = Modifier.heightIn(min = 48.dp)) { Text("Cancelar") } }
+            title = { Text(tr("Desvincular paciente")) },
+            text = { Text(trf("¿Querés desvincular a {0}? El paciente no se elimina: solamente se quita el vínculo profesional.", paciente.nombre)) },
+            confirmButton = { TextButton(onClick = { desvincularPaciente(paciente) }, modifier = Modifier.heightIn(min = 48.dp)) { Text(tr("Desvincular"), color = MaterialTheme.colorScheme.error) } },
+            dismissButton = { TextButton(onClick = { pacienteADesvincular = null }, modifier = Modifier.heightIn(min = 48.dp)) { Text(tr("Cancelar")) } }
         )
     }
 
     Scaffold(bottomBar = {
         NavigationBar {
             listOf(Triple("Inicio", Icons.Filled.Home, "caregiver_home"), Triple("Pacientes", Icons.Filled.Groups, "caregiver_patients"), Triple("Progreso", Icons.Filled.ShowChart, "caregiver_progress"), Triple("Cuenta", Icons.Filled.Person, "caregiver_account")).forEach { item ->
-                NavigationBarItem(selected = rutaActual == item.third, onClick = { onNavigate(item.third) }, icon = { Icon(item.second, item.first) }, label = { Text(item.first, fontSize = 13.sp) })
+                NavigationBarItem(selected = rutaActual == item.third, onClick = { onNavigate(item.third) }, icon = { Icon(item.second, item.first) }, label = { Text(tr(item.first), fontSize = 11.sp) })
             }
         }
     }) { padding ->
         LazyColumn(Modifier.fillMaxSize().padding(padding).padding(20.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
             item {
-                Text("Pacientes", fontSize = 30.sp, fontWeight = FontWeight.Bold)
-                Text("${pacientes.size}/$maxPacientes pacientes vinculados", color = Color.Gray)
+                Text(tr("Pacientes"), fontSize = 30.sp, fontWeight = FontWeight.Bold)
+                Text(trf("{0}/{1} pacientes vinculados", pacientes.size, maxPacientes), color = Color.Gray)
                 if (!esPremium) {
-                    Text("Plan gratuito: 1 paciente. Con Premium vinculás hasta $MAX_PACIENTES_PREMIUM.", color = Color.Gray, fontSize = 13.sp)
+                    Text(trf("Plan gratuito: 1 paciente. Con Premium vinculás hasta {0}.", MAX_PACIENTES_PREMIUM), color = Color.Gray, fontSize = 13.sp)
                 }
             }
             item {
-                OutlinedTextField(value = codigo, onValueChange = { if (it.length <= 6 && it.all(Char::isDigit)) codigo = it }, modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp), label = { Text("Código del paciente") }, placeholder = { Text("6 dígitos") }, singleLine = true)
+                OutlinedTextField(value = codigo, onValueChange = { if (it.length <= 6 && it.all(Char::isDigit)) codigo = it }, modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp), label = { Text(tr("Código del paciente")) }, placeholder = { Text(tr("6 dígitos")) }, singleLine = true)
                 Spacer(Modifier.height(8.dp))
-                Button(onClick = { vincularPaciente() }, enabled = !vinculando && pacientes.size < maxPacientes, modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp)) { Text(if (vinculando) "Vinculando..." else "Vincular paciente") }
+                Button(onClick = { vincularPaciente() }, enabled = !vinculando && pacientes.size < maxPacientes, modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp)) { Text(tr(if (vinculando) "Vinculando..." else "Vincular paciente")) }
             }
-            item { OutlinedTextField(value = busqueda, onValueChange = { busqueda = it }, modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp), leadingIcon = { Icon(Icons.Filled.Search, null) }, label = { Text("Buscar paciente") }, singleLine = true) }
+            item { OutlinedTextField(value = busqueda, onValueChange = { busqueda = it }, modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp), leadingIcon = { Icon(Icons.Filled.Search, null) }, label = { Text(tr("Buscar paciente")) }, singleLine = true) }
             if (cargando) item { LinearProgressIndicator(Modifier.fillMaxWidth()) }
-            if (!cargando && filtrados.isEmpty()) item { Text("Todavía no hay pacientes vinculados.", color = Color.Gray) }
+            if (!cargando && filtrados.isEmpty()) item { Text(tr("Todavía no hay pacientes vinculados."), color = Color.Gray) }
             items(filtrados, key = { it.uid }) { paciente ->
-                Card(Modifier.fillMaxWidth().clickable(role = Role.Button, onClickLabel = "Ver paciente ${paciente.nombre}") { onPacienteClick(paciente.uid) }, shape = RoundedCornerShape(16.dp)) {
+                Card(Modifier.fillMaxWidth().clickable(role = Role.Button, onClickLabel = trf("Ver paciente {0}", paciente.nombre)) { onPacienteClick(paciente.uid) }, shape = RoundedCornerShape(16.dp)) {
                     Row(Modifier.fillMaxWidth().heightIn(min = 72.dp).padding(16.dp), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = androidx.compose.ui.Alignment.CenterVertically) {
-                        Column(Modifier.weight(1f)) { Text(paciente.nombre, fontWeight = FontWeight.Bold); Text(paciente.diagnostico, color = Color.Gray); Text(paciente.estado, color = Color(0xFF1B7A4B).enTema()) }
+                        Column(Modifier.weight(1f)) { Text(tr(paciente.nombre), fontWeight = FontWeight.Bold); Text(tr(paciente.diagnostico), color = Color.Gray); Text(tr(paciente.estado), color = Color(0xFF1B7A4B).enTema()) }
                         IconButton(onClick = { pacienteADesvincular = paciente }, modifier = Modifier.size(56.dp)) { Icon(Icons.Filled.DeleteOutline, "Desvincular", tint = MaterialTheme.colorScheme.error) }
                         Icon(Icons.Filled.ChevronRight, null)
                     }

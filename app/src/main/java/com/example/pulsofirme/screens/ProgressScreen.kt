@@ -108,7 +108,7 @@ private fun textoFecha(ms: Long): String {
     return when (dias) {
         0 -> "Hoy"
         1 -> "Ayer"
-        else -> "Hace $dias días"
+        else -> trf("Hace {0} días", dias)
     }
 }
 
@@ -197,8 +197,8 @@ fun ProgressScreen(
                     NavigationBarItem(
                         selected = rutaActual == item.ruta,
                         onClick = { onNavigate(item.ruta) },
-                        icon = { Icon(item.icono, contentDescription = item.label) },
-                        label = { Text(item.label, fontSize = 13.sp) },
+                        icon = { Icon(item.icono, contentDescription = tr(item.label)) },
+                        label = { Text(tr(item.label), fontSize = 11.sp) },
                         colors = NavigationBarItemDefaults.colors(
                             selectedIconColor = VerdePrincipal,
                             selectedTextColor = VerdePrincipal,
@@ -220,10 +220,10 @@ fun ProgressScreen(
         ) {
             Spacer(Modifier.height(24.dp))
 
-            Text("Progreso", fontSize = 15.sp, color = GrisTexto)
+            Text(tr("Progreso"), fontSize = 15.sp, color = GrisTexto)
             Spacer(Modifier.height(4.dp))
             Text(
-                "Tu evolución",
+                tr("Tu evolución"),
                 fontSize = 30.sp,
                 fontWeight = FontWeight.Bold,
                 color = VerdeOscuro
@@ -245,7 +245,7 @@ fun ProgressScreen(
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
-                            text = t,
+                            text = tr(t),
                             fontSize = 15.sp,
                             color = if (seleccionada) Color.White.enTema() else NegroTexto,
                             fontWeight = if (seleccionada) FontWeight.SemiBold else FontWeight.Normal
@@ -283,18 +283,18 @@ fun ProgressScreen(
                 Spacer(Modifier.width(14.dp))
                 Column {
                     Text(
-                        when (racha) {
+                        tr(when (racha) {
                             0 -> "Sin racha todavía"
                             1 -> "1 día de racha"
-                            else -> "$racha días de racha"
-                        },
+                            else -> trf("{0} días de racha", racha)
+                        }),
                         color = Color.White,
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold
                     )
                     Text(
-                        if (racha == 0) "Hacé un ejercicio hoy para empezar"
-                        else "Seguí así para llegar a $proximaMeta",
+                        tr(if (racha == 0) "Hacé un ejercicio hoy para empezar"
+                        else trf("Seguí así para llegar a {0}", proximaMeta)),
                         color = Color.White.copy(alpha = 0.85f),
                         fontSize = 13.sp
                     )
@@ -311,10 +311,10 @@ fun ProgressScreen(
                     .background(VerdeTarjeta)
                     .padding(18.dp)
             ) {
-                Text("Ejercicios completados (último año)", fontSize = 14.sp, color = GrisTexto)
+                Text(tr("Ejercicios completados (último año)"), fontSize = 14.sp, color = GrisTexto)
                 Spacer(Modifier.height(6.dp))
                 Text(
-                    text = (if (cargando) ProgresoData.ejerciciosCompletados else registros.size).toString(),
+                    text = tr((if (cargando) ProgresoData.ejerciciosCompletados else registros.size).toString()),
                     fontSize = 30.sp,
                     fontWeight = FontWeight.Bold,
                     color = NegroTexto
@@ -324,7 +324,7 @@ fun ProgressScreen(
             Spacer(Modifier.height(26.dp))
 
             // Gráfico de barras
-            Text(datos.tituloGrafico, fontSize = 16.sp, color = GrisTexto)
+            Text(tr(datos.tituloGrafico), fontSize = 16.sp, color = GrisTexto)
             Spacer(Modifier.height(16.dp))
 
             Row(
@@ -342,7 +342,7 @@ fun ProgressScreen(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            cantidad.toString(),
+                            tr(cantidad.toString()),
                             fontSize = 12.sp,
                             color = if (esHoy) VerdePrincipal else GrisTexto
                         )
@@ -356,7 +356,7 @@ fun ProgressScreen(
                         )
                         Spacer(Modifier.height(8.dp))
                         Text(
-                            datos.etiquetas[i],
+                            tr(datos.etiquetas[i]),
                             fontSize = if (datos.cantidades.size > 8) 10.sp else 13.sp,
                             color = if (esHoy) VerdePrincipal else GrisTexto,
                             fontWeight = if (esHoy) FontWeight.Bold else FontWeight.Normal
@@ -368,19 +368,19 @@ fun ProgressScreen(
             Spacer(Modifier.height(28.dp))
 
             // Cómo te sentiste esta semana
-            Text("Cómo te sentiste esta semana", fontSize = 16.sp, color = GrisTexto)
+            Text(tr("Cómo te sentiste esta semana"), fontSize = 16.sp, color = GrisTexto)
             Spacer(Modifier.height(14.dp))
             SemanaSensaciones(sensaciones)
 
             Spacer(Modifier.height(28.dp))
 
             // Historial reciente
-            Text("Historial reciente", fontSize = 16.sp, color = GrisTexto)
+            Text(tr("Historial reciente"), fontSize = 16.sp, color = GrisTexto)
             Spacer(Modifier.height(8.dp))
 
             if (registros.isEmpty()) {
                 Text(
-                    if (cargando) "Cargando…" else "Todavía no hiciste ejercicios. ¡Empezá hoy!",
+                    tr(if (cargando) "Cargando…" else "Todavía no hiciste ejercicios. ¡Empezá hoy!"),
                     fontSize = 15.sp, color = GrisTexto, modifier = Modifier.padding(vertical = 14.dp)
                 )
             } else {
@@ -392,7 +392,7 @@ fun ProgressScreen(
             Spacer(Modifier.height(24.dp))
 
             // Autoevaluación
-            Text("Autoevaluación", fontSize = 16.sp, color = GrisTexto)
+            Text(tr("Autoevaluación"), fontSize = 16.sp, color = GrisTexto)
             Spacer(Modifier.height(8.dp))
 
             Row(
@@ -421,14 +421,14 @@ fun ProgressScreen(
                 Spacer(Modifier.width(14.dp))
                 Column(Modifier.weight(1f)) {
                     Text(
-                        "Evaluación QuickDASH",
+                        tr("Evaluación QuickDASH"),
                         fontSize = 16.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = NegroTexto
                     )
                     Text(
-                        evaluacion?.let { "${textoFecha(it.fechaMs)}, ${textoDificultad(it.puntaje)}" }
-                            ?: "Todavía no hiciste la evaluación",
+                        tr(evaluacion?.let { "${textoFecha(it.fechaMs)}, ${textoDificultad(it.puntaje)}" }
+                            ?: "Todavía no hiciste la evaluación"),
                         fontSize = 13.sp, color = GrisTexto
                     )
                 }
@@ -471,7 +471,7 @@ private fun SemanaSensaciones(sensaciones: Map<String, String>) {
                     if (texto != null) {
                         Icon(
                             Icons.Filled.Check,
-                            contentDescription = texto,
+                            contentDescription = tr(texto),
                             tint = Color.White,
                             modifier = Modifier.size(18.dp)
                         )
@@ -479,7 +479,7 @@ private fun SemanaSensaciones(sensaciones: Map<String, String>) {
                 }
                 Spacer(Modifier.height(6.dp))
                 Text(
-                    letras[i],
+                    tr(letras[i]),
                     fontSize = 13.sp,
                     color = if (esHoy) VerdePrincipal else GrisTexto,
                     fontWeight = if (esHoy) FontWeight.Bold else FontWeight.Normal
@@ -494,7 +494,7 @@ private fun SemanaSensaciones(sensaciones: Map<String, String>) {
     val usadas = claves.mapNotNull { sensaciones[it] }.distinct()
     if (usadas.isEmpty()) {
         Text(
-            "Todavía no registraste cómo te sentís esta semana. Hacelo desde Inicio.",
+            tr("Todavía no registraste cómo te sentís esta semana. Hacelo desde Inicio."),
             fontSize = 13.sp, color = GrisTexto, lineHeight = 18.sp
         )
     } else {
@@ -508,7 +508,7 @@ private fun SemanaSensaciones(sensaciones: Map<String, String>) {
                             .background(SensacionDiaria.colorDe(texto))
                     )
                     Spacer(Modifier.width(8.dp))
-                    Text(texto, fontSize = 13.sp, color = NegroTexto)
+                    Text(tr(texto), fontSize = 13.sp, color = NegroTexto)
                 }
             }
         }
@@ -532,12 +532,12 @@ private fun ItemHistorial(nombre: String, detalle: String) {
         Spacer(Modifier.width(14.dp))
         Column {
             Text(
-                nombre,
+                tr(nombre),
                 fontSize = 17.sp,
                 fontWeight = FontWeight.SemiBold,
                 color = NegroTexto
             )
-            Text(detalle, fontSize = 13.sp, color = GrisTexto)
+            Text(tr(detalle), fontSize = 13.sp, color = GrisTexto)
         }
     }
 }

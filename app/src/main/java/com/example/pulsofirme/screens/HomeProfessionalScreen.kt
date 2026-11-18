@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -28,11 +32,14 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import java.util.Date
 
-private val VerdePH = Color(0xFF07884A)
-private val VerdeClaroPH = Color(0xFFEAF8F0)
-private val AzulClaroPH = Color(0xFFEAF6FF)
-private val GrisPH = Color(0xFF6B7280)
-
+private val VerdePH: Color
+    @Composable get() = Color(0xFF07884A).enTema()
+private val VerdeClaroPH: Color
+    @Composable get() = Color(0xFFEAF8F0).enTema()
+private val AzulClaroPH: Color
+    @Composable get() = Color(0xFFEAF6FF).enTema()
+private val GrisPH: Color
+    @Composable get() = Color(0xFF6B7280).enTema()
 @Composable
 fun HomeProfessionalScreen(
     nombreProfesional: String,
@@ -52,7 +59,7 @@ fun HomeProfessionalScreen(
     val db = FirebaseFirestore.getInstance()
     val uidProfesional = FirebaseAuth.getInstance().currentUser?.uid
     var cantidadPacientes by remember { mutableIntStateOf(0) }
-    var esPremium by remember { mutableStateOf(false) }
+    var esPremium by rememberSaveable { mutableStateOf(false) }
     var ejerciciosSemana by remember { mutableIntStateOf(0) }
     var segundosSemana by remember { mutableLongStateOf(0L) }
     var pacientesActivos by remember { mutableIntStateOf(0) }
@@ -111,12 +118,12 @@ fun HomeProfessionalScreen(
     val tiempoTexto = remember(segundosSemana) {
         val h = segundosSemana / 3600
         val m = (segundosSemana % 3600) / 60
-        if (h > 0) "${h} h ${m} min" else "${m} min"
+        if (h > 0) trf("{0} h {1} min", h, m) else "${m} min"
     }
     val actividadTexto = if (cantidadPacientes == 0) "0%" else "${(pacientesActivos * 100 / cantidadPacientes)}%"
 
-    Scaffold(containerColor = Color.White, bottomBar = {
-        NavigationBar(containerColor = Color.White) {
+    Scaffold(containerColor = Color.White.enTema(), bottomBar = {
+        NavigationBar(containerColor = Color.White.enTema()) {
             listOf(
                 Triple("Inicio", Icons.Filled.Home, "caregiver_home"),
                 Triple("Pacientes", Icons.Filled.Groups, "caregiver_patients"),
@@ -124,7 +131,7 @@ fun HomeProfessionalScreen(
                 Triple("Cuenta", Icons.Filled.Person, "caregiver_account")
             ).forEach { item ->
                 NavigationBarItem(selected = rutaActual == item.third, onClick = { onNavigate(item.third) },
-                    icon = { Icon(item.second, item.first) }, label = { Text(item.first, fontSize = 13.sp) },
+                    icon = { Icon(item.second, item.first) }, label = { Text(tr(item.first), fontSize = 11.sp) },
                     colors = NavigationBarItemDefaults.colors(selectedIconColor = VerdePH, selectedTextColor = VerdePH, indicatorColor = VerdeClaroPH))
             }
         }
@@ -132,32 +139,32 @@ fun HomeProfessionalScreen(
         Column(Modifier.fillMaxSize().padding(padding).verticalScroll(rememberScrollState()).padding(horizontal = 22.dp, vertical = 22.dp)) {
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.Top) {
                 Column(Modifier.weight(1f)) {
-                    Text("Hola, $nombreProfesional", fontSize = 29.sp, fontWeight = FontWeight.Bold, color = Color(0xFF10152B))
-                    Text(if (matricula.isBlank()) "Matrícula sin completar" else "Matrícula: $matricula", fontSize = 16.sp, color = GrisPH)
+                    Text(trf("Hola, {0}", nombreProfesional), fontSize = 29.sp, fontWeight = FontWeight.Bold, color = Color(0xFF10152B).enTema())
+                    Text(tr(if (matricula.isBlank()) "Matrícula sin completar" else trf("Matrícula: {0}", matricula)), fontSize = 16.sp, color = GrisPH)
                 }
-                Box(Modifier.size(48.dp).clip(CircleShape).clickable(role = Role.Button, onClickLabel = "Abrir PulsiBot") { onPulsiBot() }, contentAlignment = Alignment.Center) {
+                Box(Modifier.size(48.dp).clip(CircleShape).clickable(role = Role.Button, onClickLabel = tr("Abrir PulsiBot")) { onPulsiBot() }, contentAlignment = Alignment.Center) {
                     Image(painterResource(R.drawable.pulsibot), "PulsiBot", Modifier.fillMaxSize())
                 }
                 Spacer(Modifier.width(6.dp))
-                Box(Modifier.size(56.dp).clickable(role = Role.Button, onClickLabel = "Ver notificaciones") { onNotificaciones() }, contentAlignment = Alignment.Center) {
-                    Icon(Icons.Filled.NotificationsNone, "Notificaciones", Modifier.size(31.dp), tint = Color(0xFF737B8F))
-                    if (notificacionesNoLeidas > 0) Box(Modifier.align(Alignment.TopEnd).size(21.dp).background(Color(0xFFD92525), CircleShape), contentAlignment = Alignment.Center) {
-                        Text(if (notificacionesNoLeidas > 9) "9+" else notificacionesNoLeidas.toString(), color = Color.White, fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                Box(Modifier.size(56.dp).clickable(role = Role.Button, onClickLabel = tr("Ver notificaciones")) { onNotificaciones() }, contentAlignment = Alignment.Center) {
+                    Icon(Icons.Filled.NotificationsNone, "Notificaciones", Modifier.size(31.dp), tint = Color(0xFF737B8F).enTema())
+                    if (notificacionesNoLeidas > 0) Box(Modifier.align(Alignment.TopEnd).size(21.dp).background(Color(0xFFD92525).enTema(), CircleShape), contentAlignment = Alignment.Center) {
+                        Text(tr(if (notificacionesNoLeidas > 9) "9+" else notificacionesNoLeidas.toString()), color = Color.White, fontSize = 10.sp, fontWeight = FontWeight.Bold)
                     }
                 }
             }
             Spacer(Modifier.height(18.dp))
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(Icons.Filled.Apartment, null, Modifier.size(38.dp), tint = Color(0xFF737B8F)); Spacer(Modifier.width(14.dp))
-                Column { Text(lugarTrabajo.ifBlank { "Lugar de trabajo sin completar" }, fontSize = 18.sp, fontWeight = FontWeight.SemiBold); Text(especialidad.ifBlank { "Especialidad sin completar" }, fontSize = 14.sp, color = GrisPH) }
+                Icon(Icons.Filled.Apartment, null, Modifier.size(38.dp), tint = Color(0xFF737B8F).enTema()); Spacer(Modifier.width(14.dp))
+                Column { Text(tr(lugarTrabajo.ifBlank { "Lugar de trabajo sin completar" }), fontSize = 18.sp, fontWeight = FontWeight.SemiBold); Text(tr(especialidad.ifBlank { "Especialidad sin completar" }), fontSize = 14.sp, color = GrisPH) }
             }
             if (cargando) { Spacer(Modifier.height(12.dp)); LinearProgressIndicator(Modifier.fillMaxWidth()) }
             Spacer(Modifier.height(22.dp))
             Card(Modifier.fillMaxWidth(), shape = RoundedCornerShape(18.dp), colors = CardDefaults.cardColors(containerColor = VerdePH)) {
                 Row(Modifier.fillMaxWidth().padding(18.dp), verticalAlignment = Alignment.CenterVertically) {
-                    Box(Modifier.size(66.dp).background(Color(0xFF10A75F), CircleShape), contentAlignment = Alignment.Center) { Icon(Icons.Filled.Groups, null, tint = Color.White, modifier = Modifier.size(39.dp)) }
-                    Spacer(Modifier.width(15.dp)); Column(Modifier.weight(1f)) { Text("Pacientes vinculados", color = Color.White, fontSize = 16.sp); Text("$cantidadPacientes / ${if (esPremium) 5 else 1}", color = Color.White, fontSize = 29.sp, fontWeight = FontWeight.Bold); Text(if (esPremium) "Plan Premium: hasta 5 pacientes" else "Plan gratuito: 1 paciente", color = Color.White.copy(alpha = .72f), fontSize = 13.sp) }
-                    Surface(Modifier.heightIn(min = 56.dp).clickable(role = Role.Button) { onVerPacientes() }, color = Color.White, shape = RoundedCornerShape(50)) { Row(Modifier.heightIn(min = 56.dp).padding(horizontal = 12.dp, vertical = 11.dp), verticalAlignment = Alignment.CenterVertically) { Icon(Icons.Filled.Groups, null, tint = VerdePH, modifier = Modifier.size(19.dp)); Spacer(Modifier.width(5.dp)); Text("Ver pacientes", color = Color(0xFF164A31), fontSize = 13.sp, fontWeight = FontWeight.SemiBold); Icon(Icons.Filled.ChevronRight, null, tint = VerdePH) } }
+                    Box(Modifier.size(66.dp).background(Color(0xFF10A75F).enTema(), CircleShape), contentAlignment = Alignment.Center) { Icon(Icons.Filled.Groups, null, tint = Color.White, modifier = Modifier.size(39.dp)) }
+                    Spacer(Modifier.width(15.dp)); Column(Modifier.weight(1f)) { Text(tr("Pacientes vinculados"), color = Color.White, fontSize = 16.sp); Text(tr("$cantidadPacientes / ${if (esPremium) 5 else 1}"), color = Color.White, fontSize = 29.sp, fontWeight = FontWeight.Bold); Text(tr(if (esPremium) "Plan Premium: hasta 5 pacientes" else "Plan gratuito: 1 paciente"), color = Color.White.copy(alpha = .72f), fontSize = 13.sp) }
+                    Surface(Modifier.heightIn(min = 56.dp).clickable(role = Role.Button) { onVerPacientes() }, color = Color.White, shape = RoundedCornerShape(50)) { Row(Modifier.heightIn(min = 56.dp).padding(horizontal = 12.dp, vertical = 11.dp), verticalAlignment = Alignment.CenterVertically) { Icon(Icons.Filled.Groups, null, tint = VerdePH, modifier = Modifier.size(19.dp)); Spacer(Modifier.width(5.dp)); Text(tr("Ver pacientes"), color = Color(0xFF164A31).enTema(), fontSize = 13.sp, fontWeight = FontWeight.SemiBold); Icon(Icons.Filled.ChevronRight, null, tint = VerdePH) } }
                 }
             }
             Spacer(Modifier.height(18.dp))
@@ -176,7 +183,7 @@ fun HomeProfessionalScreen(
 
 @Composable
 private fun TarjetaPH(icono: androidx.compose.ui.graphics.vector.ImageVector, valor: String, titulo: String, subtitulo: String, fondo: Color, modifier: Modifier = Modifier, onClick: () -> Unit = {}) {
-    Card(modifier.clickable(role = Role.Button) { onClick() }.heightIn(min = 165.dp), shape = RoundedCornerShape(17.dp), colors = CardDefaults.cardColors(containerColor = Color.White), border = CardDefaults.outlinedCardBorder()) {
-        Column(Modifier.fillMaxWidth().padding(15.dp)) { Box(Modifier.size(43.dp).background(fondo, RoundedCornerShape(12.dp)), contentAlignment = Alignment.Center) { Icon(icono, null, tint = VerdePH, modifier = Modifier.size(24.dp)) }; Spacer(Modifier.height(8.dp)); Text(valor, fontSize = 22.sp, fontWeight = FontWeight.Bold, color = Color(0xFF10152B)); Text(titulo, fontSize = 13.sp, color = GrisPH); Text(subtitulo, fontSize = 12.sp, color = GrisPH) }
+    Card(modifier.clickable(role = Role.Button) { onClick() }.heightIn(min = 165.dp), shape = RoundedCornerShape(17.dp), colors = CardDefaults.cardColors(containerColor = Color.White.enTema()), border = CardDefaults.outlinedCardBorder()) {
+        Column(Modifier.fillMaxWidth().padding(15.dp)) { Box(Modifier.size(43.dp).background(fondo, RoundedCornerShape(12.dp)), contentAlignment = Alignment.Center) { Icon(icono, null, tint = VerdePH, modifier = Modifier.size(24.dp)) }; Spacer(Modifier.height(8.dp)); Text(tr(valor), fontSize = 22.sp, fontWeight = FontWeight.Bold, color = Color(0xFF10152B).enTema()); Text(tr(titulo), fontSize = 13.sp, color = GrisPH); Text(tr(subtitulo), fontSize = 12.sp, color = GrisPH) }
     }
 }

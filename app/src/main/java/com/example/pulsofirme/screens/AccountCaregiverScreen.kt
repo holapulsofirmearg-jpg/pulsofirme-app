@@ -127,7 +127,7 @@ fun AccountCaregiverScreen(
                         label = {
                             Text(
                                 text = tr(item.first),
-                                fontSize = 13.sp,
+                                fontSize = 11.sp,
                                 maxLines = 1
                             )
                         },

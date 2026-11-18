@@ -1,5 +1,9 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
+import com.example.pulsofirme.ui.theme.enTema
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -40,13 +44,18 @@ import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Calendar
 import java.util.Date
 
-private val VerdeCuidador = Color(0xFF1B7A4B)
-private val VerdeClaroCuidador = Color(0xFFEFF6F1)
-private val BordeGrisCuidador = Color(0xFFE5E7EB)
-private val CelesteVinculado = Color(0xFF2196F3)
-private val AzulTiempoTotal = Color(0xFF1565C0)
-private val MoradoSensacion = Color(0xFF8E24AA)
-
+private val VerdeCuidador: Color
+    @Composable get() = Color(0xFF1B7A4B).enTema()
+private val VerdeClaroCuidador: Color
+    @Composable get() = Color(0xFFEFF6F1).enTema()
+private val BordeGrisCuidador: Color
+    @Composable get() = Color(0xFFE5E7EB).enTema()
+private val CelesteVinculado: Color
+    @Composable get() = Color(0xFF2196F3).enTema()
+private val AzulTiempoTotal: Color
+    @Composable get() = Color(0xFF1565C0).enTema()
+private val MoradoSensacion: Color
+    @Composable get() = Color(0xFF8E24AA).enTema()
 private data class ItemMenuCuidador(
     val label: String,
     val icono: ImageVector,
@@ -108,7 +117,7 @@ fun HomeCaregiverScreen(
     // Sensación de hoy: null = cargando; "" = no la registró hoy
     var sensacionHoy by remember { mutableStateOf<String?>(null) }
     // El paciente decide si comparte su progreso con el tutor (Privacidad y datos)
-    var progresoCompartido by remember { mutableStateOf(true) }
+    var progresoCompartido by rememberSaveable { mutableStateOf(true) }
 
     LaunchedEffect(miUid) {
         if (miUid == null || rolUsuario == "profesional") return@LaunchedEffect
@@ -173,7 +182,7 @@ fun HomeCaregiverScreen(
     Scaffold(
         bottomBar = {
             NavigationBar(
-                containerColor = Color.White,
+                containerColor = Color.White.enTema(),
                 tonalElevation = 6.dp
             ) {
 
@@ -187,14 +196,14 @@ fun HomeCaregiverScreen(
                         icon = {
                             Icon(
                                 imageVector = item.icono,
-                                contentDescription = item.label,
+                                contentDescription = tr(item.label),
                                 modifier = Modifier.size(26.dp)
                             )
                         },
                         label = {
                             Text(
-                                text = item.label,
-                                fontSize = 13.sp,
+                                text = tr(item.label),
+                                fontSize = 11.sp,
                                 fontWeight = if (rutaActual == item.ruta) {
                                     FontWeight.Bold
                                 } else {
@@ -205,8 +214,8 @@ fun HomeCaregiverScreen(
                         colors = NavigationBarItemDefaults.colors(
                             selectedIconColor = VerdeCuidador,
                             selectedTextColor = VerdeCuidador,
-                            unselectedIconColor = Color(0xFF6B7280),
-                            unselectedTextColor = Color(0xFF6B7280),
+                            unselectedIconColor = Color(0xFF6B7280).enTema(),
+                            unselectedTextColor = Color(0xFF6B7280).enTema(),
                             indicatorColor = VerdeClaroCuidador
                         )
                     )
@@ -239,24 +248,24 @@ fun HomeCaregiverScreen(
                 ) {
 
                     Text(
-                        text = "Panel de cuidador",
+                        text = tr("Panel de cuidador"),
                         fontSize = 14.sp,
-                        color = Color(0xFF6B7280)
+                        color = Color(0xFF6B7280).enTema()
                     )
 
                     Text(
-                        text = "Hola, $nombreUsuario",
+                        text = trf("Hola, {0}", nombreUsuario),
                         fontSize = 26.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color(0xFF1A1A1A)
+                        color = Color(0xFF1A1A1A).enTema()
                     )
 
                     Spacer(modifier = Modifier.height(5.dp))
 
                     Text(
-                        text = "Acá podés ver el progreso de tu paciente y acompañarlo en su camino",
+                        text = tr("Acá podés ver el progreso de tu paciente y acompañarlo en su camino"),
                         fontSize = 14.sp,
-                        color = Color(0xFF6B7280),
+                        color = Color(0xFF6B7280).enTema(),
                         lineHeight = 20.sp
                     )
                 }
@@ -266,14 +275,14 @@ fun HomeCaregiverScreen(
                     modifier = Modifier
                         .size(48.dp)
                         .clip(CircleShape)
-                        .clickable(role = Role.Button, onClickLabel = "Abrir PulsiBot") {
+                        .clickable(role = Role.Button, onClickLabel = tr("Abrir PulsiBot")) {
                             onNavigate("pulsibot")
                         },
                     contentAlignment = Alignment.Center
                 ) {
                     Image(
                         painter = painterResource(id = R.drawable.pulsibot),
-                        contentDescription = "PulsiBot",
+                        contentDescription = tr("PulsiBot"),
                         modifier = Modifier.fillMaxSize()
                     )
                 }
@@ -292,8 +301,8 @@ fun HomeCaregiverScreen(
 
                         Icon(
                             imageVector = Icons.Filled.Notifications,
-                            contentDescription = "Notificaciones",
-                            tint = Color(0xFF1A1A1A),
+                            contentDescription = tr("Notificaciones"),
+                            tint = Color(0xFF1A1A1A).enTema(),
                             modifier = Modifier.size(27.dp)
                         )
                     }
@@ -316,7 +325,7 @@ fun HomeCaregiverScreen(
                         ) {
 
                             Text(
-                                text = "$avisosNuevos",
+                                text = tr("$avisosNuevos"),
                                 color = Color.White,
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.Bold
@@ -357,22 +366,22 @@ fun HomeCaregiverScreen(
                 Column {
 
                     Text(
-                        text = "Paciente",
+                        text = tr("Paciente"),
                         fontSize = 14.sp,
-                        color = Color(0xFF6B7280)
+                        color = Color(0xFF6B7280).enTema()
                     )
 
                     Text(
-                        text = nombrePaciente ?: "Paciente",
+                        text = tr(nombrePaciente ?: "Paciente"),
                         fontSize = 19.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color(0xFF1A1A1A)
+                        color = Color(0xFF1A1A1A).enTema()
                     )
 
                     Spacer(modifier = Modifier.height(2.dp))
 
                     Text(
-                        text = "Vinculado",
+                        text = tr("Vinculado"),
                         fontSize = 14.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = CelesteVinculado
@@ -387,10 +396,10 @@ fun HomeCaregiverScreen(
             // ---------------------------------------------------------
 
             Text(
-                text = "Resumen de hoy",
+                text = tr("Resumen de hoy"),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFF1A1A1A)
+                color = Color(0xFF1A1A1A).enTema()
             )
 
             Spacer(modifier = Modifier.height(14.dp))
@@ -434,7 +443,7 @@ fun HomeCaregiverScreen(
 
                 CuadradoRachaActual(
                     valor = if (!progresoCompartido) noCompartido
-                    else rachaDias?.let { if (it == 1) "1 día" else "$it días" } ?: "—",
+                    else rachaDias?.let { if (it == 1) "1 día" else trf("{0} días", it) } ?: "—",
                     modifier = Modifier.weight(1f)
                 )
             }
@@ -446,10 +455,10 @@ fun HomeCaregiverScreen(
             // ---------------------------------------------------------
 
             Text(
-                text = "Progresos recientes",
+                text = tr("Progresos recientes"),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
-                color = Color(0xFF1A1A1A)
+                color = Color(0xFF1A1A1A).enTema()
             )
 
             Spacer(modifier = Modifier.height(14.dp))
@@ -458,13 +467,13 @@ fun HomeCaregiverScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .clip(RoundedCornerShape(18.dp))
-                    .background(Color.White)
+                    .background(Color.White.enTema())
                     .border(
                         1.dp,
                         BordeGrisCuidador,
                         RoundedCornerShape(18.dp)
                     )
-                    .clickable(role = Role.Button, onClickLabel = "Ver evolución") {
+                    .clickable(role = Role.Button, onClickLabel = tr("Ver evolución")) {
                         onEvolucionClick()
                     }
                     .padding(18.dp)
@@ -486,7 +495,7 @@ fun HomeCaregiverScreen(
 
                         Icon(
                             imageVector = Icons.Filled.BarChart,
-                            contentDescription = "Evolución del paciente",
+                            contentDescription = tr("Evolución del paciente"),
                             tint = VerdeCuidador,
                             modifier = Modifier.size(25.dp)
                         )
@@ -495,19 +504,19 @@ fun HomeCaregiverScreen(
                     Spacer(modifier = Modifier.width(14.dp))
 
                     Text(
-                        text = "Evolución del paciente",
+                        text = tr("Evolución del paciente"),
                         fontSize = 17.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color(0xFF1A1A1A)
+                        color = Color(0xFF1A1A1A).enTema()
                     )
                 }
 
                 Spacer(modifier = Modifier.height(10.dp))
 
                 Text(
-                    text = "Tocá para ver cómo evolucionan los ejercicios y el QuickDASH de tu paciente.",
+                    text = tr("Tocá para ver cómo evolucionan los ejercicios y el QuickDASH de tu paciente."),
                     fontSize = 14.sp,
-                    color = Color(0xFF6B7280),
+                    color = Color(0xFF6B7280).enTema(),
                     lineHeight = 20.sp
                 )
             }
@@ -534,7 +543,7 @@ private fun CuadradoEjerciciosRealizados(
             .background(VerdeClaroCuidador)
             .border(
                 width = 1.5.dp,
-                color = Color(0xFFB9DDC8),
+                color = Color(0xFFB9DDC8).enTema(),
                 shape = RoundedCornerShape(18.dp)
             )
             .padding(12.dp),
@@ -544,7 +553,7 @@ private fun CuadradoEjerciciosRealizados(
 
         Icon(
             imageVector = Icons.AutoMirrored.Filled.DirectionsRun,
-            contentDescription = "Ejercicios realizados",
+            contentDescription = tr("Ejercicios realizados"),
             tint = VerdeCuidador,
             modifier = Modifier.size(31.dp)
         )
@@ -552,7 +561,7 @@ private fun CuadradoEjerciciosRealizados(
         Spacer(modifier = Modifier.height(6.dp))
 
         Text(
-            text = "Ejercicios realizados",
+            text = tr("Ejercicios realizados"),
             fontSize = 13.sp,
             color = VerdeCuidador,
             fontWeight = FontWeight.SemiBold,
@@ -563,10 +572,10 @@ private fun CuadradoEjerciciosRealizados(
         Spacer(modifier = Modifier.height(5.dp))
 
         Text(
-            text = valor,
+            text = tr(valor),
             fontSize = 20.sp,
             fontWeight = FontWeight.ExtraBold,
-            color = Color(0xFF1A1A1A)
+            color = Color(0xFF1A1A1A).enTema()
         )
     }
 }
@@ -585,10 +594,10 @@ private fun CuadradoTiempoTotal(
         modifier = modifier
             .heightIn(min = 132.dp)
             .clip(RoundedCornerShape(18.dp))
-            .background(Color(0xFFEEF5FF))
+            .background(Color(0xFFEEF5FF).enTema())
             .border(
                 width = 1.5.dp,
-                color = Color(0xFFBDD6F6),
+                color = Color(0xFFBDD6F6).enTema(),
                 shape = RoundedCornerShape(18.dp)
             )
             .padding(12.dp),
@@ -598,7 +607,7 @@ private fun CuadradoTiempoTotal(
 
         Icon(
             imageVector = Icons.Filled.Schedule,
-            contentDescription = "Tiempo total",
+            contentDescription = tr("Tiempo total"),
             tint = AzulTiempoTotal,
             modifier = Modifier.size(31.dp)
         )
@@ -606,7 +615,7 @@ private fun CuadradoTiempoTotal(
         Spacer(modifier = Modifier.height(6.dp))
 
         Text(
-            text = "Tiempo total",
+            text = tr("Tiempo total"),
             fontSize = 13.sp,
             color = AzulTiempoTotal,
             fontWeight = FontWeight.SemiBold,
@@ -617,10 +626,10 @@ private fun CuadradoTiempoTotal(
         Spacer(modifier = Modifier.height(5.dp))
 
         Text(
-            text = valor,
+            text = tr(valor),
             fontSize = 20.sp,
             fontWeight = FontWeight.ExtraBold,
-            color = Color(0xFF1A1A1A)
+            color = Color(0xFF1A1A1A).enTema()
         )
     }
 }
@@ -642,10 +651,10 @@ private fun CuadradoSensacionHoy(
         modifier = modifier
             .heightIn(min = 132.dp)
             .clip(RoundedCornerShape(18.dp))
-            .background(Color(0xFFF8F0FC))
+            .background(Color(0xFFF8F0FC).enTema())
             .border(
                 width = 1.5.dp,
-                color = Color(0xFFE0C3EB),
+                color = Color(0xFFE0C3EB).enTema(),
                 shape = RoundedCornerShape(18.dp)
             )
             .padding(12.dp),
@@ -655,7 +664,7 @@ private fun CuadradoSensacionHoy(
 
         Icon(
             imageVector = Icons.Filled.SentimentSatisfied,
-            contentDescription = "Sensación de hoy",
+            contentDescription = tr("Sensación de hoy"),
             tint = MoradoSensacion,
             modifier = Modifier.size(31.dp)
         )
@@ -663,7 +672,7 @@ private fun CuadradoSensacionHoy(
         Spacer(modifier = Modifier.height(6.dp))
 
         Text(
-            text = "Sensación de hoy",
+            text = tr("Sensación de hoy"),
             fontSize = 13.sp,
             color = MoradoSensacion,
             fontWeight = FontWeight.SemiBold,
@@ -683,10 +692,10 @@ private fun CuadradoSensacionHoy(
                 Spacer(modifier = Modifier.width(6.dp))
             }
             Text(
-                text = valor,
+                text = tr(valor),
                 fontSize = if (registrada) 17.sp else 15.sp,
                 fontWeight = if (registrada) FontWeight.ExtraBold else FontWeight.SemiBold,
-                color = if (registrada) Color(0xFF1A1A1A) else Color(0xFF6B7280),
+                color = if (registrada) Color(0xFF1A1A1A).enTema() else Color(0xFF6B7280).enTema(),
                 textAlign = TextAlign.Center,
                 lineHeight = 20.sp
             )
@@ -708,10 +717,10 @@ private fun CuadradoRachaActual(
         modifier = modifier
             .heightIn(min = 132.dp)
             .clip(RoundedCornerShape(18.dp))
-            .background(Color(0xFFF1F8F4))
+            .background(Color(0xFFF1F8F4).enTema())
             .border(
                 width = 1.5.dp,
-                color = Color(0xFFB9DDC8),
+                color = Color(0xFFB9DDC8).enTema(),
                 shape = RoundedCornerShape(18.dp)
             )
             .padding(12.dp),
@@ -721,7 +730,7 @@ private fun CuadradoRachaActual(
 
         Icon(
             imageVector = Icons.AutoMirrored.Filled.TrendingUp,
-            contentDescription = "Racha actual",
+            contentDescription = tr("Racha actual"),
             tint = VerdeCuidador,
             modifier = Modifier.size(31.dp)
         )
@@ -729,7 +738,7 @@ private fun CuadradoRachaActual(
         Spacer(modifier = Modifier.height(6.dp))
 
         Text(
-            text = "Racha actual",
+            text = tr("Racha actual"),
             fontSize = 13.sp,
             color = VerdeCuidador,
             fontWeight = FontWeight.SemiBold,
@@ -740,10 +749,10 @@ private fun CuadradoRachaActual(
         Spacer(modifier = Modifier.height(5.dp))
 
         Text(
-            text = valor,
+            text = tr(valor),
             fontSize = 20.sp,
             fontWeight = FontWeight.ExtraBold,
-            color = Color(0xFF1A1A1A)
+            color = Color(0xFF1A1A1A).enTema()
         )
     }
 }
