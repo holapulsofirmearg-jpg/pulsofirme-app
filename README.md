@@ -1,99 +1,61 @@
 <p align="center">
-  <img src="app/src/main/res/drawable/logooo.png" alt="Logo de PulsoFirme" width="140">
+  <img src="app/src/main/res/drawable/logooo.png" alt="Logo de PulsoFirme" width="130">
 </p>
 
-<h1 align="center">PulsoFirme</h1>
+# PulsoFirme
 
-<p align="center">
-  App Android que acompaña la rehabilitación de manos en personas con <b>Parkinson</b> y <b>artritis</b>,<br>
-  junto con un guante inteligente.
-</p>
+PulsoFirme es una app para Android que hicimos como proyecto en la Escuela Experimental PROA de Alta Gracia. Está pensada para personas con Parkinson o artritis que necesitan hacer ejercicios de mano todos los días, y funciona junto con un guante que armamos nosotros.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Android-7.0%2B-3DDC84?logo=android&logoColor=white" alt="Android 7.0+">
-  <img src="https://img.shields.io/badge/Kotlin-Jetpack%20Compose-7F52FF?logo=kotlin&logoColor=white" alt="Kotlin y Jetpack Compose">
-  <img src="https://img.shields.io/badge/Firebase-Auth%20%C2%B7%20Firestore%20%C2%B7%20AI-FFCA28?logo=firebase&logoColor=black" alt="Firebase">
-  <img src="https://img.shields.io/badge/Idiomas-Español%20%C2%B7%20English-1B7A4B" alt="Español e inglés">
-</p>
-
----
-
-## ¿Qué es?
-
-PulsoFirme combina un **guante inteligente** con una **app móvil** para que la persona haga ejercicios de mano guiados desde su casa, registre cómo se siente y comparta su progreso con quienes la acompañan.
-
-La app tiene tres tipos de cuenta:
-
-| Rol | Qué puede hacer |
-|---|---|
-| **Paciente** | Hace rutinas guiadas, conecta el guante, registra medicación y cómo se siente, completa la evaluación QuickDASH y ve su progreso. |
-| **Tutor / cuidador** | Se vincula con un código, sigue el progreso del paciente y recibe avisos (medicación olvidada, días sin ejercicio, dolor). |
-| **Profesional de salud** | Gestiona varios pacientes, revisa su evolución, cumplimiento y resultados de QuickDASH. |
-
-> PulsoFirme es una herramienta de apoyo. No diagnostica ni reemplaza la indicación de un profesional de la salud.
-
-## Funciones principales
-
-- **Ejercicios guiados** para Parkinson y artritis, con imágenes paso a paso y temporizador.
-- **Rutinas adaptativas:** la dificultad se ajusta según el estado de la medicación (on/off), el resultado de QuickDASH y cómo se sintió la persona.
-- **Conexión con el guante** por WiFi para registrar el movimiento de los dedos y la muñeca.
-- **Evaluación QuickDASH** con historial de resultados.
-- **Recordatorios** de ejercicio y alarmas de medicación a pantalla completa, aunque el celular esté bloqueado.
-- **Avisos al tutor** en segundo plano, incluso con la app cerrada.
-- **PulsiBot:** asistente con inteligencia artificial (Gemini) que responde dudas sobre la app, con respuestas de respaldo sin internet.
-- **Resumen semanal en PDF** para compartir con el médico.
-- **Privacidad:** el paciente decide qué ve cada tutor o profesional, y puede descargar o eliminar todos sus datos.
-- **Accesibilidad:** letra grande, alto contraste, botones más grandes, menos animaciones y compatibilidad con TalkBack.
-- **Modo oscuro** (claro, oscuro o automático).
-- **Dos idiomas:** español e inglés.
+La idea surgió de algo simple: los ejercicios de rehabilitación se hacen en casa, muchas veces solos, y es fácil dejarlos o no saber si se están haciendo bien. Con la app la persona sigue rutinas guiadas, anota cómo se siente y puede compartir su progreso con un familiar o con su médico.
 
 ## Capturas
 
-| Inicio | Ejercicios | Progreso | PulsiBot |
-|---|---|---|---|
-| <img src="capturas/inicio.png" width="200"> | <img src="capturas/ejercicios.png" width="200"> | <img src="capturas/progreso.png" width="200"> | <img src="capturas/pulsibot.png" width="200"> |
+<p>
+  <img src="Capturas/inicio.png" width="200">
+  <img src="Capturas/ejercicios.png" width="200">
+  <img src="Capturas/progreso.png" width="200">
+  <img src="Capturas/pulsibot.png" width="200">
+</p>
 
-## Tecnologías
+## Cómo funciona
 
-- **Lenguaje:** Kotlin
-- **Interfaz:** Jetpack Compose + Material 3
-- **Navegación:** Navigation Compose, con las rutas divididas por rol
-- **Backend:** Firebase Authentication y Cloud Firestore, con reglas de seguridad por rol
-- **IA:** Firebase AI Logic (Gemini) para PulsiBot
-- **Seguridad:** Firebase App Check con Play Integrity
-- **Tareas en segundo plano:** WorkManager y AlarmManager
-- **Hardware:** guante con sensores de movimiento (MPU6050) y microcontrolador con WiFi
+Hay tres tipos de cuenta:
 
-## Cómo correrla
+- **Paciente:** hace los ejercicios, conecta el guante, registra la medicación y cómo se siente cada día, y completa el cuestionario QuickDASH.
+- **Tutor o familiar:** se vincula con un código que le pasa el paciente, ve su progreso y recibe avisos, por ejemplo si se olvidó la medicación o si lleva varios días sin hacer ejercicio.
+- **Profesional:** puede seguir a varios pacientes y ver cómo evolucionan.
 
-1. Cloná el repositorio:
-   ```bash
-   git clone https://github.com/holapulsofirmearg-jpg/pulsofirme-app.git
-   ```
-2. Abrilo con **Android Studio**.
-3. Creá un proyecto en [Firebase](https://console.firebase.google.com), agregá una app Android con el paquete `com.example.pulsofirme` y descargá el archivo `google-services.json` dentro de la carpeta `app/`.
-4. En Firebase activá **Authentication** (correo y contraseña), **Cloud Firestore** y **AI Logic**.
-5. Conectá un celular o un emulador con Android 7.0 o superior y tocá **Run ▶**.
+El paciente decide qué información ve cada uno, y puede descargar o borrar sus datos cuando quiera.
 
-## Estructura
+Algunas cosas que agregamos:
 
-```
-app/src/main/java/com/example/pulsofirme/
-├── screens/          Pantallas de la app (paciente, tutor y profesional)
-│   └── alarmas/      Alarmas de medicación
-├── ui/theme/         Colores, tema claro/oscuro y generador de PDF
-├── Rutas*.kt         Navegación separada por rol
-├── pulsibotia.kt     Asistente PulsiBot
-└── AvisosTutor.kt    Avisos al tutor en segundo plano
-```
+- Las rutinas cambian de dificultad según cómo está la persona ese día y si la medicación está haciendo efecto o no.
+- Recordatorios de ejercicio y alarmas de medicación que suenan aunque el celular esté bloqueado.
+- PulsiBot, un asistente que responde dudas sobre la app.
+- Un resumen semanal en PDF para llevarle al médico.
+- Opciones de accesibilidad: letra grande, alto contraste, botones más grandes y soporte para TalkBack.
+- Modo oscuro, y la app está en español y en inglés.
+
+PulsoFirme acompaña el tratamiento, pero no lo reemplaza. Los ejercicios siempre tienen que estar indicados por un profesional.
+
+## Con qué está hecha
+
+La app está escrita en Kotlin con Jetpack Compose. Para las cuentas y los datos usamos Firebase (Authentication y Firestore), y PulsiBot funciona con Gemini a través de Firebase AI Logic. Los recordatorios y los avisos al tutor corren en segundo plano con WorkManager y AlarmManager.
+
+El guante tiene sensores de movimiento (MPU6050) y se conecta con el celular por WiFi.
+
+## Probarla
+
+1. Cloná el repositorio y abrilo con Android Studio.
+2. Creá un proyecto en Firebase, agregá una app Android con el paquete `com.example.pulsofirme` y poné el archivo `google-services.json` dentro de la carpeta `app/`.
+3. Activá Authentication (correo y contraseña), Firestore y AI Logic.
+4. Corré la app en un celular o emulador con Android 7.0 o más.
 
 ## Equipo
-
-Proyecto desarrollado por estudiantes de la **Escuela Experimental PROA, sede Alta Gracia** (Córdoba, Argentina):
 
 - Ivan Correa
 - Gustavo Carrasco
 - Ana Cabagna
 - Morena Martínez
 
-📩 Contacto: **holapulsofirmearg@gmail.com**
+Si tenés alguna duda, escribinos a holapulsofirmearg@gmail.com.
