@@ -1,5 +1,9 @@
 package com.example.pulsofirme
 
+import com.example.pulsofirme.screens.IdiomaApp
+import com.example.pulsofirme.screens.tr
+import com.example.pulsofirme.screens.trf
+
 import android.content.Context
 import android.content.Intent
 import android.graphics.Paint
@@ -48,17 +52,17 @@ fun generarDatosProfesionalPdf(
 
         canvas.drawText("PulsoFirme", 45f, y, titulo)
         y += 30f
-        canvas.drawText("Datos de la cuenta profesional", 45f, y, subtitulo)
+        canvas.drawText(tr("Datos de la cuenta profesional"), 45f, y, subtitulo)
         y += 35f
 
         fun campo(etiqueta: String, valor: String) {
             if (y > 800f) return
-            val contenido = valor.ifBlank { "No informado" }
-            canvas.drawText("$etiqueta: $contenido", 45f, y, texto)
+            val contenido = valor.ifBlank { tr("No informado") }
+            canvas.drawText("${tr(etiqueta)}: $contenido", 45f, y, texto)
             y += 24f
         }
 
-        canvas.drawText("Datos personales", 45f, y, subtitulo)
+        canvas.drawText(tr("Datos personales"), 45f, y, subtitulo)
         y += 28f
         campo("Nombre", datos.nombre)
         campo("Apellido", datos.apellido)
@@ -69,7 +73,7 @@ fun generarDatosProfesionalPdf(
         campo("País", datos.pais)
 
         y += 12f
-        canvas.drawText("Datos profesionales", 45f, y, subtitulo)
+        canvas.drawText(tr("Datos profesionales"), 45f, y, subtitulo)
         y += 28f
         campo("Lugar de trabajo", datos.lugarTrabajo)
         campo("Especialidad", datos.especialidad)
@@ -78,7 +82,7 @@ fun generarDatosProfesionalPdf(
 
         y += 18f
         canvas.drawText(
-            "Documento generado desde PulsoFirme.",
+            tr("Documento generado desde PulsoFirme."),
             45f,
             y,
             texto
@@ -112,7 +116,7 @@ fun abrirPdfProfesional(context: Context, archivo: File) {
         addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
     }
 
-    context.startActivity(Intent.createChooser(intent, "Abrir PDF"))
+    context.startActivity(Intent.createChooser(intent, tr("Abrir PDF")))
 }
 
 fun compartirPdfProfesional(context: Context, archivo: File) {
@@ -128,5 +132,5 @@ fun compartirPdfProfesional(context: Context, archivo: File) {
         addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
     }
 
-    context.startActivity(Intent.createChooser(intent, "Compartir PDF"))
+    context.startActivity(Intent.createChooser(intent, tr("Compartir PDF")))
 }

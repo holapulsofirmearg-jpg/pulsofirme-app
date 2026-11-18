@@ -1,5 +1,9 @@
 package com.example.pulsofirme
 
+import com.example.pulsofirme.screens.IdiomaApp
+import com.example.pulsofirme.screens.tr
+import com.example.pulsofirme.screens.trf
+
 import android.content.Context
 import android.content.Intent
 import android.graphics.Canvas
@@ -128,8 +132,9 @@ fun generarResumenSemanal(
 
             val unDia = 24L * 60 * 60 * 1000
             val clave = SimpleDateFormat("yyyy-MM-dd", Locale.US)
-            val corto = SimpleDateFormat("dd/MM", Locale("es", "AR"))
-            val letras = listOf("L", "M", "M", "J", "V", "S", "D")
+            val corto = if (IdiomaApp.esIngles) SimpleDateFormat("MM/dd", Locale.US) else SimpleDateFormat("dd/MM", Locale("es", "AR"))
+            val letras = if (IdiomaApp.esIngles) listOf("M", "T", "W", "T", "F", "S", "S")
+            else listOf("L", "M", "M", "J", "V", "S", "D")
 
             // Los últimos 7 días (de hace 6 días a hoy)
             val dias = (6 downTo 0).map { atras ->
@@ -204,7 +209,7 @@ fun generarResumenSemanal(
                         diagnosticos.isNotEmpty() -> diagnosticos.joinToString(" y ")
                         UserData.diagnosticoPrincipal.isNotBlank() -> UserData.diagnosticoPrincipal
                         UserData.diagnosticos.isNotEmpty() -> UserData.diagnosticos.joinToString(" y ")
-                        else -> "Sin diagnóstico cargado"
+                        else -> tr("Sin diagnóstico cargado")
                     }
                 },
                 mano = doc.getString("mano").orEmpty().ifBlank { UserData.mano },
@@ -241,19 +246,20 @@ private fun crearPdfPaciente(
         val anchoUtil = ANCHO - MARGEN * 2
 
         val hoy = Calendar.getInstance()
-        val formatoLargo = SimpleDateFormat("d 'de' MMMM 'de' yyyy", Locale("es", "AR"))
-        val rango = "${semana.first().fecha} al ${semana.last().fecha}"
+        val formatoLargo = if (IdiomaApp.esIngles) SimpleDateFormat("MMMM d, yyyy", Locale.US)
+        else SimpleDateFormat("d 'de' MMMM 'de' yyyy", Locale("es", "AR"))
+        val rango = trf("{0} al {1}", semana.first().fecha, semana.last().fecha)
 
         // ---------- Encabezado ----------
         canvas.drawRect(RectF(0f, 0f, ANCHO.toFloat(), 118f), pincelRelleno(VERDE))
         canvas.drawText("PulsoFirme", MARGEN, 46f, pincelTexto(13f, Color.WHITE))
-        canvas.drawText("Resumen del paciente", MARGEN, 82f, pincelTexto(28f, Color.WHITE, true))
+        canvas.drawText(tr("Resumen del paciente"), MARGEN, 82f, pincelTexto(28f, Color.WHITE, true))
         val pincelFecha = pincelTexto(11f, Color.WHITE).apply { alpha = 220 }
         canvas.drawText(rango, ANCHO - MARGEN - pincelFecha.measureText(rango), 82f, pincelFecha)
 
         // ---------- Paciente ----------
         var y = 158f
-        canvas.drawText("PACIENTE", MARGEN, y, pincelTexto(10f, GRIS, true))
+        canvas.drawText(tr("PACIENTE"), MARGEN, y, pincelTexto(10f, GRIS, true))
         y += 22f
         canvas.drawText(nombre, MARGEN, y, pincelTexto(20f, VERDE_OSCURO, true))
         y += 18f
@@ -261,8 +267,8 @@ private fun crearPdfPaciente(
             canvas.drawText(correo, MARGEN, y, pincelTexto(10.5f, GRIS))
             y += 18f
         }
-        val manoTexto = if (mano.isBlank()) "No informada" else mano
-        y = dibujarParrafo(canvas, "$diagnostico · Mano del guante: $manoTexto", MARGEN, y, anchoUtil, pincelTexto(11f, GRIS), 16f)
+        val manoTexto = if (mano.isBlank()) tr("No informada") else tr(mano)
+        y = dibujarParrafo(canvas, trf("{0} · Mano del guante: {1}", tr(diagnostico), manoTexto), MARGEN, y, anchoUtil, pincelTexto(11f, GRIS), 16f)
         y += 14f
 
         // ---------- Tarjetas ----------
@@ -270,20 +276,20 @@ private fun crearPdfPaciente(
         val tomasHechas = semana.sumOf { it.tomas }
         val tomasTotal = semana.sumOf { it.tomasTotal }
         val anchoTarjeta = (anchoUtil - 24f) / 3f
-        tarjetaStat(canvas, MARGEN, y, anchoTarjeta, "Ejercicios (7 días)", "$ejSemana")
-        tarjetaStat(canvas, MARGEN + anchoTarjeta + 12f, y, anchoTarjeta, "Tomas de medicación",
+        tarjetaStat(canvas, MARGEN, y, anchoTarjeta, tr("Ejercicios (7 días)"), "$ejSemana")
+        tarjetaStat(canvas, MARGEN + anchoTarjeta + 12f, y, anchoTarjeta, tr("Tomas de medicación"),
             if (tomasTotal == 0) "—" else "$tomasHechas/$tomasTotal")
-        tarjetaStat(canvas, MARGEN + (anchoTarjeta + 12f) * 2, y, anchoTarjeta, "Ejercicios en total", "$ejerciciosTotales")
+        tarjetaStat(canvas, MARGEN + (anchoTarjeta + 12f) * 2, y, anchoTarjeta, tr("Ejercicios en total"), "$ejerciciosTotales")
         y += 104f
 
         // ---------- Semana día por día ----------
-        canvas.drawText("Tus últimos 7 días", MARGEN, y, pincelTexto(13f, VERDE_OSCURO, true))
+        canvas.drawText(tr("Tus últimos 7 días"), MARGEN, y, pincelTexto(13f, VERDE_OSCURO, true))
         y += 14f
 
         val anchoEtiqueta = 78f
         val anchoCol = (anchoUtil - anchoEtiqueta) / 7f
         val altoFila = 30f
-        val filas = listOf("Día", "Ejercicios", "Cómo se sintió", "Medicación")
+        val filas = listOf("Día", "Ejercicios", "Cómo se sintió", "Medicación").map { tr(it) }
         canvas.drawRoundRect(RectF(MARGEN, y, ANCHO - MARGEN, y + altoFila * filas.size), 10f, 10f, pincelRelleno(VERDE_SUAVE))
 
         filas.forEachIndexed { f, etiqueta ->
@@ -309,7 +315,7 @@ private fun crearPdfPaciente(
             } else {
                 val color = SensacionDiaria.colorDe(d.sensacion).toArgb()
                 canvas.drawCircle(cx, ySens + 9f, 3.5f, pincelRelleno(color))
-                val palabras = d.sensacion.split(" ")
+                val palabras = tr(d.sensacion).split(" ")
                 centrado(palabras.first(), ySens + 21f, pincelTexto(7f, NEGRO))
                 if (palabras.size > 1) centrado(palabras.drop(1).joinToString(" "), ySens + 28.5f, pincelTexto(7f, NEGRO))
             }
@@ -324,8 +330,8 @@ private fun crearPdfPaciente(
         y += altoFila * filas.size + 14f
         y = dibujarParrafo(
             canvas,
-            "Medicación: tomas marcadas con \"Ya la tomé\" sobre las que tocaban ese día. " +
-                    "Cómo se sintió: lo que registró en \"Cómo te sentís hoy\".",
+            tr("Medicación: tomas marcadas con \"Ya la tomé\" sobre las que tocaban ese día. ") +
+                    tr("Cómo se sintió: lo que registró en \"Cómo te sentís hoy\"."),
             MARGEN, y, anchoUtil, pincelTexto(8.5f, GRIS), 12f
         )
         y += 16f
@@ -334,43 +340,43 @@ private fun crearPdfPaciente(
         y += 26f
 
         // ---------- QuickDASH ----------
-        canvas.drawText("Autoevaluación QuickDASH", MARGEN, y, pincelTexto(13f, VERDE_OSCURO, true))
+        canvas.drawText(tr("Autoevaluación QuickDASH"), MARGEN, y, pincelTexto(13f, VERDE_OSCURO, true))
         y += 20f
         val textoQuickDash = if (puntajeQuickDash == null) {
-            "Todavía no se realizó ninguna evaluación."
+            tr("Todavía no se realizó ninguna evaluación.")
         } else {
             val nivel = when {
-                puntajeQuickDash < 15f -> "sin dificultad o muy leve"
-                puntajeQuickDash < 40f -> "dificultad leve"
-                puntajeQuickDash < 60f -> "dificultad moderada"
+                puntajeQuickDash < 15f -> tr("sin dificultad o muy leve")
+                puntajeQuickDash < 40f -> tr("dificultad leve")
+                puntajeQuickDash < 60f -> tr("dificultad moderada")
                 else -> "dificultad importante"
             }
             val cuando = if (fechaQuickDash == null) "" else " · ${formatoLargo.format(fechaQuickDash)}"
-            "Puntaje ${String.format(Locale.US, "%.1f", puntajeQuickDash)} sobre 100 ($nivel)$cuando"
+            trf("Puntaje {0} sobre 100 ({1})", String.format(Locale.US, "%.1f", puntajeQuickDash), nivel) + cuando
         }
         y = dibujarParrafo(canvas, textoQuickDash, MARGEN, y, anchoUtil, pincelTexto(11f, GRIS), 16f)
         y += 18f
 
         // ---------- Horarios de medicación ----------
-        canvas.drawText("Horarios de medicación", MARGEN, y, pincelTexto(13f, VERDE_OSCURO, true))
+        canvas.drawText(tr("Horarios de medicación"), MARGEN, y, pincelTexto(13f, VERDE_OSCURO, true))
         y += 20f
         val textoMedicacion = if (horariosMedicacion.isEmpty()) {
-            "No hay recordatorios de medicación activos."
+            tr("No hay recordatorios de medicación activos.")
         } else {
-            "Recordatorios: ${horariosMedicacion.joinToString(" · ") { it.removeSuffix(" hs").trim() }} hs."
+            trf("Recordatorios: {0} hs.", horariosMedicacion.joinToString(" · ") { it.removeSuffix(" hs").trim() })
         }
         y = dibujarParrafo(canvas, textoMedicacion, MARGEN, y, anchoUtil, pincelTexto(11f, GRIS), 16f)
         y += 18f
 
         // ---------- Seguimiento ----------
         if (y < 700f && (UserData.profesionalACargo.isNotBlank() || UserData.notasCuidador.isNotBlank())) {
-            canvas.drawText("Seguimiento", MARGEN, y, pincelTexto(13f, VERDE_OSCURO, true))
+            canvas.drawText(tr("Seguimiento"), MARGEN, y, pincelTexto(13f, VERDE_OSCURO, true))
             y += 20f
             if (UserData.profesionalACargo.isNotBlank()) {
-                y = dibujarParrafo(canvas, "Profesional a cargo: ${UserData.profesionalACargo}", MARGEN, y, anchoUtil, pincelTexto(11f, GRIS), 16f)
+                y = dibujarParrafo(canvas, trf("Profesional a cargo: {0}", UserData.profesionalACargo), MARGEN, y, anchoUtil, pincelTexto(11f, GRIS), 16f)
             }
             if (UserData.notasCuidador.isNotBlank() && y < 730f) {
-                dibujarParrafo(canvas, "Notas: ${UserData.notasCuidador.take(220)}", MARGEN, y, anchoUtil, pincelTexto(11f, GRIS), 16f)
+                dibujarParrafo(canvas, trf("Notas: {0}", UserData.notasCuidador.take(220)), MARGEN, y, anchoUtil, pincelTexto(11f, GRIS), 16f)
             }
         }
 
@@ -379,7 +385,7 @@ private fun crearPdfPaciente(
         canvas.drawRoundRect(RectF(MARGEN, yPie, ANCHO - MARGEN, yPie + 50f), 12f, 12f, pincelRelleno(VERDE_SUAVE))
         dibujarParrafo(
             canvas,
-            "Documento generado por PulsoFirme el ${formatoLargo.format(hoy.time)}. Este resumen es informativo y no reemplaza una evaluación profesional.",
+            trf("Documento generado por PulsoFirme el {0}. Este resumen es informativo y no reemplaza una evaluación profesional.", formatoLargo.format(hoy.time)),
             MARGEN + 16f, yPie + 21f, anchoUtil - 32f, pincelTexto(9.5f, GRIS), 14f
         )
 
@@ -409,7 +415,7 @@ fun abrirPdf(context: Context, archivo: File): Boolean {
             addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         }
-        context.startActivity(Intent.createChooser(intent, "Abrir resumen"))
+        context.startActivity(Intent.createChooser(intent, tr("Abrir resumen")))
         true
     } catch (e: Exception) {
         false
@@ -427,10 +433,10 @@ fun compartirPdf(context: Context, archivo: File): Boolean {
         val intent = Intent(Intent.ACTION_SEND).apply {
             type = "application/pdf"
             putExtra(Intent.EXTRA_STREAM, uri)
-            putExtra(Intent.EXTRA_SUBJECT, "Resumen semanal de PulsoFirme")
+            putExtra(Intent.EXTRA_SUBJECT, tr("Resumen semanal de PulsoFirme"))
             addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         }
-        context.startActivity(Intent.createChooser(intent, "Compartir resumen"))
+        context.startActivity(Intent.createChooser(intent, tr("Compartir resumen")))
         true
     } catch (e: Exception) {
         false

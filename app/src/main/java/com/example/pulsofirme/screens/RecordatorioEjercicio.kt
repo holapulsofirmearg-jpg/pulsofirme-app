@@ -1,5 +1,9 @@
 package com.example.pulsofirme.alarmas
 
+import com.example.pulsofirme.screens.IdiomaApp
+import com.example.pulsofirme.screens.tr
+import com.example.pulsofirme.screens.trf
+
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.AlarmManager
@@ -185,6 +189,7 @@ object RecordatorioEjercicio {
 
     @SuppressLint("MissingPermission")
     fun mostrarNotificacion(context: Context) {
+        IdiomaApp.cargar(context)
         val app = context.applicationContext
 
         // Android 13+: sin permiso no se puede mostrar la notificación
@@ -211,10 +216,10 @@ object RecordatorioEjercicio {
         val racha = rachaActual(app)
         val conRacha = avisarRacha(app) && racha >= 2
 
-        val titulo = if (conRacha) "¡No pierdas tu racha de $racha días!"
-        else "¿Hiciste tus ejercicios hoy?"
-        val texto = if (conRacha) "Con unos minutos de ejercicio hoy seguís sumando. Tocá para empezar."
-        else "Dedicale unos minutos a tu mano. Tocá para empezar."
+        val titulo = if (conRacha) trf("¡No pierdas tu racha de {0} días!", racha)
+        else tr("¿Hiciste tus ejercicios hoy?")
+        val texto = if (conRacha) tr("Con unos minutos de ejercicio hoy seguís sumando. Tocá para empezar.")
+        else tr("Dedicale unos minutos a tu mano. Tocá para empezar.")
 
         val notificacion = NotificationCompat.Builder(app, CANAL_ID)
             .setSmallIcon(R.mipmap.ic_launcher)
@@ -238,10 +243,10 @@ object RecordatorioEjercicio {
 
         val canal = NotificationChannel(
             CANAL_ID,
-            "Recordatorio de ejercicio",
+            tr("Recordatorio de ejercicio"),
             NotificationManager.IMPORTANCE_DEFAULT
         ).apply {
-            description = "Te avisa si todavía no hiciste tu ejercicio del día"
+            description = tr("Te avisa si todavía no hiciste tu ejercicio del día")
         }
         manager.createNotificationChannel(canal)
     }

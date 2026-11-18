@@ -1,5 +1,9 @@
 package com.example.pulsofirme.alarmas
 
+import com.example.pulsofirme.screens.IdiomaApp
+import com.example.pulsofirme.screens.tr
+import com.example.pulsofirme.screens.trf
+
 import android.Manifest
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -19,14 +23,15 @@ import com.example.pulsofirme.notificaciones.NotificacionesRepo
 class AlarmaReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
+        IdiomaApp.cargar(context)
         val horario = intent.getStringExtra("horario") ?: ""
 
         // Queda registrada en la pantalla Novedades
         NotificacionesRepo.agregar(
             context,
             tipo = "medicacion",
-            titulo = "Hora de tu medicación",
-            detalle = if (horario.isNotBlank()) "Sonó tu recordatorio de las $horario." else "Sonó tu recordatorio de medicación."
+            titulo = tr("Hora de tu medicación"),
+            detalle = if (horario.isNotBlank()) trf("Sonó tu recordatorio de las {0}.", horario) else tr("Sonó tu recordatorio de medicación.")
         )
 
         mostrarAlarma(context, horario)
@@ -48,8 +53,8 @@ class AlarmaReceiver : BroadcastReceiver() {
 
         val notificacion = NotificationCompat.Builder(context, CANAL_ID)
             .setSmallIcon(android.R.drawable.ic_lock_idle_alarm)
-            .setContentTitle("Hora de tu medicación")
-            .setContentText(if (horario.isNotBlank()) "Recordatorio de las $horario" else "Tomá tu medicación")
+            .setContentTitle(tr("Hora de tu medicación"))
+            .setContentText(if (horario.isNotBlank()) trf("Recordatorio de las {0}", horario) else tr("Tomá tu medicación"))
             .setPriority(NotificationCompat.PRIORITY_MAX)
             .setCategory(NotificationCompat.CATEGORY_ALARM)
             .setFullScreenIntent(pantallaAlarma, true)
@@ -77,10 +82,10 @@ class AlarmaReceiver : BroadcastReceiver() {
 
             val canal = NotificationChannel(
                 CANAL_ID,
-                "Alarmas de medicación",
+                tr("Alarmas de medicación"),
                 NotificationManager.IMPORTANCE_HIGH
             ).apply {
-                description = "Suena a la hora de tomar la medicación"
+                description = tr("Suena a la hora de tomar la medicación")
                 enableVibration(true)
                 setSound(
                     RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM),

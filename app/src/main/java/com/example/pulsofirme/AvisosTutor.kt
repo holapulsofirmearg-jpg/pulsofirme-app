@@ -1,5 +1,9 @@
 package com.example.pulsofirme
 
+import com.example.pulsofirme.screens.IdiomaApp
+import com.example.pulsofirme.screens.tr
+import com.example.pulsofirme.screens.trf
+
 import android.Manifest
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -79,10 +83,10 @@ object AvisosTutor {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val canal = NotificationChannel(
                 CANAL,
-                "Avisos del paciente",
+                tr("Avisos del paciente"),
                 NotificationManager.IMPORTANCE_DEFAULT
             ).apply {
-                description = "Avisos sobre los ejercicios y el progreso del paciente que acompañás"
+                description = tr("Avisos sobre los ejercicios y el progreso del paciente que acompañás")
             }
             context.getSystemService(NotificationManager::class.java)
                 ?.createNotificationChannel(canal)
@@ -142,6 +146,8 @@ class AvisosTutorWorker(
     }
 
     override suspend fun doWork(): Result {
+        // El worker corre con la app cerrada: cargamos el idioma elegido
+        IdiomaApp.cargar(applicationContext)
         val esPrueba = inputData.getBoolean(PRUEBA, false)
         val ctx = applicationContext
 
@@ -169,8 +175,8 @@ class AvisosTutorWorker(
             if (esPrueba) {
                 AvisosTutor.mostrar(
                     ctx, ID_PRUEBA,
-                    "Avisos de PulsoFirme activados",
-                    "Así te vamos a avisar sobre los ejercicios y el progreso de $nombre."
+                    tr("Avisos de PulsoFirme activados"),
+                    trf("Así te vamos a avisar sobre los ejercicios y el progreso de {0}.", nombre)
                 )
             }
 
@@ -199,8 +205,8 @@ class AvisosTutorWorker(
                         if (pasoUnaHora && h !in tomadas && !yaAvisado("medicacion_${hoy}_$h")) {
                             AvisosTutor.mostrar(
                                 ctx, ID_MEDICACION + i,
-                                "$nombre no registró su medicación de las $h",
-                                "Pasó más de una hora y no marcó \"Ya la tomé\". Puede que se haya olvidado."
+                                trf("{0} no registró su medicación de las {1}", nombre, h),
+                                tr("Pasó más de una hora y no marcó \"Ya la tomé\". Puede que se haya olvidado.")
                             )
                             marcar("medicacion_${hoy}_$h")
                         }
@@ -225,8 +231,8 @@ class AvisosTutorWorker(
                 if (deHoy == 0 && hora >= 18 && !yaAvisado("sinEjercicio_$hoy")) {
                     AvisosTutor.mostrar(
                         ctx, ID_SIN_EJERCICIO,
-                        "$nombre todavía no hizo ejercicio hoy",
-                        "Un mensajito para recordárselo puede ayudar a mantener la constancia."
+                        trf("{0} todavía no hizo ejercicio hoy", nombre),
+                        tr("Un mensajito para recordárselo puede ayudar a mantener la constancia.")
                     )
                     marcar("sinEjercicio_$hoy")
                 }
@@ -238,9 +244,9 @@ class AvisosTutorWorker(
                 if (diasSin >= 3 && !yaAvisado("diasSin_$hoy")) {
                     AvisosTutor.mostrar(
                         ctx, ID_DIAS_SIN,
-                        if (diasSin >= 30) "$nombre no registra ejercicios hace un mes"
-                        else "$nombre lleva $diasSin días sin hacer ejercicio",
-                        "Puede ser un buen momento para acompañarlo/a en una rutina corta."
+                        if (diasSin >= 30) trf("{0} no registra ejercicios hace un mes", nombre)
+                        else trf("{0} lleva {1} días sin hacer ejercicio", nombre, diasSin),
+                        tr("Puede ser un buen momento para acompañarlo/a en una rutina corta.")
                     )
                     marcar("diasSin_$hoy")
                 }
@@ -250,8 +256,8 @@ class AvisosTutorWorker(
                 if (sensacion != null && sensacion.contains("Dolor", ignoreCase = true) && !yaAvisado("dolor_$hoy")) {
                     AvisosTutor.mostrar(
                         ctx, ID_DOLOR,
-                        "$nombre registró dolor hoy",
-                        "Indicó \"$sensacion\" en cómo se siente. Si el dolor sigue o aumenta, conviene consultar a su profesional."
+                        trf("{0} registró dolor hoy", nombre),
+                        trf("Indicó \"{0}\" en cómo se siente. Si el dolor sigue o aumenta, conviene consultar a su profesional.", tr(sensacion))
                     )
                     marcar("dolor_$hoy")
                 }
@@ -263,8 +269,8 @@ class AvisosTutorWorker(
                 if (deHoy > avisadosHoy) {
                     AvisosTutor.mostrar(
                         ctx, ID_PROGRESO,
-                        "¡$nombre está entrenando! 💪",
-                        if (deHoy == 1) "Completó 1 ejercicio hoy." else "Completó $deHoy ejercicios hoy."
+                        trf("¡{0} está entrenando! 💪", nombre),
+                        if (deHoy == 1) tr("Completó 1 ejercicio hoy.") else trf("Completó {0} ejercicios hoy.", deHoy)
                     )
                     prefs.edit().putInt("progreso_$hoy", deHoy).apply()
                 }
@@ -285,9 +291,9 @@ class AvisosTutorWorker(
                         val puntaje = ultimaEval.getDouble("puntaje")
                         AvisosTutor.mostrar(
                             ctx, ID_QUICKDASH,
-                            "$nombre completó su evaluación QuickDASH",
-                            puntaje?.let { "Obtuvo ${it.toInt()} puntos sobre 100 (más bajo = menos dificultad)." }
-                                ?: "Podés ver el resultado en Progreso."
+                            trf("{0} completó su evaluación QuickDASH", nombre),
+                            puntaje?.let { trf("Obtuvo {0} puntos sobre 100 (más bajo = menos dificultad).", it.toInt()) }
+                                ?: tr("Podés ver el resultado en Progreso.")
                         )
                         prefs.edit().putLong("ultimoQuickdash", ms).apply()
                     }

@@ -1,5 +1,9 @@
 package com.example.pulsofirme.alarmas
 
+import com.example.pulsofirme.screens.IdiomaApp
+import com.example.pulsofirme.screens.tr
+import com.example.pulsofirme.screens.trf
+
 import android.media.AudioAttributes
 import android.media.Ringtone
 import android.media.RingtoneManager
@@ -37,6 +41,7 @@ class AlarmaActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        IdiomaApp.cargar(applicationContext)
 
         // Se muestra aunque el celular esté bloqueado y prende la pantalla
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
@@ -147,7 +152,7 @@ private fun PantallaAlarma(
         Spacer(Modifier.height(32.dp))
 
         Text(
-            text = "Hora de tu medicación",
+            text = tr("Hora de tu medicación"),
             fontSize = 28.sp,
             fontWeight = FontWeight.Bold,
             color = Color.White,
@@ -167,7 +172,7 @@ private fun PantallaAlarma(
             shape = RoundedCornerShape(14.dp),
             colors = ButtonDefaults.buttonColors(containerColor = Color.White)
         ) {
-            Text("Ya la tomé ✓", fontSize = 18.sp, fontWeight = FontWeight.Bold, color = VerdeAlarma)
+            Text(tr("Ya la tomé ✓"), fontSize = 18.sp, fontWeight = FontWeight.Bold, color = VerdeAlarma)
         }
 
         Spacer(Modifier.height(12.dp))
@@ -178,7 +183,7 @@ private fun PantallaAlarma(
             shape = RoundedCornerShape(14.dp),
             border = androidx.compose.foundation.BorderStroke(1.dp, Color.White)
         ) {
-            Text("Posponer 5 minutos", fontSize = 16.sp, color = Color.White)
+            Text(tr("Posponer 5 minutos"), fontSize = 16.sp, color = Color.White)
         }
     }
 }
