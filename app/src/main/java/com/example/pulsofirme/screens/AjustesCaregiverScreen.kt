@@ -3,6 +3,8 @@ package com.example.pulsofirme.screens
 import androidx.compose.runtime.saveable.rememberSaveable
 
 import com.example.pulsofirme.ui.theme.enTema
+import com.example.pulsofirme.ui.theme.ModoTema
+import com.example.pulsofirme.ui.theme.TemaApp
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
@@ -81,6 +83,55 @@ fun AjustesCaregiverScreen(
     var accesibilidadExpandida by rememberSaveable { mutableStateOf(false) }
     var mostrarDialogoIdioma by rememberSaveable { mutableStateOf(false) }
     if (mostrarDialogoIdioma) DialogoIdioma(onCerrar = { mostrarDialogoIdioma = false })
+
+    // --- DIÁLOGO DE TEMA (claro / oscuro / automático) ---
+    var mostrarDialogoTema by rememberSaveable { mutableStateOf(false) }
+    if (mostrarDialogoTema) {
+        AlertDialog(
+            onDismissRequest = { mostrarDialogoTema = false },
+            containerColor = Color.White.enTema(),
+            shape = RoundedCornerShape(20.dp),
+            title = {
+                Text(tr("Tema"), fontSize = 20.sp, fontWeight = FontWeight.Bold, color = Color(0xFF1B4332).enTema())
+            },
+            text = {
+                Column {
+                    ModoTema.values().forEach { modo ->
+                        val elegido = TemaApp.modo == modo
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .selectable(
+                                    selected = elegido,
+                                    role = Role.RadioButton,
+                                    onClick = { TemaApp.cambiar(contexto, modo) }
+                                )
+                                .heightIn(min = 48.dp)
+                        ) {
+                            RadioButton(
+                                selected = elegido,
+                                onClick = null,
+                                colors = RadioButtonDefaults.colors(selectedColor = Color(0xFF1B7A4B).enTema())
+                            )
+                            Spacer(Modifier.width(8.dp))
+                            Column {
+                                Text(tr(modo.etiqueta), fontSize = 16.sp, color = Color(0xFF1A1A1A).enTema())
+                                if (modo == ModoTema.AUTOMATICO) {
+                                    Text(tr("Igual que el celular"), fontSize = 13.sp, color = GrisSubtitulo)
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { mostrarDialogoTema = false }) {
+                    Text(tr("Listo"), color = Color(0xFF1B7A4B).enTema(), fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                }
+            }
+        )
+    }
     var mostrarTamanoTexto by rememberSaveable { mutableStateOf(false) }
 
     // Las opciones de accesibilidad son las mismas de toda la app (se guardan en el celular)
@@ -157,7 +208,7 @@ fun AjustesCaregiverScreen(
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        FilaAjuste(titulo = "Tema", valor = "Claro", onClick = { /* TODO */ })
+        FilaAjuste(titulo = "Tema", valor = TemaApp.modo.etiqueta, onClick = { mostrarDialogoTema = true })
 
         Spacer(modifier = Modifier.height(12.dp))
 
