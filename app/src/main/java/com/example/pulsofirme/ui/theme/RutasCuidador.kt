@@ -359,11 +359,7 @@ fun NavGraphBuilder.rutasCuidador(estado: EstadoNav) {
                             tutorPerfilPais = document.getString("pais") ?: ""
                         }
                         .addOnFailureListener {
-                            Toast.makeText(
-                                context,
-                                "No se pudieron cargar los datos del tutor",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            Avisos.mostrar("No se pudieron cargar los datos del tutor")
                         }
                 }
             }
@@ -391,11 +387,7 @@ fun NavGraphBuilder.rutasCuidador(estado: EstadoNav) {
                         pais ->
 
                     if (uid == null) {
-                        Toast.makeText(
-                            context,
-                            "No se encontró la sesión del tutor",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Avisos.mostrar("No se encontró la sesión del tutor")
                     } else {
                         val datosActualizados = mapOf(
                             "nombre" to nombre.trim(),
@@ -420,20 +412,12 @@ fun NavGraphBuilder.rutasCuidador(estado: EstadoNav) {
                                 tutorPerfilPais = pais.trim()
                                 nombreUsuarioActual = nombre.trim()
 
-                                Toast.makeText(
-                                    context,
-                                    "Datos del tutor actualizados correctamente",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Avisos.mostrar("Datos del tutor actualizados correctamente")
 
                                 navController.popBackStack()
                             }
                             .addOnFailureListener {
-                                Toast.makeText(
-                                    context,
-                                    "No se pudieron guardar los cambios",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Avisos.mostrar("No se pudieron guardar los cambios")
                             }
                     }
                 },
@@ -506,17 +490,9 @@ fun NavGraphBuilder.rutasCuidador(estado: EstadoNav) {
                     val codigo = codigoIngresado.trim()
 
                     if (tutorUid == null) {
-                        Toast.makeText(
-                            context,
-                            "No se encontró la sesión del tutor",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Avisos.mostrar("No se encontró la sesión del tutor")
                     } else if (codigo.length != 6 || !codigo.all { it.isDigit() }) {
-                        Toast.makeText(
-                            context,
-                            "Ingresá el código de 6 dígitos del paciente",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Avisos.mostrar("Ingresá el código de 6 dígitos del paciente")
                     } else {
                         val tutorRef = db.collection("usuarios").document(tutorUid)
 
@@ -536,19 +512,11 @@ fun NavGraphBuilder.rutasCuidador(estado: EstadoNav) {
 
                                         when {
                                             !codigoDoc.exists() || nuevoPacienteUid.isBlank() -> {
-                                                Toast.makeText(
-                                                    context,
-                                                    "No existe un paciente con ese código",
-                                                    Toast.LENGTH_LONG
-                                                ).show()
+                                                Avisos.mostrar("No existe un paciente con ese código", largo = true)
                                             }
 
                                             nuevoPacienteUid == pacienteActualUid -> {
-                                                Toast.makeText(
-                                                    context,
-                                                    "Ese paciente ya está vinculado",
-                                                    Toast.LENGTH_SHORT
-                                                ).show()
+                                                Avisos.mostrar("Ese paciente ya está vinculado")
                                             }
 
                                             else -> {
@@ -588,11 +556,7 @@ fun NavGraphBuilder.rutasCuidador(estado: EstadoNav) {
 
                                                 batch.commit()
                                                     .addOnSuccessListener {
-                                                        Toast.makeText(
-                                                            context,
-                                                            "Paciente vinculado correctamente",
-                                                            Toast.LENGTH_SHORT
-                                                        ).show()
+                                                        Avisos.mostrar("Paciente vinculado correctamente")
 
                                                         navController.popBackStack()
                                                     }
@@ -603,32 +567,20 @@ fun NavGraphBuilder.rutasCuidador(estado: EstadoNav) {
                                                                     com.google.firebase.firestore
                                                                         .FirebaseFirestoreException.Code
                                                                         .PERMISSION_DENIED
-                                                        Toast.makeText(
-                                                            context,
-                                                            if (denegado) "No se pudo vincular: ese paciente ya alcanzó " +
-                                                                    "el máximo de tutores (${LimiteTutores.MAX_GRATIS} en el plan gratis, " +
-                                                                    "${LimiteTutores.MAX_PREMIUM} con Premium)."
-                                                            else "No se pudo cambiar de paciente",
-                                                            Toast.LENGTH_LONG
-                                                        ).show()
+                                                        Avisos.mostrar(if (denegado) "No se pudo vincular: ese paciente ya alcanzó " +
+                                                                "el máximo de tutores (${LimiteTutores.MAX_GRATIS} en el plan gratis, " +
+                                                                "${LimiteTutores.MAX_PREMIUM} con Premium)."
+                                                        else "No se pudo cambiar de paciente", largo = true)
                                                     }
                                             }
                                         }
                                     }
                                     .addOnFailureListener {
-                                        Toast.makeText(
-                                            context,
-                                            "No se pudo verificar el código",
-                                            Toast.LENGTH_LONG
-                                        ).show()
+                                        Avisos.mostrar("No se pudo verificar el código", largo = true)
                                     }
                             }
                             .addOnFailureListener {
-                                Toast.makeText(
-                                    context,
-                                    "No se pudieron cargar los datos del vínculo",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Avisos.mostrar("No se pudieron cargar los datos del vínculo")
                             }
                     }
                 }
@@ -767,11 +719,7 @@ fun NavGraphBuilder.rutasCuidador(estado: EstadoNav) {
                                 )
                             }
                             .addOnFailureListener {
-                                Toast.makeText(
-                                    context,
-                                    "No se pudieron cargar los datos para el PDF",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Avisos.mostrar("No se pudieron cargar los datos para el PDF")
                             }
                     }
                 }
@@ -825,26 +773,22 @@ fun NavGraphBuilder.rutasCuidador(estado: EstadoNav) {
                                         DificultadAdaptativa.reiniciar(context)
                                         nombreUsuarioActual = "Usuario"
                                         rolCuidadorActual = "tutor"
-                                        Toast.makeText(
-                                            context,
-                                            "Tu cuenta y tus datos fueron eliminados",
-                                            Toast.LENGTH_LONG
-                                        ).show()
+                                        Avisos.mostrar("Tu cuenta y tus datos fueron eliminados", largo = true)
                                         navController.navigate("login") {
                                             popUpTo(0) { inclusive = true }
                                         }
                                     }
                                     is ResultadoBorrado.ContrasenaIncorrecta -> {
                                         borrando = false
-                                        Toast.makeText(context, "La contraseña no es correcta", Toast.LENGTH_LONG).show()
+                                        Avisos.mostrar("La contraseña no es correcta", largo = true)
                                     }
                                     is ResultadoBorrado.SinConexion -> {
                                         borrando = false
-                                        Toast.makeText(context, "Sin conexión. Probá de nuevo con internet.", Toast.LENGTH_LONG).show()
+                                        Avisos.mostrar("Sin conexión. Probá de nuevo con internet.", largo = true)
                                     }
                                     is ResultadoBorrado.Fallo -> {
                                         borrando = false
-                                        Toast.makeText(context, r.detalle, Toast.LENGTH_LONG).show()
+                                        Avisos.mostrar(r.detalle, largo = true)
                                     }
                                 }
                             }
@@ -860,22 +804,14 @@ fun NavGraphBuilder.rutasCuidador(estado: EstadoNav) {
                     onDescargarDatos = {
                         scope.launch {
                             val archivo = exportarMisDatos(context)
-                            Toast.makeText(
-                                context,
-                                if (archivo != null) "Guardado en Descargas: $archivo"
-                                else "No se pudieron exportar tus datos",
-                                Toast.LENGTH_LONG
-                            ).show()
+                            Avisos.mostrar(if (archivo != null) "Guardado en Descargas: $archivo"
+                            else "No se pudieron exportar tus datos", largo = true)
                         }
                     },
 
                     onDesvincularPaciente = {
                         if (tutorUid == null) {
-                            Toast.makeText(
-                                context,
-                                "No se encontró la sesión del tutor",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            Avisos.mostrar("No se encontró la sesión del tutor")
                         } else {
                             val tutorRef = db.collection("usuarios").document(tutorUid)
 
@@ -885,11 +821,7 @@ fun NavGraphBuilder.rutasCuidador(estado: EstadoNav) {
                                         tutorDocument.getString("pacienteVinculadoUid").orEmpty()
 
                                     if (pacienteUid.isBlank()) {
-                                        Toast.makeText(
-                                            context,
-                                            "No hay un paciente vinculado",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
+                                        Avisos.mostrar("No hay un paciente vinculado")
                                     } else {
                                         val pacienteRef =
                                             db.collection("usuarios").document(pacienteUid)
@@ -916,11 +848,7 @@ fun NavGraphBuilder.rutasCuidador(estado: EstadoNav) {
 
                                         batch.commit()
                                             .addOnSuccessListener {
-                                                Toast.makeText(
-                                                    context,
-                                                    "Paciente desvinculado correctamente",
-                                                    Toast.LENGTH_SHORT
-                                                ).show()
+                                                Avisos.mostrar("Paciente desvinculado correctamente")
 
                                                 auth.signOut()
                                                 nombreUsuarioActual = "Usuario"
@@ -931,20 +859,12 @@ fun NavGraphBuilder.rutasCuidador(estado: EstadoNav) {
                                                 }
                                             }
                                             .addOnFailureListener {
-                                                Toast.makeText(
-                                                    context,
-                                                    "No se pudo desvincular al paciente",
-                                                    Toast.LENGTH_LONG
-                                                ).show()
+                                                Avisos.mostrar("No se pudo desvincular al paciente", largo = true)
                                             }
                                     }
                                 }
                                 .addOnFailureListener {
-                                    Toast.makeText(
-                                        context,
-                                        "No se pudieron cargar los datos del vínculo",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
+                                    Avisos.mostrar("No se pudieron cargar los datos del vínculo")
                                 }
                         }
                     },
@@ -1006,11 +926,7 @@ fun NavGraphBuilder.rutasCuidador(estado: EstadoNav) {
                     try {
                         context.startActivity(intentCorreo)
                     } catch (_: Exception) {
-                        Toast.makeText(
-                            context,
-                            "No se encontró una aplicación de correo. Escribinos a holapulsofirmearg@gmail.com",
-                            Toast.LENGTH_LONG
-                        ).show()
+                        Avisos.mostrar("No se encontró una aplicación de correo. Escribinos a holapulsofirmearg@gmail.com", largo = true)
                     }
                 }
             )

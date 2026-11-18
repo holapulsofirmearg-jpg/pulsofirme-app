@@ -302,11 +302,7 @@ fun AjustesScreen(
                 val horarios = AlarmaScheduler.horariosGuardados(contexto)
                 if (quiere && horarios.isEmpty()) {
                     // No hay nada que activar: primero hay que cargar horarios
-                    Toast.makeText(
-                        contexto,
-                        "Primero cargá tus horarios en Cuenta > Medicación.",
-                        Toast.LENGTH_LONG
-                    ).show()
+                    Avisos.mostrar("Primero cargá tus horarios en Cuenta > Medicación.", largo = true)
                 } else {
                     medicacion = quiere
                     // Conserva horarios y días; solo prende o apaga las alarmas

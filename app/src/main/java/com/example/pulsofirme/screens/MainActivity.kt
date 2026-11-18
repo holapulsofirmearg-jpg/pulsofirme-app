@@ -96,7 +96,11 @@ class MainActivity : ComponentActivity() {
                         }
                 ) {
                     PulsoFirmeTheme {
-                        AppNavGraph()
+                        Box(modifier = Modifier.fillMaxSize()) {
+                            AppNavGraph()
+                            // Avisos dentro de la app (reemplazan a los Toast)
+                            AvisoFlotante()
+                        }
                     }
                 }
             }

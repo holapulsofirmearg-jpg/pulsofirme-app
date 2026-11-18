@@ -161,7 +161,7 @@ fun ProfessionalAccessPermissionsScreen(
             }
             .addOnFailureListener {
                 cargando = false
-                Toast.makeText(context, "No se pudieron cargar los pacientes", Toast.LENGTH_SHORT).show()
+                Avisos.mostrar("No se pudieron cargar los pacientes")
             }
     }
 
@@ -367,11 +367,7 @@ fun ProfessionalPatientPermissionsScreen(
             }
             .addOnFailureListener {
                 cargando = false
-                Toast.makeText(
-                    context,
-                    "No se pudieron cargar los permisos del paciente",
-                    Toast.LENGTH_SHORT
-                ).show()
+                Avisos.mostrar("No se pudieron cargar los permisos del paciente")
             }
     }
 
@@ -384,11 +380,7 @@ fun ProfessionalPatientPermissionsScreen(
             .update("preferenciasPacientes.$pacienteUid.$clave", valor)
             .addOnFailureListener {
                 preferencias = anterior
-                Toast.makeText(
-                    context,
-                    "No se pudo guardar el cambio",
-                    Toast.LENGTH_SHORT
-                ).show()
+                Avisos.mostrar("No se pudo guardar el cambio")
             }
     }
 

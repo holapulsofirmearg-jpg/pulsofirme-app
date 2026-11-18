@@ -277,11 +277,7 @@ fun NavGraphBuilder.rutasPaciente(estado: EstadoNav) {
                                 document.getBoolean("alertaNuevoCuidador") ?: true
                         }
                         .addOnFailureListener {
-                            Toast.makeText(
-                                context,
-                                "No se pudieron cargar las preferencias de alertas",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            Avisos.mostrar("No se pudieron cargar las preferencias de alertas")
                         }
                 }
             }
@@ -303,11 +299,7 @@ fun NavGraphBuilder.rutasPaciente(estado: EstadoNav) {
                         nuevoCuidador ->
 
                     if (uid == null) {
-                        Toast.makeText(
-                            context,
-                            "No se encontró la sesión del usuario",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Avisos.mostrar("No se encontró la sesión del usuario")
                     } else {
                         val preferenciasAlertas = mapOf(
                             "alertaMedicacion" to medicacion,
@@ -335,20 +327,12 @@ fun NavGraphBuilder.rutasPaciente(estado: EstadoNav) {
                                     RecordatorioEjercicio.cancelar(context)
                                 }
 
-                                Toast.makeText(
-                                    context,
-                                    "Preferencias de alertas guardadas",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Avisos.mostrar("Preferencias de alertas guardadas")
 
                                 navController.popBackStack()
                             }
                             .addOnFailureListener {
-                                Toast.makeText(
-                                    context,
-                                    "No se pudieron guardar las preferencias",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Avisos.mostrar("No se pudieron guardar las preferencias")
                             }
                     }
                 }
@@ -389,11 +373,7 @@ fun NavGraphBuilder.rutasPaciente(estado: EstadoNav) {
                             } else {
                                 fun intentarGenerarCodigo(intentosRestantes: Int) {
                                     if (intentosRestantes <= 0) {
-                                        Toast.makeText(
-                                            context,
-                                            "No se pudo generar el código de vinculación",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
+                                        Avisos.mostrar("No se pudo generar el código de vinculación")
                                         return
                                     }
 
@@ -421,28 +401,16 @@ fun NavGraphBuilder.rutasPaciente(estado: EstadoNav) {
                                                                 cantidadTutoresVinculados = 0
                                                             }
                                                             .addOnFailureListener {
-                                                                Toast.makeText(
-                                                                    context,
-                                                                    "No se pudo guardar el código de vinculación",
-                                                                    Toast.LENGTH_SHORT
-                                                                ).show()
+                                                                Avisos.mostrar("No se pudo guardar el código de vinculación")
                                                             }
                                                     }
                                                     .addOnFailureListener {
-                                                        Toast.makeText(
-                                                            context,
-                                                            "No se pudo reservar el código",
-                                                            Toast.LENGTH_SHORT
-                                                        ).show()
+                                                        Avisos.mostrar("No se pudo reservar el código")
                                                     }
                                             }
                                         }
                                         .addOnFailureListener {
-                                            Toast.makeText(
-                                                context,
-                                                "No se pudo verificar el código de vinculación",
-                                                Toast.LENGTH_SHORT
-                                            ).show()
+                                            Avisos.mostrar("No se pudo verificar el código de vinculación")
                                         }
                                 }
 
@@ -450,11 +418,7 @@ fun NavGraphBuilder.rutasPaciente(estado: EstadoNav) {
                             }
                         }
                         .addOnFailureListener {
-                            Toast.makeText(
-                                context,
-                                "No se pudieron cargar los datos de la cuenta",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            Avisos.mostrar("No se pudieron cargar los datos de la cuenta")
                         }
                 }
             }
@@ -705,11 +669,7 @@ fun NavGraphBuilder.rutasPaciente(estado: EstadoNav) {
                 onResultadoGuardado = { puntaje, respuestas ->
 
                     if (uid == null) {
-                        Toast.makeText(
-                            context,
-                            "No se encontró la sesión del usuario",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Avisos.mostrar("No se encontró la sesión del usuario")
                     } else {
                         val evaluacion = hashMapOf(
                             "puntaje" to puntaje.toDouble(),
@@ -722,18 +682,10 @@ fun NavGraphBuilder.rutasPaciente(estado: EstadoNav) {
                             .collection("quickdash")
                             .add(evaluacion)
                             .addOnSuccessListener {
-                                Toast.makeText(
-                                    context,
-                                    "Evaluación QuickDASH guardada",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Avisos.mostrar("Evaluación QuickDASH guardada")
                             }
                             .addOnFailureListener {
-                                Toast.makeText(
-                                    context,
-                                    "No se pudo guardar la evaluación",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Avisos.mostrar("No se pudo guardar la evaluación")
                             }
                     }
                 }
@@ -765,11 +717,7 @@ fun NavGraphBuilder.rutasPaciente(estado: EstadoNav) {
                             editGenero = document.getString("genero") ?: ""
                         }
                         .addOnFailureListener {
-                            Toast.makeText(
-                                context,
-                                "No se pudieron cargar tus datos",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            Avisos.mostrar("No se pudieron cargar tus datos")
                         }
                 }
             }
@@ -788,11 +736,7 @@ fun NavGraphBuilder.rutasPaciente(estado: EstadoNav) {
                 onGuardarCambios = { nombre, correo, fecha, pais, telefono, direccion, genero ->
 
                     if (uid == null) {
-                        Toast.makeText(
-                            context,
-                            "No se encontró la sesión del usuario",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Avisos.mostrar("No se encontró la sesión del usuario")
                     } else {
                         val datosActualizados = mapOf(
                             "nombre" to nombre,
@@ -810,18 +754,10 @@ fun NavGraphBuilder.rutasPaciente(estado: EstadoNav) {
                             .addOnSuccessListener {
                                 nombreUsuarioActual = nombre
 
-                                Toast.makeText(
-                                    context,
-                                    "Datos actualizados correctamente",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Avisos.mostrar("Datos actualizados correctamente")
                             }
                             .addOnFailureListener {
-                                Toast.makeText(
-                                    context,
-                                    "No se pudieron guardar los cambios",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Avisos.mostrar("No se pudieron guardar los cambios")
                             }
                     }
                 }
@@ -878,11 +814,7 @@ fun NavGraphBuilder.rutasPaciente(estado: EstadoNav) {
                                 document.getString("notasCuidador") ?: ""
                         }
                         .addOnFailureListener {
-                            Toast.makeText(
-                                context,
-                                "No se pudieron cargar los datos médicos",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            Avisos.mostrar("No se pudieron cargar los datos médicos")
                         }
                 }
             }
@@ -899,11 +831,7 @@ fun NavGraphBuilder.rutasPaciente(estado: EstadoNav) {
                 onGuardarCambios = { diagnostico, zona, profesional, notas ->
 
                     if (uid == null) {
-                        Toast.makeText(
-                            context,
-                            "No se encontró la sesión del usuario",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Avisos.mostrar("No se encontró la sesión del usuario")
                     } else {
 
                         val datosMedicos = mapOf(
@@ -917,18 +845,10 @@ fun NavGraphBuilder.rutasPaciente(estado: EstadoNav) {
                             .document(uid)
                             .update(datosMedicos)
                             .addOnSuccessListener {
-                                Toast.makeText(
-                                    context,
-                                    "Datos médicos actualizados correctamente",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Avisos.mostrar("Datos médicos actualizados correctamente")
                             }
                             .addOnFailureListener {
-                                Toast.makeText(
-                                    context,
-                                    "No se pudieron guardar los datos médicos",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Avisos.mostrar("No se pudieron guardar los datos médicos")
                             }
                     }
                 }
@@ -1095,12 +1015,8 @@ fun NavGraphBuilder.rutasPaciente(estado: EstadoNav) {
                 onExportarDatos = {
                     scopeAjustes.launch {
                         val archivo = exportarMisDatos(context)
-                        Toast.makeText(
-                            context,
-                            if (archivo != null) "Guardado en Descargas: $archivo"
-                            else "No se pudieron exportar tus datos",
-                            Toast.LENGTH_LONG
-                        ).show()
+                        Avisos.mostrar(if (archivo != null) "Guardado en Descargas: $archivo"
+                        else "No se pudieron exportar tus datos", largo = true)
                     }
                 }
             )

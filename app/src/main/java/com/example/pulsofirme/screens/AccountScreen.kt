@@ -109,7 +109,7 @@ fun AccountScreen(
     fun copiarCodigo() {
         val portapapeles = contexto.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         portapapeles.setPrimaryClip(ClipData.newPlainText("Código PulsoFirme", codigoLimpio))
-        Toast.makeText(contexto, "Código copiado", Toast.LENGTH_SHORT).show()
+        Avisos.mostrar("Código copiado")
     }
 
     Scaffold(

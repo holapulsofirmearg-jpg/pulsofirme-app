@@ -112,11 +112,7 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
                                 }
                             }
                             .addOnFailureListener {
-                                Toast.makeText(
-                                    context,
-                                    "No se pudieron cargar los datos de la sesión",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Avisos.mostrar("No se pudieron cargar los datos de la sesión")
 
                                 navController.navigate("login") {
                                     popUpTo("splash") {
@@ -213,11 +209,7 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
                     } else if (email.isBlank() || password.isBlank()) {
 
                         cargando = false
-                        Toast.makeText(
-                            context,
-                            "Completá el correo y la contraseña",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Avisos.mostrar("Completá el correo y la contraseña")
 
                     } else {
 
@@ -273,22 +265,14 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
 
                                             auth.signOut()
                                             cargando = false
-                                            Toast.makeText(
-                                                context,
-                                                ErroresFirebase.datos(error, "No se pudieron cargar tus datos. Intentá de nuevo."),
-                                                Toast.LENGTH_SHORT
-                                            ).show()
+                                            Avisos.mostrar(ErroresFirebase.datos(error, "No se pudieron cargar tus datos. Intentá de nuevo."))
                                         }
                                 }
                             }
                             .addOnFailureListener { error ->
 
                                 cargando = false
-                                Toast.makeText(
-                                    context,
-                                    ErroresFirebase.login(error),
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Avisos.mostrar(ErroresFirebase.login(error))
                             }
                     }
                 },
@@ -298,11 +282,7 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
                     if (email.isBlank()) {
 
                         cargando = false
-                        Toast.makeText(
-                            context,
-                            "Ingresá tu correo electrónico primero",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Avisos.mostrar("Ingresá tu correo electrónico primero")
 
                     } else {
 
@@ -313,20 +293,12 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
                             .addOnSuccessListener {
 
                                 cargando = false
-                                Toast.makeText(
-                                    context,
-                                    "Te enviamos un correo para restablecer tu contraseña",
-                                    Toast.LENGTH_LONG
-                                ).show()
+                                Avisos.mostrar("Te enviamos un correo para restablecer tu contraseña", largo = true)
                             }
                             .addOnFailureListener { error ->
 
                                 cargando = false
-                                Toast.makeText(
-                                    context,
-                                    ErroresFirebase.recuperacion(error),
-                                    Toast.LENGTH_LONG
-                                ).show()
+                                Avisos.mostrar(ErroresFirebase.recuperacion(error), largo = true)
                             }
                     }
                 },
@@ -383,11 +355,7 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
                     val uid = auth.currentUser?.uid
 
                     if (uid == null) {
-                        Toast.makeText(
-                            context,
-                            "No se encontró la sesión del usuario",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Avisos.mostrar("No se encontró la sesión del usuario")
                     } else {
                         val datosPerfil = mapOf(
                             "fechaNacimiento" to fechaNacimiento,
@@ -401,20 +369,12 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
                             .document(uid)
                             .update(datosPerfil)
                             .addOnSuccessListener {
-                                Toast.makeText(
-                                    context,
-                                    "Datos guardados correctamente",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Avisos.mostrar("Datos guardados correctamente")
 
                                 navController.navigate("about_you")
                             }
                             .addOnFailureListener {
-                                Toast.makeText(
-                                    context,
-                                    "No se pudieron guardar los datos",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Avisos.mostrar("No se pudieron guardar los datos")
                             }
                     }
                 },
@@ -444,11 +404,7 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
                     val uid = auth.currentUser?.uid
 
                     if (uid == null) {
-                        Toast.makeText(
-                            context,
-                            "No se encontró la sesión del usuario",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Avisos.mostrar("No se encontró la sesión del usuario")
                     } else {
                         val datosSobreVos = mapOf(
                             "diagnosticos" to diagnosticos,
@@ -459,11 +415,7 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
                             .document(uid)
                             .update(datosSobreVos)
                             .addOnSuccessListener {
-                                Toast.makeText(
-                                    context,
-                                    "Datos guardados correctamente",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Avisos.mostrar("Datos guardados correctamente")
 
                                 navController.navigate("congrats") {
                                     popUpTo("about_you") {
@@ -472,11 +424,7 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
                                 }
                             }
                             .addOnFailureListener {
-                                Toast.makeText(
-                                    context,
-                                    "No se pudieron guardar los datos",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Avisos.mostrar("No se pudieron guardar los datos")
                             }
                     }
                 }
@@ -532,11 +480,7 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
                         // Ya se está verificando: ignoramos el segundo toque
                     } else if (email.isBlank() || password.isBlank() || codigo.isBlank()) {
                         cargando = false
-                        Toast.makeText(
-                            context,
-                            "Completá el correo, la contraseña y el código de vinculación",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Avisos.mostrar("Completá el correo, la contraseña y el código de vinculación")
                     } else {
                         cargando = true
 
@@ -550,11 +494,7 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
 
                                 if (tutorUid == null) {
                                     cargando = false
-                                    Toast.makeText(
-                                        context,
-                                        "No se encontró la sesión del tutor",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
+                                    Avisos.mostrar("No se encontró la sesión del tutor")
                                 } else {
                                     db.collection("usuarios")
                                         .document(tutorUid)
@@ -576,21 +516,13 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
                                                 rol != "tutor" -> {
                                                     auth.signOut()
                                                     cargando = false
-                                                    Toast.makeText(
-                                                        context,
-                                                        "Esta cuenta no corresponde a un tutor",
-                                                        Toast.LENGTH_SHORT
-                                                    ).show()
+                                                    Avisos.mostrar("Esta cuenta no corresponde a un tutor")
                                                 }
 
                                                 pacienteUid.isBlank() -> {
                                                     auth.signOut()
                                                     cargando = false
-                                                    Toast.makeText(
-                                                        context,
-                                                        "Esta cuenta todavía no está vinculada a un paciente",
-                                                        Toast.LENGTH_LONG
-                                                    ).show()
+                                                    Avisos.mostrar("Esta cuenta todavía no está vinculada a un paciente", largo = true)
                                                 }
 
                                                 else -> {
@@ -610,11 +542,7 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
                                                             ) {
                                                                 auth.signOut()
                                                                 cargando = false
-                                                                Toast.makeText(
-                                                                    context,
-                                                                    "El código no corresponde al paciente vinculado",
-                                                                    Toast.LENGTH_LONG
-                                                                ).show()
+                                                                Avisos.mostrar("El código no corresponde al paciente vinculado", largo = true)
                                                             } else {
                                                                 nombreUsuarioActual =
                                                                     nombre
@@ -622,11 +550,7 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
                                                                     "tutor"
 
                                                                 cargando = false
-                                                                Toast.makeText(
-                                                                    context,
-                                                                    "Sesión iniciada correctamente",
-                                                                    Toast.LENGTH_SHORT
-                                                                ).show()
+                                                                Avisos.mostrar("Sesión iniciada correctamente")
 
                                                                 navController.navigate(
                                                                     "caregiver_home"
@@ -642,11 +566,7 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
                                                         .addOnFailureListener { error ->
                                                             auth.signOut()
                                                             cargando = false
-                                                            Toast.makeText(
-                                                                context,
-                                                                ErroresFirebase.datos(error, "No se pudo verificar el paciente vinculado"),
-                                                                Toast.LENGTH_LONG
-                                                            ).show()
+                                                            Avisos.mostrar(ErroresFirebase.datos(error, "No se pudo verificar el paciente vinculado"), largo = true)
                                                         }
                                                 }
                                             }
@@ -654,21 +574,13 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
                                         .addOnFailureListener { error ->
                                             auth.signOut()
                                             cargando = false
-                                            Toast.makeText(
-                                                context,
-                                                ErroresFirebase.datos(error, "No se pudieron cargar los datos del tutor"),
-                                                Toast.LENGTH_SHORT
-                                            ).show()
+                                            Avisos.mostrar(ErroresFirebase.datos(error, "No se pudieron cargar los datos del tutor"))
                                         }
                                 }
                             }
                             .addOnFailureListener { error ->
                                 cargando = false
-                                Toast.makeText(
-                                    context,
-                                    ErroresFirebase.login(error),
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Avisos.mostrar(ErroresFirebase.login(error))
                             }
                     }
                 },
@@ -677,30 +589,18 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
 
                     if (email.isBlank()) {
                         cargando = false
-                        Toast.makeText(
-                            context,
-                            "Ingresá tu correo electrónico primero",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Avisos.mostrar("Ingresá tu correo electrónico primero")
                     } else {
                         auth.setLanguageCode("es")
 
                         auth.sendPasswordResetEmail(email.trim())
                             .addOnSuccessListener {
                                 cargando = false
-                                Toast.makeText(
-                                    context,
-                                    "Te enviamos un correo para restablecer tu contraseña",
-                                    Toast.LENGTH_LONG
-                                ).show()
+                                Avisos.mostrar("Te enviamos un correo para restablecer tu contraseña", largo = true)
                             }
                             .addOnFailureListener { error ->
                                 cargando = false
-                                Toast.makeText(
-                                    context,
-                                    ErroresFirebase.recuperacion(error),
-                                    Toast.LENGTH_LONG
-                                ).show()
+                                Avisos.mostrar(ErroresFirebase.recuperacion(error), largo = true)
                             }
                     }
                 },
@@ -774,11 +674,7 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
                         contrasenia.isBlank()
                     ) {
                         cargando = false
-                        Toast.makeText(
-                            context,
-                            "Completá los datos obligatorios",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Avisos.mostrar("Completá los datos obligatorios")
                     } else {
 
                         cargando = true
@@ -791,11 +687,7 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
 
                                 if (!codigoDoc.exists()) {
                                     cargando = false
-                                    Toast.makeText(
-                                        context,
-                                        "El código de vinculación no pertenece a ningún paciente",
-                                        Toast.LENGTH_LONG
-                                    ).show()
+                                    Avisos.mostrar("El código de vinculación no pertenece a ningún paciente", largo = true)
                                 } else {
 
                                     val pacienteUid =
@@ -811,11 +703,7 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
 
                                             if (tutorUid == null) {
                                                 cargando = false
-                                                Toast.makeText(
-                                                    context,
-                                                    "No se pudo crear la cuenta",
-                                                    Toast.LENGTH_SHORT
-                                                ).show()
+                                                Avisos.mostrar("No se pudo crear la cuenta")
                                             } else {
 
                                                 val datosTutor = hashMapOf<String, Any>(
@@ -871,11 +759,7 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
                                                             "tutor"
 
                                                         cargando = false
-                                                        Toast.makeText(
-                                                            context,
-                                                            "Tutor vinculado correctamente con el paciente",
-                                                            Toast.LENGTH_SHORT
-                                                        ).show()
+                                                        Avisos.mostrar("Tutor vinculado correctamente con el paciente")
 
                                                         navController.navigate(
                                                             "caregiver_home"
@@ -901,34 +785,22 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
                                                                         .PERMISSION_DENIED
 
                                                         cargando = false
-                                                        Toast.makeText(
-                                                            context,
-                                                            if (denegado) "No se pudo vincular: el paciente ya alcanzó " +
-                                                                    "el máximo de tutores (${LimiteTutores.MAX_GRATIS} en el plan gratis, " +
-                                                                    "${LimiteTutores.MAX_PREMIUM} con Premium) o el código no es válido."
-                                                            else ErroresFirebase.datos(error, "No se pudo completar la vinculación"),
-                                                            Toast.LENGTH_LONG
-                                                        ).show()
+                                                        Avisos.mostrar(if (denegado) "No se pudo vincular: el paciente ya alcanzó " +
+                                                                "el máximo de tutores (${LimiteTutores.MAX_GRATIS} en el plan gratis, " +
+                                                                "${LimiteTutores.MAX_PREMIUM} con Premium) o el código no es válido."
+                                                        else ErroresFirebase.datos(error, "No se pudo completar la vinculación"), largo = true)
                                                     }
                                             }
                                         }
                                         .addOnFailureListener { error ->
                                             cargando = false
-                                            Toast.makeText(
-                                                context,
-                                                ErroresFirebase.registro(error),
-                                                Toast.LENGTH_LONG
-                                            ).show()
+                                            Avisos.mostrar(ErroresFirebase.registro(error), largo = true)
                                         }
                                 }
                             }
                             .addOnFailureListener { error ->
                                 cargando = false
-                                Toast.makeText(
-                                    context,
-                                    ErroresFirebase.datos(error, "No se pudo verificar el código del paciente"),
-                                    Toast.LENGTH_LONG
-                                ).show()
+                                Avisos.mostrar(ErroresFirebase.datos(error, "No se pudo verificar el código del paciente"), largo = true)
                             }
                     }
                 }
@@ -1003,11 +875,7 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
                             if (uid == null) {
                                 auth.signOut()
                                 cargando = false
-                                Toast.makeText(
-                                    context,
-                                    "No se pudo obtener la sesión del profesional",
-                                    Toast.LENGTH_LONG
-                                ).show()
+                                Avisos.mostrar("No se pudo obtener la sesión del profesional", largo = true)
                             } else {
                                 db.collection("usuarios")
                                     .document(uid)
@@ -1018,11 +886,7 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
                                         if (rol != "profesional") {
                                             auth.signOut()
                                             cargando = false
-                                            Toast.makeText(
-                                                context,
-                                                "Esta cuenta no corresponde a un profesional",
-                                                Toast.LENGTH_LONG
-                                            ).show()
+                                            Avisos.mostrar("Esta cuenta no corresponde a un profesional", largo = true)
                                         } else {
                                             nombreUsuarioActual =
                                                 document.getString("nombre") ?: "Profesional"
@@ -1046,21 +910,13 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
                                     .addOnFailureListener { error ->
                                         auth.signOut()
                                         cargando = false
-                                        Toast.makeText(
-                                            context,
-                                            ErroresFirebase.datos(error, "No se pudieron verificar los datos del profesional"),
-                                            Toast.LENGTH_LONG
-                                        ).show()
+                                        Avisos.mostrar(ErroresFirebase.datos(error, "No se pudieron verificar los datos del profesional"), largo = true)
                                     }
                             }
                         }
                         .addOnFailureListener { error ->
                             cargando = false
-                            Toast.makeText(
-                                context,
-                                ErroresFirebase.login(error),
-                                Toast.LENGTH_LONG
-                            ).show()
+                            Avisos.mostrar(ErroresFirebase.login(error), largo = true)
                         }
                 },
 
@@ -1068,19 +924,11 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
                     auth.sendPasswordResetEmail(correo.trim())
                         .addOnSuccessListener {
                             cargando = false
-                            Toast.makeText(
-                                context,
-                                "Te enviamos un correo para restablecer tu contraseña",
-                                Toast.LENGTH_LONG
-                            ).show()
+                            Avisos.mostrar("Te enviamos un correo para restablecer tu contraseña", largo = true)
                         }
                         .addOnFailureListener { error ->
                             cargando = false
-                            Toast.makeText(
-                                context,
-                                ErroresFirebase.recuperacion(error),
-                                Toast.LENGTH_LONG
-                            ).show()
+                            Avisos.mostrar(ErroresFirebase.recuperacion(error), largo = true)
                         }
                 },
 
@@ -1118,11 +966,7 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
 
                             if (uid == null) {
                                 cargando = false
-                                Toast.makeText(
-                                    context,
-                                    "No se pudo crear la cuenta profesional",
-                                    Toast.LENGTH_LONG
-                                ).show()
+                                Avisos.mostrar("No se pudo crear la cuenta profesional", largo = true)
                             } else {
                                 val datosProfesional = hashMapOf<String, Any>(
                                     "nombre" to nombre.trim(),
@@ -1155,11 +999,7 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
                                         profesionalEspecialidad = profesion.trim()
 
                                         cargando = false
-                                        Toast.makeText(
-                                            context,
-                                            "Cuenta profesional creada correctamente",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
+                                        Avisos.mostrar("Cuenta profesional creada correctamente")
 
                                         navController.navigate("caregiver_home") {
                                             popUpTo("welcome_caregiver") {
@@ -1170,21 +1010,13 @@ fun NavGraphBuilder.rutasInicio(estado: EstadoNav) {
                                     .addOnFailureListener { error ->
                                         resultado.user?.delete()
                                         cargando = false
-                                        Toast.makeText(
-                                            context,
-                                            ErroresFirebase.datos(error, "No se pudieron guardar los datos del profesional"),
-                                            Toast.LENGTH_LONG
-                                        ).show()
+                                        Avisos.mostrar(ErroresFirebase.datos(error, "No se pudieron guardar los datos del profesional"), largo = true)
                                     }
                             }
                         }
                         .addOnFailureListener { error ->
                             cargando = false
-                            Toast.makeText(
-                                context,
-                                ErroresFirebase.registro(error),
-                                Toast.LENGTH_LONG
-                            ).show()
+                            Avisos.mostrar(ErroresFirebase.registro(error), largo = true)
                         }
                 },
 

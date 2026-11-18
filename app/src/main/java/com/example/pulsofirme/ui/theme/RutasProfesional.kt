@@ -101,11 +101,7 @@ fun NavGraphBuilder.rutasProfesional(estado: EstadoNav) {
                         try {
                             context.startActivity(intentCorreo)
                         } catch (_: Exception) {
-                            Toast.makeText(
-                                context,
-                                "No se encontró una aplicación de correo instalada",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            Avisos.mostrar("No se encontró una aplicación de correo instalada")
                         }
                     }
                 )
@@ -329,11 +325,7 @@ fun NavGraphBuilder.rutasProfesional(estado: EstadoNav) {
                             formacionAdicional = document.getString("formacionAdicional") ?: ""
                         }
                         .addOnFailureListener {
-                            Toast.makeText(
-                                context,
-                                "No se pudieron cargar los datos profesionales",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            Avisos.mostrar("No se pudieron cargar los datos profesionales")
                         }
                 }
             }
@@ -346,11 +338,7 @@ fun NavGraphBuilder.rutasProfesional(estado: EstadoNav) {
                 onBack = { navController.popBackStack() },
                 onGuardarCambios = { lugar, especialidadNueva, matriculaNueva, formacion ->
                     if (uid == null) {
-                        Toast.makeText(
-                            context,
-                            "No se encontró la sesión del profesional",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Avisos.mostrar("No se encontró la sesión del profesional")
                     } else {
                         val datos = mapOf(
                             "lugarTrabajo" to lugar.trim(),
@@ -363,19 +351,11 @@ fun NavGraphBuilder.rutasProfesional(estado: EstadoNav) {
                             .document(uid)
                             .update(datos)
                             .addOnSuccessListener {
-                                Toast.makeText(
-                                    context,
-                                    "Datos profesionales guardados correctamente",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Avisos.mostrar("Datos profesionales guardados correctamente")
                                 navController.popBackStack()
                             }
                             .addOnFailureListener {
-                                Toast.makeText(
-                                    context,
-                                    "No se pudieron guardar los datos profesionales",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Avisos.mostrar("No se pudieron guardar los datos profesionales")
                             }
                     }
                 }
@@ -433,11 +413,7 @@ fun NavGraphBuilder.rutasProfesional(estado: EstadoNav) {
                             tutorPerfilPais = document.getString("pais") ?: ""
                         }
                         .addOnFailureListener {
-                            Toast.makeText(
-                                context,
-                                "No se pudieron cargar los datos del profesional",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            Avisos.mostrar("No se pudieron cargar los datos del profesional")
                         }
                 }
             }
@@ -465,11 +441,7 @@ fun NavGraphBuilder.rutasProfesional(estado: EstadoNav) {
                         pais ->
 
                     if (uid == null) {
-                        Toast.makeText(
-                            context,
-                            "No se encontró la sesión del profesional",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Avisos.mostrar("No se encontró la sesión del profesional")
                     } else {
                         val datosActualizados = mapOf(
                             "nombre" to nombre.trim(),
@@ -494,20 +466,12 @@ fun NavGraphBuilder.rutasProfesional(estado: EstadoNav) {
                                 tutorPerfilPais = pais.trim()
                                 nombreUsuarioActual = nombre.trim()
 
-                                Toast.makeText(
-                                    context,
-                                    "Datos del profesional actualizados correctamente",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Avisos.mostrar("Datos del profesional actualizados correctamente")
 
                                 navController.popBackStack()
                             }
                             .addOnFailureListener {
-                                Toast.makeText(
-                                    context,
-                                    "No se pudieron guardar los cambios",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Avisos.mostrar("No se pudieron guardar los cambios")
                             }
                     }
                 },

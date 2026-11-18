@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
 import com.example.pulsofirme.ui.theme.enTema
 
 import android.Manifest
@@ -93,8 +95,8 @@ fun MedicationScreen(
         mutableStateOf(AlarmaScheduler.activoGuardado(context))
     }
 
-    var mostrarSelectorHora by remember { mutableStateOf(false) }
-    var mostrarAvisoPantallaCompleta by remember { mutableStateOf(false) }
+    var mostrarSelectorHora by rememberSaveable { mutableStateOf(false) }
+    var mostrarAvisoPantallaCompleta by rememberSaveable { mutableStateOf(false) }
 
     val timePickerState = rememberTimePickerState(is24Hour = true)
 
@@ -135,14 +137,14 @@ fun MedicationScreen(
     fun aplicarInterruptor(nuevo: Boolean) {
         if (!nuevo) {
             AlarmaScheduler.desactivar(context)
-            Toast.makeText(context, "Recordatorio desactivado", Toast.LENGTH_SHORT).show()
+            Avisos.mostrar("Recordatorio desactivado")
         } else if (horarios.isNotEmpty() && diasSeleccionados.isNotEmpty()) {
             UserData.horariosMedicacion = horarios
             AlarmaScheduler.guardarYProgramar(context, horarios, diasSeleccionados, true)
-            Toast.makeText(context, "Recordatorio activado", Toast.LENGTH_SHORT).show()
+            Avisos.mostrar("Recordatorio activado")
         } else {
             activo = false
-            Toast.makeText(context, "Agregá al menos un horario y un día para activarlo", Toast.LENGTH_SHORT).show()
+            Avisos.mostrar("Agregá al menos un horario y un día para activarlo")
         }
     }
 

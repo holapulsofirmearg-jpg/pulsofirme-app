@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
 import com.example.pulsofirme.ui.theme.enTema
 
 import androidx.compose.foundation.Image
@@ -180,11 +182,7 @@ fun HomeScreen(
         sensacionElegida = texto
         FirebaseAuth.getInstance().currentUser?.uid?.let { uid ->
             SensacionDiaria.guardar(uid, texto) {
-                Toast.makeText(
-                    context,
-                    "No se pudo guardar tu sensación. Revisá tu conexión.",
-                    Toast.LENGTH_SHORT
-                ).show()
+                Avisos.mostrar("No se pudo guardar tu sensación. Revisá tu conexión.")
             }
         }
         onSensacionClick(texto)
@@ -254,7 +252,7 @@ fun HomeScreen(
     } ?: 0L
     val minutosHoyTotal = usoGuante.minutosHoy + minutosEnCurso
 
-    var mostrarCargaManual by remember { mutableStateOf(false) }
+    var mostrarCargaManual by rememberSaveable { mutableStateOf(false) }
     var inicioOlvidado by remember { mutableStateOf<Long?>(null) }
 
     fun avisarUsoRegistrado(minutos: Long) {

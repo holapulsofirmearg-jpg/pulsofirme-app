@@ -1,5 +1,7 @@
 package com.example.pulsofirme.screens
 
+import androidx.compose.runtime.saveable.rememberSaveable
+
 import com.example.pulsofirme.ui.theme.enTema
 
 import androidx.compose.foundation.background
@@ -125,9 +127,9 @@ fun PremiumScreen(
 ) {
     var paso by remember { mutableStateOf(PasoPremium.INFO) }
     var procesando by remember { mutableStateOf(false) }
-    var aprobado by remember { mutableStateOf(false) }
-    var mostrarProximamente by remember { mutableStateOf(false) }
-    var comprobante by remember { mutableStateOf("") }
+    var aprobado by rememberSaveable { mutableStateOf(false) }
+    var mostrarProximamente by rememberSaveable { mutableStateOf(false) }
+    var comprobante by rememberSaveable { mutableStateOf("") }
     val contexto = LocalContext.current
 
     // Simula la respuesta del pago (2,5 segundos)
@@ -140,11 +142,7 @@ fun PremiumScreen(
             // Se guarda en la cuenta: sigue activo aunque cierres sesión o cambies de celular
             UserData.activarPremiumDemo {
                 aprobado = false
-                Toast.makeText(
-                    contexto,
-                    "No se pudo activar Premium. Revisá tu conexión e intentá de nuevo.",
-                    Toast.LENGTH_LONG
-                ).show()
+                Avisos.mostrar("No se pudo activar Premium. Revisá tu conexión e intentá de nuevo.", largo = true)
             }
         }
     }
@@ -286,7 +284,7 @@ fun PremiumScreen(
             onBack = onBack,
             onDesactivarDemo = {
                 UserData.desactivarPremiumDemo {
-                    Toast.makeText(contexto, "No se pudo desactivar. Revisá tu conexión.", Toast.LENGTH_SHORT).show()
+                    Avisos.mostrar("No se pudo desactivar. Revisá tu conexión.")
                 }
             },
             onActivar = {
@@ -467,10 +465,10 @@ private fun PantallaCheckout(
     var metodo by remember { mutableStateOf(MetodoPago.MERCADO_PAGO) }
 
     // Datos de tarjeta: solo viven en esta pantalla, nunca se guardan ni se envían
-    var numero by remember { mutableStateOf("") }      // solo dígitos
-    var titular by remember { mutableStateOf("") }
-    var vencimiento by remember { mutableStateOf("") } // solo dígitos MMAA
-    var cvv by remember { mutableStateOf("") }
+    var numero by rememberSaveable { mutableStateOf("") }      // solo dígitos
+    var titular by rememberSaveable { mutableStateOf("") }
+    var vencimiento by rememberSaveable { mutableStateOf("") } // solo dígitos MMAA
+    var cvv by rememberSaveable { mutableStateOf("") }
 
     val mes = vencimiento.take(2).toIntOrNull() ?: 0
     val tarjetaValida = numero.length == 16 &&

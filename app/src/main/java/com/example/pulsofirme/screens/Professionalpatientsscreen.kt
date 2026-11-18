@@ -110,19 +110,19 @@ fun ProfessionalPatientsScreen(
                         }
                 }
             }
-            .addOnFailureListener { cargando = false; Toast.makeText(context, "No se pudieron cargar los pacientes", Toast.LENGTH_SHORT).show() }
+            .addOnFailureListener { cargando = false; Avisos.mostrar("No se pudieron cargar los pacientes") }
     }
 
     LaunchedEffect(profesionalUid) { cargarPacientes() }
 
     fun vincularPaciente() {
         val codigoLimpio = codigo.trim()
-        if (profesionalUid == null) { Toast.makeText(context, "No hay sesión profesional", Toast.LENGTH_SHORT).show(); return }
-        if (codigoLimpio.length != 6 || !codigoLimpio.all { it.isDigit() }) { Toast.makeText(context, "Ingresá el código de 6 dígitos del paciente", Toast.LENGTH_SHORT).show(); return }
+        if (profesionalUid == null) { Avisos.mostrar("No hay sesión profesional"); return }
+        if (codigoLimpio.length != 6 || !codigoLimpio.all { it.isDigit() }) { Avisos.mostrar("Ingresá el código de 6 dígitos del paciente"); return }
         if (pacientes.size >= maxPacientes) {
             val mensaje = if (esPremium) "Alcanzaste el máximo de $MAX_PACIENTES_PREMIUM pacientes"
             else "El plan gratuito permite vincular $MAX_PACIENTES_GRATIS paciente. Pasate a Premium para vincular hasta $MAX_PACIENTES_PREMIUM."
-            Toast.makeText(context, mensaje, Toast.LENGTH_LONG).show()
+            Avisos.mostrar(mensaje, largo = true)
             return
         }
         vinculando = true
@@ -133,12 +133,12 @@ fun ProfessionalPatientsScreen(
                 val pacienteUid = codigoDoc.getString("uid").orEmpty()
                 if (!codigoDoc.exists() || pacienteUid.isBlank()) {
                     vinculando = false
-                    Toast.makeText(context, "No existe un paciente con ese código", Toast.LENGTH_LONG).show()
+                    Avisos.mostrar("No existe un paciente con ese código", largo = true)
                     return@addOnSuccessListener
                 }
                 if (pacientes.any { it.uid == pacienteUid }) {
                     vinculando = false
-                    Toast.makeText(context, "Ese paciente ya está vinculado", Toast.LENGTH_SHORT).show()
+                    Avisos.mostrar("Ese paciente ya está vinculado")
                     return@addOnSuccessListener
                 }
 
@@ -158,16 +158,16 @@ fun ProfessionalPatientsScreen(
                 }.addOnSuccessListener {
                     vinculando = false
                     codigo = ""
-                    Toast.makeText(context, "Paciente vinculado correctamente", Toast.LENGTH_SHORT).show()
+                    Avisos.mostrar("Paciente vinculado correctamente")
                     cargarPacientes()
                 }.addOnFailureListener {
                     vinculando = false
-                    Toast.makeText(context, "No se pudo vincular el paciente", Toast.LENGTH_LONG).show()
+                    Avisos.mostrar("No se pudo vincular el paciente", largo = true)
                 }
             }
             .addOnFailureListener {
                 vinculando = false
-                Toast.makeText(context, "No se pudo verificar el código", Toast.LENGTH_LONG).show()
+                Avisos.mostrar("No se pudo verificar el código", largo = true)
             }
     }
 
@@ -186,9 +186,9 @@ fun ProfessionalPatientsScreen(
             batch.update(pacRef, "profesionalesVinculados", FieldValue.arrayRemove(profesionalUid))
         }.addOnSuccessListener {
             pacienteADesvincular = null
-            Toast.makeText(context, "Paciente desvinculado", Toast.LENGTH_SHORT).show()
+            Avisos.mostrar("Paciente desvinculado")
             cargarPacientes()
-        }.addOnFailureListener { Toast.makeText(context, "No se pudo desvincular el paciente", Toast.LENGTH_LONG).show() }
+        }.addOnFailureListener { Avisos.mostrar("No se pudo desvincular el paciente", largo = true) }
     }
 
     val filtrados = pacientes.filter { busqueda.isBlank() || it.nombre.contains(busqueda, true) || it.diagnostico.contains(busqueda, true) }

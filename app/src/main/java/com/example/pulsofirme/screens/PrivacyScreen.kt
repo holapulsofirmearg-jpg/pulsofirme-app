@@ -108,11 +108,7 @@ fun PrivacyScreen(
     var abierto by remember { mutableStateOf<String?>(null) }
 
     fun avisarError() {
-        Toast.makeText(
-            contexto,
-            "No se pudo guardar el cambio. Revisá tu conexión.",
-            Toast.LENGTH_SHORT
-        ).show()
+        Avisos.mostrar("No se pudo guardar el cambio. Revisá tu conexión.")
     }
 
     LaunchedEffect(miUid) {

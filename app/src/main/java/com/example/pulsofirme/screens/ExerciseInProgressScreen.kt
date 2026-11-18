@@ -1057,11 +1057,7 @@ fun ExerciseInProgressScreen(
                 Button(
                     onClick = {
                         if (!vozLista) {
-                            Toast.makeText(
-                                context,
-                                "Tu celular no tiene la voz instalada. Revisá Ajustes → Texto a voz.",
-                                Toast.LENGTH_LONG
-                            ).show()
+                            Avisos.mostrar("Tu celular no tiene la voz instalada. Revisá Ajustes → Texto a voz.", largo = true)
                         } else {
                             vozActiva = !vozActiva
                         }

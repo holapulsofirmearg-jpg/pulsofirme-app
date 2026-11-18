@@ -102,11 +102,7 @@ fun AlertsConfigCaregiverScreen(
             AvisosTutor.programar(contexto)
             AvisosTutor.probarAhora(contexto)
         } else {
-            Toast.makeText(
-                contexto,
-                "Sin permiso de notificaciones no te podemos avisar. Activalo en Ajustes del celular.",
-                Toast.LENGTH_LONG
-            ).show()
+            Avisos.mostrar("Sin permiso de notificaciones no te podemos avisar. Activalo en Ajustes del celular.", largo = true)
         }
     }
 
@@ -116,13 +112,13 @@ fun AlertsConfigCaregiverScreen(
         } else {
             AvisosTutor.programar(contexto)
             AvisosTutor.probarAhora(contexto)
-            Toast.makeText(contexto, "Enviando un aviso de prueba…", Toast.LENGTH_SHORT).show()
+            Avisos.mostrar("Enviando un aviso de prueba…")
         }
     }
 
     fun guardar() {
         if (uid == null) {
-            Toast.makeText(contexto, "No se encontró la sesión", Toast.LENGTH_SHORT).show()
+            Avisos.mostrar("No se encontró la sesión")
             return
         }
         guardando = true
@@ -139,7 +135,7 @@ fun AlertsConfigCaregiverScreen(
             .addOnSuccessListener {
                 guardando = false
                 AvisosTutor.programar(contexto)
-                Toast.makeText(contexto, "Preferencias de alertas guardadas", Toast.LENGTH_SHORT).show()
+                Avisos.mostrar("Preferencias de alertas guardadas")
                 onGuardarCambios(
                     alertasMedicacion,
                     alertasDispositivo,
@@ -150,7 +146,7 @@ fun AlertsConfigCaregiverScreen(
             }
             .addOnFailureListener {
                 guardando = false
-                Toast.makeText(contexto, "No se pudieron guardar. Revisá tu conexión.", Toast.LENGTH_SHORT).show()
+                Avisos.mostrar("No se pudieron guardar. Revisá tu conexión.")
             }
     }
 
